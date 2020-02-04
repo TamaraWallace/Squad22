@@ -9,25 +9,18 @@ Class: Task
 --------------------------
 
 Data:
--key: int
--userKey: int
--name: String
--description: String
--dueDate: LocalDate
--completionDate: LocalDate
+- key: int
+- name: String
+- description: String
+- dueDate: LocalDate
+- completed: boolean
 
 Methods:
-+Task(int key, int userKey, String name, String description, Datetime dueDate)
-+setName(String s) Void
-+setDescription(String s) Void
-+setDueDate(Datetime d) Void
-+isActive() Boolean
-+complete() Void
-	set completion date to current datetime
-+makeActive() Void
-	set completion date to Null
-+print()
-	print each of the Task's attributes
++ Task(String name, String description, LocalDate date)
++ Task(int key, String name, String description, LocalDate dueDate, boolean completed)
++ isComplete(): boolean
++ complete(): void
++ print(): void
 
 
 
@@ -36,24 +29,14 @@ Class: TaskCollection
 --------------------------
 
 Data:
--tasks: ArrayList<Task>
+- tasks: ArrayList<Task>
 
 Methods:
-+TaskCollection()
-	tasks = new ArrayList<Task>();
-+TaskCollection(ArrayLists<Task> t)
-	tasks = t;
-+sortByDueDate() Void {
-	sorts tasks by dueDate. use quick sort algorithm
-+getActiveTasks() TaskCollection
-	return all active tasks (i.e. completionDate == Null)
-+getCompletedTasks() TaskCollection
-	return all completed tasks
-+display() Void
-	if (tasks.isEmpty()) { print("no tasks to display")
-	} else { for (Task t: tasks) { t.print() } }
-+getTask(int key) Task
-	return tasks.get(key);
++ loadTasks(String fname): void
++ saveTasks(String fname): void
++ display(): void
++ addTask(Task): void
++ getTask(int key): Task
 
 
 
@@ -62,27 +45,14 @@ Class: User
 --------------------------
 
 Data:
--key: int
--name: String
--pword: String
--taskKeys: ArrayList<Integer>
+- id: int
+- name: String
+- pword: String
 
 Methods:
-+getKey()
-+setKey()
-+getName()
-+setName()
-+getPassword()
-+setPassword()
-+getTaskKeys()
-+setTaskKeys()
-+checkName(String n) -> return (n.compareTo(name) == 0); (i.e. is n == name?)
-+checkPassword(String pw) -> return (pw.compareTo(pword) == 0); (i.e. is pw == pword?)
-+setName(String n)
-+setPassword(String pw)
-+addTaskKey(int key)
-+print()
-	print each of a user's attributes
++ checkName(String s) -> return (s.compareTo(name) == 0); (i.e. is s == name?)
++ checkPassword(String s) -> return (s.compareTo(pword) == 0); (i.e. is s == pword?)
++ print()
 
 
 

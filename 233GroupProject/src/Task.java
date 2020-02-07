@@ -4,22 +4,14 @@ public class Task {
 
 	
 	int key; // to identify the user 
-	int userID;	// The UMI saays int, shouldnt it be string?    	to identify the user
+	int userID;	// The UMI says int, shouldnt it be string?    	to identify the user
 	String name; // name of the task
 	String notes; // the description of the task
 	boolean completed; // if the task has been marked complete by the user or not 
 	Date dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
 	
 	
-	
-	// FOR GROUP MEMBERS: 
-	// I'm not sure how to set the due date to be a user chosen one, because I have to get that from the key board input
-	// which needs to be imported from the textbased app class i guess? so i just set them to the parameters from the constructor 
-	// I can change this easily once we can agree on how we want to implement this 
-	// SUGGESTION: make two variables, one is a due date from user input which I can get from the constructor and a variable called current date 
-	// then we can compare those to see if a task is past its due date or not 
-	Date currentDate;
-	
+
 	
 //	Method name: Task 
 //	Parameters: key, userID, name, notes, completed, dueDate
@@ -67,18 +59,6 @@ public class Task {
 	}
 	
 	
-	
-	
-//	Method name: complete 
-//	Parameters: none 
-//	Return: void
-//	Functionality: I have no idea, gonna fill this in when I know :)
-	public void complete() {
-		
-	}
-	
-
-
 	
 	
 	// setters and getters 

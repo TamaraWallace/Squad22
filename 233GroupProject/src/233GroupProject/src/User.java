@@ -2,7 +2,7 @@
 
 public class User {
 	
-	private String usrName; // username for each user
+	private String usrName; // user name for each user
 	private String usrPassword; // users password
 	private int usrID; // unique Id for each user
 	

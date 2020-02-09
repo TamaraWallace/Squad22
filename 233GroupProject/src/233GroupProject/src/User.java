@@ -19,7 +19,7 @@ public class User {
 		this.usrID = usrID;
 	}
 	
-	//Returns User object id and username as string
+	//Returns User object id and user name as string
 	// Parameters: None
 	// Returns: String of usrID and yusrName
 	public String toString() {

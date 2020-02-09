@@ -40,8 +40,8 @@ public class User {
 	// Returns: Boolean, whether usrPassword matches
 	public boolean checkPassword(String usrPassword){
 		return usrPassword.equals(this.usrPassword);
-		
 	}
+	
 	// Getter method for usrName
 	public String getUsrName() {
 		return usrName;

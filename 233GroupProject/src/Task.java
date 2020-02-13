@@ -78,11 +78,13 @@ public class Task {
 	
 	// setters and getters 
 	
-	public void setNextID(int id) {
+	public static void setNextID(int id) {
 		Task.nextID = id;
 	}
  
-	
+	public int getNextID() {
+		return nextID;
+	}
 	
 	public int getTaskID() {
 		return taskID;

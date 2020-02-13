@@ -27,8 +27,20 @@ public class Task {
 		this.dueDate = dueDate;
 		
 	}
-	
 
+//	Method name: Task 
+//	Parameters: Task t
+//	Return: void
+//	Functionality: copy constructor
+
+	public Task(Task t) {
+		this.setKey(t.key);
+		this.setUserID(t.userID);
+		this.setName(t.name);
+		this.setNotes(t.notes);
+		this.setCompleted(t.completed);
+		this.setDueDate(t.dueDate);
+	}
 	
 	
 // 	    Method name: toString 
@@ -127,6 +139,9 @@ public class Task {
 
 
 
+	public int getUserID() {
+		return this.userID;
+	}
 
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;

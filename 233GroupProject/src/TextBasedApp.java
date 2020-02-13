@@ -12,7 +12,7 @@ public class TextBasedApp {
 	public static void main(String[] args) {
 		users = UserCollection.loadUsers("users.csv");
 		start();
-		tasks = TaskCollection.loadTasks("tasks.csv", user.getUsrID());
+		tasks = TaskCollection.loadUsrTasks("tasks.csv", user.getUsrID());
 		
 		// a method for programmer tests
 		// feel free to move this wherever you want

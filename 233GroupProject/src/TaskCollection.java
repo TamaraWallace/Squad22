@@ -18,11 +18,11 @@ public class TaskCollection {
 
 	private ArrayList<Task> tasks = new ArrayList<Task>(); // An ArrayList of all the user's tasks.
 	
-	// Method Name: loadTasks
+	// Method Name: loadUsrTasks
 	// Parameters: fname (the name of the file to load tasks from) and userID (the id of the user whose tasks are being loaded)
 	// Return: a TaskCollection object
 	// Functionality: load a file containing all tasks, determine the value of the nextKey, store user's tasks in an ArrayList
-	public static TaskCollection loadTasks(String fname, int userID) {
+	public static TaskCollection loadUsrTasks(String fname, int userID) {
 		TaskCollection usersTasks = new TaskCollection();
 		// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
 				try {

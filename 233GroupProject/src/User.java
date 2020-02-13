@@ -5,6 +5,7 @@ public class User {
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
 	private int usrID; // unique Id for each user
+	private static int nextID = 0;
 	
 	// Constructor Method: sets User's name, password and ID
 	// Parameters: 
@@ -12,18 +13,26 @@ public class User {
 	//		usrPassword: string, user's password for login
 	//		usrID: unique ID for each user, used to identify user's tasks
 	// Returns: Void
-	public User(String usrName, String usrPassword, int usrID) {
-		
+	public User(String usrName, String usrPassword) {
 		this.usrName = usrName;
 		this.usrPassword = usrPassword;
-		this.usrID = usrID;
+		usrID = nextID++;
 	}
 	
+	public User(User u) {
+		usrName = u.usrName;
+		usrPassword = u.usrPassword;
+		usrID = u.usrID;
+	}
+
 	//Returns User object id and user name as string
 	// Parameters: None
 	// Returns: String of usrID and yusrName
 	public String toString() {
-		return Integer.toString(usrID)+","+ usrName;
+		String temp = "Username: " + usrName;
+		temp += "\nPassword: " + usrPassword;
+		temp += "\nuid: " + usrID;
+		return temp;
 	}
 	
 	// Checks whether User's name matches

@@ -3,13 +3,13 @@ import java.util.Date;  // https://stackabuse.com/how-to-get-current-date-and-ti
 public class Task {
 
 	
-	int key; // to identify the user 
-	int userID;	// The UMI says int, shouldnt it be string?    	to identify the user
-	String name; // name of the task
-	String notes; // the description of the task
-	boolean completed; // if the task has been marked complete by the user or not 
-	Date dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
-	
+	private int key; // to identify the task
+	private int userID;	// to identify the user
+	private String name; // name of the task
+	private String notes; // the description of the task
+	private boolean completed; // if the task has been marked complete by the user or not 
+	private Date dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
+	private static int nextID = 0;
 	
 
 	
@@ -18,9 +18,8 @@ public class Task {
 //	Return: void
 //	Functionality: class constructor
 //	
-	public Task(int key, int userID, String name, String notes, boolean completed, Date dueDate) {
-		
-		this.key = key;
+	public Task(int userID, String name, String notes, boolean completed, Date dueDate) {
+		this.key = nextID++;
 		this.userID = userID;
 		this.name = name;
 		this.notes = notes;

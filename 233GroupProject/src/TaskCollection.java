@@ -11,14 +11,13 @@ import java.util.Date; // import date utility, copied from Task class
 */
 public class TaskCollection {
 
-	private static int nextKey; // The key to use for the next task added.
 	private ArrayList<Task> tasks = new ArrayList<Task>(); // An ArrayList of all the user's tasks.
 	
 	// Method Name: loadTasks
 	// Parameters: fname (the name of the file to load tasks from) and userID (the id of the user whose tasks are being loaded)
 	// Return: a TaskCollection object
 	// Functionality: load a file containing all tasks, determine the value of the nextKey, store user's tasks in an ArrayList
-	public TaskCollection loadTasks(String fname, int userID) {
+	public static TaskCollection loadTasks(String fname, int userID) {
 		TaskCollection usersTasks = new TaskCollection();
 		return usersTasks;
 	}
@@ -28,7 +27,7 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: ?
 	// NOTE: I know it needs to save the tasks, but I'm not sure what the best implementation is
-	public void saveTasks(String fname) {
+	public static void saveTasks(String fname) {
 		
 	}
 	
@@ -50,7 +49,7 @@ public class TaskCollection {
 		for(int i = 0; i < tasks.size(); i++) {
 			if (tasks.get(i).getKey() == key) {
 				// Copying the task to avoid privacy leak. 0 is used as a userID placeholder for now.
-				currentTask = new Task(key, 0, tasks.get(i).getName(), tasks.get(i).getNotes(), tasks.get(i).isCompleted(), tasks.get(i).getDueDate());
+				currentTask = new Task(0, tasks.get(i).getName(), tasks.get(i).getNotes(), tasks.get(i).isCompleted(), tasks.get(i).getDueDate());
 			}
 		}
 		return currentTask;
@@ -63,7 +62,7 @@ public class TaskCollection {
 	// NOTE: Although not mentioned in the UML, it needs to be passed the userID as well
 	public void addTask(String name, String notes, Date date) {
 		//0 is used as a userID placeholder for now.
-		Task newTask = new Task(nextKey, 0, name, notes, false, date);
+		Task newTask = new Task(0, name, notes, false, date);
 		tasks.add(newTask);
 	}
 	

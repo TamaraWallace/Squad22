@@ -59,7 +59,7 @@ public class UserCollection {
 	}
 	
 	// 	
-//	Method name: fineUser 
+//	Method name: findUser 
 //	Parameters: String name
 //	Return: User 
 //	Functionality: checks if a user's username already exists in the users ArrayList, if it does then return that user. Otherwise return null

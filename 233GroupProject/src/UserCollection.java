@@ -70,7 +70,8 @@ public class UserCollection {
 			for (User user: users) {
 				String username = user.getUsrName();
 				if (username.contentEquals(name)){
-					return user;
+					User userCopy = new User(user);
+					return userCopy;
 				}
 			}
 			return null;

@@ -1,3 +1,5 @@
+import java.io.Console;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -12,7 +14,7 @@ public class TextBasedApp {
 	public static void main(String[] args) {
 		users = UserCollection.loadUsers("users.csv");
 		start();
-		tasks = TaskCollection.loadTasks("tasks.csv", user.getUsrID());
+		tasks = TaskCollection.loadUsrTasks("tasks.csv", user.getUsrID());
 		
 		// a method for programmer tests
 		// feel free to move this wherever you want
@@ -34,7 +36,7 @@ public class TextBasedApp {
 		System.out.println("Are you an existing user: ");
 		String answer = keyboard.nextLine();
 	
-		if (answer.toLowerCase().compareTo("yes")==0
+		if ((answer.toLowerCase().compareTo("yes")==0 || answer.toLowerCase().compareTo("y") == 0)
 				&& !users.isEmpty()) {
 			user = login();
 		} else {
@@ -47,10 +49,45 @@ public class TextBasedApp {
 	//Return Value: user's info
 	private static User createNewUser() {
 		//Question: how do we create a user ID #?
+		Console cons = System.console();
+		String password = null;
+		boolean passCreated = false;
+		
 		System.out.print("Please enter your name: ");
 		String name = keyboard.nextLine();
-		System.out.print("Please enter a password: ");
-		String password = keyboard.nextLine();
+		
+		// check usrName does not exist
+		
+		if (cons == null) {
+			while (! passCreated) {
+				
+				System.out.print("Please enter a password: ");
+				String password1 = keyboard.nextLine();
+				System.out.print("Please confimr your password: ");
+				String password2 = keyboard.nextLine();
+				if (password1.equals(password2)){
+					passCreated = true;
+					password = password1;
+				}else {
+					System.out.println("The passwords you entered do not match! Please try again: ");
+				}
+			}
+		}else {
+			while (! passCreated) {
+				
+				String prompt = ("Please enter a password: ");
+				char[] password1 = cons.readPassword(prompt);
+				prompt = ("Please confimr your password: ");
+				char[] password2 = cons.readPassword(prompt);
+				if (Arrays.equals(password1,password2)){
+					passCreated = true;
+					password = password1.toString();
+				}else {
+					System.out.println("The passwords you entered do not match! Please try again: ");
+				}
+			}
+		}
+		
 		
 		User newUser = new User(name, password);
 		users.addUser(newUser);

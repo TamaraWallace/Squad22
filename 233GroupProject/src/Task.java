@@ -3,7 +3,7 @@ import java.util.Date;  // https://stackabuse.com/how-to-get-current-date-and-ti
 public class Task {
 
 	
-	private int key; // to identify the task
+	private int taskID; // to identify the task
 	private int userID;	// to identify the user
 	private String name; // name of the task
 	private String notes; // the description of the task
@@ -19,7 +19,7 @@ public class Task {
 //	Functionality: class constructor
 //	
 	public Task(int userID, String name, String notes, boolean completed, Date dueDate) {
-		this.key = nextID++;
+		this.taskID = nextID++;
 		this.userID = userID;
 		this.name = name;
 		this.notes = notes;
@@ -34,7 +34,7 @@ public class Task {
 //	Functionality: copy constructor
 
 	public Task(Task t) {
-		this.setKey(t.key);
+		this.setTaskID(t.taskID);
 		this.setUserID(t.userID);
 		this.setName(t.name);
 		this.setNotes(t.notes);
@@ -50,7 +50,11 @@ public class Task {
 	
 	public String toString() {
 		
-		return "key:" + this.key  + " userID: "+ this.userID +  "name:"+this.name+  " description:"+this.notes +  " due date:"+ this.dueDate;
+		return "key: " + this.taskID  +
+				"\nuserID: "+ this.userID +
+				"\nname:"+this.name+
+				"\ndescription:"+this.notes + 
+				"\ndue date:"+ this.dueDate;
 		
 	}
 	
@@ -74,18 +78,23 @@ public class Task {
 	
 	// setters and getters 
 	
+	public static void setNextID(int id) {
+		Task.nextID = id;
+	}
  
+	public int getNextID() {
+		return nextID;
+	}
 	
-	
-	public int getKey() {
-		return key;
+	public int getTaskID() {
+		return taskID;
 	}
 
 
 
 
-	public void setKey(int key) {
-		this.key = key;
+	public void setTaskID(int key) {
+		this.taskID = key;
 	}
 
 

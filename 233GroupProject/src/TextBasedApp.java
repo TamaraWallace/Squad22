@@ -12,12 +12,12 @@ public class TextBasedApp {
 	private static Scanner keyboard = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		users = UserCollection.loadUsers("users.txt");
+		users = UserCollection.loadUsers("./users.txt");
 		
 		test(); // put whatever you need in test(). use for debugging
 		
 		startMenu();
-		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
+		tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
 		mainMenu();
 	}
 	

@@ -1,0 +1,14 @@
+Please add any functionality you want to see here.
+
+
+
+
+- maybe display # of Active and # of Completed tasks for user?
+
+
+editTask(Task t); - available from taskMenu()
+  allows user to edit the fields of a task.
+
+logout(); - available from mainMenu()
+  saves all changes, sets current user to null, brings user back to startMenu()
+

@@ -56,22 +56,43 @@ public class TaskCollection {
 	// Functionality: ?
 	// NOTE: I know it needs to save the tasks, but I'm not sure what the best implementation is
 	public void saveTasks(String fname) {
+		System.out.println("Saving. Please do not close the program.");
 		try {
-			FileWriter bw = new FileWriter(fname, true);
 			BufferedReader br = new BufferedReader(new FileReader(fname));
             Stream <String> lines = br.lines();
             String[] taskList = lines.toArray(String[] :: new);
             lines.close();
             br.close();
-            Task.setNextID(taskList.length);
-            //change to if line key is in tasks array update line
-            for(Task task: this.tasks) {
-            	if(task.getNextID()<task.getTaskID()) {
-            		Date d = task.getDueDate();
-            		bw.write(String.valueOf(task.getTaskID())+", "+String.valueOf(task.getUserID())+", "+task.getName()+", "+task.getNotes()+", "+String.valueOf(task.isCompleted())+", "+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate())+"\n");
+            FileWriter bw = new FileWriter(fname);
+            int lastKey = taskList.length - 1;
+            ArrayList<String> tList = new ArrayList<String>();
+            for(String s: taskList) {
+            	for(Task task: this.tasks) {
+            		if(Character.getNumericValue(s.charAt(0))==task.getTaskID()) {
+            			Date d = task.getDueDate();
+            			s = String.valueOf(task.getTaskID())+", "+String.valueOf(task.getUserID())+", "
+            			+task.getName()+", "+task.getNotes()+", "+String.valueOf(task.isCompleted())+", "
+            			+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate());
+            		}
+            	}
+            	tList.add(s+"\n");
+            }
+            
+            for(Task t : this.tasks) {
+            	if (lastKey<t.getTaskID()) {
+            		Date d = t.getDueDate();
+            		tList.add(String.valueOf(t.getTaskID())+", "+String.valueOf(t.getUserID())+", "
+                			+t.getName()+", "+t.getNotes()+", "+String.valueOf(t.isCompleted())+", "
+                			+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate())+"\n");
             	}
             }
+            
+            for(String str : tList) {
+            	bw.write(str);
+            }
+            
             bw.close();
+            System.out.println("Saving Complete.\nIt is now safe to close the program.");
 		} catch (IOException io) {
 			
 		}
@@ -132,19 +153,6 @@ public class TaskCollection {
 			}
 		}
 		return activeTasks;
-	}
-	
-	//Method Purpose: given a TaskCollection, return all the tasks belonging to a particular user.
-	//Parameters: int
-	//Return: TaskCollection
-	public TaskCollection getUserTasks(int usrID) {
-		TaskCollection userTasks = new TaskCollection();
-		for (Task t: tasks) {
-			if (t.getUserID() == usrID) {
-				userTasks.addTask(t);
-			}
-		}
-		return userTasks;
 	}
 	
 	//Method Purpose: indicate whether or not the given TaskCollection is empty

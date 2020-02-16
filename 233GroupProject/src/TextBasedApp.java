@@ -9,16 +9,15 @@ public class TextBasedApp {
 	private static User user;
 	private static UserCollection users;
 	private static TaskCollection tasks;
-	private static TaskCollection userTasks;
 	private static Scanner keyboard = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		users = UserCollection.loadUsers("users.txt");
-		tasks = TaskCollection.loadTasks("tasks.txt");
 		
 		test(); // put whatever you need in test(). use for debugging
 		
 		startMenu();
+		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
 		mainMenu();
 	}
 	
@@ -27,7 +26,6 @@ public class TextBasedApp {
 	//Return Value
 	public static void test() {
 		users.display();
-		tasks.display();
 		//quit();
 	}
 	
@@ -43,8 +41,8 @@ public class TextBasedApp {
 		String[] options = {"Login", "Create New Account", "Quit"};
 		int choice = getChoice(options);
 		
-		if (choice == 1) { user = login(); update(); }
-		if (choice == 2) { user = createNewUser(); userTasks = new TaskCollection(); }
+		if (choice == 1) { user = login(); }
+		if (choice == 2) { user = createNewUser(); tasks = new TaskCollection(); }
 		if (choice == 3) quit();
 	}
 	
@@ -169,19 +167,12 @@ public class TextBasedApp {
 
 
 	// ----------------------- HELPERS -----------------------
-
-	//Method Purpose: update userTasks -> used immediately a after login
-	//Parameters:
-	//Return Value:
-	public static void update() {
-		userTasks = tasks.getUserTasks(user.getUsrID());
-	}
 	
 	//Method Purpose: prompts the user to select one of their active tasks
 	//Parameters:
 	//Return Value: Task
 	public static Task selectTask() {
-		ArrayList<Task> temp = userTasks.getActiveTasks();
+		ArrayList<Task> temp = tasks.getActiveTasks();
 		
 		if (temp.size() == 0) return null;
 		

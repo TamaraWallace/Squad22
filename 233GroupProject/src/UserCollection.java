@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class UserCollection {
 	private ArrayList<User> users;
@@ -13,13 +18,67 @@ public class UserCollection {
 		users = new ArrayList<User>();
 	}
 	
+//	Method name: loadUsers
+//	Parameters: String fname, the file name to load users from
+//	Return: a new User Collection to access user data
+//	Functionality: reads user information from file and stores information in user collection object
 	public static UserCollection loadUsers(String fname) {
-		// TODO
-		return new UserCollection();
+		UserCollection allUsers = new UserCollection();
+		// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
+				try {
+		            BufferedReader br = new BufferedReader(new FileReader(fname));
+		            Stream <String> lines = br.lines();
+		            String[] userList = lines.toArray(String[] :: new);
+		            lines.close();
+		            br.close();
+		            for(String user : userList) {
+		            	String[] splitUser = user.split(",");
+	            		User next = new User(splitUser[1], splitUser[2]);
+	            		allUsers.users.add(next);
+		            }
+		        } catch (IOException io) {
+		            io.printStackTrace();
+		        }
+		return allUsers;
 	}
 	
-	public static void saveUsers(String fname) {
-		// TODO
+	// Method Name: saveUsers
+	// Parameters: fname (the name of the file to save users to)
+	// Return: void
+	// Functionality: save all the users the file, including new users and updates
+	// NOTE: needed to make not static
+	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
+	public void saveUsers(String fname) {
+		System.out.println("Saving. Please do not close the program.");
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fname));
+            Stream <String> lines = br.lines();
+            String[] userList = lines.toArray(String[] :: new);
+            lines.close();
+            br.close();
+            FileWriter bw = new FileWriter(fname);
+            int lastKey = userList.length - 1;
+            ArrayList<String> uList = new ArrayList<String>();
+            for(String s: userList) {
+            	uList.add(s+"\n");
+			}
+            
+            for(User u : this.users) {
+            	if (lastKey<u.getUsrID()) {
+            		uList.add(String.valueOf(u.getUsrID())
+            				+", "+ u.getUsrName()+", "+ u.getUsrPassword()+"\n");
+            	}
+            }
+            
+            for(String str : uList) {
+            	bw.write(str);
+            }
+            
+            bw.close();
+            System.out.println("Saving Complete.\nIt is now safe to close the program.");
+		} catch (IOException io) {
+			
+		}
 	}
 	
 	

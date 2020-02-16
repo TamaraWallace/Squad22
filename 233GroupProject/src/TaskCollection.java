@@ -16,13 +16,17 @@ import java.util.stream.Stream;
 */
 public class TaskCollection {
 
-	private ArrayList<Task> tasks = new ArrayList<Task>(); // An ArrayList of all the user's tasks.
+	private ArrayList<Task> tasks; // An ArrayList of all the user's tasks.
+	
+	public TaskCollection() {
+		tasks = new ArrayList<Task>();
+	}
 	
 	// Method Name: loadUsrTasks
 	// Parameters: fname (the name of the file to load tasks from) and userID (the id of the user whose tasks are being loaded)
 	// Return: a TaskCollection object
 	// Functionality: load a file containing all tasks, determine the value of the nextKey, store user's tasks in an ArrayList
-	public static TaskCollection loadUsrTasks(String fname, int userID) {
+	public static TaskCollection loadTasks(String fname) {
 		TaskCollection usersTasks = new TaskCollection();
 		// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
 				try {
@@ -34,15 +38,12 @@ public class TaskCollection {
 		            //
 		            for(String task : taskList) {
 		            	//System.out.println(task.getClass().getSimpleName());
-		            	// change to add all tasks and then remove ones with invalid user id
 		            	String[] splitTask = task.split(",");
-		            	if(splitTask[1].trim().equals(String.valueOf(userID))) {
-		            		String[] d = splitTask[splitTask.length-1].split("-");
-		            		Date due = new Date(Integer.parseInt(d[0].trim()), Integer.parseInt(d[1].trim())-1,Integer.parseInt(d[2].trim()));
-		            		Task next = new Task(Integer.parseInt(splitTask[1].trim()),splitTask[2], splitTask[3],Boolean.parseBoolean(splitTask[4].trim()),due);
-		            		usersTasks.tasks.add(next);
-		            	}
-		            }
+	            		String[] d = splitTask[splitTask.length-1].split("-");
+	            		Date due = new Date(Integer.parseInt(d[0].trim()), Integer.parseInt(d[1].trim())-1,Integer.parseInt(d[2].trim()));
+	            		Task next = new Task(Integer.parseInt(splitTask[1].trim()),splitTask[2], splitTask[3],Boolean.parseBoolean(splitTask[4].trim()),due);
+	            		usersTasks.tasks.add(next);
+	            	}
 		        } catch (IOException io) {
 		            io.printStackTrace();
 		        }
@@ -74,8 +75,6 @@ public class TaskCollection {
 		} catch (IOException io) {
 			
 		}
-		
-		
 	}
 	
 	// Method Name: display
@@ -125,26 +124,33 @@ public class TaskCollection {
 	// Parameters: none
 	// Return: a task collection containing only non-completed tasks
 	// Functionality: go through all tasks and add active tasks to a new task collection
-	public TaskCollection getActiveTasks() {
-		TaskCollection activeTasks = new TaskCollection();
-		for(Task task : tasks) {
-			if(!(task.isComplete())){
-				activeTasks.addTask(new Task(task));;
+	public ArrayList<Task> getActiveTasks() {
+		ArrayList<Task> activeTasks = new ArrayList<Task>();
+		for(Task t: tasks) {
+			if(!(t.isComplete())){
+				activeTasks.add(new Task(t));;
 			}
 		}
 		return activeTasks;
 	}
 	
-	/*public ArrayList<Task> getTasks() {
-	TaskCollection temp = new TaskCollection();
-	for(Task t : this.tasks) {
-		temp.addTask(new Task(t));
+	//Method Purpose: given a TaskCollection, return all the tasks belonging to a particular user.
+	//Parameters: int
+	//Return: TaskCollection
+	public TaskCollection getUserTasks(int usrID) {
+		TaskCollection userTasks = new TaskCollection();
+		for (Task t: tasks) {
+			if (t.getUserID() == usrID) {
+				userTasks.addTask(t);
+			}
+		}
+		return userTasks;
 	}
-	return temp.tasks;
-}
-
-public void setTasks(ArrayList<Task> tasks) {
-	this.tasks = tasks;
-}*/
 	
+	//Method Purpose: indicate whether or not the given TaskCollection is empty
+	//Parameters:
+	//Return: boolean
+	public boolean isEmpty() {
+		return tasks.isEmpty();
+	}
 }

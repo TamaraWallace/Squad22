@@ -27,13 +27,13 @@ public class TextBasedApp {
 	public static void test() {
 		
 		users.display();
-		User testuser = users.findUser(" student1");
+		User testuser = users.findUser("student1");
 		System.out.println(testuser);
-		testuser = users.findUser(" employee1");
+		testuser = users.findUser("employee1");
 		System.out.println(testuser);
-		testuser = users.findUser(" demo1");
+		testuser = users.findUser("demo1");
 		System.out.println(testuser);
-		testuser = users.findUser(" testuser");
+		testuser = users.findUser("test");
 		System.out.println(testuser);
 		
 		
@@ -123,7 +123,7 @@ public class TextBasedApp {
 		// check usrName does not exist
 		while(!validUsrName) {			
 			if (usrLogin == null) {
-				System.out.print("The username entered does not exist. Please enter a diffrent suer name: ");
+				System.out.print("The username entered does not exist. Please enter a diffrent user name: ");
 				usrName = keyboard.next();
 				usrLogin = users.findUser(usrName);
 			}else {

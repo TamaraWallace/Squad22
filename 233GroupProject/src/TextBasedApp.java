@@ -27,13 +27,13 @@ public class TextBasedApp {
 	public static void test() {
 		
 		users.display();
-		User testuser = users.findUser("student1");
+		User testuser = users.findUser(" student1");
 		System.out.println(testuser);
-		testuser = users.findUser("employee1");
+		testuser = users.findUser(" employee1");
 		System.out.println(testuser);
-		testuser = users.findUser("demo1");
+		testuser = users.findUser(" demo1");
 		System.out.println(testuser);
-		testuser = users.findUser("testuser");
+		testuser = users.findUser(" testuser");
 		System.out.println(testuser);
 		
 		

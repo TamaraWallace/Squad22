@@ -25,7 +25,18 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value
 	public static void test() {
+		
 		users.display();
+		User testuser = users.findUser("student1");
+		System.out.println(testuser);
+		testuser = users.findUser("employee1");
+		System.out.println(testuser);
+		testuser = users.findUser("demo1");
+		System.out.println(testuser);
+		testuser = users.findUser("testuser");
+		System.out.println(testuser);
+		
+		
 		//quit();
 	}
 	
@@ -95,10 +106,66 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value: user's info
 	private static User login() {
-		//checkName from User class
+		
+		Console cons = System.console();
+		
+		User usrLogin;
+		
+		boolean validUsrName = false;
+		
+		String password;
+		boolean validPass = false;
+		
+		System.out.print("Please enter your User Name: ");
+		String usrName = keyboard.next();
+		usrLogin = users.findUser(usrName);
+		
+		// check usrName does not exist
+		while(!validUsrName) {			
+			if (usrLogin == null) {
+				System.out.print("The username entered does not exist. Please enter a diffrent suer name: ");
+				usrName = keyboard.next();
+				usrLogin = users.findUser(usrName);
+			}else {
+				validUsrName = true;
+			}
+		}
+		
+		
 		//checkPassword from User class
-		// TODO
-		return new User("john", "12345");
+		String usrPassword = usrLogin.getUsrPassword();
+		System.out.print("Please enter a password: ");
+		password = keyboard.next();
+		
+		if (cons == null) {
+			while (! validPass) {
+				if (usrPassword.equals(password)){
+					validPass = true;
+					
+				}else {
+					System.out.println("The password you entered is incorrect! Please try again: ");
+					password = keyboard.next();
+				}
+			}
+		}else {
+			while (! validPass) {
+				
+				String prompt = ("Please enter your password: ");
+				char[] charPassword = cons.readPassword(prompt);
+				password = new String(charPassword);
+				
+				if (usrPassword.equals(password)){
+					validPass = true;
+					
+				}else {
+					System.out.println("The passwords you entered do not match! Please try again: ");
+				}
+			}
+		}
+		
+		
+		
+		return usrLogin;
 	}
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
@@ -107,20 +174,36 @@ public class TextBasedApp {
 	private static User createNewUser() {
 		//Question: how do we create a user ID #?
 		Console cons = System.console();
+		
+				
+		boolean validUsrName = false;
+		
 		String password = null;
 		boolean passCreated = false;
 		
-		System.out.print("Please enter your name: ");
-		String name = keyboard.nextLine();
+		System.out.print("Please enter your User Name: ");
+		String name = keyboard.next();
 		
 		// check usrName does not exist
+		while(!validUsrName) {
+			if (users.findUser(name) == null) {
+				validUsrName = true;
+			}else {
+				System.out.print("The username entered already exists. Please enter a diffrent suer name: ");
+				name = keyboard.nextLine();
+			}
+		}
+		
+		
+		
+		
 		if (cons == null) {
 			while (! passCreated) {
 				
 				System.out.print("Please enter a password: ");
-				String password1 = keyboard.nextLine();
-				System.out.print("Please confimr your password: ");
-				String password2 = keyboard.nextLine();
+				String password1 = keyboard.next();
+				System.out.print("Please confirm your password: ");
+				String password2 = keyboard.next();
 				if (password1.equals(password2)){
 					passCreated = true;
 					password = password1;
@@ -143,6 +226,7 @@ public class TextBasedApp {
 				}
 			}
 		}
+		
 		User newUser = new User(name, password);
 		users.addUser(newUser);
 		return newUser;

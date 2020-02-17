@@ -33,7 +33,7 @@ public class UserCollection {
 		            br.close();
 		            for(String user : userList) {
 		            	String[] splitUser = user.split(",");
-	            		User next = new User(splitUser[1], splitUser[2]);
+	            		User next = new User(splitUser[1].trim(), splitUser[2].trim());
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {

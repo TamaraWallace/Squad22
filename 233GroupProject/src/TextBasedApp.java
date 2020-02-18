@@ -331,7 +331,7 @@ public class TextBasedApp {
 	//Parameters: object of Task class 
 	//Return Value:
 	public static void completeTask(Task t) {
-		//complete() from Task class
+		t.setCompleted(true);
 		mainMenu();
 	}
 	

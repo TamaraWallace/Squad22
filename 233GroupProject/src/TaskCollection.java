@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -55,7 +56,6 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: save all the users tasks to the file, including new tasks and updates
 	public void saveTasks(String fname) {
-		System.out.println("Saving. Please do not close the program.");
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fname));
             Stream <String> lines = br.lines();
@@ -91,7 +91,6 @@ public class TaskCollection {
             }
             
             bw.close();
-            System.out.println("Saving Complete.\nIt is now safe to close the program.");
 		} catch (IOException io) {
 			
 		}
@@ -126,8 +125,45 @@ public class TaskCollection {
 	// Parameters: name, notes and date (all the respective fields for a task)
 	// Return: void
 	// Functionality: creates a new task and adds it to the tasks collection
-	public void addTask(Task t) {
-		tasks.add(t);
+	public void addTask() {
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Task Title: ");
+		String task_name = keyboard.nextLine();
+		System.out.println("Notes: ");
+		String task_notes = keyboard.nextLine();
+		System.out.println("Due date: ");
+		String task_date = keyboard.nextLine();
+		
+		System.out.println("Is the following information correct?");
+		System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+task_date);
+			
+		String answer = keyboard.nextLine();
+		
+		while(answer.toLowerCase()!="yes") {
+			System.out.println("What would you like to edit?");
+			String response = keyboard.nextLine();
+			if (response.toLowerCase()=="title") {
+				System.out.println("Task Title: ");
+				task_name = keyboard.nextLine();
+			} else if(response.toLowerCase()=="notes"){
+				System.out.println("Notes: ");
+				task_notes = keyboard.nextLine();
+			} else if(response.toLowerCase()=="due date" || response.toLowerCase()=="date") {
+				System.out.println("Due date: ");
+				task_date = keyboard.nextLine();
+			}
+			System.out.println("Is the following information correct?");
+			System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+task_date);
+				
+			answer = keyboard.nextLine();
+		}
+		
+		//Will need to correct this once compiled together 
+		//String name = user.getUsrName();
+		
+		//Task new_task = new Task(name, task_name, task_notes, user.isComplete() , task_date);
+		
+		//tasks.add(new_task);
 	}
 	
 	// Method Name: getActiveTasks

@@ -33,7 +33,7 @@ public class UserCollection {
 		            br.close();
 		            for(String user : userList) {
 		            	String[] splitUser = user.split(",");
-	            		User next = new User(splitUser[1], splitUser[2]);
+	            		User next = new User(splitUser[1].trim(), splitUser[2].trim());
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {
@@ -49,7 +49,6 @@ public class UserCollection {
 	// NOTE: needed to make not static
 	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
 	public void saveUsers(String fname) {
-		System.out.println("Saving. Please do not close the program.");
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fname));
             Stream <String> lines = br.lines();
@@ -75,7 +74,6 @@ public class UserCollection {
             }
             
             bw.close();
-            System.out.println("Saving Complete.\nIt is now safe to close the program.");
 		} catch (IOException io) {
 			
 		}

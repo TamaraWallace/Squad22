@@ -26,7 +26,7 @@ public class TextBasedApp {
 	//Return Value
 	public static void test() {
 		
-		users.display();
+		/*users.display();
 		User testuser = users.findUser("student1");
 		System.out.println(testuser);
 		testuser = users.findUser("employee1");
@@ -34,7 +34,7 @@ public class TextBasedApp {
 		testuser = users.findUser("demo1");
 		System.out.println(testuser);
 		testuser = users.findUser("test");
-		System.out.println(testuser);
+		System.out.println(testuser);*/
 		
 		//quit();
 	}
@@ -154,10 +154,7 @@ public class TextBasedApp {
 			password = PasswordInput.readPassword(prompt);
 			while (! validPass) {
 				
-				
-				
-				
-				
+							
 				if (usrPassword.equals(password)){
 					validPass = true;
 					
@@ -167,8 +164,6 @@ public class TextBasedApp {
 				}
 			}
 		}
-		
-		
 		
 		return usrLogin;
 	}

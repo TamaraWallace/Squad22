@@ -113,6 +113,7 @@ public class TextBasedApp {
 		
 		boolean validUsrName = false;
 		
+		String prompt;
 		String password;
 		boolean validPass = false;
 		
@@ -134,31 +135,36 @@ public class TextBasedApp {
 		
 		//checkPassword from User class
 		String usrPassword = usrLogin.getUsrPassword();
-		System.out.print("Please enter your password: ");
-		password = keyboard.next();
+		
 		
 		if (cons == null) {
+			 System.out.print("Please enter your password: ");
+			 password = keyboard.next();
 			while (! validPass) {
+				
 				if (usrPassword.equals(password)){
 					validPass = true;
 					
 				}else {
-					System.out.println("The password you entered is incorrect! Please try again: ");
+					System.out.print("The password you entered is incorrect! Please try again: ");
 					password = keyboard.next();
 				}
 			}
 		}else {
+			prompt = "Please enter your password: ";
+			password = PasswordInput.readPassword(prompt);
 			while (! validPass) {
 				
-				String prompt = ("Please enter your password: ");
-				char[] charPassword = cons.readPassword(prompt);
-				password = new String(charPassword);
+				
+				
+				
 				
 				if (usrPassword.equals(password)){
 					validPass = true;
 					
 				}else {
-					System.out.println("The passwords you entered do not match! Please try again: ");
+					prompt = "The passwords you entered do not match! Please try again: ";
+					password = PasswordInput.readPassword(prompt);
 				}
 			}
 		}

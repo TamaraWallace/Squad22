@@ -1,7 +1,7 @@
 import java.io.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+
 
 
 public class TextBasedApp {
@@ -98,9 +98,6 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void quit() {
-		System.out.println("Saving...");
-		tasks.saveTasks("./tasts.txt");
-		users.saveUsers("./users.txt");
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
 	}
@@ -137,7 +134,7 @@ public class TextBasedApp {
 		
 		//checkPassword from User class
 		String usrPassword = usrLogin.getUsrPassword();
-		System.out.print("Please enter a password: ");
+		System.out.print("Please enter your password: ");
 		password = keyboard.next();
 		
 		if (cons == null) {
@@ -184,7 +181,7 @@ public class TextBasedApp {
 		String password = null;
 		boolean passCreated = false;
 		
-		System.out.print("Please enter your User Name: ");
+		System.out.print("Please enter a User Name: ");
 		String name = keyboard.next();
 		
 		// check usrName does not exist
@@ -192,8 +189,8 @@ public class TextBasedApp {
 			if (users.findUser(name) == null) {
 				validUsrName = true;
 			}else {
-				System.out.print("The username entered already exists. Please enter a diffrent suer name: ");
-				name = keyboard.nextLine();
+				System.out.print("The username entered already exists. Please enter a diffrent user name: ");
+				name = keyboard.next();
 			}
 		}
 		
@@ -208,8 +205,13 @@ public class TextBasedApp {
 				System.out.print("Please confirm your password: ");
 				String password2 = keyboard.next();
 				if (password1.equals(password2)){
-					passCreated = true;
 					password = password1;
+					//System.out.println("strong pass: " + isPassStrong(password));
+					if (isPassStrong(password)) {
+						passCreated = true;
+					}else {
+						System.out.println("and so, please enter a stronger passsword.");
+					}
 				}else {
 					System.out.println("The passwords you entered do not match! Please try again: ");
 				}
@@ -218,14 +220,21 @@ public class TextBasedApp {
 			while (! passCreated) {
 				
 				String prompt = ("Please enter a password: ");
-				char[] password1 = cons.readPassword(prompt);
-				prompt = ("Please confimr your password: ");
-				char[] password2 = cons.readPassword(prompt);
-				if (Arrays.equals(password1,password2)){
-					passCreated = true;
-					password = password1.toString();
+				String password1 = PasswordInput.readPassword(prompt);
+				prompt = ("Please confirm your password: ");
+				String password2 = PasswordInput.readPassword(prompt);
+				if (password1.equals(password2)){
+					password = password1;
+					//System.out.println("password: "+password+" strong pass: " + isPassStrong(password));
+					if (isPassStrong(password)) {
+						passCreated = true;
+					}else {
+						System.out.println("and so, please enter a stronger passsword.");
+					}
+					
+					
 				}else {
-					System.out.println("The passwords you entered do not match! Please try again: ");
+					System.out.println("The passwords you entered do not match! Please try again.");
 				}
 			}
 		}
@@ -234,6 +243,81 @@ public class TextBasedApp {
 		users.addUser(newUser);
 		return newUser;
 	}
+	
+	//Method Purpose: determines whether password is strong or not
+	//Parameters: String password entered by user
+	//Return Value:	boolean 
+	private static boolean isPassStrong(String password) {
+		boolean passStrong = false;
+		//boolean hasUpprC , hasDigit, hasLwrC, hasSpcl;
+		int upprC , lwrC, digit, spcl;
+		
+		upprC = 0;
+		lwrC = 0;
+		digit = 0;
+		spcl = 0;
+		
+		//hasUpprC = false;
+		//hasDigit = false;
+		//hasLwrC = false;
+		//hasSpcl = false;
+		
+		if(password.length() >= 8) {
+			for (int i = 0; i < password.length(); i++) {
+				char ch;
+				ch = password.charAt(i);
+				//System.out.println("Ch:" + ch+" hasupper: "+(Character.isUpperCase(ch))+" hasslwr: "+(Character.isLowerCase(ch)));
+				if( Character.isDigit(ch)) {
+					digit ++;
+				}
+				if ( Character.isLowerCase(ch)) {
+					lwrC ++;
+				}
+				if ( Character.isUpperCase(ch)) {
+					upprC ++;
+				}
+				if (! (Character.isDigit(ch) || Character.isAlphabetic(ch))) {
+					spcl ++;
+				}
+				
+			}
+			
+		}else {
+			System.out.println("Password must have ATLEAST 8 characters ");
+			passStrong = false;
+			return passStrong;
+		}
+		
+		if ((digit > 0) && (lwrC > 0 ) && (upprC > 0 ) && (spcl > 0)) {
+			passStrong = true;
+			return passStrong; 
+		}else {
+			System.out.println();
+			System.out.print("The password entered is not strong enough. You are missing: ");
+			
+		}
+		
+		if(upprC == 0) {
+			System.out.print("an Upper case letter, ");			
+		}
+		if(digit == 0) {
+			System.out.print("a Digit, ");			
+		}
+		if(lwrC == 0) {
+			System.out.print("a Lower case letter, ");			
+		}
+		if(spcl == 0) {
+			System.out.print("a Special character (!@#$&), ");			
+		}
+		
+		
+		
+		return passStrong;
+	}
+	
+	
+	
+	
 	
 	//Method Purpose: will prompt Task class to create new task
 	//Parameters:

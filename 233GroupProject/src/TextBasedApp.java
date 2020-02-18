@@ -36,7 +36,6 @@ public class TextBasedApp {
 		testuser = users.findUser("test");
 		System.out.println(testuser);
 		
-		
 		//quit();
 	}
 	

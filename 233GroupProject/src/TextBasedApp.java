@@ -123,7 +123,7 @@ public class TextBasedApp {
 		// check usrName does not exist
 		while(!validUsrName) {			
 			if (usrLogin == null) {
-				System.out.print("The username entered does not exist. Please enter a diffrent suer name: ");
+				System.out.print("The username entered does not exist. Please enter a diffrent user name: ");
 				usrName = keyboard.next();
 				usrLogin = users.findUser(usrName);
 			}else {

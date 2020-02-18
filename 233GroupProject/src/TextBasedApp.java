@@ -98,6 +98,9 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void quit() {
+		System.out.println("Saving...");
+		tasks.saveTasks("./tasts.txt");
+		users.saveUsers("./users.txt");
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
 	}

@@ -56,7 +56,6 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: save all the users tasks to the file, including new tasks and updates
 	public void saveTasks(String fname) {
-		System.out.println("Saving. Please do not close the program.");
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fname));
             Stream <String> lines = br.lines();
@@ -92,7 +91,6 @@ public class TaskCollection {
             }
             
             bw.close();
-            System.out.println("Saving Complete.\nIt is now safe to close the program.");
 		} catch (IOException io) {
 			
 		}

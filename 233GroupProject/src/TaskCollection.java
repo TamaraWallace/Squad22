@@ -172,9 +172,9 @@ public class TaskCollection {
 	// Functionality: go through all tasks and add active tasks to a new task collection
 	public ArrayList<Task> getActiveTasks() {
 		ArrayList<Task> activeTasks = new ArrayList<Task>();
-		for(Task t: tasks) {
+		for(Task t: this.tasks) {
 			if(!(t.isComplete())){
-				activeTasks.add(new Task(t));;
+				activeTasks.add(t);
 			}
 		}
 		return activeTasks;

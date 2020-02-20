@@ -1,7 +1,9 @@
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class TextBasedApp {
@@ -154,7 +156,7 @@ public class TextBasedApp {
 			}
 		}else {
 			prompt = "Please enter your password: ";
-			password = PasswordInput.readPassword(prompt);
+			password = readPassword(prompt);
 			while (! validPass) {
 				
 							
@@ -163,7 +165,7 @@ public class TextBasedApp {
 					
 				}else {
 					prompt = "The passwords you entered do not match! Please try again: ";
-					password = PasswordInput.readPassword(prompt);
+					password = readPassword(prompt);
 				}
 			}
 		}
@@ -197,9 +199,6 @@ public class TextBasedApp {
 			}
 		}
 		
-		
-		
-		
 		if (cons == null) {
 			while (! passCreated) {
 				
@@ -223,9 +222,9 @@ public class TextBasedApp {
 			while (! passCreated) {
 				
 				String prompt = ("Please enter a password: ");
-				String password1 = PasswordInput.readPassword(prompt);
+				String password1 = readPassword(prompt);
 				prompt = ("Please confirm your password: ");
-				String password2 = PasswordInput.readPassword(prompt);
+				String password2 = readPassword(prompt);
 				if (password1.equals(password2)){
 					password = password1;
 					//System.out.println("password: "+password+" strong pass: " + isPassStrong(password));
@@ -246,6 +245,28 @@ public class TextBasedApp {
 		users.addUser(newUser);
 		return newUser;
 	}
+	
+	
+	public static String readPassword (String prompt) {
+			
+			HidePass et = new HidePass(prompt);
+			Thread mask = new Thread(et);
+			mask.start();
+	
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			String password = "";
+	
+			try {
+				password = in.readLine();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
+			// stop masking
+			et.stopMasking();
+			// return the password entered by the user
+			return password;
+			  
+		}
 	
 	//Method Purpose: determines whether password is strong or not
 	//Parameters: String password entered by user

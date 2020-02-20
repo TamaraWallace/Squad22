@@ -37,7 +37,7 @@ public class UserCollection {
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {
-		            io.printStackTrace();
+		            //io.printStackTrace(); Dont want to print out errors
 		        }
 		return allUsers;
 	}
@@ -49,7 +49,6 @@ public class UserCollection {
 	// NOTE: needed to make not static
 	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
 	public void saveUsers(String fname) {
-		System.out.println("Saving. Please do not close the program.");
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fname));
             Stream <String> lines = br.lines();
@@ -75,7 +74,6 @@ public class UserCollection {
             }
             
             bw.close();
-            System.out.println("Saving Complete.\nIt is now safe to close the program.");
 		} catch (IOException io) {
 			
 		}
@@ -124,10 +122,10 @@ public class UserCollection {
 //	Functionality: checks if a user's username already exists in the users ArrayList, if it does then return that user. Otherwise return null
 //	
 	public User findUser(String name) {
-	
+		name = name.toLowerCase();
 		if (!users.isEmpty()) {
 			for (User user: users) {
-				String username = user.getUsrName();
+				String username = user.getUsrName().toLowerCase();
 				if (username.contentEquals(name)){
 					User userCopy = new User(user);
 					return userCopy;

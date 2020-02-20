@@ -3,8 +3,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class TextBasedApp {
@@ -39,8 +41,7 @@ public class TextBasedApp {
 		testuser = users.findUser("test");
 		System.out.println(testuser);
 		
-		
-		//quit();
+		quit();
 	}
 	
 	
@@ -64,24 +65,28 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	public static void mainMenu() {
-		System.out.println("Main Menu\n---------");
+		System.out.println("\nMain Menu\n---------");
 		
-		String[] options = {"Add New Task", "Complete Task", "Quit"};
+		String[] options = {"View All Tasks", "Add New Task", "Select Task", "Quit"};
 		
 		int choice = getChoice(options);
 		
-		if (choice == 1) addTask();
-		if (choice == 2) taskMenu(selectTask());
-		if (choice == 3) quit();
+		if (choice == 1) { tasks.display(); mainMenu(); }
+		if (choice == 2) addTask();
+		if (choice == 3) taskMenu(selectTask());
+		if (choice == 4) quit();
 	}
 	
 	//Method Purpose:	Asks the user if they want to Complete the Task, Edit it, or return to Main Menu
 	//Parameters: Task
 	//Return Value:
 	public static void taskMenu(Task t) {
+		
 		if (t == null) {
 			System.out.println("User has no active tasks...");
 			mainMenu();
+		}else {
+			System.out.println(t.toString());
 		}
 		System.out.println("Task Menu\n---------");
 		
@@ -101,6 +106,9 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void quit() {
+		System.out.println("Saving...");
+		tasks.saveTasks("./tasks.txt");
+		users.saveUsers("./users.txt");
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
 	}
@@ -116,6 +124,7 @@ public class TextBasedApp {
 		
 		boolean validUsrName = false;
 		
+		String prompt;
 		String password;
 		boolean validPass = false;
 		
@@ -137,42 +146,43 @@ public class TextBasedApp {
 		
 		//checkPassword from User class
 		String usrPassword = usrLogin.getUsrPassword();
-		System.out.print("Please enter a password: ");
-		password = keyboard.next();
+		
 		
 		if (cons == null) {
+			 System.out.print("Please enter your password: ");
+			 password = keyboard.next();
 			while (! validPass) {
+				
 				if (usrPassword.equals(password)){
 					validPass = true;
 					
 				}else {
-					System.out.println("The password you entered is incorrect! Please try again: ");
+					System.out.print("The password you entered is incorrect! Please try again: ");
 					password = keyboard.next();
 				}
 			}
 		}else {
+			prompt = "Please enter your password: ";
+			password = readPassword(prompt);
 			while (! validPass) {
 				
-				String prompt = ("Please enter your password: ");
-				char[] charPassword = cons.readPassword(prompt);
-				password = new String(charPassword);
-				
+							
 				if (usrPassword.equals(password)){
 					validPass = true;
 					
 				}else {
-					System.out.println("The passwords you entered do not match! Please try again: ");
+					prompt = "The passwords you entered do not match! Please try again: ";
+					password = readPassword(prompt);
 				}
 			}
 		}
-		
-		
 		
 		return usrLogin;
 	}
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
+	
 	//Return Value: user's info
 	private static User createNewUser() {
 		//Question: how do we create a user ID #?
@@ -184,21 +194,20 @@ public class TextBasedApp {
 		String password = null;
 		boolean passCreated = false;
 		
-		System.out.print("Please enter your User Name: ");
+		System.out.print("Please enter a User Name: ");
 		String name = keyboard.next();
+		
+		//remove white spaces and display username
 		
 		// check usrName does not exist
 		while(!validUsrName) {
 			if (users.findUser(name) == null) {
 				validUsrName = true;
 			}else {
-				System.out.print("The username entered already exists. Please enter a diffrent suer name: ");
-				name = keyboard.nextLine();
+				System.out.print("The username entered already exists. Please enter a diffrent user name: ");
+				name = keyboard.next();
 			}
 		}
-		
-		
-		
 		
 		if (cons == null) {
 			while (! passCreated) {
@@ -208,8 +217,13 @@ public class TextBasedApp {
 				System.out.print("Please confirm your password: ");
 				String password2 = keyboard.next();
 				if (password1.equals(password2)){
-					passCreated = true;
 					password = password1;
+					//System.out.println("strong pass: " + isPassStrong(password));
+					if (isPassStrong(password)) {
+						passCreated = true;
+					}else {
+						System.out.println("and so, please enter a stronger passsword.");
+					}
 				}else {
 					System.out.println("The passwords you entered do not match! Please try again: ");
 				}
@@ -218,14 +232,21 @@ public class TextBasedApp {
 			while (! passCreated) {
 				
 				String prompt = ("Please enter a password: ");
-				char[] password1 = cons.readPassword(prompt);
-				prompt = ("Please confimr your password: ");
-				char[] password2 = cons.readPassword(prompt);
-				if (Arrays.equals(password1,password2)){
-					passCreated = true;
-					password = password1.toString();
+				String password1 = readPassword(prompt);
+				prompt = ("Please confirm your password: ");
+				String password2 = readPassword(prompt);
+				if (password1.equals(password2)){
+					password = password1;
+					//System.out.println("password: "+password+" strong pass: " + isPassStrong(password));
+					if (isPassStrong(password)) {
+						passCreated = true;
+					}else {
+						System.out.println("and so, please enter a stronger passsword.");
+					}
+					
+					
 				}else {
-					System.out.println("The passwords you entered do not match! Please try again: ");
+					System.out.println("The passwords you entered do not match! Please try again.");
 				}
 			}
 		}
@@ -234,6 +255,103 @@ public class TextBasedApp {
 		users.addUser(newUser);
 		return newUser;
 	}
+	
+	
+	public static String readPassword (String prompt) {
+			
+			HidePass et = new HidePass(prompt);
+			Thread mask = new Thread(et);
+			mask.start();
+	
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			String password = "";
+	
+			try {
+				password = in.readLine();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
+			// stop masking
+			et.stopMasking();
+			// return the password entered by the user
+			return password;
+			  
+		}
+	
+	//Method Purpose: determines whether password is strong or not
+	//Parameters: String password entered by user
+	//Return Value:	boolean 
+	private static boolean isPassStrong(String password) {
+		boolean passStrong = false;
+		//boolean hasUpprC , hasDigit, hasLwrC, hasSpcl;
+		int upprC , lwrC, digit, spcl;
+		
+		upprC = 0;
+		lwrC = 0;
+		digit = 0;
+		spcl = 0;
+		
+		//hasUpprC = false;
+		//hasDigit = false;
+		//hasLwrC = false;
+		//hasSpcl = false;
+		
+		if(password.length() >= 8) {
+			for (int i = 0; i < password.length(); i++) {
+				char ch;
+				ch = password.charAt(i);
+				//System.out.println("Ch:" + ch+" hasupper: "+(Character.isUpperCase(ch))+" hasslwr: "+(Character.isLowerCase(ch)));
+				if( Character.isDigit(ch)) {
+					digit ++;
+				}
+				if ( Character.isLowerCase(ch)) {
+					lwrC ++;
+				}
+				if ( Character.isUpperCase(ch)) {
+					upprC ++;
+				}
+				if (! (Character.isDigit(ch) || Character.isAlphabetic(ch))) {
+					spcl ++;
+				}
+				
+			}
+			
+		}else {
+			System.out.println("Password must have ATLEAST 8 characters ");
+			passStrong = false;
+			return passStrong;
+		}
+		
+		if ((digit > 0) && (lwrC > 0 ) && (upprC > 0 ) && (spcl > 0)) {
+			passStrong = true;
+			return passStrong; 
+		}else {
+			System.out.println();
+			System.out.print("The password entered is not strong enough. You are missing: ");
+			
+		}
+		
+		if(upprC == 0) {
+			System.out.print("an Upper case letter, ");			
+		}
+		if(digit == 0) {
+			System.out.print("a Digit, ");			
+		}
+		if(lwrC == 0) {
+			System.out.print("a Lower case letter, ");			
+		}
+		if(spcl == 0) {
+			System.out.print("a Special character (!@#$&), ");			
+		}
+		
+		
+		
+		return passStrong;
+	}
+	
+	
+	
+	
 	
 	//Method Purpose: will prompt Task class to create new task
 	//Parameters:
@@ -308,7 +426,7 @@ public class TextBasedApp {
 	//Parameters: object of Task class 
 	//Return Value:
 	public static void completeTask(Task t) {
-		//complete() from Task class
+		t.setCompleted(true);
 		mainMenu();
 	}
 	

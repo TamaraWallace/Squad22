@@ -125,7 +125,8 @@ public class TaskCollection {
 	// Parameters: name, notes and date (all the respective fields for a task)
 	// Return: void
 	// Functionality: creates a new task and adds it to the tasks collection
-	public void addTask() {
+	public void addTask(Task task) {
+		/*
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Task Title: ");
 		String task_name = keyboard.nextLine();
@@ -159,11 +160,10 @@ public class TaskCollection {
 		}
 		
 		//Will need to correct this once compiled together 
-		//String name = user.getUsrName();
+		//String userID = user.getUsrID();
+		*/
 		
-		//Task new_task = new Task(name, task_name, task_notes, user.isComplete() , task_date);
-		
-		//tasks.add(new_task);
+		tasks.add(task);
 	}
 	
 	// Method Name: getActiveTasks

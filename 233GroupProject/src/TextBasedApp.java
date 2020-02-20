@@ -1,3 +1,6 @@
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -393,7 +396,68 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void addTask() {
-		//addTask from TaskCollection
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Task Title: ");
+		String task_name = keyboard.nextLine();
+		System.out.println("Notes: ");
+		String task_notes = keyboard.nextLine();
+		
+
+		Date taskDate;
+		
+		while (true) {
+			System.out.println("Due date(Ex: dd/MM/yyyy): ");
+			String task_date = keyboard.nextLine();
+			try {
+				taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
+				break;
+			} catch (Exception ParseException) {
+				System.out.println("Try again\n Date(Ex: dd/MM/yyyy):");
+			}
+		}
+		
+
+		System.out.println("Is the following information correct (yes or no)?");
+		System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+taskDate);
+			
+		String answer = keyboard.nextLine();
+		
+		while(answer.toLowerCase().compareTo("no")==0 || answer.toLowerCase().compareTo("n")==0) {
+			System.out.println("What would you like to edit?");
+			String response = keyboard.nextLine();
+			if (response.toLowerCase()=="title") {
+				System.out.println("Task Title: ");
+				task_name = keyboard.nextLine();
+			} else if(response.toLowerCase()=="notes"){
+				System.out.println("Notes: ");
+				task_notes = keyboard.nextLine();
+			} else if(response.toLowerCase()=="due date" || response.toLowerCase()=="date") {
+				System.out.println("Due date: ");
+				while (true) {
+					System.out.println("Due date(Ex: dd/MM/yyyy): ");
+					String task_date = keyboard.nextLine();
+					try {
+						taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
+						break;
+					} catch (Exception ParseException) {
+						System.out.println("Try again\n Date(Ex: dd/MM/yyyy):");
+					}
+				}
+				
+				
+			}
+			System.out.println("Is the following information correct?");
+			System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+taskDate);
+				
+			answer = keyboard.nextLine();
+		}
+		
+		int userID = user.getUsrID();
+		
+		Task new_task = new Task(userID, task_name, task_notes, false, taskDate);
+		
+		tasks.addTask(new_task);
+		
 		mainMenu();
 	}
 	

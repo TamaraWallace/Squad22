@@ -179,6 +179,7 @@ public class TextBasedApp {
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
+	
 	//Return Value: user's info
 	private static User createNewUser() {
 		//Question: how do we create a user ID #?

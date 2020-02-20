@@ -25,7 +25,6 @@ public class Task {
 		this.notes = notes;
 		this.completed = completed;
 		this.dueDate = dueDate;
-		
 	}
 
 //	Method name: Task 

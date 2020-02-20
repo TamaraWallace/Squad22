@@ -46,7 +46,7 @@ public class TaskCollection {
 	            }
 			}
 		} catch (IOException io) {
-			io.printStackTrace();
+			//io.printStackTrace(); Don't need to print the errors
 		}
 		return usersTasks;
 	}

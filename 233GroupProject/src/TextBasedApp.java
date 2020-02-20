@@ -16,7 +16,7 @@ public class TextBasedApp {
 	public static void main(String[] args) {
 		users = UserCollection.loadUsers("./users.txt");
 		
-		test(); // put whatever you need in test(). use for debugging
+		//test(); // put whatever you need in test(). use for debugging
 		
 		startMenu();
 		tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
@@ -28,7 +28,7 @@ public class TextBasedApp {
 	//Return Value
 	public static void test() {
 		
-		/*users.display();
+		users.display();
 		User testuser = users.findUser("student1");
 		System.out.println(testuser);
 		testuser = users.findUser("employee1");
@@ -36,9 +36,9 @@ public class TextBasedApp {
 		testuser = users.findUser("demo1");
 		System.out.println(testuser);
 		testuser = users.findUser("test");
-		System.out.println(testuser);*/
+		System.out.println(testuser);
 		
-		//quit();
+		quit();
 	}
 	
 	
@@ -62,24 +62,28 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	public static void mainMenu() {
-		System.out.println("Main Menu\n---------");
+		System.out.println("\nMain Menu\n---------");
 		
-		String[] options = {"Add New Task", "Complete Task", "Quit"};
+		String[] options = {"View All Tasks", "Add New Task", "Select Task", "Quit"};
 		
 		int choice = getChoice(options);
 		
-		if (choice == 1) addTask();
-		if (choice == 2) taskMenu(selectTask());
-		if (choice == 3) quit();
+		if (choice == 1) { tasks.display(); mainMenu(); }
+		if (choice == 2) addTask();
+		if (choice == 3) taskMenu(selectTask());
+		if (choice == 4) quit();
 	}
 	
 	//Method Purpose:	Asks the user if they want to Complete the Task, Edit it, or return to Main Menu
 	//Parameters: Task
 	//Return Value:
 	public static void taskMenu(Task t) {
+		
 		if (t == null) {
 			System.out.println("User has no active tasks...");
 			mainMenu();
+		}else {
+			System.out.println(t.toString());
 		}
 		System.out.println("Task Menu\n---------");
 		
@@ -188,6 +192,8 @@ public class TextBasedApp {
 		
 		System.out.print("Please enter a User Name: ");
 		String name = keyboard.next();
+		
+		//remove white spaces and display username
 		
 		// check usrName does not exist
 		while(!validUsrName) {

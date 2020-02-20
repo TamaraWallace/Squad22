@@ -37,7 +37,7 @@ public class UserCollection {
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {
-		            io.printStackTrace();
+		            //io.printStackTrace(); Dont want to print out errors
 		        }
 		return allUsers;
 	}
@@ -122,10 +122,10 @@ public class UserCollection {
 //	Functionality: checks if a user's username already exists in the users ArrayList, if it does then return that user. Otherwise return null
 //	
 	public User findUser(String name) {
-	
+		name = name.toLowerCase();
 		if (!users.isEmpty()) {
 			for (User user: users) {
-				String username = user.getUsrName();
+				String username = user.getUsrName().toLowerCase();
 				if (username.contentEquals(name)){
 					User userCopy = new User(user);
 					return userCopy;

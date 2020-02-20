@@ -41,6 +41,10 @@ public class TextBasedApp {
 		testuser = users.findUser("test");
 		System.out.println(testuser);
 		
+		for (User user : users.getUsers()) {
+			tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
+			tasks.display();
+		}
 		quit();
 	}
 	

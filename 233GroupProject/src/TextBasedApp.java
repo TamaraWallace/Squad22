@@ -41,6 +41,10 @@ public class TextBasedApp {
 		testuser = users.findUser("test");
 		System.out.println(testuser);
 		
+		for (User user : users.getUsers()) {
+			tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
+			tasks.display();
+		}
 		quit();
 	}
 	
@@ -51,6 +55,7 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	private static void startMenu() {
+		
 		System.out.println("Welcome!");
 	
 		String[] options = {"Login", "Create New Account", "Quit"};
@@ -58,7 +63,7 @@ public class TextBasedApp {
 		
 		if (choice == 1) { user = login(); }
 		if (choice == 2) { user = createNewUser(); tasks = new TaskCollection(); }
-		if (choice == 3) quit();
+		if (choice == 3) {quit();}
 	}
 	
 	//Method Purpose: 	Asks user if they want to Create a New Task, Select an Existing Task, or Quit
@@ -107,8 +112,13 @@ public class TextBasedApp {
 	//Return Value:
 	public static void quit() {
 		System.out.println("Saving...");
-		tasks.saveTasks("./tasks.txt");
-		users.saveUsers("./users.txt");
+		if (tasks != null) {
+			tasks.saveTasks("./tasks.txt");
+		}
+		if (users != null) {
+			users.saveUsers("./users.txt");
+		}
+		
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
 	}
@@ -117,7 +127,7 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value: user's info
 	private static User login() {
-		
+		int attempts = 0;
 		Console cons = System.console();
 		
 		User usrLogin;
@@ -130,6 +140,7 @@ public class TextBasedApp {
 		
 		System.out.print("Please enter your User Name: ");
 		String usrName = keyboard.next();
+		
 		usrLogin = users.findUser(usrName);
 		
 		// check usrName does not exist
@@ -151,6 +162,7 @@ public class TextBasedApp {
 		if (cons == null) {
 			 System.out.print("Please enter your password: ");
 			 password = keyboard.next();
+			 attempts++;
 			while (! validPass) {
 				
 				if (usrPassword.equals(password)){
@@ -159,11 +171,19 @@ public class TextBasedApp {
 				}else {
 					System.out.print("The password you entered is incorrect! Please try again: ");
 					password = keyboard.next();
+					attempts++;
+				}
+				if (attempts == 3) {
+					System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
+				}else if(attempts > 3) {
+					System.out.println("You have attempted too many times! Program will retrun to start menu. ");
+					startMenu();
 				}
 			}
 		}else {
 			prompt = "Please enter your password: ";
 			password = readPassword(prompt);
+			attempts++;
 			while (! validPass) {
 				
 							
@@ -173,6 +193,13 @@ public class TextBasedApp {
 				}else {
 					prompt = "The passwords you entered do not match! Please try again: ";
 					password = readPassword(prompt);
+					attempts++;
+				}
+				if (attempts == 3) {
+					System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
+				}else if(attempts > 3) {
+					System.out.println("You have attempted too many times! Program will retrun to start menu. ");
+					startMenu();
 				}
 			}
 		}
@@ -197,17 +224,33 @@ public class TextBasedApp {
 		System.out.print("Please enter a User Name: ");
 		String name = keyboard.next();
 		
-		//remove white spaces and display username
+		
 		
 		// check usrName does not exist
 		while(!validUsrName) {
 			if (users.findUser(name) == null) {
-				validUsrName = true;
+				
+				//remove white spaces before and after name and display username
+				name = name.trim();
+				System.out.println("Your User Name is: "+name);
+				System.out.print("Are you satisfied with your username? (y/n)");
+				String satisfied = keyboard.next();
+				
+				if (satisfied.equalsIgnoreCase("y") || satisfied.equalsIgnoreCase("yes")) {
+					validUsrName = true;
+				}else {
+					System.out.print("Please enter a diffrent user name: ");
+					name = keyboard.next();
+				}
+				
 			}else {
 				System.out.print("The username entered already exists. Please enter a diffrent user name: ");
 				name = keyboard.next();
 			}
+			
 		}
+		
+		
 		
 		if (cons == null) {
 			while (! passCreated) {

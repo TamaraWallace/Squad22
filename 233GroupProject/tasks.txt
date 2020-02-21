@@ -4,3 +4,8 @@
 3, 1,           Meeting,           Present report, false, 2020-2-19
 4, 1,           Report,           , true, 2020-2-17
 5, 1, System Checkup, , false, 2020-2-24
+6, 5,   work,   complete paperwork, true, 120-3-3
+7, 5,   school,   school work, true, 120-3-3
+8, 5,  groceries,  milk, false, 120-3-3
+9, 5,  project,  report, false, 120-3-3
+10, 5, chores, sweeping & dishes, false, 120-3-3

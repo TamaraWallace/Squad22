@@ -358,57 +358,58 @@ public class TextBasedApp {
 	//Return Value:
 	public static void addTask() {
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("Task Title: ");
+		System.out.print("Task Title: ");
 		String task_name = keyboard.nextLine();
-		System.out.println("Notes: ");
+		System.out.print("Notes: ");
 		String task_notes = keyboard.nextLine();
 		
 
 		Date taskDate;
 		
 		while (true) {
-			System.out.println("Due date(Ex: dd/MM/yyyy): ");
+			System.out.print("Due date(Ex: dd/MM/yyyy): ");
 			String task_date = keyboard.nextLine();
 			try {
 				taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
 				break;
 			} catch (Exception ParseException) {
-				System.out.println("Try again\n Date(Ex: dd/MM/yyyy):");
+				System.out.println("Try again\n");
 			}
 		}
 		
 
 		System.out.println("Is the following information correct (yes or no)?");
-		System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+taskDate);
+		System.out.println("Task Title: "+task_name+System.lineSeparator()+"Notes: "+task_notes+System.lineSeparator()+"Due Date: "+taskDate);
 			
 		String answer = keyboard.nextLine();
 		
 		while(answer.toLowerCase().compareTo("no")==0 || answer.toLowerCase().compareTo("n")==0) {
-			System.out.println("What would you like to edit?");
+			System.out.print("What would you like to edit (Title, Notes, or Date)?");
 			String response = keyboard.nextLine();
-			if (response.toLowerCase()=="title") {
-				System.out.println("Task Title: ");
+			
+			
+			if (response.toLowerCase().compareTo("title")==0) {
+				System.out.print("Task Title: ");
 				task_name = keyboard.nextLine();
-			} else if(response.toLowerCase()=="notes"){
-				System.out.println("Notes: ");
+			} else if(response.toLowerCase().compareTo("notes")==0){
+				System.out.print("Notes: ");
 				task_notes = keyboard.nextLine();
-			} else if(response.toLowerCase()=="due date" || response.toLowerCase()=="date") {
-				System.out.println("Due date: ");
+			} else if(response.toLowerCase().compareTo("due date")==0 || response.toLowerCase().compareTo("date")==0) {
 				while (true) {
-					System.out.println("Due date(Ex: dd/MM/yyyy): ");
+					System.out.print("Due date(Ex: dd/MM/yyyy): ");
 					String task_date = keyboard.nextLine();
 					try {
 						taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
 						break;
 					} catch (Exception ParseException) {
-						System.out.println("Try again\n Date(Ex: dd/MM/yyyy):");
+						System.out.println("Try again\n");
 					}
 				}
 				
 				
 			}
 			System.out.println("Is the following information correct?");
-			System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+taskDate);
+			System.out.println("Task Title: "+task_name+System.lineSeparator()+"Notes: "+task_notes+System.lineSeparator()+"Due Date: "+taskDate);
 				
 			answer = keyboard.nextLine();
 		}

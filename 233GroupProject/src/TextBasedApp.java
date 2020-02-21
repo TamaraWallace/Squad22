@@ -42,21 +42,29 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	private static void startMenu() {
-		System.out.println("Welcome to Taskilla!");
-	
-		String[] options = {"Login", "Create New Account", "Quit"};
-		int choice = getChoice(options);
+		boolean loggedIn = false;
+		while (!loggedIn) {
+			System.out.println("Welcome to Taskilla!");
+			
+			String[] options = {"Login", "Create New Account", "Quit"};
+			int choice = getChoice(options);
+			
+			if (choice == 1) {
+				userID = login();
+				if (userID != -1) {
+					loggedIn = true;
+					tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
+					}
+				}
+			if (choice == 2) {
+				userID = createNewUser();
+				tasks = new TaskCollection();
+				loggedIn = true;
+				}
+			if (choice == 3) quit();
+		}
+		mainMenu();
 		
-		if (choice == 1) {
-			userID = login();
-			System.out.println("UserID: "+userID);
-			tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
-			mainMenu(); }
-		if (choice == 2) {
-			userID = createNewUser();
-			tasks = new TaskCollection();
-			mainMenu();}
-		if (choice == 3) quit();
 	}
 	
 	//Method Purpose: 	Asks user if they want to Create a New Task, Select an Existing Task, or Quit

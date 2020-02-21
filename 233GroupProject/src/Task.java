@@ -48,12 +48,12 @@ public class Task {
 //		Functionality: returns a string with the attributes of the object, this will be used to print information about the task.
 	
 	public String toString() {
-		return "TaskID: " + this.taskID  +
-				"\nUserID: " + this.userID +
-				"\nName: " + this.name +
-				"\nDescription: " + this.notes + 
-				"\nCompleted: " + this.completed +
-				"\nDue Date: " + this.dueDate;
+		return "\tName: " + this.name +
+				"\n\tTaskID: " + this.taskID  +
+				"\n\tUserID: " + this.userID +
+				"\n\tDescription: " + this.notes + 
+				"\n\tCompleted: " + this.completed +
+				"\n\tDue Date: " + this.dueDate;
 	}
 	
 	

@@ -49,33 +49,32 @@ public class UserCollection {
 	// NOTE: needed to make not static
 	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
 	public void saveUsers(String fname) {
-		try {
+		try {	
 			BufferedReader br = new BufferedReader(new FileReader(fname));
-            Stream <String> lines = br.lines();
-            String[] userList = lines.toArray(String[] :: new);
-            lines.close();
-            br.close();
-            FileWriter bw = new FileWriter(fname);
-            int lastKey = userList.length - 1;
-            ArrayList<String> uList = new ArrayList<String>();
-            for(String s: userList) {
-            	uList.add(s+"\n");
+			Stream <String> lines = br.lines();
+	        String[] userList = lines.toArray(String[] :: new);
+	        lines.close();
+	        br.close();
+	        FileWriter bw = new FileWriter(fname);
+	        int lastKey = userList.length - 1;
+	        ArrayList<String> uList = new ArrayList<String>();
+	        for(String s: userList) {
+	        	uList.add(s+"\n");
 			}
-            
-            for(User u : this.users) {
-            	if (lastKey<u.getUsrID()) {
-            		uList.add(String.valueOf(u.getUsrID())
-            				+","+ u.getUsrName()+","+ u.getUsrPassword()+"\n");
-            	}
-            }
-            
-            for(String str : uList) {
-            	bw.write(str);
-            }
-            
-            bw.close();
+	        
+	        for(User u : this.users) {
+	        	if (lastKey<u.getUsrID()) {
+	        		uList.add(String.valueOf(u.getUsrID())
+	        				+","+ u.getUsrName()+","+ u.getUsrPassword()+"\n");
+	        	}
+	        }
+	        for(String str : uList) {
+	        	bw.write(str);
+	        }
+	        
+	        bw.close();
 		} catch (IOException io) {
-			
+			io.printStackTrace();
 		}
 	}
 	

@@ -1,5 +1,4 @@
 import java.util.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.Console;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class TextBasedApp {
 	
-	private static User user;
+	private static int userID;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	private static Scanner keyboard = new Scanner(System.in);
@@ -23,7 +22,6 @@ public class TextBasedApp {
 	//Return Value:
 	public static void main(String[] args) {
 		users = UserCollection.loadUsers("users.txt");
-		
 		//test(); // put whatever you need in test(). use for debugging
 		startMenu();
 	}
@@ -44,17 +42,17 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	private static void startMenu() {
-		System.out.println("Welcome!");
+		System.out.println("Welcome to Taskilla!");
 	
 		String[] options = {"Login", "Create New Account", "Quit"};
 		int choice = getChoice(options);
 		
 		if (choice == 1) {
-			user = login();
-			tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
+			userID = login();
+			tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 			mainMenu(); }
 		if (choice == 2) {
-			user = createNewUser();
+			userID = createNewUser();
 			tasks = new TaskCollection();
 			mainMenu();}
 		if (choice == 3) quit();
@@ -86,7 +84,7 @@ public class TextBasedApp {
 			System.out.println("User has no active tasks...");
 			mainMenu();
 		}else {
-			System.out.println("Selected Task:\n" + t.toString());
+			System.out.println("Selected Task\n-------------\n" + t.toString());
 		}
 		System.out.println("\nTask Menu\n---------");
 		
@@ -108,7 +106,7 @@ public class TextBasedApp {
 	//Return Value:
 	private static void quit() {
 		System.out.println("Saving...");
-		tasks.saveTasks("tasks.txt");
+		if (!(tasks == null)) {	tasks.saveTasks("tasks.txt"); }
 		users.saveUsers("users.txt");
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
@@ -121,15 +119,15 @@ public class TextBasedApp {
 		System.out.println("Saving...");
 		tasks.saveTasks("tasks.txt");
 		System.out.println("Session ended, see you soon!\n");
-		user = null;
+		userID = -1;
 		tasks = null;
 		Task.setNextID(0);
 		startMenu();
 	}
 	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
 	//Parameters:
-	//Return Value: user's info
-	private static User login() {
+	//Return Value: int userID
+	private static int login() {
 		
 		Console cons = System.console();
 		
@@ -190,17 +188,15 @@ public class TextBasedApp {
 			}
 		}
 		
-		return usrLogin;
+		return usrLogin.getUsrID();
 	}
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
 	//Return Value: user's info
-	private static User createNewUser() {
-		//Question: how do we create a user ID #?
+	private static int createNewUser() {
 		Console cons = System.console();
 		
-				
 		boolean validUsrName = false;
 		
 		String password = null;
@@ -265,17 +261,17 @@ public class TextBasedApp {
 		
 		User newUser = new User(name, password);
 		users.addUser(newUser);
-		return newUser;
+		return newUser.getUsrID();
 	}
 	
 	//Method Purpose: will prompt Task class to create new task
 	//Parameters:
 	//Return Value:
 	public static void addTask() {
-		Scanner keyboard = new Scanner(System.in);
-		System.out.print("Task Title: ");
+		keyboard.nextLine();
+		System.out.println("Task Title: ");
 		String task_name = keyboard.nextLine();
-		System.out.print("Notes: ");
+		System.out.println("Notes: ");
 		String task_notes = keyboard.nextLine();
 		
 
@@ -328,8 +324,6 @@ public class TextBasedApp {
 				
 			answer = keyboard.nextLine();
 		}
-		
-		int userID = user.getUsrID();
 		
 		Task new_task = new Task(userID, task_name, task_notes, false, taskDate);
 		

@@ -81,7 +81,7 @@ public class TaskCollection {
             	if (lastKey<t.getTaskID()) {
             		Date d = t.getDueDate();
             		tList.add(String.valueOf(t.getTaskID())+","+String.valueOf(t.getUserID())+","
-                			+t.getName()+", "+t.getNotes()+","+String.valueOf(t.isCompleted())+","
+                			+t.getName()+","+t.getNotes()+","+String.valueOf(t.isCompleted())+","
                 			+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate())+"\n");
             	}
             }

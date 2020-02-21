@@ -16,7 +16,7 @@ public class User {
 	public User(String usrName, String usrPassword) {
 		this.usrName = usrName;
 		this.usrPassword = usrPassword;
-		usrID = nextID++;
+		this.usrID = nextID++;
 	}
 	
 	public User(User u) {
@@ -29,10 +29,9 @@ public class User {
 	// Parameters: None
 	// Returns: String of usrID and yusrName
 	public String toString() {
-		String temp = "Username: " + usrName;
-		temp += "\nPassword: " + usrPassword;
-		temp += "\nuid: " + usrID;
-		return temp;
+		return "\tUsername: " + usrName +
+				"\n\tPassword: " + usrPassword + 
+				"\n\tUserID " + usrID;
 	}
 	
 	// Checks whether User's name matches

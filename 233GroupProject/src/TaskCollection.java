@@ -39,9 +39,9 @@ public class TaskCollection {
 			for(String task : taskList) {
 				String[] splitTask = task.split(",");
 				String[] d = splitTask[splitTask.length-1].split("-");
-				Date due = new Date(Integer.parseInt(d[0].trim()), Integer.parseInt(d[1].trim())-1,Integer.parseInt(d[2].trim()));
-				Task next = new Task(Integer.parseInt(splitTask[1].trim()),splitTask[2], splitTask[3],Boolean.parseBoolean(splitTask[4].trim()),due);
-	            if (splitTask[1].trim().equals(String.valueOf(userID))) {
+				Date due = new Date(Integer.parseInt(d[0]), Integer.parseInt(d[1])-1,Integer.parseInt(d[2]));
+				Task next = new Task(Integer.parseInt(splitTask[1]),splitTask[2], splitTask[3],Boolean.parseBoolean(splitTask[4]),due);
+	            if (splitTask[1].equals(String.valueOf(userID))) {
 	            	usersTasks.tasks.add(next);
 	            }
 			}
@@ -69,8 +69,8 @@ public class TaskCollection {
             	for(Task task: this.tasks) {
             		if(Character.getNumericValue(s.charAt(0))==task.getTaskID()) {
             			Date d = task.getDueDate();
-            			s = String.valueOf(task.getTaskID())+", "+String.valueOf(task.getUserID())+", "
-            			+task.getName()+", "+task.getNotes()+", "+String.valueOf(task.isCompleted())+", "
+            			s = String.valueOf(task.getTaskID())+","+String.valueOf(task.getUserID())+","
+            			+task.getName()+","+task.getNotes()+","+String.valueOf(task.isCompleted())+","
             			+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate());
             		}
             	}
@@ -80,8 +80,8 @@ public class TaskCollection {
             for(Task t : this.tasks) {
             	if (lastKey<t.getTaskID()) {
             		Date d = t.getDueDate();
-            		tList.add(String.valueOf(t.getTaskID())+", "+String.valueOf(t.getUserID())+", "
-                			+t.getName()+", "+t.getNotes()+", "+String.valueOf(t.isCompleted())+", "
+            		tList.add(String.valueOf(t.getTaskID())+","+String.valueOf(t.getUserID())+","
+                			+t.getName()+", "+t.getNotes()+","+String.valueOf(t.isCompleted())+","
                 			+String.valueOf(d.getYear())+"-"+String.valueOf(d.getMonth()+1)+"-"+String.valueOf(d.getDate())+"\n");
             	}
             }
@@ -102,9 +102,8 @@ public class TaskCollection {
 	// Functionality: display all tasks in the current task collection
 	public void display( ) {
 		for (Task t: tasks) {
-			System.out.println("--------------------------------");
-			System.out.println(t.toString());
-		}
+			System.out.println("\n"+t.toString());
+		} if (tasks.isEmpty()) System.out.println("There are no tasks to display");
 	}
 	
 	// Method Name: getTask
@@ -126,43 +125,6 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: creates a new task and adds it to the tasks collection
 	public void addTask(Task task) {
-		/*
-		Scanner keyboard = new Scanner(System.in);
-		System.out.println("Task Title: ");
-		String task_name = keyboard.nextLine();
-		System.out.println("Notes: ");
-		String task_notes = keyboard.nextLine();
-		System.out.println("Due date: ");
-		String task_date = keyboard.nextLine();
-		
-		System.out.println("Is the following information correct?");
-		System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+task_date);
-			
-		String answer = keyboard.nextLine();
-		
-		while(answer.toLowerCase()!="yes") {
-			System.out.println("What would you like to edit?");
-			String response = keyboard.nextLine();
-			if (response.toLowerCase()=="title") {
-				System.out.println("Task Title: ");
-				task_name = keyboard.nextLine();
-			} else if(response.toLowerCase()=="notes"){
-				System.out.println("Notes: ");
-				task_notes = keyboard.nextLine();
-			} else if(response.toLowerCase()=="due date" || response.toLowerCase()=="date") {
-				System.out.println("Due date: ");
-				task_date = keyboard.nextLine();
-			}
-			System.out.println("Is the following information correct?");
-			System.out.println(task_name+System.lineSeparator()+task_notes+System.lineSeparator()+task_date);
-				
-			answer = keyboard.nextLine();
-		}
-		
-		//Will need to correct this once compiled together 
-		//String userID = user.getUsrID();
-		*/
-		
 		tasks.add(task);
 	}
 	

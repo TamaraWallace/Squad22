@@ -1,11 +1,7 @@
-0, 0,  Math Test,  , false, 2020-2-26
-1, 0,  CPSC Assignment,  , true, 2020-2-14
-2, 0,  Essay,  Remember citations, false, 2020-3-4
-3, 1,           Meeting,           Present report, false, 2020-2-19
-4, 1,           Report,           , true, 2020-2-17
-5, 1, System Checkup, , false, 2020-2-24
-6, 5,   work,   complete paperwork, true, 120-3-3
-7, 5,   school,   school work, true, 120-3-3
-8, 5,  groceries,  milk, false, 120-3-3
-9, 5,  project,  report, false, 120-3-3
-10, 5, chores, sweeping & dishes, false, 120-3-3
+0,6,upload changes to Git,new logout functionality included, as well as getting rid of all the whitespace from the save & load functions,false,120-2-22
+1,0,CPSC Assignment,,true,2020-2-14
+2,0,Essay,Remember citations,true,2020-3-4
+3,1,Meeting,Present report,false,2020-2-19
+4,1,Report,,true,2020-2-17
+5,1,System Checkup,,false,2020-2-24
+6,2,verify logout functionality, want to ensure that this user's tasks are saved properly before being redirected to the startMenu,false,120-2-22

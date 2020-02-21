@@ -48,13 +48,12 @@ public class Task {
 //		Functionality: returns a string with the attributes of the object, this will be used to print information about the task.
 	
 	public String toString() {
-		
-		return "key: " + this.taskID  +
-				"\nuserID: "+ this.userID +
-				"\nname:"+this.name+
-				"\ndescription:"+this.notes + 
-				"\ndue date:"+ this.dueDate;
-		
+		return "TaskID: " + this.taskID  +
+				"\nUserID: " + this.userID +
+				"\nName: " + this.name +
+				"\nDescription: " + this.notes + 
+				"\nCompleted: " + this.completed +
+				"\nDue Date: " + this.dueDate;
 	}
 	
 	
@@ -62,7 +61,6 @@ public class Task {
 //	Parameters: none 
 //	Return: boolean completed
 //	Functionality: checks if a task is complete based on the completed boolean attribute
-	
 	public boolean isComplete() {
 		if (this.completed) {
 			return true;

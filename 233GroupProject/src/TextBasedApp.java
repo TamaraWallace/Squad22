@@ -16,37 +16,26 @@ public class TextBasedApp {
 	private static TaskCollection tasks;
 	private static Scanner keyboard = new Scanner(System.in);
 	
+	//Method Purpose: 	Runs the programs
+	//					Begins by loading all the users from the save file "users.txt"
+	//					Displays startMenu which prompts user to login or create new user account
+	//Parameters:
+	//Return Value:
 	public static void main(String[] args) {
-		users = UserCollection.loadUsers("./users.txt");
+		users = UserCollection.loadUsers("users.txt");
 		
 		//test(); // put whatever you need in test(). use for debugging
-		
 		startMenu();
-		tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
-		mainMenu();
 	}
 	
 	//Method Purpose:	Use for inspecting and navigating the program, allows you to subvert normal navigation
 	//Parameters:
-	//Return Value
+	//Return Value:
 	public static void test() {
-		
 		users.display();
-		User testuser = users.findUser("student1");
-		System.out.println(testuser);
-		testuser = users.findUser("employee1");
-		System.out.println(testuser);
-		testuser = users.findUser("demo1");
-		System.out.println(testuser);
-		testuser = users.findUser("test");
-		System.out.println(testuser);
-		
-		for (User user : users.getUsers()) {
-			tasks = TaskCollection.loadUsrTasks("./tasks.txt", user.getUsrID());
-			tasks.display();
-		}
 		quit();
 	}
+	
 	
 	
 	// ----------------------- APP NAVIGATION -----------------------
@@ -55,15 +44,20 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	private static void startMenu() {
-		
 		System.out.println("Welcome!");
 	
 		String[] options = {"Login", "Create New Account", "Quit"};
 		int choice = getChoice(options);
 		
-		if (choice == 1) { user = login(); }
-		if (choice == 2) { user = createNewUser(); tasks = new TaskCollection(); }
-		if (choice == 3) {quit();}
+		if (choice == 1) {
+			user = login();
+			tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
+			mainMenu(); }
+		if (choice == 2) {
+			user = createNewUser();
+			tasks = new TaskCollection();
+			mainMenu();}
+		if (choice == 3) quit();
 	}
 	
 	//Method Purpose: 	Asks user if they want to Create a New Task, Select an Existing Task, or Quit
@@ -72,14 +66,15 @@ public class TextBasedApp {
 	public static void mainMenu() {
 		System.out.println("\nMain Menu\n---------");
 		
-		String[] options = {"View All Tasks", "Add New Task", "Select Task", "Quit"};
+		String[] options = {"View All Tasks", "Add New Task", "Select Task", "Logout", "Quit"};
 		
 		int choice = getChoice(options);
 		
 		if (choice == 1) { tasks.display(); mainMenu(); }
 		if (choice == 2) addTask();
 		if (choice == 3) taskMenu(selectTask());
-		if (choice == 4) quit();
+		if (choice == 4) logout();
+		if (choice == 5) quit();
 	}
 	
 	//Method Purpose:	Asks the user if they want to Complete the Task, Edit it, or return to Main Menu
@@ -91,16 +86,17 @@ public class TextBasedApp {
 			System.out.println("User has no active tasks...");
 			mainMenu();
 		}else {
-			System.out.println(t.toString());
+			System.out.println("Selected Task:\n" + t.toString());
 		}
-		System.out.println("Task Menu\n---------");
+		System.out.println("\nTask Menu\n---------");
 		
-		String[] options = {"Complete Selected Task", "Main Menu"};
+		String[] options = {"Complete Selected Task", "Edit Task", "Main Menu"};
 		
 		int choice = getChoice(options);
 		
 		if (choice == 1) completeTask(t);
-		if (choice == 2) mainMenu();
+		if (choice == 2) editTask(t);
+		if (choice == 3) mainMenu();
 	}
 	
 	
@@ -110,24 +106,31 @@ public class TextBasedApp {
 	//Method Purpose: exit program
 	//Parameters:
 	//Return Value:
-	public static void quit() {
+	private static void quit() {
 		System.out.println("Saving...");
-		if (tasks != null) {
-			tasks.saveTasks("./tasks.txt");
-		}
-		if (users != null) {
-			users.saveUsers("./users.txt");
-		}
-		
+		tasks.saveTasks("tasks.txt");
+		users.saveUsers("users.txt");
 		System.out.println("Session ended, see you soon!");
 		System.exit(0);
 	}
 	
+	//Method Purpose: return to login menu
+	//Parameters:
+	//Return Value:
+	private static void logout() {
+		System.out.println("Saving...");
+		tasks.saveTasks("tasks.txt");
+		System.out.println("Session ended, see you soon!\n");
+		user = null;
+		tasks = null;
+		Task.setNextID(0);
+		startMenu();
+	}
 	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
 	//Parameters:
 	//Return Value: user's info
 	private static User login() {
-		int attempts = 0;
+		
 		Console cons = System.console();
 		
 		User usrLogin;
@@ -140,7 +143,6 @@ public class TextBasedApp {
 		
 		System.out.print("Please enter your User Name: ");
 		String usrName = keyboard.next();
-		
 		usrLogin = users.findUser(usrName);
 		
 		// check usrName does not exist
@@ -162,7 +164,6 @@ public class TextBasedApp {
 		if (cons == null) {
 			 System.out.print("Please enter your password: ");
 			 password = keyboard.next();
-			 attempts++;
 			while (! validPass) {
 				
 				if (usrPassword.equals(password)){
@@ -171,19 +172,11 @@ public class TextBasedApp {
 				}else {
 					System.out.print("The password you entered is incorrect! Please try again: ");
 					password = keyboard.next();
-					attempts++;
-				}
-				if (attempts == 3) {
-					System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
-				}else if(attempts > 3) {
-					System.out.println("You have attempted too many times! Program will retrun to start menu. ");
-					startMenu();
 				}
 			}
 		}else {
 			prompt = "Please enter your password: ";
 			password = readPassword(prompt);
-			attempts++;
 			while (! validPass) {
 				
 							
@@ -193,13 +186,6 @@ public class TextBasedApp {
 				}else {
 					prompt = "The passwords you entered do not match! Please try again: ";
 					password = readPassword(prompt);
-					attempts++;
-				}
-				if (attempts == 3) {
-					System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
-				}else if(attempts > 3) {
-					System.out.println("You have attempted too many times! Program will retrun to start menu. ");
-					startMenu();
 				}
 			}
 		}
@@ -209,7 +195,6 @@ public class TextBasedApp {
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
-	
 	//Return Value: user's info
 	private static User createNewUser() {
 		//Question: how do we create a user ID #?
@@ -224,33 +209,17 @@ public class TextBasedApp {
 		System.out.print("Please enter a User Name: ");
 		String name = keyboard.next();
 		
-		
+		//remove white spaces and display username
 		
 		// check usrName does not exist
 		while(!validUsrName) {
 			if (users.findUser(name) == null) {
-				
-				//remove white spaces before and after name and display username
-				name = name.trim();
-				System.out.println("Your User Name is: "+name);
-				System.out.print("Are you satisfied with your username? (y/n)");
-				String satisfied = keyboard.next();
-				
-				if (satisfied.equalsIgnoreCase("y") || satisfied.equalsIgnoreCase("yes")) {
-					validUsrName = true;
-				}else {
-					System.out.print("Please enter a diffrent user name: ");
-					name = keyboard.next();
-				}
-				
+				validUsrName = true;
 			}else {
 				System.out.print("The username entered already exists. Please enter a diffrent user name: ");
 				name = keyboard.next();
 			}
-			
 		}
-		
-		
 		
 		if (cons == null) {
 			while (! passCreated) {
@@ -298,103 +267,6 @@ public class TextBasedApp {
 		users.addUser(newUser);
 		return newUser;
 	}
-	
-	
-	public static String readPassword (String prompt) {
-			
-			HidePass et = new HidePass(prompt);
-			Thread mask = new Thread(et);
-			mask.start();
-	
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			String password = "";
-	
-			try {
-				password = in.readLine();
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
-			}
-			// stop masking
-			et.stopMasking();
-			// return the password entered by the user
-			return password;
-			  
-		}
-	
-	//Method Purpose: determines whether password is strong or not
-	//Parameters: String password entered by user
-	//Return Value:	boolean 
-	private static boolean isPassStrong(String password) {
-		boolean passStrong = false;
-		//boolean hasUpprC , hasDigit, hasLwrC, hasSpcl;
-		int upprC , lwrC, digit, spcl;
-		
-		upprC = 0;
-		lwrC = 0;
-		digit = 0;
-		spcl = 0;
-		
-		//hasUpprC = false;
-		//hasDigit = false;
-		//hasLwrC = false;
-		//hasSpcl = false;
-		
-		if(password.length() >= 8) {
-			for (int i = 0; i < password.length(); i++) {
-				char ch;
-				ch = password.charAt(i);
-				//System.out.println("Ch:" + ch+" hasupper: "+(Character.isUpperCase(ch))+" hasslwr: "+(Character.isLowerCase(ch)));
-				if( Character.isDigit(ch)) {
-					digit ++;
-				}
-				if ( Character.isLowerCase(ch)) {
-					lwrC ++;
-				}
-				if ( Character.isUpperCase(ch)) {
-					upprC ++;
-				}
-				if (! (Character.isDigit(ch) || Character.isAlphabetic(ch))) {
-					spcl ++;
-				}
-				
-			}
-			
-		}else {
-			System.out.println("Password must have ATLEAST 8 characters ");
-			passStrong = false;
-			return passStrong;
-		}
-		
-		if ((digit > 0) && (lwrC > 0 ) && (upprC > 0 ) && (spcl > 0)) {
-			passStrong = true;
-			return passStrong; 
-		}else {
-			System.out.println();
-			System.out.print("The password entered is not strong enough. You are missing: ");
-			
-		}
-		
-		if(upprC == 0) {
-			System.out.print("an Upper case letter, ");			
-		}
-		if(digit == 0) {
-			System.out.print("a Digit, ");			
-		}
-		if(lwrC == 0) {
-			System.out.print("a Lower case letter, ");			
-		}
-		if(spcl == 0) {
-			System.out.print("a Special character (!@#$&), ");			
-		}
-		
-		
-		
-		return passStrong;
-	}
-	
-	
-	
-	
 	
 	//Method Purpose: will prompt Task class to create new task
 	//Parameters:
@@ -467,13 +339,20 @@ public class TextBasedApp {
 	}
 	
 	//Method Purpose: gives option to complete task by accessing data in Task object
-	//Parameters: object of Task class 
+	//Parameters: Task t 
 	//Return Value:
 	public static void completeTask(Task t) {
 		t.setCompleted(true);
 		mainMenu();
 	}
 	
+	
+	//Method Purpose: prompts user to edit the fields of the selected task
+	//Parameters: Task t
+	public static void editTask(Task t) {
+		System.out.println("Not implemented... returning to Task Menu");
+		taskMenu(t);
+	}
 
 
 	// ----------------------- HELPERS -----------------------
@@ -519,5 +398,93 @@ public class TextBasedApp {
 		}
 		return choice;
 	}
-
+	
+	//Method Purpose: Reads the hidden password input by user.
+	//Parameters: String prompt
+	//Return Value: String password
+	private static String readPassword (String prompt) {
+			
+			HidePass et = new HidePass(prompt);
+			Thread mask = new Thread(et);
+			mask.start();
+	
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			String password = "";
+	
+			try { password = in.readLine();
+			} catch (IOException ioe) { ioe.printStackTrace(); }
+			// stop masking
+			et.stopMasking();
+			// return the password entered by the user
+			return password;
+		}
+	
+	//Method Purpose: determines whether password is strong or not
+	//Parameters: String password entered by user
+	//Return Value:	boolean 
+	private static boolean isPassStrong(String password) {
+		boolean passStrong = false;
+		//boolean hasUpprC , hasDigit, hasLwrC, hasSpcl;
+		int upprC , lwrC, digit, spcl;
+		
+		upprC = 0;
+		lwrC = 0;
+		digit = 0;
+		spcl = 0;
+		
+		//hasUpprC = false;
+		//hasDigit = false;
+		//hasLwrC = false;
+		//hasSpcl = false;
+		
+		if(password.length() >= 8) {
+			for (int i = 0; i < password.length(); i++) {
+				char ch;
+				ch = password.charAt(i);
+				//System.out.println("Ch:" + ch+" hasupper: "+(Character.isUpperCase(ch))+" hasslwr: "+(Character.isLowerCase(ch)));
+				if( Character.isDigit(ch)) {
+					digit ++;
+				}
+				if ( Character.isLowerCase(ch)) {
+					lwrC ++;
+				}
+				if ( Character.isUpperCase(ch)) {
+					upprC ++;
+				}
+				if (! (Character.isDigit(ch) || Character.isAlphabetic(ch))) {
+					spcl ++;
+				}
+				
+			}
+			
+		}else {
+			System.out.println("Password must have ATLEAST 8 characters ");
+			passStrong = false;
+			return passStrong;
+		}
+		
+		if ((digit > 0) && (lwrC > 0 ) && (upprC > 0 ) && (spcl > 0)) {
+			passStrong = true;
+			return passStrong; 
+		}else {
+			System.out.println();
+			System.out.print("The password entered is not strong enough. You are missing: ");
+			
+		}
+		
+		if(upprC == 0) {
+			System.out.print("an Upper case letter, ");			
+		}
+		if(digit == 0) {
+			System.out.print("a Digit, ");			
+		}
+		if(lwrC == 0) {
+			System.out.print("a Lower case letter, ");			
+		}
+		if(spcl == 0) {
+			System.out.print("a Special character (!@#$&), ");			
+		}
+		return passStrong;
+	}
+	
 }

@@ -33,7 +33,7 @@ public class UserCollection {
 		            br.close();
 		            for(String user : userList) {
 		            	String[] splitUser = user.split(",");
-	            		User next = new User(splitUser[1].trim(), splitUser[2].trim());
+	            		User next = new User(splitUser[1], splitUser[2]);
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {
@@ -65,7 +65,7 @@ public class UserCollection {
             for(User u : this.users) {
             	if (lastKey<u.getUsrID()) {
             		uList.add(String.valueOf(u.getUsrID())
-            				+", "+ u.getUsrName()+", "+ u.getUsrPassword()+"\n");
+            				+","+ u.getUsrName()+","+ u.getUsrPassword()+"\n");
             	}
             }
             
@@ -141,7 +141,7 @@ public class UserCollection {
 //	Method name: Display
 //	Parameters: none
 //	Return: void 
-//	Functionality: prints each user from the users arraylist, does this by calling toString method on each user in the print function
+//	Functionality: prints each user from the users ArrayList, does this by calling toString method on each user in the print function
 //	
 	public void display() {
 		for (User u: users) {

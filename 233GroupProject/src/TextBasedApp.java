@@ -49,6 +49,7 @@ public class TextBasedApp {
 		
 		if (choice == 1) {
 			userID = login();
+			System.out.println("UserID: "+userID);
 			tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 			mainMenu(); }
 		if (choice == 2) {
@@ -129,11 +130,13 @@ public class TextBasedApp {
 	//Return Value: int userID
 	private static int login() {
 		
+
 		Console cons = System.console();
 		
 		User usrLogin;
 		
 		boolean validUsrName = false;
+		boolean returnStart = false;
 		
 		String prompt;
 		String password;
@@ -141,6 +144,7 @@ public class TextBasedApp {
 		
 		System.out.print("Please enter your User Name: ");
 		String usrName = keyboard.next();
+		
 		usrLogin = users.findUser(usrName);
 		
 		// check usrName does not exist
@@ -157,38 +161,86 @@ public class TextBasedApp {
 		
 		//checkPassword from User class
 		String usrPassword = usrLogin.getUsrPassword();
-		
+		int attempts = 0;
 		
 		if (cons == null) {
 			 System.out.print("Please enter your password: ");
 			 password = keyboard.next();
-			while (! validPass) {
+			 attempts++;
+			
+			while (!validPass && !returnStart) {
+				//System.out.println("Attempts at start of loop: "+attempts);
+				//System.out.println("usrPassword.equals(password): "+usrPassword.equals(password));
 				
 				if (usrPassword.equals(password)){
 					validPass = true;
-					
+					 
+					 
 				}else {
-					System.out.print("The password you entered is incorrect! Please try again: ");
-					password = keyboard.next();
+					
+					if (attempts == 3 ) {
+						System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
+					}else if(attempts > 3) {
+						System.out.println("You have attempted too many times! Program will retrun to start menu. ");
+						attempts = 0;
+						returnStart = true;
+					}else{
+					
+						System.out.println("Number of attempts: "+attempts);
+						}
+					
+					if (!returnStart){
+						System.out.print("The password you entered is incorrect! Please try again: ");
+						password = keyboard.next();
+						attempts++;
+					}
+					
+					}
+				
 				}
-			}
+
+			
 		}else {
 			prompt = "Please enter your password: ";
 			password = readPassword(prompt);
-			while (! validPass) {
+			attempts++;
+			while (!validPass && !returnStart) {
 				
 							
 				if (usrPassword.equals(password)){
 					validPass = true;
+					System.out.println("Number of attempts: "+attempts);
 					
 				}else {
-					prompt = "The passwords you entered do not match! Please try again: ";
-					password = readPassword(prompt);
+				
+				
+					if (attempts == 3 ) {
+						System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
+					}else if(attempts > 3) {
+						System.out.println("You have attempted too many times! Program will retrun to start menu. ");
+						attempts = 0;
+						returnStart = true;
+					}else{
+					
+						System.out.println("Number of attempts: "+attempts);
+						}
+					
+					if (!returnStart) {
+						prompt = "The passwords you entered do not match! Please try again: ";
+						password = readPassword(prompt);
+						attempts++;
+					}
+					
 				}
+				
 			}
 		}
+		if (validPass) {
+			return usrLogin.getUsrID();
+		}else {
+			return -1;
+		}
 		
-		return usrLogin.getUsrID();
 	}
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,13 @@ public class UserCollection {
 //	Functionality: reads user information from file and stores information in user collection object
 	public static UserCollection loadUsers(String fname) {
 		UserCollection allUsers = new UserCollection();
-		// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
+		File f = new File(fname);
+		if(!(f.exists())) {
+			try{
+				f.createNewFile();
+			} catch (IOException io){}
+		} else if(f.exists()) {
+			// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
 				try {
 		            BufferedReader br = new BufferedReader(new FileReader(fname));
 		            Stream <String> lines = br.lines();
@@ -36,9 +43,8 @@ public class UserCollection {
 	            		User next = new User(splitUser[1], splitUser[2]);
 	            		allUsers.users.add(next);
 		            }
-		        } catch (IOException io) {
-		            //io.printStackTrace(); Dont want to print out errors
-		        }
+		        } catch (IOException io) {}
+		}
 		return allUsers;
 	}
 	
@@ -49,6 +55,12 @@ public class UserCollection {
 	// NOTE: needed to make not static
 	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
 	public void saveUsers(String fname) {
+		File f = new File(fname);
+		if(!(f.exists())) {
+			try{
+				f.createNewFile();
+			} catch (IOException io){}
+		} 
 		try {	
 			BufferedReader br = new BufferedReader(new FileReader(fname));
 			Stream <String> lines = br.lines();

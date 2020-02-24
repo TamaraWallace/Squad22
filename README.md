@@ -4,7 +4,7 @@ Repository: https://github.com/TamaraWallace/Squad22
 
 All code is contained in the 233GroupProject folder, which is formatted as an Eclipse project.
 
-After downloading the repository, the TextBasedApp can be run as a Java Application directly from an Eclipse IDE (however, the hidePass functionality does not work directly from Eclipse) Alternatively, it can be run from the command line/terminal by doing the following:
+After downloading the repository, the TextBasedApp can be run as a Java Application directly from an Eclipse IDE. Alternatively, it can be run from the command line/terminal by doing the following:
   1. Move the *tasks.txt* and *users.txt* files from the 233GroupProject folder into the src folder contained within
   2. After navigating the the src directory, enter *javac TextBasedApp.java* to compile the file
   3. enter *java TextBasedApp* to launch the program

@@ -1,6 +1,0 @@
-0, 0, Math Test, , false, 2020-2-26
-1, 0, CPSC Assignment, , true, 2020-2-14
-2, 0, Essay, Remember citations, false, 2020-3-4
-3, 1,           Meeting,           Present report, false, 2020-2-19
-4, 1,           Report,           , true, 2020-2-17
-5, 1, System Checkup, , false, 2020-2-24

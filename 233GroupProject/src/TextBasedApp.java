@@ -234,7 +234,7 @@ public class TextBasedApp {
 						}
 					
 					if (!returnStart) {
-						prompt = "The passwords you entered do not match! Please try again: ";
+						prompt = "The password you entered is incorrect! Please try again: ";
 						password = readPassword(prompt);
 						attempts++;
 					}

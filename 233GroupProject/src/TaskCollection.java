@@ -77,7 +77,7 @@ public class TaskCollection {
             		if(Character.getNumericValue(s.charAt(0))==task.getTaskID()) {
             			Date d = task.getDueDate();
             			s = String.valueOf(task.getTaskID())+","+String.valueOf(task.getUserID())+","
-            			+task.getName()+","+task.getNotes()+","+String.valueOf(task.isCompleted())+","
+            			+task.getName()+","+task.getNotes()+","+String.valueOf(task.isComplete())+","
             			+form.format(d);
             		}
             	}
@@ -88,7 +88,7 @@ public class TaskCollection {
             	if (lastKey<t.getTaskID()) {
             		Date d = t.getDueDate();
             		tList.add(String.valueOf(t.getTaskID())+","+String.valueOf(t.getUserID())+","
-                			+t.getName()+","+t.getNotes()+","+String.valueOf(t.isCompleted())+","
+                			+t.getName()+","+t.getNotes()+","+String.valueOf(t.isComplete())+","
                 			+form.format(d)+"\n");
             	}
             }

@@ -74,7 +74,4 @@ public class User {
 	public void setUsrID(int usrID) {
 		this.usrID = usrID;
 	}
-	
-
-
 }

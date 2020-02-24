@@ -62,108 +62,62 @@ public class Task {
 //	Return: boolean completed
 //	Functionality: checks if a task is complete based on the completed boolean attribute
 	public boolean isComplete() {
-		if (this.completed) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.completed;
 	}
-	
-	
-	
 	
 	// setters and getters 
-	
-	public static void setNextID(int id) {
-		Task.nextID = id;
+
+	public int getTaskID() {
+		return this.taskID;
 	}
- 
+	
+	public int getUserID() {
+		return this.userID;
+	}
+	
+	public String getName() {
+		return new String(name);
+	}
+	
+	public String getNotes() {
+		return new String(notes);
+	}
+	
+	public Date getDueDate() {
+		return (Date) dueDate.clone();
+	}
+	 
 	public int getNextID() {
 		return nextID;
 	}
+
+
 	
-	public int getTaskID() {
-		return taskID;
-	}
-
-
-
-
 	public void setTaskID(int key) {
 		this.taskID = key;
 	}
-
-
-
-
-	public String getName() {
-		return name;
+	
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
-
-
-
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-
-	public String getNotes() {
-		return notes;
-	}
-
-
-
 
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
 
-
-
-
-	public boolean isCompleted() {
-		return completed;
-	}
-
-
-
-
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
-	}
-
-
-
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-
-
-	public int getUserID() {
-		return this.userID;
 	}
 
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
-
-
-
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-
-
-
-	public static void main(String[] args) {
 	
-}
+	public static void setNextID(int id) {
+		Task.nextID = id;
+	}
 }

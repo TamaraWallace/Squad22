@@ -58,7 +58,7 @@ public class TextBasedApp {
 				}
 			if (choice == 2) {
 				userID = createNewUser();
-				tasks = new TaskCollection();
+				tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 				loggedIn = true;
 				}
 			if (choice == 3) quit();

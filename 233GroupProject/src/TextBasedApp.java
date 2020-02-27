@@ -1,8 +1,8 @@
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class TextBasedApp {
 	
-	private static int userID;
+	private static UUID userID;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	private static Scanner keyboard = new Scanner(System.in);
@@ -21,7 +21,6 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void main(String[] args) {
-		users = UserCollection.loadUsers("users.txt");
 		//test(); // put whatever you need in test(). use for debugging
 		startMenu();
 	}
@@ -42,6 +41,7 @@ public class TextBasedApp {
 	//Parameters: 
 	//Return Value:
 	private static void startMenu() {
+		users = UserCollection.loadUsers("users.txt");
 		boolean loggedIn = false;
 		while (!loggedIn) {
 			System.out.println("Welcome to Taskilla!");
@@ -51,7 +51,7 @@ public class TextBasedApp {
 			
 			if (choice == 1) {
 				userID = login();
-				if (userID != -1) {
+				if (userID != null) {
 					loggedIn = true;
 					tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 					}
@@ -88,7 +88,6 @@ public class TextBasedApp {
 	//Parameters: Task
 	//Return Value:
 	public static void taskMenu(Task t) {
-		
 		if (t == null) {
 			System.out.println("User has no active tasks...");
 			mainMenu();
@@ -127,18 +126,16 @@ public class TextBasedApp {
 	private static void logout() {
 		System.out.println("Saving...");
 		tasks.saveTasks("tasks.txt");
+		users.saveUsers("users.txt");
 		System.out.println("Session ended, see you soon!\n");
-		userID = -1;
+		userID = null;
 		tasks = null;
-		Task.setNextID(0);
 		startMenu();
 	}
 	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
 	//Parameters:
-	//Return Value: int userID
-	private static int login() {
-		
-
+	//Return Value: UUID userID
+	private static UUID login() {
 		Console cons = System.console();
 		
 		User usrLogin;
@@ -203,12 +200,10 @@ public class TextBasedApp {
 						attempts++;
 					}
 					
-					}
-				
 				}
-
-			
-		}else {
+				
+			}
+		} else {
 			prompt = "Please enter your password: ";
 			password = readPassword(prompt);
 			attempts++;
@@ -246,7 +241,7 @@ public class TextBasedApp {
 		if (validPass) {
 			return usrLogin.getUsrID();
 		}else {
-			return -1;
+			return null;
 		}
 		
 	}
@@ -254,7 +249,7 @@ public class TextBasedApp {
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
 	//Return Value: user's info
-	private static int createNewUser() {
+	private static UUID createNewUser() {
 		Console cons = System.console();
 		
 		boolean validUsrName = false;
@@ -335,13 +330,13 @@ public class TextBasedApp {
 		String task_notes = keyboard.nextLine();
 		
 
-		Date taskDate;
+		LocalDate taskDate;
 		
 		while (true) {
-			System.out.print("Due date(Ex: dd/MM/yyyy): ");
+			System.out.print("Due date (YYYY-MM-DD): ");
 			String task_date = keyboard.nextLine();
 			try {
-				taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
+				taskDate = LocalDate.parse(task_date);
 				break;
 			} catch (Exception ParseException) {
 				System.out.println("Try again\n");
@@ -367,10 +362,10 @@ public class TextBasedApp {
 				task_notes = keyboard.nextLine();
 			} else if(response.toLowerCase().compareTo("due date")==0 || response.toLowerCase().compareTo("date")==0) {
 				while (true) {
-					System.out.print("Due date(Ex: dd/MM/yyyy): ");
+					System.out.print("Due Date (YYYY-MM-DD): ");
 					String task_date = keyboard.nextLine();
 					try {
-						taskDate = new SimpleDateFormat("dd/MM/yyyy").parse(task_date);
+						taskDate = LocalDate.parse(task_date);
 						break;
 					} catch (Exception ParseException) {
 						System.out.println("Try again\n");

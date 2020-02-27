@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 public class UserCollection {
@@ -30,7 +31,7 @@ public class UserCollection {
 			try{
 				f.createNewFile();
 			} catch (IOException io){}
-		} else if(f.exists()) {
+		} else {
 			// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
 				try {
 		            BufferedReader br = new BufferedReader(new FileReader(fname));
@@ -38,9 +39,8 @@ public class UserCollection {
 		            String[] userList = lines.toArray(String[] :: new);
 		            lines.close();
 		            br.close();
-		            for(String user : userList) {
-		            	String[] splitUser = user.split(",");
-	            		User next = new User(splitUser[1], splitUser[2]);
+		            for(String userSaveString : userList) {
+	            		User next = User.fromString(userSaveString);
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {}
@@ -61,36 +61,51 @@ public class UserCollection {
 				f.createNewFile();
 			} catch (IOException io){}
 		} 
-		try {	
+		try {
+	        FileWriter bw = new FileWriter(fname);
+	        /* This section of code is useful when:
+	         * 		- Not all users are stored in memory
+	         * 
+	         * Because we are currently loading ALL users, and keeping ALL users during runtime
+	         * only the last for loop is needed to save properly
+	         * 
+	         * Please do not remove this code.
+	         * 
 			BufferedReader br = new BufferedReader(new FileReader(fname));
 			Stream <String> lines = br.lines();
 	        String[] userList = lines.toArray(String[] :: new);
 	        lines.close();
 	        br.close();
-	        FileWriter bw = new FileWriter(fname);
-	        int lastKey = userList.length - 1;
-	        ArrayList<String> uList = new ArrayList<String>();
-	        for(String s: userList) {
-	        	uList.add(s+"\n");
-			}
 	        
-	        for(User u : this.users) {
-	        	if (lastKey<u.getUsrID()) {
-	        		uList.add(String.valueOf(u.getUsrID())
-	        				+","+ u.getUsrName()+","+ u.getUsrPassword()+"\n");
+	        for (String s: userList) {
+	        	UUID tempID = UUID.fromString(s.split(",")[0]);
+	        	User temp = getUserByID(tempID);
+	        	if (temp == null) {
+	        		bw.write(s);
+	        	} else {
+	        		bw.write(temp.toSaveString());
+	        		users.remove(temp);
 	        	}
+	        } */
+	        for(User u: this.users) {
+	        	bw.write(u.toSaveString());
 	        }
-	        for(String str : uList) {
-	        	bw.write(str);
-	        }
-	        
 	        bw.close();
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
 	}
 	
-	
+	/* Unused...
+	 * 
+	private User getUserByID(UUID uuid) {
+		User temp = null;
+		for (User u: users) {
+			if (u.getUsrID().compareTo(uuid) == 0) temp = u;
+		}
+		return temp;
+	} */
+
 //	Method name: addUser
 //	Parameters: User u
 //	Return: void

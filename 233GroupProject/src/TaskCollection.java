@@ -2,11 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList; // import the ArrayList class
-import java.util.Date; // import date utility, copied from Task class
+import java.util.ArrayList;
+import java.util.UUID;
 import java.util.stream.Stream;
 import java.io.File;
-import java.text.SimpleDateFormat;
 
 public class TaskCollection {
 
@@ -20,14 +19,14 @@ public class TaskCollection {
 	// Parameters: fname (the name of the file to load tasks from) and userID (the id of the user whose tasks are being loaded)
 	// Return: a TaskCollection object
 	// Functionality: load a file containing all tasks, save all tasks to current arraylist of tasks, save users tasks to new collection and return object
-	public static TaskCollection loadUsrTasks(String fname, int userID) {
+	public static TaskCollection loadUsrTasks(String fname, UUID userID) {
 		TaskCollection usersTasks = new TaskCollection();
 		File f = new File(fname);
 		if(!(f.exists())) {
 			try{
 				f.createNewFile();
 			} catch (IOException io){}
-		} else if(f.exists()) {
+		} else {
 			// based on method 3 from this website:https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/ is used for basic file reading
 			try {
 				BufferedReader br = new BufferedReader(new FileReader(f));
@@ -35,16 +34,11 @@ public class TaskCollection {
 				String[] taskList = lines.toArray(String[] :: new);
 				lines.close();
 				br.close();
-				for(String task : taskList) {
-					String[] splitTask = task.split(",");
-					Date due = new Date();
-					try {
-						due = new SimpleDateFormat("yyyy-MM-dd").parse(splitTask[splitTask.length-1]);
-					} catch (Exception ParseException){}
-					Task next = new Task(Integer.parseInt(splitTask[1]),splitTask[2], splitTask[3],Boolean.parseBoolean(splitTask[4]),due);
-		            if (splitTask[1].equals(String.valueOf(userID))) {
-		            	usersTasks.tasks.add(next);
-		            }
+				for(String taskSaveString : taskList) {
+					if (UUID.fromString(taskSaveString.split(",")[1]).compareTo(userID) == 0) {
+						Task next = Task.fromString(taskSaveString);
+						usersTasks.tasks.add(next);
+					}
 				}
 			} catch (IOException io) {}
 		}
@@ -56,7 +50,6 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: save all the users tasks to the file, including new tasks and updates
 	public void saveTasks(String fname) {
-		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
 		File f = new File(fname);
 		if(!(f.exists())) {
 			try{
@@ -70,33 +63,21 @@ public class TaskCollection {
             lines.close();
             br.close();
             FileWriter bw = new FileWriter(fname);
-            int lastKey = taskList.length - 1;
-            ArrayList<String> tList = new ArrayList<String>();
-            for(String s: taskList) {
-            	for(Task task: this.tasks) {
-            		if(Character.getNumericValue(s.charAt(0))==task.getTaskID()) {
-            			Date d = task.getDueDate();
-            			s = String.valueOf(task.getTaskID())+","+String.valueOf(task.getUserID())+","
-            			+task.getName()+","+task.getNotes()+","+String.valueOf(task.isComplete())+","
-            			+form.format(d);
-            		}
-            	}
-            	tList.add(s+"\n");
-            }
             
-            for(Task t : this.tasks) {
-            	if (lastKey<t.getTaskID()) {
-            		Date d = t.getDueDate();
-            		tList.add(String.valueOf(t.getTaskID())+","+String.valueOf(t.getUserID())+","
-                			+t.getName()+","+t.getNotes()+","+String.valueOf(t.isComplete())+","
-                			+form.format(d)+"\n");
+            for (String s: taskList) {
+            	UUID tempID = UUID.fromString(s.split(",")[0]);
+            	Task temp = getTaskByID(tempID);
+            	if (temp == null) {
+            		bw.write(s + "\n");
+            	} else {
+            		bw.write(temp.toSaveString());
+            		tasks.remove(temp);
             	}
             }
-            
-            for(String str : tList) {
-            	bw.write(str);
+            for (Task t: tasks) {
+            	bw.write(t.toSaveString());
             }
-	            
+            
             bw.close();
 		} catch (IOException io) {}
 	}
@@ -115,14 +96,12 @@ public class TaskCollection {
 	// Parameters: key (key of the task to retrieve)
 	// Return: the task requested
 	// Functionality: given a task key, return a task from a task collection
-	public Task getTask(int key) {
-		Task currentTask = null;
+	public Task getTaskByID(UUID uuid) {
+		Task temp = null;
 		for (Task t: tasks) {
-			if (t.getTaskID() == key) {
-				currentTask = new Task(t);
-			}
+			if (t.getTaskID().compareTo(uuid) == 0) temp = t;
 		}
-		return currentTask;
+		return temp;
 	}
 	
 	// Method Name: addTask

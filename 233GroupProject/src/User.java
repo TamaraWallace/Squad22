@@ -1,11 +1,15 @@
+import java.util.UUID;
+
 // User class creates User object with usrName, usrPassword and usrID attributes
 
 public class User {
-	
+
+	private UUID usrID; // unique Id for each user
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
-	private int usrID; // unique Id for each user
-	private static int nextID = 0;
+	
+	
+	public User() {	}
 	
 	// Constructor Method: sets User's name, password and ID
 	// Parameters: 
@@ -16,7 +20,7 @@ public class User {
 	public User(String usrName, String usrPassword) {
 		this.usrName = usrName;
 		this.usrPassword = usrPassword;
-		this.usrID = nextID++;
+		this.usrID = UUID.randomUUID();
 	}
 	
 	public User(User u) {
@@ -32,6 +36,22 @@ public class User {
 		return "\tUsername: " + usrName +
 				"\n\tPassword: " + usrPassword + 
 				"\n\tUserID " + usrID;
+	}
+	
+	//
+	public String toSaveString() {
+		return usrID.toString()+ ","
+				+ usrName + ","
+				+ usrPassword + "\n";
+	}
+	
+	public static User fromString(String s) {
+		User temp = new User();
+		String[] vals = s.split(",");
+		temp.usrID = UUID.fromString(vals[0]);
+		temp.usrName = vals[1];
+		temp.usrPassword = vals[2];
+		return temp;
 	}
 	
 	// Checks whether User's name matches
@@ -67,11 +87,7 @@ public class User {
 		this.usrPassword = usrPassword;
 	}
 	// Getter method for usrID
-	public int getUsrID() {
+	public UUID getUsrID() {
 		return usrID;
-	}
-	// Setter method for usrID
-	public void setUsrID(int usrID) {
-		this.usrID = usrID;
 	}
 }

@@ -1,25 +1,28 @@
-import java.util.Date;  // https://stackabuse.com/how-to-get-current-date-and-time-in-java/
+import java.time.LocalDate;  // https://stackabuse.com/how-to-get-current-date-and-time-in-java/
+import java.util.UUID;
 
 public class Task {
 
 	
-	private int taskID; // to identify the task
-	private int userID;	// to identify the user
+	private UUID taskID; // to identify the task
+	private UUID userID;	// to identify the user
 	private String name; // name of the task
 	private String notes; // the description of the task
 	private boolean completed; // if the task has been marked complete by the user or not 
-	private Date dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
-	private static int nextID = 0;
+	private LocalDate dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
 	
 
+	
+	
+	public Task() { }
 	
 //	Method name: Task 
 //	Parameters: key, userID, name, notes, completed, dueDate
 //	Return: void
 //	Functionality: class constructor
 //	
-	public Task(int userID, String name, String notes, boolean completed, Date dueDate) {
-		this.taskID = nextID++;
+	public Task(UUID userID, String name, String notes, boolean completed, LocalDate dueDate) {
+		this.taskID = UUID.randomUUID();
 		this.userID = userID;
 		this.name = name;
 		this.notes = notes;
@@ -39,6 +42,27 @@ public class Task {
 		this.setNotes(t.notes);
 		this.setCompleted(t.completed);
 		this.setDueDate(t.dueDate);
+	}
+	
+	public String toSaveString() {
+		return taskID.toString() + ","
+				+ userID.toString() + ","
+				+ name + ","
+				+ notes + ","
+				+ completed + ","
+				+ dueDate.toString() + "\n";
+	}
+	
+	public static Task fromString(String s) {
+		Task temp = new Task();
+		String[] vals = s.split(",");
+		temp.taskID = UUID.fromString(vals[0]);
+		temp.userID = UUID.fromString(vals[1]);
+		temp.name = vals[2];
+		temp.notes = vals[3];
+		temp.completed = Boolean.valueOf(vals[4]);
+		temp.dueDate = LocalDate.parse(vals[5]);
+		return temp;
 	}
 	
 	
@@ -67,11 +91,11 @@ public class Task {
 	
 	// setters and getters 
 
-	public int getTaskID() {
+	public UUID getTaskID() {
 		return this.taskID;
 	}
 	
-	public int getUserID() {
+	public UUID getUserID() {
 		return this.userID;
 	}
 	
@@ -83,22 +107,17 @@ public class Task {
 		return new String(notes);
 	}
 	
-	public Date getDueDate() {
-		return (Date) dueDate.clone();
-	}
-	 
-	public int getNextID() {
-		return nextID;
+	public LocalDate getDueDate() {
+		return LocalDate.from(dueDate);
 	}
 
-
 	
-	public void setTaskID(int key) {
-		this.taskID = key;
+	public void setTaskID(UUID taskID2) {
+		this.taskID = taskID2;
 	}
 	
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserID(UUID userID2) {
+		this.userID = userID2;
 	}
 	
 	public void setName(String name) {
@@ -113,11 +132,7 @@ public class Task {
 		this.completed = completed;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
-	}
-	
-	public static void setNextID(int id) {
-		Task.nextID = id;
 	}
 }

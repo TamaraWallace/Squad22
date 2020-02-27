@@ -272,6 +272,10 @@ public class TextBasedApp {
 			}
 		}
 		
+		System.out.print("Please enter your email: ");
+		String email = keyboard.next();
+		
+		
 		if (cons == null) {
 			while (! passCreated) {
 				
@@ -314,7 +318,7 @@ public class TextBasedApp {
 			}
 		}
 		
-		User newUser = new User(name, password);
+		User newUser = new User(name, password, email);
 		users.addUser(newUser);
 		return newUser.getUsrID();
 	}

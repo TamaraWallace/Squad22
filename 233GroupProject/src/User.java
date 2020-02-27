@@ -7,6 +7,7 @@ public class User {
 	private UUID usrID; // unique Id for each user
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
+	private String usrEmail; // user's email
 	
 	
 	public User() {	}
@@ -17,15 +18,17 @@ public class User {
 	//		usrPassword: string, user's password for login
 	//		usrID: unique ID for each user, used to identify user's tasks
 	// Returns: Void
-	public User(String usrName, String usrPassword) {
-		this.usrName = usrName;
-		this.usrPassword = usrPassword;
+	public User(String newUsrName, String newUsrPassword, String newUsrEmail) {
+		this.usrName = newUsrName;
+		this.usrPassword = newUsrPassword;
+		this.usrEmail = newUsrEmail;
 		this.usrID = UUID.randomUUID();
 	}
 	
 	public User(User u) {
 		usrName = u.usrName;
 		usrPassword = u.usrPassword;
+		usrEmail = u.usrEmail;
 		usrID = u.usrID;
 	}
 
@@ -35,6 +38,7 @@ public class User {
 	public String toString() {
 		return "\tUsername: " + usrName +
 				"\n\tPassword: " + usrPassword + 
+				"\n\tEmail: " + usrEmail +
 				"\n\tUserID " + usrID;
 	}
 	
@@ -42,7 +46,8 @@ public class User {
 	public String toSaveString() {
 		return usrID.toString()+ ","
 				+ usrName + ","
-				+ usrPassword + "\n";
+				+ usrPassword + ","
+				+ usrEmail + "\n";
 	}
 	
 	public static User fromString(String s) {
@@ -51,6 +56,7 @@ public class User {
 		temp.usrID = UUID.fromString(vals[0]);
 		temp.usrName = vals[1];
 		temp.usrPassword = vals[2];
+		temp.usrEmail = vals[3];
 		return temp;
 	}
 	

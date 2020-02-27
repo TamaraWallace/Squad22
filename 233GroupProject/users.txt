@@ -1,7 +1,1 @@
-0,student1,test
-1,employee1,test
-2,demo1,test
-3,test,test
-4,karim,#Password1
-5,preet2020,Test&2020
-6,Stephane,git2Good!
+3561691b-1917-4dbe-8e77-aaf719a14a92,Stephane,git2Good!,stephanedorotich@gmail.com

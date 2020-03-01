@@ -2,6 +2,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class GuiBasedApp extends Application{
@@ -16,15 +18,21 @@ public class GuiBasedApp extends Application{
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 			
+			
 			Scene loginScene = new Scene(root);
 			
 			loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
+			//String url = "https://github.com/TamaraWallace/Taskilla-05-22/blob/master/233GroupProject/images/taskilla_logo.jpg";
+			
+			Image takilla_icon = new Image("/images/taskilla_icon.png");
 			
 			
 			
 			primaryStage.setScene(loginScene);
 			primaryStage.setTitle("Taskilla");
+			primaryStage.getIcons().add(takilla_icon);
+			
 			
 			primaryStage.show();
 			

@@ -1,6 +1,8 @@
 package Application;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,26 +18,33 @@ public class LoginController {
 	private PasswordField lgnPassword;
 	
 	@FXML
-	private Label newUsr;
+	private Button newUsr;
 	
 	@FXML
 	private Button lgnButton;
 	
-	@SuppressWarnings("unused")
+		
+	@FXML
 	public void login(ActionEvent event) {
 			
-		System.out.println(lgnName.getText());
-		System.out.println(lgnPassword.getText());
+		String usrName = lgnName.getText();
+		
+		String usrPassword = lgnPassword.getText();
+		
+		System.out.println("login ");	
 		
 		
-		if(newUsr.getText() == "Logged in") {
-			newUsr.setText("Already pressed");
-		}else {
-			newUsr.setText("Logged in");
+		
+	}
+	@FXML
+	public void newUser(ActionEvent event) {
 			
-		}
+		System.out.println("New user everyone");	
+		
 		
 	}
 	
+	
+
 	
 }

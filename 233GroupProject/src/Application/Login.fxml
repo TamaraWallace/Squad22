@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.LoginController">
    <children>
       <TextField fx:id="lgnName" layoutX="176.0" layoutY="306.0" promptText="Username" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
       <ImageView fitHeight="235.0" fitWidth="303.0" layoutX="99.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
@@ -19,7 +19,10 @@
          </image>
       </ImageView>
       <PasswordField fx:id="lgnPassword" layoutX="176.0" layoutY="369.0" promptText="Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
-      <Label fx:id="newUsr" alignment="CENTER" layoutX="159.0" layoutY="413.0" prefHeight="19.0" prefWidth="182.0" text="New User: Create Account" textFill="#76d0aa" underline="true" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="413.0" />
+      <Button fx:id="newUsr" alignment="CENTER" layoutX="159.0" layoutY="413.0" onAction="#newUser" prefHeight="19.0" prefWidth="182.0" style="-fx-background-color: #000b38;" text="New User: Create Account" textFill="#76d0aa" underline="true">
+      	<effect>
+            <Glow />
+         </effect></Button> 
       <Button fx:id="lgnButton" layoutX="217.0" layoutY="479.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="67.0" style="-fx-border-color: #76d0aa; -fx-background-color: #000b38;" text="LOGIN" textFill="#76d0aa">
          <effect>
             <Glow />

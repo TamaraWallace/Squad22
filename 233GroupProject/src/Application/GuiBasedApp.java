@@ -1,9 +1,9 @@
+package Application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class GuiBasedApp extends Application{
@@ -30,7 +30,7 @@ public class GuiBasedApp extends Application{
 			
 			
 			primaryStage.setScene(loginScene);
-			primaryStage.setTitle("Taskilla");
+			primaryStage.setTitle("Taskilla2");
 			primaryStage.getIcons().add(takilla_icon);
 			
 			

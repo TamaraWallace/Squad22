@@ -1,4 +1,6 @@
 package Application;
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,12 +27,12 @@ public class GuiBasedApp extends Application{
 			
 			//String url = "https://github.com/TamaraWallace/Taskilla-05-22/blob/master/233GroupProject/images/taskilla_logo.jpg";
 			
-			Image takilla_icon = new Image("/images/taskilla_icon.png");
+			//String path = GuiBasedApp.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 			
-			
+			Image takilla_icon = new Image("file:///C:\\Users\\karim\\git\\Squad22\\233GroupProject\\images\\taskilla_logo.jpg");
 			
 			primaryStage.setScene(loginScene);
-			primaryStage.setTitle("Taskilla2");
+			primaryStage.setTitle("Welcome to Taskilla ");
 			primaryStage.getIcons().add(takilla_icon);
 			
 			

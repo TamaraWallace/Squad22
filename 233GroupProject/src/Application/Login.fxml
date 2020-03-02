@@ -27,12 +27,12 @@
          <effect>
             <Glow />
          </effect></Button>
-      <Label alignment="CENTER" layoutX="109.0" layoutY="309.0" prefHeight="17.0" prefWidth="67.0" text="Username:" textFill="#76d0aa">
+      <Label alignment="CENTER" layoutX="99.0" layoutY="313.0" prefHeight="17.0" prefWidth="67.0" text="Username:" textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="109.0" layoutY="372.0" prefHeight="19.0" prefWidth="67.0" text="Password:" textFill="#76d0aa">
+      <Label alignment="CENTER" layoutX="99.0" layoutY="376.0" prefHeight="19.0" prefWidth="67.0" text="Password:" textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>

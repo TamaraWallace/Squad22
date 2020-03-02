@@ -21,7 +21,7 @@ public class GuiBasedApp extends Application{
 			
 			Scene loginScene = new Scene(root);
 			
-			loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
 			
 			//String url = "https://github.com/TamaraWallace/Taskilla-05-22/blob/master/233GroupProject/images/taskilla_logo.jpg";
 			

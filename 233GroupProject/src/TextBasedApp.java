@@ -20,11 +20,11 @@ public class TextBasedApp {
 	//					Displays startMenu which prompts user to login or create new user account
 	//Parameters:
 	//Return Value:
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		//test(); // put whatever you need in test(). use for debugging
 		startMenu();
-	}*/
-	
+	}
+//	
 	//Method Purpose:	Use for inspecting and navigating the program, allows you to subvert normal navigation
 	//Parameters:
 	//Return Value:

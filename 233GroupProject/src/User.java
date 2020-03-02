@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class User {
 
-	private UUID usrID; // unique Id for each user
+	private static UUID usrID; // unique Id for each user
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
 	private String usrEmail; // user's email
@@ -93,7 +93,7 @@ public class User {
 		this.usrPassword = usrPassword;
 	}
 	// Getter method for usrID
-	public UUID getUsrID() {
+	public static UUID  getUsrID() {
 		return usrID;
 	}
 }

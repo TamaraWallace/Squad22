@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
+//import application.Task;
+//import application.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -21,43 +23,49 @@ public class AddTaskController  implements Initializable{
 		@FXML 
 		private Label dateLabel,nameLabel;
 		
+		private boolean allGood;
 		public void addButton() {
 			
 			try {
-			// get strings
-			String taskName = name.getText();
-			String taskNotes = notes.getText();
-			
-			// validating taskName is not empty
-			if (taskName.isBlank()) {
-				nameLabel.setText("TASK NAME CAN'T BE EMPTY");
-				taskName = name.getText();
+				// get strings
+				String taskName = name.getText();
+				String taskNotes = notes.getText();
 				
-			} else {
-				nameLabel.setText("");
-			}
-			
-			// validating the taskDate is not empty 
-			LocalDate taskDate = date.getValue();
-			if (taskDate == null) {
-				dateLabel.setText("TASK DATE CAN'T BE EMPTY");
-			} else {
-				dateLabel.setText("");
-				System.out.println(taskDate);
-			}
-			
-			
-			// if everything is good, make a task: 
-			// UUID userID = user.getUsrID();
-			// Task task = new Task(userID, taskName, taskNotes, false, taskDate);
-			// add to some array list??? 
-	
-			System.out.println(taskName);
-			System.out.println(taskNotes);
-			
-			
-			
-			
+				// validating taskName is not empty
+				if (taskName.isBlank()) {
+					nameLabel.setText("TASK NAME CAN'T BE EMPTY");
+					taskName = name.getText();
+					
+				} else {
+					nameLabel.setText("");
+				}
+				
+				// validating the taskDate is not empty 
+				LocalDate taskDate = date.getValue();
+				if (taskDate == null) {
+					dateLabel.setText("TASK DATE CAN'T BE EMPTY");
+				} else {
+					dateLabel.setText("");
+					System.out.println(taskDate);
+				}
+				
+				if (taskDate != null && !taskName.isBlank()){
+					allGood = true;
+				}
+				// if everything is good, make a task: 
+				// UNCOMMENT WHEN IN THE SAME FOLDER AS TASKILLA CLASSES !! 
+				if (allGood) {
+//				UUID userID = User.getUsrID();
+//				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
+//				 System.out.println(task.toString());
+				// add to some array list??? 
+		
+				System.out.println(taskName);
+				System.out.println(taskNotes);
+				
+				
+				}
+				
 			}
 			catch(Exception e) {
 				System.out.println(e);

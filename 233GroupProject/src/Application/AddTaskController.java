@@ -4,6 +4,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.UUID;
+//
+//import application.Task;
+//import application.User;
 
 //import application.Task;
 //import application.User;
@@ -49,22 +52,28 @@ public class AddTaskController  implements Initializable{
 					System.out.println(taskDate);
 				}
 				
-				if (taskDate != null && !taskName.isBlank()){
+				if (taskDate != null &&  !taskName.isBlank()){
+				
 					allGood = true;
 				}
 				// if everything is good, make a task: 
-				// UNCOMMENT WHEN IN THE SAME FOLDER AS TASKILLA CLASSES !! 
-				if (allGood) {
+				if (allGood && taskDate != null && !taskName.isBlank()) {
 //				UUID userID = User.getUsrID();
 //				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
 //				 System.out.println(task.toString());
+//				 if (task != null) {
+//					 name.clear();
+//					 notes.clear();
+				 }
 				// add to some array list??? 
 		
 				System.out.println(taskName);
 				System.out.println(taskNotes);
 				
 				
-				}
+				
+				
+				date.setValue(null);
 				
 			}
 			catch(Exception e) {

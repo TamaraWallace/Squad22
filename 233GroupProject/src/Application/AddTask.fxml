@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="379.0" style="-fx-background-color: #000B38#000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddTaskController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="379.0" style="-fx-background-color: #000B38#000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.AddTaskController">
    <children>
       <TextField fx:id="name" layoutX="98.0" layoutY="306.0" prefHeight="39.0" prefWidth="210.0" promptText="Name" />
       <TextField fx:id="notes" layoutX="94.0" layoutY="383.0" prefHeight="39.0" prefWidth="210.0" promptText="Notes" />

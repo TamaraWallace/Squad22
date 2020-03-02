@@ -25,8 +25,8 @@ public class Main extends Application implements EventHandler<ActionEvent>{
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-		Parent root = FXMLLoader.load(getClass().getResource("/application/AddTask.fxml"));
-		
+//		Parent root = FXMLLoader.load(getClass().getResource("/application/AddTask.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AddTask.fxml"));
 		Scene scene = new Scene(root);
 		
 		primaryStage.setTitle("Taskilla");

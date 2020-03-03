@@ -11,7 +11,7 @@ import java.io.File;
 
 public class TaskCollection {
 
-	private ArrayList<Task> tasks; // An ArrayList of all the user's tasks.
+	private static ArrayList<Task> tasks; // An ArrayList of all the user's tasks.
 	
 	public TaskCollection() {
 		tasks = new ArrayList<Task>();
@@ -110,7 +110,7 @@ public class TaskCollection {
 	// Parameters: name, notes and date (all the respective fields for a task)
 	// Return: void
 	// Functionality: creates a new task and adds it to the tasks collection
-	public void addTask(Task task) {
+	public static void addTask(Task task) {
 		tasks.add(task);
 	}
 	
@@ -134,4 +134,5 @@ public class TaskCollection {
 	public boolean isEmpty() {
 		return tasks.isEmpty();
 	}
+	
 }

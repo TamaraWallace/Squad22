@@ -9,6 +9,9 @@ import java.util.UUID;
 //import application.User;
 
 //import application.Task;
+//import application.TaskCollection;
+//import application.User;
+//import application.Task;
 //import application.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,14 +29,15 @@ public class AddTaskController  implements Initializable{
 		@FXML 
 		private Label dateLabel,nameLabel;
 		
-		private boolean allGood;
+		//TaskCollection tasks = new TaskCollection();
+		
 		public void addButton() {
 			
 			try {
 				// get strings
 				String taskName = name.getText();
 				String taskNotes = notes.getText();
-				
+				System.out.println(taskName+taskNotes);
 				// validating taskName is not empty
 				if (taskName.isBlank()) {
 					nameLabel.setText("TASK NAME CAN'T BE EMPTY");
@@ -52,26 +56,23 @@ public class AddTaskController  implements Initializable{
 					System.out.println(taskDate);
 				}
 				
-				if (taskDate != null &&  !taskName.isBlank()){
 				
-					allGood = true;
-				}
 				// if everything is good, make a task: 
-				if (allGood && taskDate != null && !taskName.isBlank()) {
+				if ( taskDate != null && !taskName.isBlank()) {
 //				UUID userID = User.getUsrID();
 //				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
 //				 System.out.println(task.toString());
+//				 
+//				 TaskCollection.addTask(task);
+//				 tasks.display();
+//				
+//				
 //				 if (task != null) {
 //					 name.clear();
 //					 notes.clear();
 				 }
 				// add to some array list??? 
 		
-				System.out.println(taskName);
-				System.out.println(taskNotes);
-				
-				
-				
 				
 				date.setValue(null);
 				

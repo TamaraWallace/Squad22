@@ -2,7 +2,9 @@ package Application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class CreateUserController {
 	
@@ -13,11 +15,13 @@ public class CreateUserController {
 	private Button createUsrBtn;
 	
 	
-	
-	public void back(ActionEvent evnet) {
+	@FXML
+	public void back(ActionEvent event) {
+				
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
-		System.out.println("BACK: ");
-		   
+		window.setScene(GuiBasedApp.getPrevScene());
+		
 	}
 	 
 	

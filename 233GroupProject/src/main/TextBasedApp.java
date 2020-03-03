@@ -12,6 +12,16 @@ import java.io.InputStreamReader;
 
 public class TextBasedApp {
 	
+	public static void setUserID(UUID userID) {
+		TextBasedApp.userID = userID;
+	}
+	public static void setUsers(UserCollection users) {
+		TextBasedApp.users = users;
+	}
+	public static void setTasks(TaskCollection tasks) {
+		TextBasedApp.tasks = tasks;
+	}
+
 	private static UUID userID;
 	private static UserCollection users;
 	private static TaskCollection tasks;
@@ -240,6 +250,41 @@ public class TextBasedApp {
 				
 			}
 		}
+		if (validPass) {
+			return usrLogin.getUsrID();
+		}else {
+			return null;
+		}
+		
+	}
+	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
+	//Parameters:
+	//Return Value: UUID userID
+	public static UUID login(String usrName, String password) {
+		
+		User usrLogin;
+		boolean validUsrName = false;		
+		boolean validPass = false;
+			
+		usrLogin = users.findUser(usrName);
+		
+		// check usrName does not exist
+		while(!validUsrName) {			
+			if (usrLogin == null) {
+				return null;
+			}else {
+				validUsrName = true;
+			}
+		}
+		
+		
+		//checkPassword from User class
+		String usrPassword = usrLogin.getUsrPassword();
+		int attempts = 0;
+		if (usrPassword.equals(password)){
+			validPass = true;
+		}
+		
 		if (validPass) {
 			return usrLogin.getUsrID();
 		}else {

@@ -13,10 +13,12 @@ public class CreateUserController {
 	private Button createUsrBtn;
 	
 	
-	/*
-	 * public void back(ActionEvent evnet) {
-	 * 
-	 * GuiBasedApp.goBack(); }
-	 */
+	
+	public void back(ActionEvent evnet) {
+		
+		System.out.println("BACK: ");
+		   
+	}
+	 
 	
 }

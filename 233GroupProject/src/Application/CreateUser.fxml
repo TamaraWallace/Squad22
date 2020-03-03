@@ -40,17 +40,17 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="37.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000b38;">
+      <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="37.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000b38;">
          <graphic>
-            <ImageView fx:id="backBtn" fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView  fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="198.0" layoutY="504.0" mnemonicParsing="false" prefWidth="96.0" style="-fx-background-color: #000b38;">
+      <Button fx:id="createUsrBtn" layoutX="198.0" layoutY="504.0" mnemonicParsing="false" prefWidth="96.0" style="-fx-background-color: #000b38;">
          <graphic>
-            <ImageView fx:id="createUsrBtn" fitHeight="106.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="106.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/PlusIcon.png" />
                </image>

@@ -7,12 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class GuiBasedApp extends Application{
 
 	private static Stage window;
-	
 	
 	public static void main(String args) {
 		launch(args);
@@ -23,14 +23,13 @@ public class GuiBasedApp extends Application{
 		try {
 			window = primaryStage;
 			
-			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-			
-			Parent pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Login.fxml"));
 			
 			
 			Scene loginScene = new Scene(root);
 			
-			Scene newUserScene = new Scene(pane);
+			
+			//this.newUserScene = newUserScene;
 			
 			loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
 			
@@ -57,10 +56,6 @@ public class GuiBasedApp extends Application{
 		
 	}
 	
-	public  URL getURL(String fxml) {
-		return getClass().getResource(fxml);
-		 
-	}
 	public static Scene getScene() {
 		return window.getScene();
 	}

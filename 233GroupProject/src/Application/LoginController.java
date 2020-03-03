@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -49,18 +50,20 @@ public class LoginController {
 			
 		System.out.println("New user everyone");
 		
-		System.out.println("url: "+new GuiBasedApp().getURL("CreateUser.fxml"));
 		
-		Parent pane = FXMLLoader.load(new GuiBasedApp().getURL("CreateUser.fxml"));
 		
-		Scene newUserScene = new Scene(pane);
+		//Parent pane = FXMLLoader.load(new GuiBasedApp().getURL("CreateUser.fxml"));
+		
+		//Scene newUserScene = new Scene(pane);
 		
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
-		window.setScene(newUserScene);
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
+		
+		window.setScene(new Scene(pane));
 		window.show();
 
-		//GuiBasedApp.setScene("CreateUser.fxml");
+		
 		
 	}
 	

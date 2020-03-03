@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 public class GuiBasedApp extends Application{
 
+	private static Stage primaryStage;
+	
 	
 	public static void main(String args) {
 		launch(args);
@@ -18,6 +20,8 @@ public class GuiBasedApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		
 		try {
+			this.primaryStage = primaryStage;
+			
 			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 			
 			
@@ -44,6 +48,14 @@ public class GuiBasedApp extends Application{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void setScene(Scene scene) {
+		
+		primaryStage.setScene(scene);
+	}
+	public static Scene getScene() {
+		return primaryStage.getScene();
 	}
 
 }

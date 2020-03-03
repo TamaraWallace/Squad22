@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <Label layoutX="157.0" layoutY="111.0" style="-fx-background-color: #000b38;" text="New User" textFill="#76d0aa">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
+      <TextField layoutX="165.0" layoutY="278.0" />
+      <TextField layoutX="165.0" layoutY="324.0" />
+      <PasswordField layoutX="165.0" layoutY="385.0" />
+      <PasswordField layoutX="165.0" layoutY="440.0" />
+      <Label layoutX="85.0" layoutY="291.0" text="User Name: " textFill="#76d0aa" />
+   </children>
+</AnchorPane>

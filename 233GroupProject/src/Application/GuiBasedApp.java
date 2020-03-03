@@ -1,5 +1,6 @@
 package Application;
 import java.io.File;
+import java.net.URL;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 
 public class GuiBasedApp extends Application{
 
-	private static Stage primaryStage;
+	private static Stage window;
 	
 	
 	public static void main(String args) {
@@ -20,12 +21,16 @@ public class GuiBasedApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		
 		try {
-			this.primaryStage = primaryStage;
+			window = primaryStage;
 			
 			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 			
+			Parent pane = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			
 			
 			Scene loginScene = new Scene(root);
+			
+			Scene newUserScene = new Scene(pane);
 			
 			loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
 			
@@ -35,12 +40,14 @@ public class GuiBasedApp extends Application{
 			
 			Image takilla_icon = new Image("file:///C:\\Users\\karim\\git\\Squad22\\233GroupProject\\images\\taskilla_logo.jpg");
 			
-			primaryStage.setScene(loginScene);
-			primaryStage.setTitle("Welcome to Taskilla ");
-			primaryStage.getIcons().add(takilla_icon);
+			window.setScene(loginScene);
+			window.setTitle("Welcome to Taskilla ");
+			window.getIcons().add(takilla_icon);
 			
 			
-			primaryStage.show();
+			window.show();
+			
+			
 			
 				
 		
@@ -50,12 +57,12 @@ public class GuiBasedApp extends Application{
 		
 	}
 	
-	public static void setScene(Scene scene) {
-		
-		primaryStage.setScene(scene);
+	public  URL getURL(String fxml) {
+		return getClass().getResource(fxml);
+		 
 	}
 	public static Scene getScene() {
-		return primaryStage.getScene();
+		return window.getScene();
 	}
 
 }

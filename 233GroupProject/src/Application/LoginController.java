@@ -7,12 +7,14 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginController {
 	
@@ -41,22 +43,24 @@ public class LoginController {
 		
 		
 	}
+	
 	@FXML
-	public void newUser(ActionEvent event) {
+	public void newUser(ActionEvent event) throws IOException{
 			
-		System.out.println("New user everyone");	
-		Parent root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		} 
+		System.out.println("New user everyone");
 		
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("CreateUser.css").toExternalForm());
-		GuiBasedApp.setScene(scene);
+		System.out.println("url: "+new GuiBasedApp().getURL("CreateUser.fxml"));
+		
+		Parent pane = FXMLLoader.load(new GuiBasedApp().getURL("CreateUser.fxml"));
+		
+		Scene newUserScene = new Scene(pane);
+		
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		window.setScene(newUserScene);
+		window.show();
+
+		//GuiBasedApp.setScene("CreateUser.fxml");
 		
 	}
 	

@@ -23,6 +23,10 @@ public class CreateUserController {
 		window.setScene(GuiBasedApp.getPrevScene());
 		
 	}
+	
+	public void createUsr(ActionEvent event) {
+		
+	}
 	 
 	
 }

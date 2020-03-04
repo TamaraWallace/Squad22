@@ -251,7 +251,7 @@ public class TextBasedApp {
 			}
 		}
 		if (validPass) {
-			return usrLogin.getUsrID();
+			return User.getUsrID();
 		}else {
 			return null;
 		}
@@ -280,13 +280,13 @@ public class TextBasedApp {
 		
 		//checkPassword from User class
 		String usrPassword = usrLogin.getUsrPassword();
-		int attempts = 0;
+		
 		if (usrPassword.equals(password)){
 			validPass = true;
 		}
 		
 		if (validPass) {
-			return usrLogin.getUsrID();
+			return User.getUsrID();
 		}else {
 			return null;
 		}
@@ -367,7 +367,7 @@ public class TextBasedApp {
 		
 		User newUser = new User(name, password, email);
 		users.addUser(newUser);
-		return newUser.getUsrID();
+		return User.getUsrID();
 	}
 	
 	//Method Purpose: will prompt Task class to create new task

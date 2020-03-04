@@ -9,46 +9,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.CreateUserController">
+<AnchorPane fx:id="createUserPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.CreateUserController">
    <children>
-      <Label layoutX="157.0" layoutY="111.0" style="-fx-background-color: #000b38;" text="New User" textFill="#76d0aa">
+      <Label fx:id="newUsrTitle" layoutX="157.0" layoutY="111.0" style="-fx-background-color: #000b38;" text="New User" textFill="#76d0aa">
          <font>
             <Font size="39.0" />
          </font>
       </Label>
-      <TextField layoutX="180.0" layoutY="257.0" promptText="Username" style="-fx-background-color: #b3c2ff;" />
-      <TextField layoutX="180.0" layoutY="302.0" promptText="Email" style="-fx-background-color: #b3c2ff;" />
-      <PasswordField layoutX="180.0" layoutY="350.0" promptText="Password" style="-fx-background-color: #b3c2ff;" />
-      <PasswordField layoutX="180.0" layoutY="403.0" promptText="Confirm Password" style="-fx-background-color: #b3c2ff;" />
-      <Label layoutX="99.0" layoutY="261.0" text="Username: " textFill="#76d0aa">
+      <TextField fx:id="newUsrName" layoutX="180.0" layoutY="257.0" promptText="Username" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
+      <TextField fx:id="usrEmail" layoutX="183.0" layoutY="321.0" promptText="Email (optional)" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
+      <PasswordField fx:id="newUsrPwd" layoutX="183.0" layoutY="375.0" promptText="Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
+      <PasswordField fx:id="newUsrConfPwd" layoutX="183.0" layoutY="427.0" promptText="Confirm Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
+      <Label layoutX="110.0" layoutY="264.0" text="Username: " textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="127.0" layoutY="306.0" text="Email:" textFill="#76d0aa">
+      <Label layoutX="134.0" layoutY="326.0" prefHeight="11.0" prefWidth="37.0" text="Email:" textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="102.0" layoutY="354.0" text="Password: " textFill="#76d0aa">
+      <Label layoutX="114.0" layoutY="381.0" text="Password: " textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="407.0" prefHeight="18.0" prefWidth="141.0" text="Confirm Password: " textFill="#76d0aa">
+      <Label layoutX="60.0" layoutY="434.0" prefHeight="20.0" prefWidth="124.0" text="Confirm Password: " textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="37.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000b38;">
          <graphic>
-            <ImageView  fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="createUsrBtn" layoutX="198.0" layoutY="504.0" mnemonicParsing="false" prefWidth="96.0" style="-fx-background-color: #000b38;">
+      <Button fx:id="createUsrBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="207.0" layoutY="533.0" mnemonicParsing="false" onAction="#createUsr" prefWidth="96.0" style="-fx-background-color: #000b38;">
          <graphic>
             <ImageView fitHeight="106.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,5 +57,9 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="newValidConfPassLbl" alignment="CENTER" layoutX="194.0" layoutY="460.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidPassLbl" alignment="CENTER" layoutX="197.0" layoutY="408.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidEmailLbl" alignment="CENTER" layoutX="197.0" layoutY="354.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidUsrLbl" alignment="CENTER" layoutX="197.0" layoutY="290.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>

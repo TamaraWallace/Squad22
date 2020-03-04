@@ -19,11 +19,11 @@
          </image>
       </ImageView>
       <PasswordField fx:id="lgnPassword" layoutX="176.0" layoutY="369.0" onKeyPressed="#lgnPasswordKeyPressed" promptText="Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
-      <Button fx:id="newUsr" alignment="CENTER" layoutX="159.0" layoutY="442.0" onAction="#newUser" prefHeight="19.0" prefWidth="182.0" style="" text="New User: Create Account" textFill="#76d0aa" underline="true">
+      <Button fx:id="newUsr" alignment="CENTER" layoutX="159.0" layoutY="413.0" onAction="#newUser" prefHeight="19.0" prefWidth="182.0" style="" text="New User: Create Account" textFill="#76d0aa" underline="true">
       	<effect>
             <Glow />
          </effect></Button> 
-      <Button fx:id="lgnButton" layoutX="217.0" layoutY="559.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#mouseEv" onMouseExited="#mouseEv" prefHeight="37.0" prefWidth="67.0" style="-fx-border-color: #76d0aa;" text="LOGIN" textFill="#76d0aa">
+      <Button fx:id="lgnButton" layoutX="217.0" layoutY="479.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#mouseEv" onMouseExited="#mouseEv" prefHeight="37.0" prefWidth="67.0" style="-fx-border-color: #76d0aa;" text="LOGIN" textFill="#76d0aa">
          <effect>
             <Glow />
          </effect></Button>
@@ -37,7 +37,5 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lgnValidUsrLbl" alignment="CENTER" layoutX="179.0" layoutY="340.0" prefHeight="20.0" prefWidth="151.0" textAlignment="CENTER" textFill="RED" />
-      <Label fx:id="lgnValidPassLbl" alignment="CENTER" layoutX="179.0" layoutY="402.0" prefHeight="20.0" prefWidth="151.0" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>

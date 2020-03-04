@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.TaskCollection;
 import main.TextBasedApp;
+import main.User;
 import main.UserCollection;
 
 public class GuiBasedApp extends Application{
@@ -66,6 +67,8 @@ public class GuiBasedApp extends Application{
 		
 	}
 	
+	
+	
 	public static UUID getUserID() {
 		return userID;
 	}
@@ -96,6 +99,8 @@ public class GuiBasedApp extends Application{
 	public static void setPrevScene(Scene prevScene) {
 		GuiBasedApp.prevScene = prevScene;
 	}
+	
+	
 	
 	
 }

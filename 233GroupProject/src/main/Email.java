@@ -15,6 +15,8 @@ public class Email {
 	private String receiverEmail = "taskillabusiness@gmail.com";
 	private static String emailSubject = "Test Mail";
 	private static String emailBody = ":)";
+	
+	
 	public Email(String receiverEmail,String Subject,
 			String Body){
 

@@ -1,23 +1,19 @@
 package Application;
 
 import java.net.URL;
+import main.User;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.UUID;
-//
-//import application.Task;
-//import application.User;
 
-//import application.Task;
-//import application.TaskCollection;
-//import application.User;
-//import application.Task;
-//import application.User;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import main.Task;
+import main.TaskCollection;
 
 public class AddTaskController  implements Initializable{
 	
@@ -29,7 +25,7 @@ public class AddTaskController  implements Initializable{
 		@FXML 
 		private Label dateLabel,nameLabel;
 		
-		//TaskCollection tasks = new TaskCollection();
+		TaskCollection tasks = new TaskCollection();
 		
 		public void addButton() {
 			
@@ -59,23 +55,24 @@ public class AddTaskController  implements Initializable{
 				
 				// if everything is good, make a task: 
 				if ( taskDate != null && !taskName.isBlank()) {
-//				UUID userID = User.getUsrID();
-//				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
-//				 System.out.println(task.toString());
-//				 
-//				 TaskCollection.addTask(task);
-//				 tasks.display();
-//				
-//				
-//				 if (task != null) {
-//					 name.clear();
-//					 notes.clear();
+				UUID userID = User.getUsrID();
+				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
+				 System.out.println(task.toString());
+				 
+				 TaskCollection.addTask(task);
+				 tasks.display();
+				
+				
+				 if (task != null) {
+					 name.clear();
+					 notes.clear();
 				 }
 				// add to some array list??? 
 		
 				
 				date.setValue(null);
 				
+			}
 			}
 			catch(Exception e) {
 				System.out.println(e);

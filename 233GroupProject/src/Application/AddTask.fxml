@@ -8,7 +8,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.AddTaskController">
    <children>
@@ -51,7 +50,6 @@
             <Image url="@../../images/Title.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="53.0" layoutX="103.0" layoutY="214.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="294.0" />
       <Button layoutX="-4.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" opacity="0.95" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" />
       <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -369,6 +369,48 @@ public class TextBasedApp {
 		users.addUser(newUser);
 		return User.getUsrID();
 	}
+	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
+	//Parameters:
+	//Return Value: user's info
+	public static UUID createNewUser(String name, String email, String password1, String password2) {
+
+		boolean validUsrName = false;
+
+		String password = null;
+		boolean passCreated = false;
+
+
+		// check usrName does not exist
+		while(!validUsrName) {
+			if (users.findUser(name) == null) {
+				validUsrName = true;
+			}else {
+				return null;
+			}
+		}
+
+
+
+
+		while (! passCreated) {
+
+			if (password1.equals(password2)){
+				password = password1;
+				if (isPassStrong(password)) {
+					passCreated = true;
+				}else {
+					return null;
+				}
+			}else {
+				return null;
+			}
+		}
+
+
+		User newUser = new User(name, password, email);
+		users.addUser(newUser);
+		return User.getUsrID();
+	}
 	
 	//Method Purpose: will prompt Task class to create new task
 	//Parameters:
@@ -522,7 +564,7 @@ public class TextBasedApp {
 	//Method Purpose: determines whether password is strong or not
 	//Parameters: String password entered by user
 	//Return Value:	boolean 
-	private static boolean isPassStrong(String password) {
+	public static boolean isPassStrong(String password) {
 		boolean passStrong = false;
 		//boolean hasUpprC , hasDigit, hasLwrC, hasSpcl;
 		int upprC , lwrC, digit, spcl;

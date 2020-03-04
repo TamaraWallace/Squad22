@@ -1,14 +1,11 @@
 package Application;
 
-import java.awt.desktop.UserSessionEvent;
 import java.io.IOException;
 import java.util.UUID;
 
 import main.*;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,14 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class LoginController {
 	
@@ -49,7 +39,13 @@ public class LoginController {
 	
 	@FXML
 	private Button lgnButton;
-	private String lgnButtonStyle;
+	
+	@FXML
+	private Label lgnValidPassLbl;
+	
+	@FXML
+	private Label lgnValidUsrLbl;
+	
 		
 	@FXML
 	public void login(ActionEvent event) throws IOException {
@@ -68,12 +64,15 @@ public class LoginController {
 		
 		if (GuiBasedApp.getUsers().findUser(usrName) == null) {
 			String style = lgnName.getStyle();
-			//System.out.println(style);
+			System.out.println(style);
 			lgnName.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
 			attempts = 0;
 			
+			lgnValidUsrLbl.setText("Not a valid Username");
+			
 		}else {
 			lgnName.setStyle(lgnNameStyle);
+			lgnValidUsrLbl.setText("");
 		}
 		
 		if (attempts <3) {
@@ -87,9 +86,14 @@ public class LoginController {
 				String style = lgnPassword.getStyle();
 				lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
 				
+				lgnValidPassLbl.setText("Not a valid Password");
 			} else {
 				attempts = 0;
 				GuiBasedApp.setUserID(userID);
+				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
+				
+				GuiBasedApp.setTasks(tasks);
+				
 				loggedIn = true;
 			}
 		}else if (attempts == 3) {
@@ -124,7 +128,14 @@ public class LoginController {
 		
 		if (loggedIn) {
 			
+			
+			
 			System.out.println("Logged In: new scene");
+			
+			GuiBasedApp.getTasks().display();
+			
+			System.out.println();
+			
 			//Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			
 			//AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));

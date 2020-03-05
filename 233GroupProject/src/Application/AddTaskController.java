@@ -30,7 +30,7 @@ public class AddTaskController  implements Initializable{
 		public void addButton() {
 			
 			try {
-				// get strings
+				// get name & notes as strings
 				String taskName = name.getText();
 				String taskNotes = notes.getText();
 				System.out.println(taskName+taskNotes);
@@ -62,14 +62,14 @@ public class AddTaskController  implements Initializable{
 				 TaskCollection.addTask(task);
 				 tasks.display();
 				
-				
+				// clearing out textfield boxes for name & notes 
 				 if (task != null) {
 					 name.clear();
 					 notes.clear();
 				 }
-				// add to some array list??? 
-		
 				
+		
+				// clear out the date picker as it doesn't do this automatically 
 				date.setValue(null);
 				
 			}

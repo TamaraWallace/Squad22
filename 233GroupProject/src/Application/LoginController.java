@@ -21,6 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -126,27 +127,31 @@ public class LoginController {
 			System.exit(0);
 		}
 		
+		
+		
 		if (loggedIn) {
+		
 			
-			
-			
-			System.out.println("Logged In: new scene");
+			System.out.println("Logged In: ");
 			
 			GuiBasedApp.getTasks().display();
 			
 			System.out.println();
 			
-			//Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			
-			//AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
+			BorderPane pane = (BorderPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 			
-			//Scene createUserScene = new Scene(pane);
+			Scene HomeScreenScene = new Scene(pane);
 			
-			//createUserScene.getStylesheets().add(getClass().getResource("CreateUser.css").toExternalForm());
+			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
 			
-			//GuiBasedApp.setPrevScene(window.getScene());
-			//window.setScene(createUserScene);
-			//window.show();
+			GuiBasedApp.setPrevScene(window.getScene());
+			window.hide();
+			window.setScene(HomeScreenScene);
+			System.out.println("changed scenes");
+			window.show();
+			System.out.println("showed");
 		}
 		
 		

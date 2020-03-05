@@ -31,8 +31,8 @@ public class HomeScreenController {
 	private Label helloUser, currentTasksTitle, viewAllLabel;
 	
 	public HomeScreenController() {
-		String name = main.User.getUsrName();
-		helloUser.setText("Hello, " + name);
+		//String name = main.User.getUsrName();
+		//helloUser.setText("Hello, " + name);
 	}
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {

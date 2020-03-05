@@ -31,7 +31,8 @@ public class HomeScreenController {
 	private Label helloUser, currentTasksTitle, viewAllLabel;
 	
 	public HomeScreenController() {
-		
+		String name = main.User.getUsrName();
+		helloUser.setText("Hello, " + name);
 	}
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -41,18 +42,18 @@ public class HomeScreenController {
 	
 	
 	public void mostRecentTask() {
-		
+		//task1.setCompleted(true);
 	}
 	
 	public void secondRecentTask() {
-		
+		//task2.setCompleted(true);
 	}
 	
 	public void thirdRecentTask() {
-		
+		//task3.setCompleted(true);
 	}
 	
-	//do we need another scene for view all or direct to Task Menu? 
+	
 	public void viewAll() {
 		
 	}
@@ -60,6 +61,19 @@ public class HomeScreenController {
 	//scene transitions?
 	public void addTask() {
 		//https://www.youtube.com/watch?v=LDVztNtJWOo 
+		
+		
+		//https://stackoverflow.com/questions/34863425/javafx-scene-builder-how-switch-scene 
+		//Here's how you get those references:
+		//Scene scene = btnSignIn.getScene();
+		//Window window = scene.getWindow();
+		//Stage stage = (Stage) window;
+		
+		//change the entire Scene:
+		//FXMLLoader loader = ... // create and load() view
+		//Stage stage = (Stage) btnSignIn.getScene().getWindow();
+		//Scene scene = new Scene(loader.getRoot());
+		//stage.setScene(scene);
 	}
 	
 	

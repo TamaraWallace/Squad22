@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<?import javafx.scene.layout.BorderPane?>
+	
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.HomeScreenController">
+	<!-- TODO Add Nodes -->
+</BorderPane>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -73,3 +82,4 @@
          </graphic></Button>
    </children>
 </AnchorPane>
+>>>>>>> branch 'master' of https://github.com/TamaraWallace/Taskilla-05-22.git

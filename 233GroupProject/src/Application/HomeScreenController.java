@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
-public class HomeScreenController {
+public class HomeScreenController implements Initializable {
 	
 	@FXML
 	private RadioButton mostRecentTask;
@@ -31,13 +31,13 @@ public class HomeScreenController {
 	private Label helloUser, currentTasksTitle, viewAllLabel;
 	
 	public HomeScreenController() {
-		//String name = main.User.getUsrName();
-		//helloUser.setText("Hello, " + name);
 	}
 	
+	@Override 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		// TODO Auto-generated method stub
+		String name = main.User.getUsrName();
+		helloUser.setText("Hello, " + name);
+		
 	}
 	
 	

@@ -12,15 +12,7 @@ import java.io.InputStreamReader;
 
 public class TextBasedApp {
 	
-	public static void setUserID(UUID userID) {
-		TextBasedApp.userID = userID;
-	}
-	public static void setUsers(UserCollection users) {
-		TextBasedApp.users = users;
-	}
-	public static void setTasks(TaskCollection tasks) {
-		TextBasedApp.tasks = tasks;
-	}
+
 
 	private static UUID userID;
 	private static UserCollection users;
@@ -251,7 +243,7 @@ public class TextBasedApp {
 			}
 		}
 		if (validPass) {
-			return User.getUsrID();
+			return usrLogin.getUsrID();
 		}else {
 			return null;
 		}
@@ -286,7 +278,7 @@ public class TextBasedApp {
 		}
 		
 		if (validPass) {
-			return User.getUsrID();
+			return usrLogin.getUsrID();
 		}else {
 			return null;
 		}
@@ -367,7 +359,7 @@ public class TextBasedApp {
 		
 		User newUser = new User(name, password, email);
 		users.addUser(newUser);
-		return User.getUsrID();
+		return newUser.getUsrID();
 	}
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
@@ -409,7 +401,7 @@ public class TextBasedApp {
 
 		User newUser = new User(name, password, email);
 		users.addUser(newUser);
-		return User.getUsrID();
+		return newUser.getUsrID();
 	}
 	
 	//Method Purpose: will prompt Task class to create new task
@@ -628,5 +620,13 @@ public class TextBasedApp {
 		}
 		return passStrong;
 	}
-	
+	public static void setUserID(UUID userID) {
+		TextBasedApp.userID = userID;
+	}
+	public static void setUsers(UserCollection users) {
+		TextBasedApp.users = users;
+	}
+	public static void setTasks(TaskCollection tasks) {
+		TextBasedApp.tasks = tasks;
+	}
 }

@@ -90,6 +90,8 @@ public class LoginController {
 				lgnValidPassLbl.setText("Not a valid Password");
 			} else {
 				attempts = 0;
+				User user = GuiBasedApp.getUsers().getUser(userID);
+				GuiBasedApp.setUser(user);				
 				GuiBasedApp.setUserID(userID);
 				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 				
@@ -140,7 +142,7 @@ public class LoginController {
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			
-			BorderPane pane = (BorderPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 			
 			Scene HomeScreenScene = new Scene(pane);
 			

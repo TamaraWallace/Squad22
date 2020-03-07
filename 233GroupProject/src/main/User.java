@@ -12,6 +12,7 @@ public class User {
 	private String usrEmail; // user's email
 	
 	
+	
 	public User() {	}
 	
 	// Constructor Method: sets User's name, password and ID
@@ -95,7 +96,14 @@ public class User {
 		this.usrPassword = usrPassword;
 	}
 	// Getter method for usrID
-	public static UUID  getUsrID() {
+	public  UUID  getUsrID() {
 		return usrID;
+	}
+	private User getUser(UUID userId) {
+		if (usrID == userId) {
+			return new User(this);
+		}else {
+			return null;
+		}
 	}
 }

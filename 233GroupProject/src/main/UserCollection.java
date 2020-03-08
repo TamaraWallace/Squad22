@@ -179,7 +179,7 @@ public class UserCollection {
 	
 	public User getUser(UUID userID) {
 		for (User user : users) {
-			if (userID == user.getUsrID()) {
+			if (user.getUsrID().compareTo(userID) == 0) {
 				return user;
 			}
 			else {

@@ -1,2 +1,4 @@
-b9a6b6d5-11ac-4da8-9009-8c46092dc62f,Stephane,git2Good!,stephanedorotich@gmail.com
-b9a6b6d5-11ac-4da8-9009-8c46092dc62f,meriam,taskillaU@3,meriam
+ef60642c-b585-3180-804e-34e3e858afaa,Stephane,git2Good!,stephanedorotich@gmail.com
+ef60642c-b585-3180-804e-34e3e858afaa,meriam,taskillaU@3,meriam
+ef60642c-b585-3180-804e-34e3e858afaa,Karim,#Password1,karimkassouri2015@gmail.com
+ef60642c-b585-3180-804e-34e3e858afaa,Karim2,#Password1,

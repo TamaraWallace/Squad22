@@ -14,7 +14,7 @@
       <TextField fx:id="name" layoutX="152.0" layoutY="306.0" prefHeight="39.0" prefWidth="210.0" promptText="Name" />
       <TextField fx:id="notes" layoutX="152.0" layoutY="383.0" prefHeight="39.0" prefWidth="210.0" promptText="Notes" />
       <DatePicker fx:id="date" layoutX="152.0" layoutY="449.0" prefHeight="39.0" prefWidth="210.0" promptText="Due Date" />
-      <Button layoutX="190.0" layoutY="573.0" minWidth="40.0" mnemonicParsing="false" onAction="#addButton" prefHeight="39.0" prefWidth="40.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" text="Add" textOverrun="WORD_ELLIPSIS">
+      <Button layoutX="190.0" layoutY="573.0" minWidth="40.0" mnemonicParsing="false" onAction="#addButton" prefHeight="39.0" prefWidth="112.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" textOverrun="WORD_ELLIPSIS">
          <effect>
             <Blend />
          </effect>
@@ -50,12 +50,14 @@
             <Image url="@../../images/Title.png" />
          </image>
       </ImageView>
-      <Button layoutX="-4.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" opacity="0.95" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" />
-      <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/Back.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.95" prefHeight="39.0" prefWidth="75.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Back.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Label fx:id="nameLabel" layoutX="152.0" layoutY="357.0" style="-fx-text-fill: #e40808#e40808;" textFill="#e40808" />
       <Label fx:id="dateLabel" layoutX="152.0" layoutY="502.0" style="-fx-text-fill: #e40808#e40808;" textFill="#e40808" />
    </children>

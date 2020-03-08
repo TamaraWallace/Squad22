@@ -141,7 +141,7 @@ public class HomeScreenController implements Initializable {
 		
 		Scene addTaskScene = new Scene(pane);
 		
-		addTaskScene.getStylesheets().add(getClass().getResource("applicationADDTASK.css").toExternalForm());
+		addTaskScene.getStylesheets().add(getClass().getResource("AddTask.css").toExternalForm());
 		
 		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(addTaskScene);

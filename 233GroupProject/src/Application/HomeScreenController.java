@@ -1,8 +1,10 @@
 package Application;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.Task;
 import main.TaskCollection;
@@ -100,7 +103,7 @@ public class HomeScreenController implements Initializable {
 	}
 	
 	
-	public void viewAll() {
+	public void viewAll(ActionEvent event) throws IOException {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("DisplayTasks.fxml"));
@@ -115,7 +118,7 @@ public class HomeScreenController implements Initializable {
 	}
 
 
-	public void addTask() {
+	public void addTask(ActionEvent event) throws IOException {
 		//https://www.youtube.com/watch?v=LDVztNtJWOo 
 		
 		//https://stackoverflow.com/questions/34863425/javafx-scene-builder-how-switch-scene 

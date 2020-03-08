@@ -1,6 +1,7 @@
 package Application;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,15 +30,50 @@ public class HomeScreenController implements Initializable {
 	private Button addTask;
 	
 	@FXML 
-	private Label helloUser, currentTasksTitle, viewAllLabel;
+	private Label helloUser, currentTasksTitle;
 	
 	public HomeScreenController() {
 	}
 	
 	@Override 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		String name = GuiBasedApp.getUser().getUsrName();
+		String name = main.User.getUsrName();
 		helloUser.setText("Hello, " + name);
+		
+		TaskCollection tasks_object = GuiBasedApp.getTasks();
+		ArrayList<Task> tasks_list = tasks_object.getActiveTasks();
+		int list_size = tasks_list.size();
+		if (list_size==1) {
+			String name = tasks_list.get(0).getName();
+			this.mostRecentTask.setText(name);
+			
+			this.secondRecentTask.setText("Add Tasks!");
+			this.thirdRecentTask.setText("Add Tasks!");
+		}
+		else if(list_size==2) {
+			String name = tasks_list.get(0).getName();
+			this.mostRecentTask.setText(name);
+			
+			String name2 = tasks_list.get(1).getName();
+			this.secondRecentTask.setText(name2);
+			
+			this.thirdRecentTask.setText("Add Tasks!");
+		}
+		else if (list_size>=3) {
+			String name = tasks_list.get(0).getName();
+			this.mostRecentTask.setText(name);
+			
+			String name2 = tasks_list.get(1).getName();
+			this.secondRecentTask.setText(name2);
+			
+			String name3 = tasks_list.get(2).getName();
+			this.thirdRecentTask.setText(name3);
+		}
+		else if (list_size==0) {
+			this.mostRecentTask.setText("Add Tasks!");
+			this.secondRecentTask.setText("Add Tasks!");
+			this.thirdRecentTask.setText("Add Tasks!");
+		}
 		
 	}
 	

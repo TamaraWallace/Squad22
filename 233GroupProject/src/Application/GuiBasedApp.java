@@ -1,13 +1,20 @@
 package Application;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import main.TaskCollection;
 import main.TextBasedApp;
 import main.User;
@@ -37,6 +44,39 @@ public class GuiBasedApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		
 		try {
+				
+				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				
+				@Override
+				public void handle(WindowEvent event) {
+					//System.out.println("Event type: "+ event.getEventType().toString());
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					DialogPane dialogPane = alert.getDialogPane();
+								
+					dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
+					//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+					
+					dialogPane.setStyle("-fx-border-color: red;");
+					alert.setTitle("Close Program");
+					alert.setHeaderText(" Are you sure you want to close the program");
+					alert.setContentText("Press \"ok\" to close the program or \"cancel\" to return to program");
+				
+					Optional<ButtonType> choice =  alert.showAndWait();
+					
+					if (choice.get() == ButtonType.OK){
+						
+						if (!(tasks == null)) {	tasks.saveTasks("tasks.txt"); }
+						users.saveUsers("users.txt");
+						System.out.println("Session ended, see you soon!");
+						System.exit(0);
+					}
+					else {
+						event.consume();
+					}
+					
+					
+				}
+			} );
 			
 			GuiBasedApp.users = UserCollection.loadUsers("users.txt");
 			TextBasedApp.setUsers(users);

@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.HomeScreenController">
@@ -29,7 +28,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <RadioButton fx:id="mostRecentTask" mnemonicParsing="false" onAction="#mostRecentTask" prefHeight="91.0" prefWidth="269.0" text="Task 1 " textFill="#7fcebe">
+            <RadioButton fx:id="mostRecentTask" mnemonicParsing="false" onAction="#mostRecentTask" prefHeight="91.0" prefWidth="269.0" stylesheets="@HomeScreen.css" text="Task 1 " textFill="#7fcebe">
                <font>
                   <Font size="20.0" />
                </font>
@@ -46,15 +45,14 @@
             </RadioButton>
          </children>
       </VBox>
-      <Button fx:id="viewAll" layoutX="85.0" layoutY="549.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="100.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAll" layoutX="79.0" layoutY="543.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="100.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <Circle fill="#24a68c" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="138.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/bevel%20button%20.jpg" />
+               </image>
+            </ImageView>
          </graphic></Button>
-      <Label fx:id="viewAllLabel" layoutX="110.0" layoutY="592.0" text="View All" textAlignment="CENTER" textFill="#faf6f6">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
       <Button fx:id="profileButton" layoutX="41.0" layoutY="38.0" mnemonicParsing="false" onAction="#profileButton" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="67.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
@@ -70,6 +68,7 @@
                   <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/PlusIcon.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -5,8 +5,6 @@ import javafx.scene.text.*;
 import main.Task;
 import main.TextBasedApp;
 import javafx.scene.control.TextArea;
-import java.util.UUID;
-import java.time.LocalDate;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,12 +27,9 @@ public class TaskMenuController implements Initializable {
 	@FXML
 	private TextArea notesArea;
 	
-	
-	private LocalDate due = LocalDate.now();
-	
 	//NOTE: right now, this is just a default task, 
 	//but we need to integrate with select task somehow or add that to GUI
-	private Task selectedTask = new Task(UUID.randomUUID().toString(), "Test", "", false, due);
+	private static Task selectedTask;
 	
 	public TaskMenuController(){
 		
@@ -53,7 +48,12 @@ public class TaskMenuController implements Initializable {
 	
 	public void completeButton(ActionEvent event) throws IOException {
 		selectedTask.setCompleted(true);
-		TextBasedApp.completeTask(selectedTask);
+		
+		for(Task t : GuiBasedApp.getTasks().getActiveTasks()) {
+			if(t.getTaskID().equals(selectedTask.getTaskID())) {
+				t.setCompleted(true);
+			}
+		}
 		
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
@@ -111,7 +111,7 @@ public class TaskMenuController implements Initializable {
 		window.show();
 	}
 	
-	public void setSelectedTask(Task t) {
+	public static void setSelectedTask(Task t) {
 		selectedTask = t;
 	}
 

@@ -41,47 +41,47 @@
       </Text>
       
       <!-- Complete Button -->
-      <Button alignment="CENTER" layoutX="200.0" layoutY="328.0" mnemonicParsing="false" onAction="#completeButton" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
+      <Button alignment="CENTER" layoutX="190.0" layoutY="328.0" mnemonicParsing="false" onAction="#completeButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: &quot;#000b38&quot;;" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="63.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="126.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Checkmark.png" />
+                  <Image url="@../../images/CompleteBtn.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <!-- Edit Button -->
-      <Button alignment="CENTER" layoutX="199.0" layoutY="443.0" mnemonicParsing="false" onAction="#editButton" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
+      <Button alignment="CENTER" layoutX="213.0" layoutY="453.0" mnemonicParsing="false" onAction="#editButton" prefHeight="100.0" prefWidth="90.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="84.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../git/Taskilla-05-22/233GroupProject/images/Pen%20Icon.png" />
+                  <Image url="@../../images/Pen%20Icon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <!-- Delete Button -->
-      <Button alignment="CENTER" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="100.0" prefWidth="100.0" styleClass="deleteButton" stylesheets="@TaskMenu.css">
+      <Button alignment="CENTER" layoutX="211.0" layoutY="563.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="100.0" prefWidth="100.0" styleClass="deleteButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
             <ImageView fitHeight="86.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Cross%20Delete.png" />
+                  <Image url="@../../images/deleteIcon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <!-- Notes Area -->
       <TextArea fx:id="notesArea" layoutX="171.0" layoutY="251.0" prefHeight="61.0" prefWidth="225.0" text="place" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" styleClass="backButton">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: &quot;#000b38&quot;;" styleClass="backButton">
          <graphic>
             <ImageView fitHeight="61.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                <image>

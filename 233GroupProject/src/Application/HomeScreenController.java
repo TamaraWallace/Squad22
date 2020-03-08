@@ -88,10 +88,22 @@ public class HomeScreenController implements Initializable {
 	}
 	
 	
-	public void mostRecentTask() {
+	public void mostRecentTask(ActionEvent event) throws IOException {
 		//will implement these buttons once we can sort the tasks by date so that if you select a task
 		// it goes to a scene with the details of the task and a complete button at the bottom 
-				
+		//I know we can't sort things yet, but I added this just for the demo
+		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(0));
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
+		
+		Scene viewAllScene = new Scene(pane);
+		
+		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(viewAllScene);
+		window.show();
 	}
 	
 	public void secondRecentTask() {

@@ -24,6 +24,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Task;
+import main.TaskCollection;
 
 public class DisplayTasksController implements Initializable{
 	
@@ -35,6 +36,8 @@ public class DisplayTasksController implements Initializable{
 
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
+	
+	private ArrayList<Task> tasks = new ArrayList<Task>();
 	
 	/*
 	 * Create a static class for each cell in the lisView
@@ -76,7 +79,7 @@ public class DisplayTasksController implements Initializable{
 				
 				@Override
 				public void handle(ActionEvent event) {
-					deleteTask(event);
+					deleteTask(taskLbl.getText());
 				}
 
 				
@@ -110,11 +113,11 @@ public class DisplayTasksController implements Initializable{
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		System.out.println("intialize is runnin now");
 		
-		ArrayList<Task> tasks = GuiBasedApp.getTasks().getActiveTasks();
+		
+		TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", GuiBasedApp.getUserID());
 		
 		
-		
-		for (Task task : tasks) {
+		for (Task task : tasks.getActiveTasks()) {
 			
 			System.out.print("initialising the lstview: ");
 			System.out.println("task: "+task.toString());
@@ -126,7 +129,7 @@ public class DisplayTasksController implements Initializable{
 			lstTasks.add(display);
 			
 		}
-		lstViewTasks.setItems(lstTasks);
+		lstViewTasks.getItems().addAll(lstTasks);
 		
 		
 		
@@ -135,8 +138,8 @@ public class DisplayTasksController implements Initializable{
 		
 	}
 	
-	public static void deleteTask(ActionEvent event) {
-		
+	public static void deleteTask(String taskName) {
+		System.out.println(taskName);
 	}
 	
 	@FXML

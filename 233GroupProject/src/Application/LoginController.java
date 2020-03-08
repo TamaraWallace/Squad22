@@ -1,6 +1,8 @@
 package Application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
 import main.*;
@@ -8,6 +10,7 @@ import main.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -24,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController implements Initializable{
 	
 	private int attempts =0;
 	
@@ -47,13 +50,18 @@ public class LoginController {
 	@FXML
 	private Label lgnValidUsrLbl;
 	
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		lgnNameStyle = lgnName.getStyle();
+		
+	}
 		
 	@FXML
 	public void login(ActionEvent event) throws IOException {
 		
-		if (lgnNameStyle == null) {
-			lgnNameStyle = lgnName.getStyle();
-		}
+		
 		
 		String usrName = lgnName.getText();
 		
@@ -207,6 +215,8 @@ public class LoginController {
 		
 		//System.out.println("track mouse: "+ event.getEventType());
 	}
+
+	
 	
 	
 }

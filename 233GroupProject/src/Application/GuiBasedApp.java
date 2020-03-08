@@ -66,8 +66,7 @@ public class GuiBasedApp extends Application{
 					
 					if (choice.get() == ButtonType.OK){
 						
-						if (!(tasks == null)) {	tasks.saveTasks("tasks.txt"); }
-						users.saveUsers("users.txt");
+						Save();
 						System.out.println("Session ended, see you soon!");
 						System.exit(0);
 					}
@@ -118,6 +117,13 @@ public class GuiBasedApp extends Application{
 	}
 	
 	
+	public static void  Save() {
+		System.out.println("Saving...");
+		if (!(tasks == null)) {
+			tasks.saveTasks("tasks.txt"); 
+		}
+		users.saveUsers("users.txt");
+	}
 	
 	public static String getUserID() {
 		return userID;

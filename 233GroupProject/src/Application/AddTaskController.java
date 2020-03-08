@@ -67,6 +67,7 @@ public class AddTaskController  implements Initializable{
 				 System.out.println(task.toString());
 				 
 				 TaskCollection.addTask(task);
+				 GuiBasedApp.getTasks().addTask(task);
 				 tasks.display();
 				
 				// clearing out textfield boxes for name & notes 
@@ -95,6 +96,8 @@ public class AddTaskController  implements Initializable{
 		
 		@FXML
 		public void back(ActionEvent event) {
+			
+			GuiBasedApp.Save();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			

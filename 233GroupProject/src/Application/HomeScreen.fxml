@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/taskilla_logo.jpg" />
+            <Image url="@../../images/taskilla_logo.jpg" />
          </image>
       </ImageView>
       <Label fx:id="helloUser" layoutX="153.0" layoutY="224.0" prefHeight="53.0" prefWidth="195.0" text="Hello, User!" textAlignment="CENTER" textFill="#24a78d">
@@ -45,27 +45,27 @@
             </RadioButton>
          </children>
       </VBox>
-      <Button fx:id="viewAll" layoutX="79.0" layoutY="536.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="100.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAllbtn" layoutX="79.0" layoutY="536.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="100.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="138.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/bevel%20button%20.jpg" />
+                  <Image url="@../../images/bevel%20button%20.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="profileButton" layoutX="41.0" layoutY="38.0" mnemonicParsing="false" onAction="#profileButton" style="-fx-background-color: #000B38;">
+      <Button fx:id="profileButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="67.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backBtn" fitHeight="55.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/Profile_trans.png" />
+                  <Image url="@../../images/Back.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="addTask" layoutX="290.0" layoutY="553.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #000B38;">
+      <Button fx:id="addTaskBtn" layoutX="290.0" layoutY="553.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView  fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/PlusIcon.png" />
+                  <Image url="@../../images/PlusIcon.png" />
                </image>
             </ImageView>
          </graphic>

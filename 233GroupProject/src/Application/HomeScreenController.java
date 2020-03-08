@@ -31,13 +31,13 @@ public class HomeScreenController implements Initializable {
 	private RadioButton thirdRecentTask;
 	
 	@FXML
-	private Button viewAll;
+	private Button viewAllbtn;
 	
 	@FXML
 	private Button profileButton;
 	
 	@FXML
-	private Button addTask;
+	private Button addTaskBtn;
 	
 	@FXML 
 	private Label helloUser, currentTasksTitle;
@@ -103,6 +103,7 @@ public class HomeScreenController implements Initializable {
 	}
 	
 	
+	@FXML
 	public void viewAll(ActionEvent event) throws IOException {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
@@ -118,6 +119,7 @@ public class HomeScreenController implements Initializable {
 	}
 
 
+	@FXML
 	public void addTask(ActionEvent event) throws IOException {
 		//https://www.youtube.com/watch?v=LDVztNtJWOo 
 		

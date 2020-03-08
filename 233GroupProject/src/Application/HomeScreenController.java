@@ -116,7 +116,7 @@ public class HomeScreenController implements Initializable {
 		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(viewAllScene);
 		window.show();
-	}
+		}
 
 
 	@FXML

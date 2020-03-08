@@ -54,8 +54,9 @@ public class DisplayTasksController implements Initializable{
 			
 			delete.setFitWidth(30);
 			delete.setFitHeight(35);
+			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
 			
-			task.setStyle("-fx-background-color: #000B38; ");
+			task.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
 			task.setTextFill(Color.web("#24a78d"));
 			close.setStyle("-fx-background-color: #000B38;");
 			close.setGraphic(delete);
@@ -88,6 +89,8 @@ public class DisplayTasksController implements Initializable{
 				
 				task.setText(name);
 				setGraphic(hb);
+			}else {
+				task.setText("No More Tasks");
 			}
 		}
 	}
@@ -95,6 +98,8 @@ public class DisplayTasksController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		lstViewTasks.setStyle("-fx-background-color: #000B38;");
+		System.out.println("intialize is runnin now");
 		
 		ArrayList<Task> tasks = GuiBasedApp.getTasks().getActiveTasks();
 		
@@ -118,7 +123,7 @@ public class DisplayTasksController implements Initializable{
 		
 		lstViewTasks.setCellFactory(param -> new Cell());
 		
-		lstViewTasks.setStyle("-fx-background-color: #000B38;");
+		
 	}
 	
 	public static void deleteTask(ActionEvent event) {

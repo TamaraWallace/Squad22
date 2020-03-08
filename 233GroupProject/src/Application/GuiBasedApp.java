@@ -45,7 +45,7 @@ public class GuiBasedApp extends Application{
 		
 		try {
 			
-				System.out.println(UUID.randomUUID());
+				//System.out.println(UUID.randomUUID());
 				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				@Override
@@ -98,7 +98,7 @@ public class GuiBasedApp extends Application{
 			
 			//String path = GuiBasedApp.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 			
-			Image takilla_icon = new Image("file:///C:\\Users\\karim\\git\\Squad22\\233GroupProject\\images\\taskilla_logo.jpg");
+			Image takilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
 			
 			window.setScene(loginScene);
 			window.setTitle("Welcome to Taskilla ");

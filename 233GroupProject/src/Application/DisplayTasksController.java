@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -21,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import main.Task;
 
 public class DisplayTasksController implements Initializable{
@@ -28,6 +30,8 @@ public class DisplayTasksController implements Initializable{
 	@FXML
 	private ListView<String> lstViewTasks;
 	
+	@FXML
+	private Button backBtn;
 
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
@@ -40,7 +44,7 @@ public class DisplayTasksController implements Initializable{
 		HBox hb = new HBox();
 		
 		Button close = new Button(); 
-		Label task = new Label("");
+		Label taskLbl = new Label("");
 		Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
 		Pane pane = new Pane();
 		ImageView delete = new ImageView(delIcon);
@@ -56,17 +60,19 @@ public class DisplayTasksController implements Initializable{
 			delete.setFitHeight(35);
 			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
 			
-			task.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
-			task.setTextFill(Color.web("#24a78d"));
+			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
+			taskLbl.setTextFill(Color.web("#24a78d"));
 			close.setStyle("-fx-background-color: #000B38;");
 			close.setGraphic(delete);
 
 			hb.setStyle("-fx-background-color: #000B38;");
 			// adding all the components in the sequence in which we want them to appear
-			hb.getChildren().addAll(task,pane,close);
+			hb.getChildren().addAll(taskLbl,pane,close);
 			HBox.setHgrow(pane, Priority.ALWAYS);
 			
 			close.setOnAction(new EventHandler<ActionEvent>() {
+				
+				
 				
 				@Override
 				public void handle(ActionEvent event) {
@@ -87,10 +93,13 @@ public class DisplayTasksController implements Initializable{
 			
 			if (name != null && !empty) {
 				
-				task.setText(name);
+				taskLbl.setText(name);
 				setGraphic(hb);
+				
 			}else {
-				task.setText("No More Tasks");
+				taskLbl.setText("No More Tasks");
+				close.setGraphic(null);
+				setGraphic(hb);
 			}
 		}
 	}
@@ -129,6 +138,16 @@ public class DisplayTasksController implements Initializable{
 	public static void deleteTask(ActionEvent event) {
 		
 	}
+	
+	@FXML
+	public void back(ActionEvent event) {
+				
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		window.setScene(GuiBasedApp.getPrevScene());
+		
+	}
+	
 	
 	
 }

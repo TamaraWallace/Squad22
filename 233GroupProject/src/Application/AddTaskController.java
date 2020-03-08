@@ -55,7 +55,7 @@ public class AddTaskController  implements Initializable{
 				
 				// if everything is good, make a task: 
 				if ( taskDate != null && !taskName.isBlank()) {
-				UUID userID = GuiBasedApp.getUserID();
+				String userID = GuiBasedApp.getUserID();
 				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
 				 System.out.println(task.toString());
 				 

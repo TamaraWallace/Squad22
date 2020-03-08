@@ -89,7 +89,7 @@ public class UserCollection {
 	        		users.remove(temp);
 	        	}
 	        } */
-	        for(User u: users) {
+	        for(User u: this.users) {
 	        	bw.write(u.toSaveString(u));
 	        }
 	        bw.close();
@@ -177,9 +177,9 @@ public class UserCollection {
 		}
 	}
 	
-	public User getUser(UUID userID) {
+	public User getUser(String userID) {
 		for (User user : users) {
-			if (user.getUsrID().compareTo(userID) == 0) {
+			if (userID == user.getUsrID()) {
 				return user;
 			}
 			else {

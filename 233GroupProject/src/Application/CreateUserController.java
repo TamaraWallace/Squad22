@@ -140,7 +140,7 @@ public class CreateUserController {
 			newUsrConfPwd.setStyle(newUsrConfPwdStyle);
 			newUsrPwd.setStyle(newUsrPwdStyle);
 			
-			UUID userID = TextBasedApp.createNewUser(name, email, password1, password2);
+			String userID = TextBasedApp.createNewUser(name, email, password1, password2);
 			
 			System.out.println("Created");
 		}

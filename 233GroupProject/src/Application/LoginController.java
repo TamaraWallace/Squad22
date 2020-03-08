@@ -79,7 +79,7 @@ public class LoginController {
 		if (attempts <3) {
 			
 			//System.out.println("login text based");
-			UUID userID = TextBasedApp.login(usrName,usrPassword);
+			String userID = TextBasedApp.login(usrName,usrPassword);
 			System.out.println("userID: "+userID);
 			if (userID == null) {
 				attempts ++;

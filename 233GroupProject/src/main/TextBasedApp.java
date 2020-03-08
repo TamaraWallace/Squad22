@@ -14,7 +14,7 @@ public class TextBasedApp {
 	
 
 
-	private static UUID userID;
+	private static String userID;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	private static Scanner keyboard = new Scanner(System.in);
@@ -139,7 +139,7 @@ public class TextBasedApp {
 	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
 	//Parameters:
 	//Return Value: UUID userID
-	private static UUID login() {
+	private static String login() {
 		Console cons = System.console();
 		
 		User usrLogin;
@@ -252,7 +252,7 @@ public class TextBasedApp {
 	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
 	//Parameters:
 	//Return Value: UUID userID
-	public static UUID login(String usrName, String password) {
+	public static String login(String usrName, String password) {
 		
 		User usrLogin;
 		boolean validUsrName = false;		
@@ -288,7 +288,7 @@ public class TextBasedApp {
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
 	//Return Value: user's info
-	private static UUID createNewUser() {
+	private static String createNewUser() {
 		Console cons = System.console();
 		
 		boolean validUsrName = false;
@@ -364,7 +364,7 @@ public class TextBasedApp {
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
 	//Parameters:
 	//Return Value: user's info
-	public static UUID createNewUser(String name, String email, String password1, String password2) {
+	public static String createNewUser(String name, String email, String password1, String password2) {
 
 		boolean validUsrName = false;
 
@@ -620,7 +620,7 @@ public class TextBasedApp {
 		}
 		return passStrong;
 	}
-	public static void setUserID(UUID userID) {
+	public static void setUserID(String userID) {
 		TextBasedApp.userID = userID;
 	}
 	public static void setUsers(UserCollection users) {

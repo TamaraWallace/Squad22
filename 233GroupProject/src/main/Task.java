@@ -6,8 +6,8 @@ import java.util.UUID;
 public class Task {
 
 	
-	private UUID taskID; // to identify the task
-	private UUID userID;	// to identify the user
+	private String taskID; // to identify the task
+	private String userID;	// to identify the user
 	private String name; // name of the task
 	private String notes; // the description of the task
 	private boolean completed; // if the task has been marked complete by the user or not 
@@ -23,8 +23,8 @@ public class Task {
 //	Return: void
 //	Functionality: class constructor
 //	
-	public Task(UUID userID, String name, String notes, boolean completed, LocalDate dueDate) {
-		this.taskID = UUID.randomUUID();
+	public Task(String userID, String name, String notes, boolean completed, LocalDate dueDate) {
+		this.taskID = UUID.randomUUID().toString();
 		this.userID = userID;
 		this.name = name;
 		this.notes = notes;
@@ -58,8 +58,8 @@ public class Task {
 	public static Task fromString(String s) {
 		Task temp = new Task();
 		String[] vals = s.split(",");
-		temp.taskID = UUID.fromString(vals[0]);
-		temp.userID = UUID.fromString(vals[1]);
+		temp.taskID = (vals[0]);
+		temp.userID = (vals[1]);
 		temp.name = vals[2];
 		temp.notes = vals[3];
 		temp.completed = Boolean.valueOf(vals[4]);
@@ -93,11 +93,11 @@ public class Task {
 	
 	// setters and getters 
 
-	public UUID getTaskID() {
+	public String getTaskID() {
 		return this.taskID;
 	}
 	
-	public UUID getUserID() {
+	public String getUserID() {
 		return this.userID;
 	}
 	
@@ -114,11 +114,11 @@ public class Task {
 	}
 
 	
-	public void setTaskID(UUID taskID2) {
+	public void setTaskID(String taskID2) {
 		this.taskID = taskID2;
 	}
 	
-	public void setUserID(UUID userID2) {
+	public void setUserID(String userID2) {
 		this.userID = userID2;
 	}
 	

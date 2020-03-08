@@ -22,7 +22,7 @@ public class TaskMenuController {
 	
 	//NOTE: right now, this is just a default task, 
 	//but we need to integrate with select task somehow or add that to GUI
-	Task selectedTask = new Task(UUID.randomUUID(), "Test", "", false, due);
+	Task selectedTask = new Task(UUID.randomUUID().toString(), "Test", "", false, due);
 	
 	public TaskMenuController() {
 		

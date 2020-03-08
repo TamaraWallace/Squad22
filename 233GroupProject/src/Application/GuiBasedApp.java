@@ -22,7 +22,7 @@ import main.UserCollection;
 
 public class GuiBasedApp extends Application{
 	
-	private static UUID userID;
+	private static String userID;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	private static Stage window;
@@ -44,7 +44,8 @@ public class GuiBasedApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		
 		try {
-				
+			
+				System.out.println(UUID.randomUUID());
 				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				@Override
@@ -118,10 +119,10 @@ public class GuiBasedApp extends Application{
 	
 	
 	
-	public static UUID getUserID() {
+	public static String getUserID() {
 		return userID;
 	}
-	public static void setUserID(UUID userID) {
+	public static void setUserID(String userID) {
 		GuiBasedApp.userID = userID;
 		TextBasedApp.setUserID(userID);
 	}

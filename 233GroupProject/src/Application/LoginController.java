@@ -137,7 +137,7 @@ public class LoginController {
 			System.out.println("Logged In: ");
 			
 			GuiBasedApp.getTasks().display();
-			
+			System.out.println("Displayed user tasks above ^^^^");
 			System.out.println();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

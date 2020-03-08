@@ -27,6 +27,7 @@ public class DisplayTasksController implements Initializable{
 	
 	@FXML
 	private ListView<String> lstViewTasks;
+	
 
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
@@ -48,8 +49,7 @@ public class DisplayTasksController implements Initializable{
 		
 		public Cell() {
 			
-			super();
-			
+			super();		
 			
 			
 			delete.setFitWidth(30);
@@ -98,8 +98,11 @@ public class DisplayTasksController implements Initializable{
 		
 		ArrayList<Task> tasks = GuiBasedApp.getTasks().getActiveTasks();
 		
+		
+		
 		for (Task task : tasks) {
 			
+			System.out.print("initialising the lstview: ");
 			System.out.println("task: "+task.toString());
 		
 			String display;

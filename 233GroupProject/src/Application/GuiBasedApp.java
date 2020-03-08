@@ -21,6 +21,15 @@ public class GuiBasedApp extends Application{
 	private static Stage window;
 	private static Scene prevScene;
 	
+	private static User user;
+	
+	public static User getUser() {
+		return user;
+	}
+	public static void setUser(User user) {
+		GuiBasedApp.user = user;
+	}
+	
 	public static void main(String args) {
 		launch(args);
 	}

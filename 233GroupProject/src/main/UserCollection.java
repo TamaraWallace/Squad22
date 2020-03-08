@@ -176,4 +176,16 @@ public class UserCollection {
 			System.out.println(u.toString());
 		}
 	}
+	
+	public User getUser(UUID userID) {
+		for (User user : users) {
+			if (userID == user.getUsrID()) {
+				return user;
+			}
+			else {
+				return null;
+			}
+		}
+		return null;
+	}
 }

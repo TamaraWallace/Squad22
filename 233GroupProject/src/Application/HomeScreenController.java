@@ -76,7 +76,6 @@ public class HomeScreenController implements Initializable {
 		//stage.setScene(scene);
 	}
 	
-	
 	//can add later for demo 3 
 	public void profileButton() {
 		

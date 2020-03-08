@@ -25,7 +25,7 @@ public class User {
 		this.usrName = newUsrName;
 		this.usrPassword = newUsrPassword;
 		this.usrEmail = newUsrEmail;
-		this.usrID = UUID.randomUUID();
+		this.usrID = UUID.nameUUIDFromBytes(newUsrName.getBytes());
 	}
 	
 	public User(User u) {

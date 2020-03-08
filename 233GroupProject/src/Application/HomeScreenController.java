@@ -4,10 +4,17 @@ import java.util.ResourceBundle;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import main.Task;
+import main.TaskCollection;
 
 public class HomeScreenController implements Initializable {
 	
@@ -37,8 +44,8 @@ public class HomeScreenController implements Initializable {
 	
 	@Override 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		String name = main.User.getUsrName();
-		helloUser.setText("Hello, " + name);
+		String usrName = GuiBasedApp.getUser().getUsrName();
+		helloUser.setText("Hello, " + usrName);
 		
 		TaskCollection tasks_object = GuiBasedApp.getTasks();
 		ArrayList<Task> tasks_list = tasks_object.getActiveTasks();

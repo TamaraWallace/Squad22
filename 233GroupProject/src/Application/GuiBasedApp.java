@@ -28,6 +28,14 @@ public class GuiBasedApp extends Application{
 	private static Stage window;
 	private static Scene prevScene;
 	
+	private static String lgnUserName;
+	
+	public static String getLgnUserName() {
+		return lgnUserName;
+	}
+	public static void setLgnUserName(String lgnUserName) {
+		GuiBasedApp.lgnUserName = lgnUserName;
+	}
 	private static User user;
 	
 	public static User getUser() {

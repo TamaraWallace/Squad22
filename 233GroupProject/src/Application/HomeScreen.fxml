@@ -16,7 +16,7 @@
             <Image url="@../../images/taskilla_logo.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="helloUser" layoutX="153.0" layoutY="224.0" prefHeight="53.0" prefWidth="195.0" text="Hello, User!" textAlignment="CENTER" textFill="#24a78d">
+      <Label fx:id="helloUser" alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="224.0" prefHeight="55.0" prefWidth="259.0" text="Hello, User!" textAlignment="CENTER" textFill="#24a78d" wrapText="true">
          <font>
             <Font size="36.0" />
          </font>
@@ -63,7 +63,7 @@
          </graphic></Button>
       <Button fx:id="addTaskBtn" layoutX="290.0" layoutY="553.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView  fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/PlusIcon.png" />
                </image>

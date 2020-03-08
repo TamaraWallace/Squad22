@@ -50,6 +50,7 @@ public class LoginController implements Initializable{
 	@FXML
 	private Label lgnValidUsrLbl;
 	
+	private String lgnUsrName = null;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -72,9 +73,8 @@ public class LoginController implements Initializable{
 		//System.out.println("Trying to Log you in:");
 		
 		if (GuiBasedApp.getUsers().findUser(usrName) == null) {
-			String style = lgnName.getStyle();
-			System.out.println(style);
-			lgnName.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
+			
+			lgnName.setStyle(lgnNameStyle + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
 			attempts = 0;
 			
 			lgnValidUsrLbl.setText("Not a valid Username");
@@ -96,14 +96,18 @@ public class LoginController implements Initializable{
 				lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
 				
 				lgnValidPassLbl.setText("Not a valid Password");
+				
 			} else {
 				attempts = 0;
 				User user = GuiBasedApp.getUsers().getUser(userID);
+				
 				GuiBasedApp.setUser(user);				
 				GuiBasedApp.setUserID(userID);
 				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
 				
 				GuiBasedApp.setTasks(tasks);
+				
+				GuiBasedApp.setLgnUserName(usrName);
 				
 				loggedIn = true;
 			}
@@ -120,6 +124,7 @@ public class LoginController implements Initializable{
 		
 			alert.showAndWait();
 			attempts++;
+			
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			DialogPane dialogPane = alert.getDialogPane();

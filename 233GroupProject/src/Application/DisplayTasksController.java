@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -33,6 +34,9 @@ public class DisplayTasksController implements Initializable{
 	
 	@FXML
 	private Button backBtn;
+	
+	@FXML
+	private Button completeBtn;
 
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
@@ -99,10 +103,6 @@ public class DisplayTasksController implements Initializable{
 				taskLbl.setText(name);
 				setGraphic(hb);
 				
-			}else {
-				taskLbl.setText("No More Tasks");
-				close.setGraphic(null);
-				setGraphic(hb);
 			}
 		}
 	}
@@ -135,11 +135,15 @@ public class DisplayTasksController implements Initializable{
 		
 		lstViewTasks.setCellFactory(param -> new Cell());
 		
+		lstViewTasks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
 		
 	}
 	
 	public static void deleteTask(String taskName) {
+		System.out.println("clsoe button pressed:  ");
 		System.out.println(taskName);
+		
 	}
 	
 	@FXML

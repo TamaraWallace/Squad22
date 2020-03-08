@@ -79,26 +79,37 @@ public class HomeScreenController implements Initializable {
 	
 	
 	public void mostRecentTask() {
-		//task1.setCompleted(true);
+		//will implement these buttons once we can sort the tasks by date so that if you select a task
+		// it goes to a scene with the details of the task and a complete button at the bottom 
+				
 	}
 	
 	public void secondRecentTask() {
-		//task2.setCompleted(true);
+		
 	}
 	
 	public void thirdRecentTask() {
-		//task3.setCompleted(true);
+		
 	}
 	
 	
 	public void viewAll() {
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("DisplayTasks.fxml"));
+		
+		Scene viewAllScene = new Scene(pane);
+		
+		viewAllScene.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(viewAllScene);
+		window.show();
 	}
 
 
 	public void addTask() {
 		//https://www.youtube.com/watch?v=LDVztNtJWOo 
-		
 		
 		//https://stackoverflow.com/questions/34863425/javafx-scene-builder-how-switch-scene 
 		//Here's how you get those references:
@@ -111,6 +122,19 @@ public class HomeScreenController implements Initializable {
 		//Stage stage = (Stage) btnSignIn.getScene().getWindow();
 		//Scene scene = new Scene(loader.getRoot());
 		//stage.setScene(scene);
+		
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		Pane pane = (Pane) FXMLLoader.load(getClass().getResource("AddTask.fxml"));
+		
+		Scene addTaskScene = new Scene(pane);
+		
+		addTaskScene.getStylesheets().add(getClass().getResource("applicationADDTASK.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(addTaskScene);
+		window.show();
+		
 	}
 	
 	//can add later for demo 3 

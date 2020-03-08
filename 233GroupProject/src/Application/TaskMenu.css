@@ -30,3 +30,7 @@
 	-fx-border-radius: 60;
 	-fx-background-color: "#000b38";
 }
+
+.backButton {
+	-fx-background-color: "#000b38";
+}

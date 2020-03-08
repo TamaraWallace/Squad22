@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TaskMenuController">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.TaskMenuController">
    <children>
    	  <!-- Logo -->
       <ImageView fitHeight="106.0" fitWidth="157.0" layoutX="172.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
@@ -41,7 +41,7 @@
       </Text>
       
       <!-- Complete Button -->
-      <Button fx:id="completeButton" alignment="CENTER" layoutX="200.0" layoutY="328.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css" onAction="#completeButton">
+      <Button alignment="CENTER" layoutX="200.0" layoutY="328.0" mnemonicParsing="false" onAction="#completeButton" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
@@ -54,7 +54,7 @@
          </graphic>
       </Button>
       <!-- Edit Button -->
-      <Button fx:id="editButton" alignment="CENTER" layoutX="199.0" layoutY="443.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css" onAction="#editButton">
+      <Button alignment="CENTER" layoutX="199.0" layoutY="443.0" mnemonicParsing="false" onAction="#editButton" prefHeight="100.0" prefWidth="100.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
@@ -67,7 +67,7 @@
          </graphic>
       </Button>
       <!-- Delete Button -->
-      <Button fx:id="delteButton" alignment="CENTER" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="deleteButton" stylesheets="@TaskMenu.css" onAction="#deleteButton">
+      <Button alignment="CENTER" layoutX="200.0" layoutY="560.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="100.0" prefWidth="100.0" styleClass="deleteButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
@@ -81,5 +81,14 @@
       </Button>
       <!-- Notes Area -->
       <TextArea fx:id="notesArea" layoutX="171.0" layoutY="251.0" prefHeight="61.0" prefWidth="225.0" text="place" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" styleClass="backButton">
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class User {
 
-	private static String usrID; // unique Id for each user
+	private String usrID; // unique Id for each user
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
 	private String usrEmail; // user's email

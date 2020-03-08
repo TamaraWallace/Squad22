@@ -89,8 +89,8 @@ public class UserCollection {
 	        		users.remove(temp);
 	        	}
 	        } */
-	        for(User u: this.users) {
-	        	bw.write(u.toSaveString());
+	        for(User u: users) {
+	        	bw.write(u.toSaveString(u));
 	        }
 	        bw.close();
 		} catch (IOException io) {

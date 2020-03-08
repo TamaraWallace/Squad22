@@ -46,11 +46,11 @@ public class User {
 	}
 	
 	//
-	public String toSaveString() {
-		return usrID.toString()+ ","
-				+ usrName + ","
-				+ usrPassword + ","
-				+ usrEmail + "\n";
+	public String toSaveString(User u) {
+		return u.usrID.toString()+ ","
+				+ u.usrName + ","
+				+ u.usrPassword + ","
+				+ u.usrEmail + "\n";
 	}
 	
 	public static User fromString(String s) {
@@ -100,7 +100,7 @@ public class User {
 		return usrID;
 	}
 	private User getUser(UUID userId) {
-		if (usrID == userId) {
+		if (usrID.compareTo(userId) == 0) {
 			return new User(this);
 		}else {
 			return null;

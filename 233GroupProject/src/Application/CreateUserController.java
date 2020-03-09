@@ -1,10 +1,13 @@
 package Application;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
@@ -12,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.TaskCollection;
 import main.TextBasedApp;
 import main.User;
 
@@ -67,7 +72,7 @@ public class CreateUserController {
 	
 	
 	@FXML
-	public void createUsr(ActionEvent event) {
+	public void createUsr(ActionEvent event) throws IOException {
 		
 		String name = newUsrName.getText();
 		String email = usrEmail.getText();
@@ -142,7 +147,32 @@ public class CreateUserController {
 			
 			String userID = TextBasedApp.createNewUser(name, email, password1, password2);
 			
+			User user = GuiBasedApp.getUsers().getUser(userID);
+			
+			GuiBasedApp.setUser(user);				
+			GuiBasedApp.setUserID(userID);
+			TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
+			
+			GuiBasedApp.setTasks(tasks);
+			
+			GuiBasedApp.setLgnUserName(name);
+			
 			System.out.println("Created");
+			
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			
+			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+			
+			Scene HomeScreenScene = new Scene(pane);
+			
+			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
+			
+			GuiBasedApp.setPrevScene(window.getScene());
+			window.hide();
+			window.setScene(HomeScreenScene);
+			System.out.println("changed scenes");
+			window.show();
+			System.out.println("showed");
 		}
 		
 					

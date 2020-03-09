@@ -104,6 +104,14 @@ public class LoginController implements Initializable{
 			alert.setContentText("Last attempt or the program will close");
 			alert.showAndWait();
 		} else if (!loggedIn && attempts > 3) {
+			attempts++;
+			
+		}else {
+			
+			String userID = TextBasedApp.login(usrName,usrPassword);
+			System.out.println("userID: "+userID);
+			
+			if (userID == null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			DialogPane dialogPane = alert.getDialogPane();	
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
@@ -115,6 +123,19 @@ public class LoginController implements Initializable{
 			//Stage window = (Stage) (dialogPane.getScene().getWindow());
 			alert.showAndWait();
 			System.exit(0);
+			}else {
+				attempts = 0;
+				User user = GuiBasedApp.getUsers().getUser(userID);
+				
+				GuiBasedApp.setUser(user);
+				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
+				
+				GuiBasedApp.setTasks(tasks);
+				
+				GuiBasedApp.setLgnUserName(usrName);
+				
+				loggedIn = true;
+			}
 		}
 		
 		if (loggedIn) {

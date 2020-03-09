@@ -65,6 +65,7 @@ public class AddTaskController  implements Initializable{
 				// clear out the date picker as it doesn't do this automatically 
 				date.setValue(null);
 				
+				// GUI set up code to show on the screen 
 				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				
 				AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
@@ -80,6 +81,7 @@ public class AddTaskController  implements Initializable{
 			}
 		}
 
+		// do not remove this as it will throw an error in the class !!
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -88,6 +90,7 @@ public class AddTaskController  implements Initializable{
 	
 		}
 		
+		// back button 
 		@FXML
 		public void back(ActionEvent event) {
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -8,6 +8,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.AddTaskController">
    <children>
@@ -45,11 +47,6 @@
             <Image url="@../../images/Pen%20Icon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="294.0" layoutX="110.0" layoutY="204.0">
-         <image>
-            <Image url="@../../images/Title.png" />
-         </image>
-      </ImageView>
       <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.95" prefHeight="39.0" prefWidth="75.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
@@ -60,5 +57,10 @@
          </graphic></Button>
       <Label fx:id="nameLabel" layoutX="152.0" layoutY="357.0" style="-fx-text-fill: #e40808#e40808;" textFill="#e40808" />
       <Label fx:id="dateLabel" layoutX="152.0" layoutY="502.0" style="-fx-text-fill: #e40808#e40808;" textFill="#e40808" />
+      <Text fill="#24a78d" layoutX="139.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD TASK">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

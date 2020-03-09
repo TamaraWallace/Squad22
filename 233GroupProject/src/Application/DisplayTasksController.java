@@ -114,7 +114,7 @@ public class DisplayTasksController implements Initializable{
 		System.out.println("intialize is runnin now");
 		
 		
-		TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", GuiBasedApp.getUserID());
+		TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", GuiBasedApp.getUser().getUsrID());
 		
 		
 		for (Task task : tasks.getActiveTasks()) {

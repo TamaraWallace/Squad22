@@ -55,6 +55,8 @@ public class DisplayTasksController implements Initializable{
 		Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
 		Pane pane = new Pane();
 		ImageView delete = new ImageView(delIcon);
+
+		private String taskId;
 		
 		
 		
@@ -66,6 +68,8 @@ public class DisplayTasksController implements Initializable{
 			delete.setFitWidth(30);
 			delete.setFitHeight(35);
 			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
+			
+			taskId = "";
 			
 			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
 			taskLbl.setTextFill(Color.web("#24a78d"));
@@ -83,13 +87,17 @@ public class DisplayTasksController implements Initializable{
 				
 				@Override
 				public void handle(ActionEvent event) {
-					deleteTask(taskLbl.getText());
+					
+					getListView().getItems().remove(getItem());
+					deleteTask(taskId,taskLbl.getText());
 				}
 
 				
 					
 				
 			});
+			
+			
 		}
 		
 		@Override
@@ -99,8 +107,13 @@ public class DisplayTasksController implements Initializable{
 			setGraphic(null);
 			
 			if (name != null && !empty) {
-				
-				taskLbl.setText(name);
+				String[] task = name.split(",");
+				taskId = task[0];
+				String text = "";
+				for (int i = 1; i < task.length; i++) {
+					text += task[i];
+				}
+				taskLbl.setText(text);
 				setGraphic(hb);
 				
 			}
@@ -123,8 +136,9 @@ public class DisplayTasksController implements Initializable{
 			System.out.println("task: "+task.toString());
 		
 			String display;
+			String taskId = task.getTaskID();
 			
-			display = "Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
 			
 			lstTasks.add(display);
 			
@@ -140,9 +154,10 @@ public class DisplayTasksController implements Initializable{
 		
 	}
 	
-	public static void deleteTask(String taskName) {
-		System.out.println("clsoe button pressed:  ");
-		System.out.println(taskName);
+	public static void deleteTask(String taskId, String taskName) {
+		
+		
+		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
 		
 	}
 	

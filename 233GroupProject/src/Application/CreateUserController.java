@@ -72,12 +72,14 @@ public class CreateUserController {
 		String email = usrEmail.getText();
 		String password1 = newUsrPwd.getText();
 		String password2 = newUsrConfPwd.getText();
-
-		// TODO more robust username checking.
+		
+		boolean nameIsUnique = (GuiBasedApp.getUsers().findUser(name) == null);
+		
+		// TODO more robust username checking.	
 		if (name.isEmpty()){
 			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 			newValidUsrLbl.setText("Username can't be empty");
-		} else if (!(GuiBasedApp.getUsers().findUser(name) == null)) {
+		} else if (!nameIsUnique) {
 			//newUsrNameStyle = newUsrName.getStyle();
 			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 			newValidUsrLbl.setText("Username already exists!");
@@ -106,26 +108,26 @@ public class CreateUserController {
 		}
 		
 		
-		if (!password1.isEmpty() && password1.equals(password2)){
+		if (!password1.isEmpty() && password1.equals(password2) && nameIsUnique){
 			newUsrConfPwd.setStyle(newUsrConfPwdStyle);
 			newUsrPwd.setStyle(newUsrPwdStyle);
+			GuiBasedApp.newUser(new User(name, password1, email));
 			
-			GuiBasedApp.createNewUser(name, password1, email);
+			System.out.println(name + " has created a new account");
+			System.out.println(GuiBasedApp.getUser().toString());
 			
-			System.out.println(name + " has successfully logged in.");
-			
-				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				
-				AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 				
-				Scene HomeScreenScene = new Scene(pane);
+			Scene HomeScreenScene = new Scene(pane);
 				
-				HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
+			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
 				
-				GuiBasedApp.setPrevScene(window.getScene());
-				window.hide();
-				window.setScene(HomeScreenScene);
-				window.show();
+			GuiBasedApp.setPrevScene(window.getScene());
+			window.hide();
+			window.setScene(HomeScreenScene);
+			window.show();
 		}
 	}
 	 

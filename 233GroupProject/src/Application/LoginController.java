@@ -87,9 +87,7 @@ public class LoginController implements Initializable{
 		} else {
 			attempts = 0;
 			System.out.println(u.toString());
-			GuiBasedApp.setUser(u);			
-			TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", u.getUsrID());
-			GuiBasedApp.setTasks(tasks);
+			GuiBasedApp.loginUser(u);
 			
 			loggedIn = true;
 		}
@@ -119,6 +117,7 @@ public class LoginController implements Initializable{
 		
 		if (loggedIn) {
 			System.out.println(u.getUsrName() + " has successfully logged in.");
+			System.out.println(u.toString());
 			GuiBasedApp.getTasks().display();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

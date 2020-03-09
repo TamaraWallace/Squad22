@@ -21,7 +21,7 @@ public class TaskCollection {
 	// Parameters: fname (the name of the file to load tasks from) and userID (the id of the user whose tasks are being loaded)
 	// Return: a TaskCollection object
 	// Functionality: load a file containing all tasks, save all tasks to current arraylist of tasks, save users tasks to new collection and return object
-	public static TaskCollection loadUsrTasks(String fname, String userID) {
+	public static TaskCollection loadUsrTasks(String fname, UUID userID) {
 		TaskCollection usersTasks = new TaskCollection();
 		File f = new File(fname);
 		if(!(f.exists())) {
@@ -37,7 +37,7 @@ public class TaskCollection {
 				lines.close();
 				br.close();
 				for(String taskSaveString : taskList) {
-					if ((taskSaveString.split(",")[1]).compareTo(userID) == 0) {
+					if (UUID.fromString(taskSaveString.split(",")[1]).compareTo(userID) == 0) {
 						Task next = Task.fromString(taskSaveString);
 						usersTasks.tasks.add(next);
 					}
@@ -67,7 +67,7 @@ public class TaskCollection {
             FileWriter bw = new FileWriter(fname);
             
             for (String s: taskList) {
-            	String tempID = (s.split(",")[0]);
+            	UUID tempID = UUID.fromString(s.split(",")[0]);
             	Task temp = getTaskByID(tempID);
             	if (temp == null) {
             		bw.write(s + "\n");
@@ -98,7 +98,7 @@ public class TaskCollection {
 	// Parameters: key (key of the task to retrieve)
 	// Return: the task requested
 	// Functionality: given a task key, return a task from a task collection
-	public Task getTaskByID(String uuid) {
+	public Task getTaskByID(UUID uuid) {
 		Task temp = null;
 		for (Task t: tasks) {
 			if (t.getTaskID().compareTo(uuid) == 0) temp = t;
@@ -110,7 +110,7 @@ public class TaskCollection {
 	// Parameters: name, notes and date (all the respective fields for a task)
 	// Return: void
 	// Functionality: creates a new task and adds it to the tasks collection
-	public static void addTask(Task task) {
+	public void addTask(Task task) {
 		tasks.add(task);
 	}
 	

@@ -168,7 +168,7 @@ public class UserCollection {
 		}
 	}
 	
-	public User getUser(String userID) {
+	public User getUser(UUID userID) {
 		for (User user : users) {
 			if (userID == user.getUsrID()) {
 				return user;

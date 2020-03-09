@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class User {
 
-	private String usrID; // unique Id for each user
+	private UUID usrID; // unique Id for each user
 	private String usrName; // user name for each user
 	private String usrPassword; // users password
 	private String usrEmail; // user's email
@@ -25,7 +25,7 @@ public class User {
 		this.usrName = newUsrName;
 		this.usrPassword = newUsrPassword;
 		this.usrEmail = newUsrEmail;
-		this.usrID = (UUID.nameUUIDFromBytes(newUsrName.getBytes())).toString();
+		this.usrID = UUID.nameUUIDFromBytes(newUsrName.getBytes());
 	}
 	
 	public User(User u) {
@@ -56,7 +56,7 @@ public class User {
 	public static User fromString(String s) {
 		User temp = new User();
 		String[] vals = s.split(",");
-		temp.usrID = (vals[0]);
+		temp.usrID = UUID.fromString(vals[0]);
 		temp.usrName = vals[1];
 		temp.usrPassword = vals[2];
 		temp.usrEmail = vals[3];
@@ -96,14 +96,7 @@ public class User {
 		this.usrPassword = usrPassword;
 	}
 	// Getter method for usrID
-	public  String  getUsrID() {
+	public UUID getUsrID() {
 		return usrID;
-	}
-	private User getUser(String userId) {
-		if (usrID.compareTo(userId) == 0) {
-			return new User(this);
-		}else {
-			return null;
-		}
 	}
 }

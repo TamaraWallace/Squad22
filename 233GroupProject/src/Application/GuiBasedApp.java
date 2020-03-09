@@ -15,10 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import main.TaskCollection;
-import main.TextBasedApp;
-import main.User;
-import main.UserCollection;
+import main.*;
 
 public class GuiBasedApp extends Application{
 	
@@ -39,9 +36,6 @@ public class GuiBasedApp extends Application{
 	
 	public static User getUser() {
 		return user;
-	}
-	public static void setUser(User user) {
-		GuiBasedApp.user = user;
 	}
 	
 	public static void main(String[] args) {
@@ -158,12 +152,17 @@ public class GuiBasedApp extends Application{
 	public static void setPrevScene(Scene prevScene) {
 		GuiBasedApp.prevScene = prevScene;
 	}
-	public static String createNewUser(String newName, String newPassword, String newEmail) {
-		User newUser = new User(newName, newPassword, newEmail);
+	public static void loginUser(User loginUser) {
+		user = loginUser;
+		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
+	}
+	public static void newUser(User newUser) {
 		users.addUser(newUser);
 		user = newUser;
 		tasks = new TaskCollection();
-		return newUser.getUsrName();
+	}
+	public static void addTask(Task t) {
+		tasks.addTask(t);
 	}
 	
 	

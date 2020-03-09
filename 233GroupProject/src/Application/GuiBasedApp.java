@@ -1,5 +1,6 @@
 package Application;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ public class GuiBasedApp extends Application{
 	private static User user;
 	private static UserCollection users;
 	private static TaskCollection tasks;
+	
 	private static Stage window;
 	private static Scene prevScene;
 	
@@ -122,10 +124,7 @@ public class GuiBasedApp extends Application{
 	
 	
 	public static void save() {
-		System.out.println("Saving...");
-		if (!(tasks == null)) {
-			tasks.saveTasks("tasks.txt"); 
-		}
+		tasks.saveTasks("tasks.txt");
 		users.saveUsers("users.txt");
 	}
 	
@@ -162,10 +161,10 @@ public class GuiBasedApp extends Application{
 		tasks = new TaskCollection();
 	}
 	public static void addTask(Task t) {
-		tasks.addTask(t);
+		GuiBasedApp.tasks.addTask(t);
+		tasks.display();
 	}
-	
-	
-	
-	
+	public static ArrayList<Task> getActiveTasks() {
+		return tasks.getActiveTasks();
+	}
 }

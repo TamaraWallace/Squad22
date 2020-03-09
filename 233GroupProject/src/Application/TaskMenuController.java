@@ -39,7 +39,7 @@ public class TaskMenuController implements Initializable {
 	public void initialize(URL location, ResourceBundle resource) {
 
 		if(selectedTask != null) {
-			taskName.setText("Test");
+			taskName.setText(selectedTask.getName());
 			dueDate.setText(selectedTask.getDueDate().toString());
 			notesArea.setText(selectedTask.getNotes());
 		}

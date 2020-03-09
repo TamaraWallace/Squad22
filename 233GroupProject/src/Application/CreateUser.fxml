@@ -57,9 +57,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="newValidConfPassLbl" alignment="CENTER" layoutX="194.0" layoutY="460.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
-      <Label fx:id="newValidPassLbl" alignment="CENTER" layoutX="197.0" layoutY="408.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
-      <Label fx:id="newValidEmailLbl" alignment="CENTER" layoutX="197.0" layoutY="354.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
-      <Label fx:id="newValidUsrLbl" alignment="CENTER" layoutX="197.0" layoutY="290.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidConfPassLbl" alignment="CENTER" layoutX="194.0" layoutY="460.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidPassLbl" alignment="CENTER" layoutX="197.0" layoutY="408.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidEmailLbl" alignment="CENTER" layoutX="197.0" layoutY="354.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="newValidUsrLbl" alignment="CENTER" layoutX="197.0" layoutY="290.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>

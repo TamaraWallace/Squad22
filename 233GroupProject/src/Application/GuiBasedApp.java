@@ -158,6 +158,13 @@ public class GuiBasedApp extends Application{
 	public static void setPrevScene(Scene prevScene) {
 		GuiBasedApp.prevScene = prevScene;
 	}
+	public static String createNewUser(String newName, String newPassword, String newEmail) {
+		User newUser = new User(newName, newPassword, newEmail);
+		users.addUser(newUser);
+		user = newUser;
+		tasks = new TaskCollection();
+		return newUser.getUsrName();
+	}
 	
 	
 	

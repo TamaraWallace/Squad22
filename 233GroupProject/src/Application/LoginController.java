@@ -83,7 +83,7 @@ public class LoginController implements Initializable{
 			System.out.println("Invalid login credentials");
 			String style = lgnPassword.getStyle();
 			lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));			
-			lgnValidPassLbl.setText("Password does not match");	
+			lgnValidPassLbl.setText("Invalid Password");	
 		} else {
 			attempts = 0;
 			System.out.println(u.toString());
@@ -118,8 +118,6 @@ public class LoginController implements Initializable{
 		}
 		
 		if (loggedIn) {
-		
-			
 			System.out.println(u.getUsrName() + " has successfully logged in.");
 			GuiBasedApp.getTasks().display();
 			

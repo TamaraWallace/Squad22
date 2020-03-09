@@ -62,7 +62,7 @@ public class AddTaskController  implements Initializable{
 				
 				// if everything is good, make a task: 
 				if ( taskDate != null && !taskName.isBlank()) {
-				String userID = GuiBasedApp.getUserID();
+				String userID = GuiBasedApp.getUser().getUsrID();
 				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
 				 System.out.println(task.toString());
 				 
@@ -97,7 +97,7 @@ public class AddTaskController  implements Initializable{
 		@FXML
 		public void back(ActionEvent event) {
 			
-			GuiBasedApp.Save();
+			GuiBasedApp.save();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			

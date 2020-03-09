@@ -46,7 +46,7 @@ public class HomeScreenController implements Initializable {
 	}
 	
 	@Override 
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1		) {
 		String usrName = GuiBasedApp.getUser().getUsrName();
 		helloUser.setText("Hello, " + usrName);
 		

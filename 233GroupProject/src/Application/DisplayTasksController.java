@@ -177,7 +177,7 @@ public class DisplayTasksController implements Initializable{
 			//System.out.println("complete: "+ completeTasks.get(i));
 			System.out.println("TaskID: "+taskId);
 			
-			for (Task task : GuiBasedApp.getTasks().getActiveTasks()) {
+			for (Task task : GuiBasedApp.getActiveTasks()) {
 				if (task.getTaskID().toString() == taskId) {
 					task.setCompleted(true);
 				}

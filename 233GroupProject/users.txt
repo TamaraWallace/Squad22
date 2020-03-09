@@ -2,3 +2,4 @@ c4d5bf88-d005-36f9-a67a-ff171cb0180f,Tamara,helpMe#45,tamara.wallace@ucalgary.ca
 380320e4-278b-3f9e-8145-3521a1f4963f,meriam,taskillaU@3,meriam
 c320dc92-c374-306f-bc07-1bb485150871,Stephane,git2Good!,stephanedorotich@gmail.com
 a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Karim,#Password1,karimkassouri2015@gmail.com
+0cbc6611-f554-3bd0-809a-388dc95a615b,Test,test,test@test.ca

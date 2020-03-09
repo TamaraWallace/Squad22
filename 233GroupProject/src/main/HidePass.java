@@ -16,7 +16,8 @@ public class HidePass implements Runnable {
 	   /**
 	    * Begin masking...display asterisks (*)
 	    */
-	   public void run () {
+	   @Override
+	public void run () {
 	      stop = true;
 	      while (stop) {
 	         System.out.print("\010*");

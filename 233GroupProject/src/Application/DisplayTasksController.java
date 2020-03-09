@@ -1,7 +1,6 @@
 package Application;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -25,7 +24,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Task;
-import main.TaskCollection;
 
 public class DisplayTasksController implements Initializable{
 	

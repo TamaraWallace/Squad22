@@ -76,6 +76,7 @@ public class Email {
 	}
 	public class SMTPAuthenticator extends javax.mail.Authenticator
 	{
+		@Override
 		public PasswordAuthentication getPasswordAuthentication()
 		{
 			return new PasswordAuthentication(senderEmail, senderPassword);

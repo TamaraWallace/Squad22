@@ -38,6 +38,7 @@ public class User {
 	//Returns User object id and user name as string
 	// Parameters: None
 	// Returns: String of usrID and yusrName
+	@Override
 	public String toString() {
 		return "\tUsername: " + usrName +
 				"\n\tPassword: " + usrPassword + 

@@ -73,6 +73,7 @@ public class Task {
 //		Return: String 
 //		Functionality: returns a string with the attributes of the object, this will be used to print information about the task.
 	
+	@Override
 	public String toString() {
 		return "\tName: " + this.name +
 				"\n\tTaskID: " + this.taskID  +

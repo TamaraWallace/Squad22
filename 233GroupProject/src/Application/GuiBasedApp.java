@@ -1,17 +1,10 @@
 package Application;
 
 import java.util.ArrayList;
-import java.util.Optional;
-import java.util.UUID;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -124,7 +117,10 @@ public class GuiBasedApp extends Application{
 	
 	
 	public static void save() {
-		tasks.saveTasks("tasks.txt");
+		if (tasks != null) {
+			tasks.saveTasks("tasks.txt");
+		}
+		
 		users.saveUsers("users.txt");
 	}
 	

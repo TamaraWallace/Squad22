@@ -6,21 +6,6 @@ Welcome to Taskilla! This app aims to help users manage their busy lives and kee
 
 The program is composed of Users & Tasks. It allows for the creation of new Users and of new Tasks and allows a logged in User to manage their tasks by viewing them, completing them, and adding new ones.
 
-The data structures for these two primary object types are as follows:
-  User:
-    - usrID: UUID         // to identify the user
-    - usrName: String     // user's username
-    - usrPassword: String // user's password
-    - usrEmail: String    // user's email
-  Task:
-    - taskID: UUID        // to identify the task
-    - userID: UUID        // to identify the user that the task belongs to
-    - name: String        // name of the task
-    - description: String // the description of the task
-    - completed: boolean  // true if the user has marked the task as completed, false otherwise
-    - dueDate: LocalDate  // the date the task is due
-    
-   
 
 Please start by downloading the code in the Repository.
 
@@ -66,14 +51,27 @@ Home Screen:
   
 Display Tasks Screen:
   - Has a ListView populated with all of the User's active tasks.
-  - Has a *Back* Button to return the User to the HomeScreen
+  - Has a *Back* Button to return the User to the Home Screen
   - Has a *Select* Button to launch the Task Menu screen with the currently selected task.
   - Has a *Complete* Button with no functionality
-  - When the *Back* button is pressed, the Home Screen is launched.
-  - When the *Select* button is pressed, if a Task from the ListView is selected, the Task Menu is launched with the given Task.
+  - When the *Back* Button is pressed, the Home Screen is launched.
+  - When the *Select* Button is pressed, if a Task from the ListView is selected, the Task Menu is launched with the given Task.
   
 Add Task Screen:
   - Has a TextFields for *Name* and *Notes*
-  - Has a DatePicked for *Date*
+  - Has a DatePicker for *Date*
   - Has a *Back* Button to return the User to the HomeScreen
   - Has an *Add* Button to create a new Task.
+  - When the *Back* Button is pressed, the Home Screen is launched.
+  - When the *Add* Button is pressed, a new Task is created using the values of *Name*, *Notes*, and *Date*. The *Notes* field is optional, the other two are mandatory. If a new Task is successfully created, it is added to that User's tasks, and the Home Screen is launched.
+  
+Task Menu Screen:
+  - Has Text for *Task Name*, *Task Due Date*
+  - Has a TextArea for *Task Notes*
+  - Has a *Back* Button to launch the previous Screen
+  - Has a *Complete* Button to complete the Task
+  - Has an *Edit* Button with no functionality
+  - Has a *Delete* Button with no functionality
+  - When the *Back* Button is pressed, it will launch the previous screen
+  - When the *Complete* Button is pressed, the Task will be marked as complete, and the Home Screen is launched.
+

@@ -16,7 +16,7 @@
             <Image url="@../../images/taskilla_logo.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="helloUser" alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="224.0" prefHeight="55.0" prefWidth="300.0" text="Hello, User!" textAlignment="CENTER" textFill="#24a78d" wrapText="true">
+      <Label fx:id="helloUser" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="224.0" prefHeight="55.0" prefWidth="300.0" text="Hello, User!" textAlignment="CENTER" textFill="#24a78d" wrapText="true">
          <font>
             <Font size="28.0" />
          </font>

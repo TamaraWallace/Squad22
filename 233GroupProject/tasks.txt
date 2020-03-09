@@ -5,3 +5,4 @@ a13f0398-e4a6-4958-99c5-a239c248c349,3561691b-1917-4dbe-8e77-aaf719a14a92,implem
 7e0fe10e-52ed-43cd-a9f6-6be06e58d9c7,c4d5bf88-d005-36f9-a67a-ff171cb0180f,Demo 2,Prepare Presentation,false,2020-03-09
 9a2445fd-47e1-46b0-8d61-aee4c5cec295,0cbc6611-f554-3bd0-809a-388dc95a615b,Present Demo2,Presentation by Karim & Tamara,false,2020-03-09
 87f3bc93-129c-4799-91dd-e9f415a1b195,0cbc6611-f554-3bd0-809a-388dc95a615b,Get an A+,Gotta get that 4.0,false,2020-04-15
+351c9ebb-a4f0-417b-ab84-68fa18997ffe,380320e4-278b-3f9e-8145-3521a1f4963f,cpsc demo 7,,false,2020-03-13

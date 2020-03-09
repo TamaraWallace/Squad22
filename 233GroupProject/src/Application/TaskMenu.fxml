@@ -17,7 +17,7 @@
          </font>
       </Text>
       <!-- Task Name -->
-      <Text fx:id="taskName" fill="#24a78d" layoutX="204.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskName" text="Name" wrappingWidth="111.505859375">
+      <Text fx:id="taskName" fill="#24a78d" layoutX="204.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskName" text="Name" wrappingWidth="111.505859375">
          <font>
             <Font size="20.0" />
          </font></Text>

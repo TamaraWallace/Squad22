@@ -2,7 +2,6 @@ package Application;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 
@@ -40,9 +39,6 @@ public class DisplayTasksController implements Initializable{
 	private Button completeBtn;
 
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
-	
-	
-	private ArrayList<Task> tasksArrayLst = new ArrayList<Task>();
 	
 	/*
 	 * Create a static class for each cell in the lisView
@@ -128,15 +124,9 @@ public class DisplayTasksController implements Initializable{
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		System.out.println("intialize is runnin now");
 		
-		
-		TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", GuiBasedApp.getUser().getUsrID());
-		
-		tasksArrayLst = tasks.getActiveTasks();
-		
-		for (Task task : tasksArrayLst ) {
-			
-			//System.out.print("initialising the lstview: ");
-			//System.out.println("task: "+task.toString());
+		for (Task task : GuiBasedApp.getActiveTasks()) {
+	
+			System.out.println(task.toString()+"\n");
 		
 			String display;
 			String taskId = task.getTaskID().toString();

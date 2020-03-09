@@ -57,7 +57,7 @@
          <graphic>
             <ImageView fx:id="backBtn" fitHeight="55.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Back.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/Profile_trans.png" />
                </image>
             </ImageView>
          </graphic></Button>

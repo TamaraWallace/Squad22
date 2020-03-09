@@ -138,7 +138,7 @@ public class HomeScreenController implements Initializable {
 		//https://stackoverflow.com/questions/34863425/javafx-scene-builder-how-switch-scene 
 		//Here's how you get those references:
 		//Scene scene = btnSignIn.getScene();
-		//Window window = scene.getWindow();
+		//Window window = scene.getWindow()
 		//Stage stage = (Stage) window;
 		
 		//change the entire Scene:

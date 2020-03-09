@@ -126,6 +126,11 @@ public class LoginController implements Initializable{
 			attempts++;
 			
 		}else {
+			
+			String userID = TextBasedApp.login(usrName,usrPassword);
+			System.out.println("userID: "+userID);
+			
+			if (userID == null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			DialogPane dialogPane = alert.getDialogPane();
 						
@@ -140,6 +145,20 @@ public class LoginController implements Initializable{
 			
 			alert.showAndWait();
 			System.exit(0);
+			}else {
+				attempts = 0;
+				User user = GuiBasedApp.getUsers().getUser(userID);
+				
+				GuiBasedApp.setUser(user);				
+				GuiBasedApp.setUserID(userID);
+				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
+				
+				GuiBasedApp.setTasks(tasks);
+				
+				GuiBasedApp.setLgnUserName(usrName);
+				
+				loggedIn = true;
+			}
 		}
 		
 		

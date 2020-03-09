@@ -22,7 +22,7 @@ import main.UserCollection;
 
 public class GuiBasedApp extends Application{
 	
-	private static String userID;
+	private static User user;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	private static Stage window;
@@ -36,7 +36,6 @@ public class GuiBasedApp extends Application{
 	public static void setLgnUserName(String lgnUserName) {
 		GuiBasedApp.lgnUserName = lgnUserName;
 	}
-	private static User user;
 	
 	public static User getUser() {
 		return user;
@@ -58,7 +57,10 @@ public class GuiBasedApp extends Application{
 				
 				@Override
 				public void handle(WindowEvent event) {
-					//System.out.println("Event type: "+ event.getEventType().toString());
+					save();
+					System.out.println("Session ended, see you soon!");
+					System.exit(0);
+					/**
 					Alert alert = new Alert(AlertType.CONFIRMATION);
 					DialogPane dialogPane = alert.getDialogPane();
 								
@@ -74,13 +76,13 @@ public class GuiBasedApp extends Application{
 					
 					if (choice.get() == ButtonType.OK){
 						
-						Save();
+						save();
 						System.out.println("Session ended, see you soon!");
 						System.exit(0);
 					}
 					else {
 						event.consume();
-					}
+					}*/
 					
 					
 				}
@@ -125,7 +127,7 @@ public class GuiBasedApp extends Application{
 	}
 	
 	
-	public static void  Save() {
+	public static void save() {
 		System.out.println("Saving...");
 		if (!(tasks == null)) {
 			tasks.saveTasks("tasks.txt"); 
@@ -133,13 +135,6 @@ public class GuiBasedApp extends Application{
 		users.saveUsers("users.txt");
 	}
 	
-	public static String getUserID() {
-		return userID;
-	}
-	public static void setUserID(String userID) {
-		GuiBasedApp.userID = userID;
-		TextBasedApp.setUserID(userID);
-	}
 	public static UserCollection getUsers() {
 		return users;
 	}

@@ -50,8 +50,6 @@ public class LoginController implements Initializable{
 	@FXML
 	private Label lgnValidUsrLbl;
 	
-	private String lgnUsrName = null;
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -61,97 +59,69 @@ public class LoginController implements Initializable{
 		
 	@FXML
 	public void login(ActionEvent event) throws IOException {
-		
-		
-		
 		String usrName = lgnName.getText();
-		
 		String usrPassword = lgnPassword.getText();
-		
 		boolean loggedIn = false;
+		attempts++;
 		
-		//System.out.println("Trying to Log you in:");
-		
-		if (GuiBasedApp.getUsers().findUser(usrName) == null) {
-			
+		// TODO we should remove this section. Should not inform user whether or not 
+		// a given username exists in the system or not.
+		/**if (GuiBasedApp.getUsers().findUser(usrName) == null) {
 			lgnName.setStyle(lgnNameStyle + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
 			attempts = 0;
-			
 			lgnValidUsrLbl.setText("Not a valid Username");
-			
-		}else {
+		} else {
 			lgnName.setStyle(lgnNameStyle);
 			lgnValidUsrLbl.setText("");
+		} */
+		
+		System.out.println("Attempt: " + attempts);
+		
+		User u = GuiBasedApp.getUsers().validateUsernameAndPassword(usrName,usrPassword);
+		
+		if (u == null) {
+			System.out.println("Invalid login credentials");
+			String style = lgnPassword.getStyle();
+			lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));			
+			lgnValidPassLbl.setText("Password does not match");	
+		} else {
+			attempts = 0;
+			System.out.println(u.toString());
+			GuiBasedApp.setUser(u);			
+			TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", u.getUsrID());
+			GuiBasedApp.setTasks(tasks);
+			
+			loggedIn = true;
 		}
 		
-		if (attempts <3) {
-			
-			//System.out.println("login text based");
-			String userID = TextBasedApp.login(usrName,usrPassword);
-			System.out.println("userID: "+userID);
-			if (userID == null) {
-				attempts ++;
-				
-				String style = lgnPassword.getStyle();
-				lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
-				
-				lgnValidPassLbl.setText("Not a valid Password");
-				
-			} else {
-				attempts = 0;
-				User user = GuiBasedApp.getUsers().getUser(userID);
-				
-				GuiBasedApp.setUser(user);				
-				GuiBasedApp.setUserID(userID);
-				TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", userID);
-				
-				GuiBasedApp.setTasks(tasks);
-				
-				GuiBasedApp.setLgnUserName(usrName);
-				
-				loggedIn = true;
-			}
-		}else if (attempts == 3) {
-			
+		if (!loggedIn && attempts == 3) {
 			Alert alert = new Alert(AlertType.WARNING);
-			DialogPane dialogPane = alert.getDialogPane();
-						
+			DialogPane dialogPane = alert.getDialogPane();			
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
 			//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 			alert.setTitle("Warning");
 			alert.setHeaderText(attempts+" Password Attempts");
 			alert.setContentText("Last attempt or the program will close");
-		
 			alert.showAndWait();
-			attempts++;
-			
-		}else {
+		} else if (!loggedIn && attempts > 3) {
 			Alert alert = new Alert(AlertType.ERROR);
-			DialogPane dialogPane = alert.getDialogPane();
-						
+			DialogPane dialogPane = alert.getDialogPane();	
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
 			//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 			dialogPane.setStyle("-fx-border-color: red;");
 			alert.setTitle("Warning");
 			alert.setHeaderText(attempts+" Password Attempts!! TOO MANY!");
 			alert.setContentText("Program will close !");
-			
 			//Stage window = (Stage) (dialogPane.getScene().getWindow());
-			
 			alert.showAndWait();
 			System.exit(0);
 		}
 		
-		
-		
 		if (loggedIn) {
 		
 			
-			System.out.println("Logged In: ");
-			
+			System.out.println(u.getUsrName() + " has successfully logged in.");
 			GuiBasedApp.getTasks().display();
-			System.out.println("Displayed user tasks above ^^^^");
-			System.out.println();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			
@@ -164,12 +134,8 @@ public class LoginController implements Initializable{
 			GuiBasedApp.setPrevScene(window.getScene());
 			window.hide();
 			window.setScene(HomeScreenScene);
-			System.out.println("changed scenes");
 			window.show();
-			System.out.println("showed");
 		}
-		
-		
 	}
 	
 	@FXML
@@ -220,8 +186,4 @@ public class LoginController implements Initializable{
 		
 		//System.out.println("track mouse: "+ event.getEventType());
 	}
-
-	
-	
-	
 }

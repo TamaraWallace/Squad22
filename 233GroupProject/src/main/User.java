@@ -68,7 +68,7 @@ public class User {
 	//		usrName: string, name of user to be checked
 	// Returns: Boolean, whether userName matches	
 	public boolean checkName(String usrName){
-		return usrName.equals(this.usrName);
+		return usrName.equalsIgnoreCase(this.usrName);
 	}
 	
 	// Checks whether User's password matches

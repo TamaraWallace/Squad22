@@ -98,21 +98,11 @@ public class UserCollection {
 		}
 	}
 	
-	/* Unused...
-	 * 
-	private User getUserByID(UUID uuid) {
-		User temp = null;
-		for (User u: users) {
-			if (u.getUsrID().compareTo(uuid) == 0) temp = u;
-		}
-		return temp;
-	} */
 
 //	Method name: addUser
 //	Parameters: User u
 //	Return: void
 //	Functionality: adds a user to the users arraylist 
-//	
 	public void addUser(User u) {
 		users.add(u);
 	}
@@ -122,8 +112,6 @@ public class UserCollection {
 //	Parameters: none
 //	Return: ArrayList <user>
 //	Functionality: getter method for the arraylist users
-//	
-	
 	public ArrayList<User> getUsers() {
 		ArrayList<User> temp = new ArrayList<User>();
 		for (User u: users) {
@@ -132,18 +120,14 @@ public class UserCollection {
 		return temp;
 	}
 	
-	
-	
 //	Method name: isEmpty
 //	Parameters: none
 //	Return: boolean
 //	Functionality: checks if the users arraylist is empty or not
-//	
 	public boolean isEmpty() {
 		return users.isEmpty();
 	}
-	
-	// 	
+
 //	Method name: findUser 
 //	Parameters: String name
 //	Return: User 
@@ -166,11 +150,18 @@ public class UserCollection {
 		}
 	}
 	
+	
+	public User validateUsernameAndPassword(String name, String pword) {
+		for (User u: users) {
+			if (u.checkName(name) && u.checkPassword(pword)) return u;
+		}
+		return null;
+	}
+	
 //	Method name: Display
 //	Parameters: none
 //	Return: void 
 //	Functionality: prints each user from the users ArrayList, does this by calling toString method on each user in the print function
-//	
 	public void display() {
 		for (User u: users) {
 			System.out.println(u.toString());

@@ -136,7 +136,7 @@ public class DisplayTasksController implements Initializable{
 			System.out.println("task: "+task.toString());
 		
 			String display;
-			String taskId = task.getTaskID();
+			String taskId = task.getTaskID().toString();
 			
 			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
 			

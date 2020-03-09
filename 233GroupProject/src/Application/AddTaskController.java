@@ -42,7 +42,7 @@ public class AddTaskController  implements Initializable{
 				String taskNotes = notes.getText();
 				System.out.println(taskName+taskNotes);
 				// validating taskName is not empty
-				if (taskName.isBlank()) {
+				if (taskName.isEmpty()) {
 					nameLabel.setText("TASK NAME CAN'T BE EMPTY");
 					taskName = name.getText();
 					
@@ -61,20 +61,19 @@ public class AddTaskController  implements Initializable{
 				
 				
 				// if everything is good, make a task: 
-				if ( taskDate != null && !taskName.isBlank()) {
-				String userID = GuiBasedApp.getUserID();
-				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
-				 System.out.println(task.toString());
-				 
-				 TaskCollection.addTask(task);
-				 GuiBasedApp.getTasks().addTask(task);
-				 tasks.display();
+				if ( taskDate != null && !taskName.isEmpty()) {
+				UUID userID = GuiBasedApp.getUser().getUsrID();
+				Task task = new Task(userID, taskName, taskNotes, false, taskDate);
+				System.out.println("New task created:\n" + task.toString());
+				
+				GuiBasedApp.addTask(task);
+				tasks.display();
 				
 				// clearing out textfield boxes for name & notes 
-				 if (task != null) {
-					 name.clear();
-					 notes.clear();
-				 }
+				if (task != null) {
+					name.clear();
+					notes.clear();
+				}
 				
 		
 				// clear out the date picker as it doesn't do this automatically 
@@ -97,7 +96,7 @@ public class AddTaskController  implements Initializable{
 		@FXML
 		public void back(ActionEvent event) {
 			
-			GuiBasedApp.Save();
+			GuiBasedApp.save();
 			
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			

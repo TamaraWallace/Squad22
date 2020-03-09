@@ -153,7 +153,7 @@ public class DisplayTasksController implements Initializable{
 		
 		
 		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
-		
+		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).setCompleted(true);
 	}
 	
 	@FXML

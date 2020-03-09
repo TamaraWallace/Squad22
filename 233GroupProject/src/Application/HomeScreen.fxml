@@ -53,11 +53,11 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="profileButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="profileButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="55.0" prefWidth="61.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fx:id="backBtn" fitHeight="55.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/Profile_trans.png" />
+                  <Image url="@../../images/Profile_trans.png" />
                </image>
             </ImageView>
          </graphic></Button>

@@ -2,11 +2,13 @@
 
 Repository: https://github.com/TamaraWallace/Taskilla-05-22
 
+==========================================================================================
+
 Welcome to Taskilla! This app aims to help users manage their busy lives and keep track of what they need to accomplish.
 
 The program is composed of Users & Tasks. It allows for the creation of new Users and of new Tasks and allows a logged in User to manage their tasks by viewing them, completing them, and adding new ones.
 
-======================================================
+==========================================================================================
 
 Please start by downloading the code in the Repository.
 
@@ -19,14 +21,9 @@ Taskilla is formatted as an Eclipse project.
   
 *Note: Depending on which version of JavaFX is installed, there may be some warnings (Specifically "WARNING: Loading FXML document with JavaFX API of version 11.0.1 by JavaFX runtime of version 8.0.181") but the program should launch regardless.*
 
-Once the program is launched, the user will find themselves at our Login Screen.
+Once the program is launched, the user will find themselves at our Login Screen. To explore the App, we recommend logging in using Username: **Test** and Password: **test**.Otherwise, feel free to use our "Create New Account" feature and create your own account.
 
-***To explore the App, we recommend logging in using *Username*:*** Test ***and *Password*:*** test.
-
-Otherwise, feel free to use our "Create New Account" feature and create your own account.
-
-
-
+==========================================================================================
 
 The features and functionality of each of our Screens can be found below.
 

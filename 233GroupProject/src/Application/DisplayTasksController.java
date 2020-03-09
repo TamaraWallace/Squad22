@@ -77,6 +77,7 @@ public class DisplayTasksController implements Initializable{
 			close.setGraphic(delete);
 
 			hb.setStyle("-fx-background-color: #000B38;");
+			
 			// adding all the components in the sequence in which we want them to appear
 			hb.getChildren().addAll(taskLbl,pane,close);
 			HBox.setHgrow(pane, Priority.ALWAYS);

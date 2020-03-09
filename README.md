@@ -8,7 +8,7 @@ Repository: https://github.com/TamaraWallace/Taskilla-05-22
 
 Welcome to Taskilla! This app aims to help users manage their busy lives and keep track of what they need to accomplish.
 
-The program is composed of Users & Tasks. It allows for the creation of new Users and of new Tasks and allows a logged in User to manage their tasks by viewing them, completing them, and adding new ones.
+The program is composed of Users & Tasks. It allows for the creation of new Users and new Tasks and allows a logged in User to manage their tasks by viewing them, completing them, and adding new ones.
 
 ======================================================================================
 
@@ -21,7 +21,7 @@ Taskilla is formatted as an Eclipse project.
   3. Create a new Run Configuration for the project with main class **Application.GuiBasedApp**.
   4. The program will launch when you **Run GuiBasedApp**.
   
-Once the program is launched, the user will find themselves at our Login Screen. To explore the App, we recommend logging in using ***Username: Test*** and ***Password: test***. Otherwise, feel free to use our "Create New Account" feature and create your own account.
+Once the program is launched, the user will find themselves at our Login Screen. To explore the App, we recommend logging in using ***Username: Test*** and ***Password: test***. Otherwise, feel free to create your own account.
 
 ======================================================================================
 

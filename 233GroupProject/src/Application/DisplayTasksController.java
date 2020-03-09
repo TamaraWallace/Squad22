@@ -2,6 +2,7 @@ package Application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 
@@ -41,7 +42,7 @@ public class DisplayTasksController implements Initializable{
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
 	
-	private ArrayList<Task> tasks = new ArrayList<Task>();
+	private ArrayList<Task> tasksArrayLst = new ArrayList<Task>();
 	
 	/*
 	 * Create a static class for each cell in the lisView
@@ -130,11 +131,12 @@ public class DisplayTasksController implements Initializable{
 		
 		TaskCollection tasks = TaskCollection.loadUsrTasks("tasks.txt", GuiBasedApp.getUser().getUsrID());
 		
+		tasksArrayLst = tasks.getActiveTasks();
 		
-		for (Task task : tasks.getActiveTasks()) {
+		for (Task task : tasksArrayLst ) {
 			
-			System.out.print("initialising the lstview: ");
-			System.out.println("task: "+task.toString());
+			//System.out.print("initialising the lstview: ");
+			//System.out.println("task: "+task.toString());
 		
 			String display;
 			String taskId = task.getTaskID().toString();
@@ -169,6 +171,28 @@ public class DisplayTasksController implements Initializable{
 		
 		window.setScene(GuiBasedApp.getPrevScene());
 		
+	}
+	
+	@FXML
+	public void completeTask(ActionEvent event) {
+		ObservableList<String> completeTasks = FXCollections.observableArrayList();
+		completeTasks = lstViewTasks.getSelectionModel().getSelectedItems();
+		lstViewTasks.getItems().removeAll(completeTasks);
+		
+		for (int i = 0; i < completeTasks.size(); i++) {
+			String lstViewTask = completeTasks.get(i);
+			String taskId = lstViewTask.split(",")[0];
+			//System.out.println("complete: "+ completeTasks.get(i));
+			System.out.println("TaskID: "+taskId);
+			
+			for (Task task : GuiBasedApp.getTasks().getActiveTasks()) {
+				if (task.getTaskID().toString() == taskId) {
+					task.setCompleted(true);
+				}
+			}
+			
+			
+		}
 	}
 	
 	

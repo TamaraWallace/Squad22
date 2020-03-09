@@ -2,10 +2,6 @@ a13f0398-e4a6-4958-99c5-a239c248c349,3561691b-1917-4dbe-8e77-aaf719a14a92,implem
 608cfa82-03df-4990-a192-349c4b6e7fa7,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Display All Tasks,Create the display all tasks scene,false,2020-03-09
 052e2152-b24d-4b81-a1ca-6a85fcf254b2,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Handle Stage Close ,show alert Dialogue,false,2020-03-10
 96114574-6ec3-4b43-a09d-8c4c53afa8f2,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Demo2,create presentation and uml diagram,false,2020-03-09
-1df19458-926b-4625-b3a4-e0c5152c8b96,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Test,this a test task,false,2020-03-10
-a17fa126-95d2-40fc-82ad-9ce37b84a20a,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Test2,hello,false,2020-03-25
-be4413ef-0f9a-481f-bc05-b60b814f60f2,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Test12,random test,false,2020-03-27
-f6b78a4f-822d-4856-91d6-94bb8e50e0ff,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Demo2 presenting,i am presenting at the moment,false,2020-03-19
 7e0fe10e-52ed-43cd-a9f6-6be06e58d9c7,c4d5bf88-d005-36f9-a67a-ff171cb0180f,Demo 2,Prepare Presentation,false,2020-03-09
 9a72c56f-f665-432f-aa48-d64eb253817c,c320dc92-c374-306f-bc07-1bb485150871,this is new,not sure if this will work,true,2020-03-08
 e9d81894-20a9-4772-8a55-2b3615bb4871,c320dc92-c374-306f-bc07-1bb485150871,checking add task,nope,false,2020-03-08

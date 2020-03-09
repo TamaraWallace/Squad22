@@ -24,7 +24,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="completeBtn" layoutX="155.0" layoutY="519.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="85.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="completeBtn" layoutX="155.0" layoutY="519.0" mnemonicParsing="false" onAction="#completeTask" prefHeight="76.0" prefWidth="85.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                <image>

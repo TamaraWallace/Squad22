@@ -60,32 +60,18 @@ public class AddTaskController  implements Initializable{
 				}
 				
 				
-				// if everything is good, make a task: 
-<<<<<<< HEAD
+				// if everything is good, make a task:
 				if ( taskDate != null && !taskName.isEmpty()) {
 				UUID userID = GuiBasedApp.getUser().getUsrID();
 				Task task = new Task(userID, taskName, taskNotes, false, taskDate);
 				System.out.println("New task created:\n" + task.toString());
 				
 				GuiBasedApp.addTask(task);
-				tasks.display();
-=======
-				if ( taskDate != null && !taskName.isBlank()) {
-				String userID = GuiBasedApp.getUser().getUsrID();
-				 Task task = new Task(userID, taskName, taskNotes, false, taskDate);
-				 System.out.println(task.toString());
-				 
-				 TaskCollection.addTask(task);
-				 GuiBasedApp.getTasks().addTask(task);
-				 tasks.display();
->>>>>>> branch 'master' of https://github.com/TamaraWallace/Taskilla-05-22.git
-				
 				// clearing out textfield boxes for name & notes 
 				if (task != null) {
 					name.clear();
 					notes.clear();
 				}
-				
 		
 				// clear out the date picker as it doesn't do this automatically 
 				date.setValue(null);

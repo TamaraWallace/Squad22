@@ -48,27 +48,27 @@
          </graphic>
       </Button>
       <!-- Edit Button -->
-      <Button alignment="CENTER" layoutX="213.0" layoutY="453.0" mnemonicParsing="false" onAction="#editButton" prefHeight="100.0" prefWidth="90.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
+      <Button alignment="CENTER" layoutX="190.0" layoutY="446.0" mnemonicParsing="false" onAction="#editButton" prefHeight="128.0" prefWidth="134.0" styleClass="circleButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="100.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="122.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Pen%20Icon.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/pen_button.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <!-- Delete Button -->
-      <Button alignment="CENTER" layoutX="211.0" layoutY="563.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="100.0" prefWidth="100.0" styleClass="deleteButton" stylesheets="@TaskMenu.css">
+      <Button alignment="CENTER" layoutX="184.0" layoutY="563.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="119.0" prefWidth="141.0" styleClass="deleteButton" stylesheets="@TaskMenu.css">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="86.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/deleteIcon.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/delete_button.jpg" />
                </image>
             </ImageView>
          </graphic>

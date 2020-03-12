@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -34,7 +36,10 @@ public class HomeScreenController implements Initializable {
 	private Button viewAllbtn;
 	
 	@FXML
-	private Button profileButton;
+	private MenuButton profileMenu;
+	
+	@FXML
+	private MenuItem settingsItem,LogOutItem ,closeItem;
 	
 	@FXML
 	private Button addTaskBtn;
@@ -161,8 +166,27 @@ public class HomeScreenController implements Initializable {
 		
 	}
 	
-	//can add later for demo 3 
-	public void profileButton() {
+	/*
+	 * Method: Logs user out of app and returns to login screen
+	 * */
+	@FXML
+	public void logOut(ActionEvent event) {
+		
+	}
+	
+	/*
+	 * Method: Logs user out of app and closes the app
+	 * */
+	@FXML
+	public void close(ActionEvent event) {
+		
+	}
+	
+	/*
+	 * Method: opens new scene where user can change settings
+	 * */
+	@FXML
+	public void settings(ActionEvent event) {
 		
 	}
 

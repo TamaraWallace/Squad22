@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -53,14 +55,6 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="profileButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="55.0" prefWidth="61.0" style="-fx-background-color: #000B38;">
-         <graphic>
-            <ImageView fx:id="backBtn" fitHeight="55.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/Profile_trans.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
       <Button fx:id="addTaskBtn" layoutX="290.0" layoutY="553.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -70,5 +64,19 @@
             </ImageView>
          </graphic>
       </Button>
+      <MenuButton fx:id="profileMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="45.0" style="-fx-background-color: #000B38;">
+        <items>
+          <MenuItem fx:id="settingsItem" mnemonicParsing="false" onAction="#settings" style="-fx-background-color: #000B38;" text="Settings" />
+          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
+            <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" text="Close" />
+        </items>
+         <graphic>
+            <ImageView fitHeight="72.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Profile_trans.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MenuButton>
    </children>
 </AnchorPane>

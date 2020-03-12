@@ -61,16 +61,6 @@ public class LoginController implements Initializable{
 		boolean loggedIn = false;
 		attempts++;
 		
-		// TODO we should remove this section. Should not inform user whether or not 
-		// a given username exists in the system or not.
-		/**if (GuiBasedApp.getUsers().findUser(usrName) == null) {
-			lgnName.setStyle(lgnNameStyle + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
-			attempts = 0;
-			lgnValidUsrLbl.setText("Not a valid Username");
-		} else {
-			lgnName.setStyle(lgnNameStyle);
-			lgnValidUsrLbl.setText("");
-		} */
 		
 		System.out.println("Attempt: " + attempts);
 		
@@ -93,7 +83,7 @@ public class LoginController implements Initializable{
 			Alert alert = new Alert(AlertType.WARNING);
 			DialogPane dialogPane = alert.getDialogPane();			
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
-			//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+			
 			alert.setTitle("Warning");
 			alert.setHeaderText(attempts+" Password Attempts");
 			alert.setContentText("Last attempt or the program will close");
@@ -102,12 +92,12 @@ public class LoginController implements Initializable{
 			Alert alert = new Alert(AlertType.ERROR);
 			DialogPane dialogPane = alert.getDialogPane();	
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
-			//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+			
 			dialogPane.setStyle("-fx-border-color: red;");
 			alert.setTitle("Warning");
 			alert.setHeaderText(attempts+" Password Attempts!! TOO MANY!");
 			alert.setContentText("Program will close !");
-			//Stage window = (Stage) (dialogPane.getScene().getWindow());
+		
 			alert.showAndWait();
 			System.exit(0);
 		}
@@ -135,7 +125,7 @@ public class LoginController implements Initializable{
 	@FXML
 	public void newUser(ActionEvent event) throws IOException{
 			
-		//System.out.println("New user everyone");
+	
 		
 		
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -160,7 +150,7 @@ public class LoginController implements Initializable{
 			lgnPassword.requestFocus();
 			
 		}else {
-			//System.out.println(event.getCode());
+			
 		}
 	}
 	@FXML
@@ -178,6 +168,6 @@ public class LoginController implements Initializable{
 	@FXML
 	public void mouseEv(MouseEvent event) {
 		
-		//System.out.println("track mouse: "+ event.getEventType());
+		
 	}
 }

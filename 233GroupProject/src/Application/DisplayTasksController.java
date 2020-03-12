@@ -47,6 +47,7 @@ public class DisplayTasksController implements Initializable{
 	 * */
 	static class Cell extends ListCell<String>{
 		
+		// Initializing all the widgets for displaying the task
 		HBox hb = new HBox();
 		
 		Button close = new Button(); 
@@ -63,13 +64,14 @@ public class DisplayTasksController implements Initializable{
 			
 			super();		
 			
-			
+			// setting the size of trash bin button
 			delete.setFitWidth(30);
 			delete.setFitHeight(35);
 			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
 			
 			taskId = "";
 			
+			//setting the widgets to the proper color
 			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
 			taskLbl.setTextFill(Color.web("#24a78d"));
 			close.setStyle("-fx-background-color: #000B38;");
@@ -81,9 +83,8 @@ public class DisplayTasksController implements Initializable{
 			hb.getChildren().addAll(taskLbl,pane,close);
 			HBox.setHgrow(pane, Priority.ALWAYS);
 			
-			close.setOnAction(new EventHandler<ActionEvent>() {
-				
-				
+			//removing the task from list view when trash bin pressed
+			close.setOnAction(new EventHandler<ActionEvent>() {		
 				
 				@Override
 				public void handle(ActionEvent event) {
@@ -100,6 +101,7 @@ public class DisplayTasksController implements Initializable{
 			
 		}
 		
+		//
 		@Override
 		public void updateItem(String name, boolean empty) {
 			super.updateItem(name, empty);

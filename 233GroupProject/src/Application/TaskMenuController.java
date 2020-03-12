@@ -18,22 +18,18 @@ import javafx.fxml.FXMLLoader;
 public class TaskMenuController implements Initializable {
 
 	@FXML
-	private Text taskName;
+	private Text taskName; //associated with text object for task name in FXML
 	
 	@FXML
-	private Text dueDate;
+	private Text dueDate; //associated with text object for task due date in FXML
 	
 	@FXML
-	private TextArea notesArea;
+	private TextArea notesArea; //associated with text area object for task notes in FXML
 	
-	//NOTE: right now, this is just a default task, 
-	//but we need to integrate with select task somehow or add that to GUI
-	private static Task selectedTask;
+	private static Task selectedTask; //the task to be displayed
 	
-	public TaskMenuController(){
-		
-	}
-	
+	// Initialize Method, implemented from the Initializable Class
+	// When the class is started it sets the values of the display text to the task information
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 
@@ -45,6 +41,11 @@ public class TaskMenuController implements Initializable {
 
 	}
 	
+	// Method Name: completeButton
+	// Parameters: event, an Action event thrown by the button associated with this method
+	// Return: void
+	// Functionality: when the complete button is pressed, the selected task is marked as complete
+	//				  and the user is returned to the home screen
 	public void completeButton(ActionEvent event) throws IOException {
 		selectedTask.setCompleted(true);
 		
@@ -67,8 +68,13 @@ public class TaskMenuController implements Initializable {
 		window.show();
 	}
 	
+	// Method Name: deleteButton
+	// Parameters: event, an Action event thrown by the button associated with this method
+	// Return: void
+	// Functionality: when the delete button is pressed, the selected task is marked for deletion
+	//				  and the user is returned to the home screen
 	public void deleteButton(ActionEvent event) throws IOException {
-		//I'm not sure we have delete implemented yet
+		//Delete is not implemented yet
 		
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
@@ -83,6 +89,11 @@ public class TaskMenuController implements Initializable {
 		window.show();
 	}
 	
+	// Method Name: backButton
+	// Parameters: event, an Action event thrown by the button associated with this method
+	// Return: void
+	// Functionality: when the back button is pressed, the user is returned to 
+	//				  the previous screen
 	public void backButton(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -94,6 +105,11 @@ public class TaskMenuController implements Initializable {
 		window.show();
 	}
 	
+	// Method Name: editButton
+	// Parameters: event, an Action event thrown by the button associated with this method
+	// Return: void
+	// Functionality: when the edit button is pressed, the user is taken to a screen where
+	//				  where they can edit a task's information
 	public void editButton(ActionEvent event) throws IOException {
 		System.out.println("This is not implemented yet.");
 		
@@ -110,6 +126,10 @@ public class TaskMenuController implements Initializable {
 		window.show();
 	}
 	
+	// Method Name: setSelectedTask
+	// Parameters: a task t
+	// Return: void
+	// Functionality: sets the selected task to the task t provided
 	public static void setSelectedTask(Task t) {
 		selectedTask = t;
 	}

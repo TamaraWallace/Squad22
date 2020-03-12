@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.EditTaskController">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
+         <children>
+            <ImageView fitHeight="178.0" fitWidth="277.0" layoutX="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/taskilla_logo.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="139.0" layoutY="193.0" text="EDIT TASK" textFill="#24a78d">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" layoutX="169.0" layoutY="295.0" prefHeight="40.0" prefWidth="193.0" promptText="Name" />
+            <TextField fx:id="notes" layoutX="169.0" layoutY="382.0" prefHeight="40.0" prefWidth="193.0" promptText="Notes" />
+            <DatePicker fx:id="date" layoutX="169.0" layoutY="464.0" prefHeight="40.0" prefWidth="193.0" promptText="Due Date" />
+            <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.99" prefHeight="50.0" prefWidth="73.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/Back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="101.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/NameNotesIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="42.0" layoutX="110.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Pen%20Icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="81.0" layoutX="94.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/CalenderIcon.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="165.0" layoutY="526.0" mnemonicParsing="false" onAction="#doneButton" prefHeight="146.0" prefWidth="155.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/done_button.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="nameLabel" layoutX="169.0" layoutY="342.0" prefHeight="17.0" prefWidth="193.0" textFill="#f50505" />
+            <Label fx:id="dateLabel" layoutX="172.0" layoutY="506.0" prefHeight="17.0" prefWidth="193.0" textFill="RED" />
+         </children></Pane>
+   </children>
+</AnchorPane>

@@ -31,6 +31,7 @@ import main.Task;
 
 public class DisplayTasksController implements Initializable{
 	
+	
 	@FXML
 	private ListView<String> lstViewTasks;
 	
@@ -40,6 +41,7 @@ public class DisplayTasksController implements Initializable{
 	@FXML
 	private Button completeBtn;
 
+	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
 	/*
@@ -176,7 +178,7 @@ public class DisplayTasksController implements Initializable{
 		for (int i = 0; i < completeTasks.size(); i++) {
 			String lstViewTask = completeTasks.get(i);
 			String taskId = lstViewTask.split(",")[0];
-			//System.out.println("complete: "+ completeTasks.get(i));
+		
 			System.out.println("TaskID: "+taskId);
 			
 			for (Task task : GuiBasedApp.getActiveTasks()) {

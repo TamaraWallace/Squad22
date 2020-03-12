@@ -69,33 +69,33 @@ public class CreateUserController {
 		
 		boolean nameIsUnique = (GuiBasedApp.getUsers().findUser(name) == null);
 		
-		// TODO more robust username checking.	
+		// more robust username checking.	
 		if (name.isEmpty()){
 			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 			newValidUsrLbl.setText("Username can't be empty");
 		} else if (!nameIsUnique) {
-			//newUsrNameStyle = newUsrName.getStyle();
+			
 			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 			newValidUsrLbl.setText("Username already exists!");
 		} else {
 			newUsrName.setStyle(newUsrNameStyle);
 		}
 		
-		// TODO more robust password checking
+		// more robust password checking
 		if(password1.isEmpty()) {
 			System.out.println("running p1 empty ");
-			//newUsrPwdStyle = newUsrPwd.getStyle();
+		
 			newUsrPwd.setStyle(newUsrPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 		}
 		if(password2.isEmpty()) {
 			System.out.println("running p2 empty ");
-			//newUsrConfPwdStyle = newUsrConfPwd.getStyle();
+	
 			newUsrConfPwd.setStyle(newUsrConfPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 		}
 		
 		if(!password1.equals(password2)) {
 			System.out.println("running pass missmatch ");
-			//newUsrPwd.setStyle(newUsrPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
+
 			newUsrConfPwd.setStyle(newUsrConfPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 		
 			newValidConfPassLbl.setText("Passwords must match");

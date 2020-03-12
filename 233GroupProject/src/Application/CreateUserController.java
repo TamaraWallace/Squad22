@@ -53,6 +53,8 @@ public class CreateUserController {
 	private String newUsrConfPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 	
 	
+	// method for returning to previous scene
+	// takes user back to login scene
 	@FXML
 	public void back(ActionEvent event) {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,7 +71,7 @@ public class CreateUserController {
 		
 		boolean nameIsUnique = (GuiBasedApp.getUsers().findUser(name) == null);
 		
-		// more robust username checking.	
+		// more robust user name checking.	
 		if (name.isEmpty()){
 			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
 			newValidUsrLbl.setText("Username can't be empty");
@@ -101,7 +103,7 @@ public class CreateUserController {
 			newValidConfPassLbl.setText("Passwords must match");
 		}
 		
-		
+		// creates new user if the password is valid and user name is unique
 		if (!password1.isEmpty() && password1.equals(password2) && nameIsUnique){
 			newUsrConfPwd.setStyle(newUsrConfPwdStyle);
 			newUsrPwd.setStyle(newUsrPwdStyle);

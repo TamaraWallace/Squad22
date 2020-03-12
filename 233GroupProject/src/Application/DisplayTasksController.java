@@ -103,7 +103,8 @@ public class DisplayTasksController implements Initializable{
 			
 		}
 		
-		//
+		// Updates the list item in the list view with the Task details
+		// this is done by setting the text in label to the task details
 		@Override
 		public void updateItem(String name, boolean empty) {
 			super.updateItem(name, empty);
@@ -124,6 +125,8 @@ public class DisplayTasksController implements Initializable{
 		}
 	}
 	
+	// initialize the list view in the display tasks scene
+	// this is done by iterating through users active tasks and adding each task to list view
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -153,6 +156,8 @@ public class DisplayTasksController implements Initializable{
 		
 	}
 	
+	// method for deleting a users tasks
+	//currently only removes task from list view, does not update user's tasks
 	public static void deleteTask(String taskId, String taskName) {
 		
 		
@@ -160,6 +165,7 @@ public class DisplayTasksController implements Initializable{
 		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).setCompleted(true);
 	}
 	
+	// method for returning to previous scene
 	@FXML
 	public void back(ActionEvent event) {
 				
@@ -169,6 +175,8 @@ public class DisplayTasksController implements Initializable{
 		
 	}
 	
+	// method for completing a user's task
+	// runs when complete button is pressed and completes all selected tasks
 	@FXML
 	public void completeTask(ActionEvent event) {
 		ObservableList<String> completeTasks = FXCollections.observableArrayList();
@@ -191,6 +199,9 @@ public class DisplayTasksController implements Initializable{
 		}
 	}
 	
+	// method for selecting a task
+	// runs when select button pressed
+	// takes user to task scene for selected task
 	@FXML
 	public void selectTask(ActionEvent event) throws IOException {
 		

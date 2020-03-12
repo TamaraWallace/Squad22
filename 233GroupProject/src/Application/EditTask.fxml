@@ -24,9 +24,9 @@
                   <Font size="48.0" />
                </font>
             </Label>
-            <TextField fx:id="name" layoutX="175.0" layoutY="317.0" prefHeight="27.0" prefWidth="187.0" promptText="Name" />
-            <TextField fx:id="notes" layoutX="175.0" layoutY="388.0" prefHeight="27.0" prefWidth="187.0" promptText="Notes" />
-            <DatePicker fx:id="date" layoutX="175.0" layoutY="470.0" prefHeight="27.0" prefWidth="187.0" promptText="Due Date" />
+            <TextField fx:id="name" layoutX="169.0" layoutY="295.0" prefHeight="40.0" prefWidth="193.0" promptText="Name" />
+            <TextField fx:id="notes" layoutX="169.0" layoutY="382.0" prefHeight="40.0" prefWidth="193.0" promptText="Notes" />
+            <DatePicker fx:id="date" layoutX="169.0" layoutY="464.0" prefHeight="40.0" prefWidth="193.0" promptText="Due Date" />
             <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.99" prefHeight="50.0" prefWidth="73.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
@@ -36,12 +36,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="102.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="101.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/NameNotesIcon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="57.0" fitWidth="42.0" layoutX="109.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="42.0" layoutX="110.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Pen%20Icon.png" />
                </image>
@@ -60,8 +60,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="nameLabel" layoutX="181.0" layoutY="350.0" prefHeight="17.0" prefWidth="178.0" textFill="#f50505" />
-            <Label fx:id="dateLabel" layoutX="175.0" layoutY="506.0" prefHeight="17.0" prefWidth="187.0" textFill="RED" />
+            <Label fx:id="nameLabel" layoutX="169.0" layoutY="342.0" prefHeight="17.0" prefWidth="193.0" textFill="#f50505" />
+            <Label fx:id="dateLabel" layoutX="172.0" layoutY="506.0" prefHeight="17.0" prefWidth="193.0" textFill="RED" />
          </children></Pane>
    </children>
 </AnchorPane>

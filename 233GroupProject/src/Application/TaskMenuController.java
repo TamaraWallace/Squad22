@@ -32,7 +32,7 @@ public class TaskMenuController implements Initializable {
 	// When the class is started it sets the values of the display text to the task information
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
-
+		//initializing values of task to pre-display in the text
 		if(selectedTask != null) {
 			taskName.setText(selectedTask.getName());
 			dueDate.setText(selectedTask.getDueDate().toString());
@@ -47,14 +47,17 @@ public class TaskMenuController implements Initializable {
 	// Functionality: when the complete button is pressed, the selected task is marked as complete
 	//				  and the user is returned to the home screen
 	public void completeButton(ActionEvent event) throws IOException {
+		//setting the selected task to completed
 		selectedTask.setCompleted(true);
 		
+		//ensuring the task is also marked as complete in the GuiBasedApp
 		for(Task t : GuiBasedApp.getTasks().getActiveTasks()) {
 			if(t.getTaskID().equals(selectedTask.getTaskID())) {
 				t.setCompleted(true);
 			}
 		}
 		
+		//changing the scene to the home screen
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
@@ -63,7 +66,6 @@ public class TaskMenuController implements Initializable {
 		
 		homeScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
 		
-		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(homeScene);
 		window.show();
 	}
@@ -76,6 +78,9 @@ public class TaskMenuController implements Initializable {
 	public void deleteButton(ActionEvent event) throws IOException {
 		//Delete is not implemented yet
 		
+		System.out.println("This feature is not available yet.");
+		
+		//returning the user to the home screen
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
@@ -95,11 +100,13 @@ public class TaskMenuController implements Initializable {
 	// Functionality: when the back button is pressed, the user is returned to 
 	//				  the previous screen
 	public void backButton(ActionEvent event) throws IOException {
-
+ 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		//retrieving the previous scene from GuiBasedApp
 		Scene backScene = GuiBasedApp.getPrevScene();
 		
+		//sending the user to the previous scene
 		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(backScene);
 		window.show();
@@ -111,18 +118,20 @@ public class TaskMenuController implements Initializable {
 	// Functionality: when the edit button is pressed, the user is taken to a screen where
 	//				  where they can edit a task's information
 	public void editButton(ActionEvent event) throws IOException {
-		System.out.println("This is not implemented yet.");
+		//telling the EditTaskController which task is being edited
+		EditTaskController.setTaskToEdit(selectedTask);
 		
+		//sending the user to the edit task screen
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("EditTask.fxml"));
 		
-		Scene homeScene = new Scene(pane);
+		Scene editScene = new Scene(pane);
 		
-		homeScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
+		editScene.getStylesheets().add(getClass().getResource("AddTask.css").toExternalForm());
 		
 		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(homeScene);
+		window.setScene(editScene);
 		window.show();
 	}
 	

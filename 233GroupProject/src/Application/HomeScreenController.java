@@ -20,6 +20,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.Task;
 import main.TaskCollection;
+import main.TextBasedApp;
+import main.UserCollection;
 
 public class HomeScreenController implements Initializable {
 	
@@ -170,8 +172,18 @@ public class HomeScreenController implements Initializable {
 	 * Method: Logs user out of app and returns to login screen
 	 * */
 	@FXML
-	public void logOut(ActionEvent event) {
+	public void logOut(ActionEvent event) throws IOException {
+		GuiBasedApp.save();
+		Stage window = (Stage) profileMenu.getScene().getWindow();
 		
+		GuiBasedApp.setUsers(UserCollection.loadUsers("users.txt"));		
+		
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Login.fxml"));
+		
+		Scene loginScene = new Scene(root);
+		
+		loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
+		window.setScene(loginScene);
 	}
 	
 	/*
@@ -179,6 +191,9 @@ public class HomeScreenController implements Initializable {
 	 * */
 	@FXML
 	public void close(ActionEvent event) {
+		GuiBasedApp.save();	
+		Stage window = (Stage) profileMenu.getScene().getWindow();
+		window.close();
 		
 	}
 	

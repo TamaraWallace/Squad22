@@ -41,7 +41,7 @@ public class GuiBasedApp extends Application{
 		
 		try {
 			
-				//System.out.println(UUID.randomUUID());
+				
 				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				@Override
@@ -49,29 +49,7 @@ public class GuiBasedApp extends Application{
 					save();
 					System.out.println("Session ended, see you soon!");
 					System.exit(0);
-					/**
-					Alert alert = new Alert(AlertType.CONFIRMATION);
-					DialogPane dialogPane = alert.getDialogPane();
-								
-					dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
-					//dialogPane.setBorder(new Border(new BorderStroke(Color.YELLOW, BorderStrokeStyle.SOLID ,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
-					
-					dialogPane.setStyle("-fx-border-color: red;");
-					alert.setTitle("Close Program");
-					alert.setHeaderText(" Are you sure you want to close the program");
-					alert.setContentText("Press \"ok\" to close the program or \"cancel\" to return to program");
 				
-					Optional<ButtonType> choice =  alert.showAndWait();
-					
-					if (choice.get() == ButtonType.OK){
-						
-						save();
-						System.out.println("Session ended, see you soon!");
-						System.exit(0);
-					}
-					else {
-						event.consume();
-					}*/
 					
 					
 				}
@@ -88,13 +66,10 @@ public class GuiBasedApp extends Application{
 			Scene loginScene = new Scene(root);
 			
 			
-			//this.newUserScene = newUserScene;
+		
 			
 			loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
 			
-			//String url = "https://github.com/TamaraWallace/Taskilla-05-22/blob/master/233GroupProject/images/taskilla_logo.jpg";
-			
-			//String path = GuiBasedApp.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 			
 			Image takilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
 			

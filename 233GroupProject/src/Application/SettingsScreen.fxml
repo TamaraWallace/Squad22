@@ -19,7 +19,7 @@
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+            <Button fx:id="backBtn" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
                   <ImageView fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,8 +33,8 @@
                   <Font size="48.0" />
                </font>
             </Text>
-            <TextField layoutX="150.0" layoutY="295.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
-            <TextField layoutX="150.0" layoutY="420.0" prefHeight="30.0" prefWidth="218.0" promptText="Email" />
+            <TextField fx:id="userName" layoutX="150.0" layoutY="295.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
+            <TextField fx:id="email" layoutX="150.0" layoutY="420.0" prefHeight="30.0" prefWidth="218.0" promptText="Email" />
             <ImageView fitHeight="76.0" fitWidth="100.0" layoutX="64.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/User%20Icon.png" />
@@ -45,7 +45,7 @@
                   <Image url="@../../images/Mail%20Icon.png" />
                </image>
             </ImageView>
-            <Button layoutX="164.0" layoutY="526.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+            <Button fx:id="updateBtn" layoutX="164.0" layoutY="526.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>

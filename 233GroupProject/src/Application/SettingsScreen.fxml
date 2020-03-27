@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Application.SettingsScreenController">
+   <children>
+      <Pane layoutX="-6.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+         <children>
+            <ImageView fitHeight="167.0" fitWidth="248.0" layoutX="126.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/taskilla_logo.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/Back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Text fill="#24a78d" layoutX="141.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <TextField layoutX="150.0" layoutY="295.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
+            <TextField layoutX="150.0" layoutY="420.0" prefHeight="30.0" prefWidth="218.0" promptText="Email" />
+            <ImageView fitHeight="76.0" fitWidth="100.0" layoutX="64.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/User%20Icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="133.0" layoutX="52.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Mail%20Icon.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="164.0" layoutY="526.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/UpdateButton.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

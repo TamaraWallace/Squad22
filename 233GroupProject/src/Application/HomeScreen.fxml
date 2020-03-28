@@ -71,12 +71,21 @@
           <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Close" />
         </items>
          <graphic>
-            <ImageView fitHeight="72.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Back.png" />
+                  <Image url="@../../images/Profile_trans.png" />
                </image>
             </ImageView>
          </graphic>
       </MenuButton>
+      <Button fx:id="emailBtn" layoutX="381.0" layoutY="21.0" mnemonicParsing="false" onAction="#addTask" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000B38;">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Mail%20Icon.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

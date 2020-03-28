@@ -4,7 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,11 +15,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Task;
 import main.TaskCollection;
@@ -49,8 +58,96 @@ public class HomeScreenController implements Initializable {
 	@FXML 
 	private Label helloUser, currentTasksTitle;
 	
+	@FXML
+	private Button emailBtn;
+	
 	public HomeScreenController() {
 	}
+	
+	
+	// list of tasks
+		private ObservableList<String> lstTasks = FXCollections.observableArrayList();
+		
+		/*
+		 * Create a static class for each cell in the lisView
+		 * */
+		static class Cell extends ListCell<String>{
+			
+			// Initializing all the widgets for displaying the task
+			HBox hb = new HBox();
+			
+			Button close = new Button(); 
+			Label taskLbl = new Label("");
+			Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
+			Pane pane = new Pane();
+			ImageView delete = new ImageView(delIcon);
+
+			private String taskId;
+			
+			
+			
+			public Cell() {
+				
+				super();		
+				
+				// setting the size of trash bin button
+				delete.setFitWidth(30);
+				delete.setFitHeight(35);
+				hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
+				
+				taskId = "";
+				
+				//setting the widgets to the proper color
+				taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
+				taskLbl.setTextFill(Color.web("#24a78d"));
+				close.setStyle("-fx-background-color: #000B38;");
+				close.setGraphic(delete);
+
+				hb.setStyle("-fx-background-color: #000B38;");
+				
+				// adding all the components in the sequence in which we want them to appear
+				hb.getChildren().addAll(taskLbl,pane,close);
+				HBox.setHgrow(pane, Priority.ALWAYS);
+				
+				//removing the task from list view when trash bin pressed
+				close.setOnAction(new EventHandler<ActionEvent>() {		
+					
+					@Override
+					public void handle(ActionEvent event) {
+						
+						getListView().getItems().remove(getItem());
+						//deleteTask(taskId,taskLbl.getText());
+					}
+
+					
+						
+					
+				});
+				
+				
+			}
+			
+			// Updates the list item in the list view with the Task details
+			// this is done by setting the text in label to the task details
+			@Override
+			public void updateItem(String name, boolean empty) {
+				super.updateItem(name, empty);
+				setText(null);
+				setGraphic(null);
+				
+				if (name != null && !empty) {
+					String[] task = name.split(",");
+					taskId = task[0];
+					String text = "";
+					for (int i = 1; i < task.length; i++) {
+						text += task[i];
+					}
+					taskLbl.setText(text);
+					setGraphic(hb);
+					
+				}
+			}
+		}
 	
 	@Override 
 	public void initialize(URL arg0, ResourceBundle arg1		) {

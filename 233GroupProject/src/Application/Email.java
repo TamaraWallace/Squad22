@@ -5,20 +5,25 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.*;
 
-public class Email {
+public class  Email {
 
-	private final String senderEmail = "taskillabusiness@gmail.com";
-	private final String senderPassword = "Taskilla123";
-	private final String emailSMTPserver = "smtp.gmail.com";
-	private final String emailServerPort = "465";
-	private String receiverEmail = "taskillabusiness@gmail.com";
+	private static final String senderEmail = "taskillabusiness@gmail.com";
+	private static final String senderPassword = "Taskilla123";
+	private static final String emailSMTPserver = "smtp.gmail.com";
+	private static final String emailServerPort = "465";
+	private static String receiverEmail = "taskillabusiness@gmail.com";
 	private static String emailSubject = "Test Mail";
 	private static String emailBody = ":)";
-	public Email(String receiverEmail,String Subject,
-			String Body){
+	private static Authenticator auth;
+	
+	public Email() {
+		auth = new SMTPAuthenticator();
+	}
+	
+	public static final void sendEmail(String receiverMail,String Subject,	String Body){
 
 		// Receiver Email Address
-		this.receiverEmail=receiverEmail; 
+		receiverEmail=receiverMail; 
 		// Subject
 		emailSubject=Subject;
 		// Body
@@ -36,7 +41,7 @@ public class Email {
 		SecurityManager security = System.getSecurityManager();
 		
 		try{  
-			Authenticator auth = new SMTPAuthenticator();
+			//Authenticator auth = new SMTPAuthenticator();
 			Session session = Session.getInstance(props, auth);
 			MimeMessage msg = new MimeMessage(session);
 			msg.setText(emailBody);
@@ -56,8 +61,8 @@ public class Email {
 	public String getReceiverEmail() {
 		return receiverEmail;
 	}
-	public void setReceiverEmailID(String receiverEmail) {
-		this.receiverEmail = receiverEmail;
+	public void setReceiverEmailID(String receiverMail) {
+		receiverEmail = receiverMail;
 	}
 	public static String getEmailSubject() {
 		return emailSubject;

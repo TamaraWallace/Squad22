@@ -59,7 +59,7 @@
          <graphic>
             <ImageView fitHeight="141.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/addBTN.jpg" />
+                  <Image url="@../../images/PlusIcon.png" />
                </image>
             </ImageView>
          </graphic>
@@ -73,7 +73,7 @@
          <graphic>
             <ImageView fitHeight="72.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/profileBTN.jpg" />
+                  <Image url="@../../images/Back.png" />
                </image>
             </ImageView>
          </graphic>

@@ -42,7 +42,7 @@ public class Task {
 		this.setUserID(t.userID);
 		this.setName(t.name);
 		this.setNotes(t.notes);
-		this.setCompleted(t.completed);
+		this.completed=(t.completed);
 		this.setDueDate(t.dueDate);
 	}
 	
@@ -131,8 +131,8 @@ public class Task {
 		this.notes = notes;
 	}
 
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
+	public void complete(){
+		this.completed = true;
 	}
 
 	public void setDueDate(LocalDate dueDate) {

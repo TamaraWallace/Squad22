@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.DisplayTasksController">
    <children>
-      <Label layoutX="187.0" layoutY="79.0" prefHeight="55.0" prefWidth="97.0" text="Tasks " textAlignment="CENTER" textFill="#24a78d">
+      <Label layoutX="195.0" layoutY="79.0" prefHeight="55.0" prefWidth="110.0" text="TASKS" textAlignment="CENTER" textFill="#24a78d">
          <font>
             <Font size="36.0" />
          </font>
@@ -24,19 +24,19 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="completeBtn" layoutX="268.0" layoutY="511.0" mnemonicParsing="false" onAction="#completeTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="completeBtn" layoutX="253.0" layoutY="513.0" mnemonicParsing="false" onAction="#completeTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/CompleteBtn.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/completeBTN.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="selectBtn" layoutX="106.0" layoutY="511.0" mnemonicParsing="false" onAction="#selectTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="selectBtn" layoutX="88.0" layoutY="510.0" mnemonicParsing="false" onAction="#selectTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/SelectBtn.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/selectBTN.jpg" />
                </image>
             </ImageView>
          </graphic>

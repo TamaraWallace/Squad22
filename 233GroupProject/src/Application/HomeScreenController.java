@@ -55,7 +55,7 @@ public class HomeScreenController implements Initializable {
 	@Override 
 	public void initialize(URL arg0, ResourceBundle arg1		) {
 		String usrName = GuiBasedApp.getUser().getUsrName();
-		helloUser.setText("Hello, " + usrName);
+		helloUser.setText("Hello, " + usrName+"!");
 		
 		TaskCollection tasks_object = GuiBasedApp.getTasks();
 		ArrayList<Task> tasks_list = tasks_object.getActiveTasks();
@@ -113,12 +113,36 @@ public class HomeScreenController implements Initializable {
 		window.show();
 	}
 	
-	public void secondRecentTask() {
+	public void secondRecentTask(ActionEvent event) throws IOException{
+		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(1));
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
+		
+		Scene viewAllScene = new Scene(pane);
+		
+		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(viewAllScene);
+		window.show();
+	
 	}
 	
-	public void thirdRecentTask() {
+	public void thirdRecentTask(ActionEvent event) throws IOException{
+		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(2));
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
+		
+		Scene viewAllScene = new Scene(pane);
+		
+		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(viewAllScene);
+		window.show();
+	
 	}
 	
 	

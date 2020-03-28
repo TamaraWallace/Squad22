@@ -47,33 +47,33 @@
             </RadioButton>
          </children>
       </VBox>
-      <Button fx:id="viewAllbtn" layoutX="79.0" layoutY="536.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="100.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAllbtn" layoutX="93.0" layoutY="512.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="151.0" prefWidth="131.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="138.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="142.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/bevel%20button%20.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="addTaskBtn" layoutX="290.0" layoutY="553.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #000B38;">
+      <Button fx:id="addTaskBtn" layoutX="260.0" layoutY="512.0" mnemonicParsing="false" onAction="#addTask" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="128.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="141.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/PlusIcon.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/addBTN.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <MenuButton fx:id="profileMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="45.0" style="-fx-background-color: #000B38;">
+      <MenuButton fx:id="profileMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="90.0" style="-fx-background-color: #000B38;">
         <items>
           <MenuItem fx:id="settingsItem" mnemonicParsing="false" onAction="#settings" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Settings" />
-          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logOut" style="-fx-text-fill: #24a78d; -fx-background-color: #000B38;" text="LogOut" />
-          <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;"  text="Close" />
+          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logOut" style="-fx-text-fill: #24a78d; -fx-background-color: #000B38;" text="Log Out" />
+          <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Close" />
         </items>
          <graphic>
-            <ImageView fitHeight="72.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="72.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Profile_trans.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/profileBTN.jpg" />
                </image>
             </ImageView>
          </graphic>

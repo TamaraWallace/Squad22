@@ -9,12 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Application.SettingsScreenController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SettingsScreenController">
    <children>
       <Pane layoutX="-6.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
          <children>
-            <ImageView fitHeight="167.0" fitWidth="248.0" layoutX="126.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="175.0" fitWidth="260.0" layoutX="120.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
@@ -28,7 +27,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text fill="#24a78d" layoutX="141.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
+            <Text fill="#24a78d" layoutX="145.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
                <font>
                   <Font size="48.0" />
                </font>
@@ -45,11 +44,11 @@
                   <Image url="@../../images/Mail%20Icon.png" />
                </image>
             </ImageView>
-            <Button fx:id="updateBtn" layoutX="164.0" layoutY="526.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+            <Button fx:id="updateBtn" layoutX="175.0" layoutY="513.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="147.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/UpdateButton.jpg" />
+                        <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/updateBTN.jpg" />
                      </image>
                   </ImageView>
                </graphic>

@@ -162,7 +162,7 @@ public class DisplayTasksController implements Initializable{
 		
 		
 		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
-		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).setCompleted(true);
+		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).complete();
 	}
 	
 	// method for returning to previous scene
@@ -191,7 +191,7 @@ public class DisplayTasksController implements Initializable{
 			
 			for (Task task : GuiBasedApp.getActiveTasks()) {
 				if (task.getTaskID().toString() == taskId) {
-					task.setCompleted(true);
+					task.complete();
 				}
 			}
 			

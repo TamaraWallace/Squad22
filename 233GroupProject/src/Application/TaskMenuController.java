@@ -48,12 +48,12 @@ public class TaskMenuController implements Initializable {
 	//				  and the user is returned to the home screen
 	public void completeButton(ActionEvent event) throws IOException {
 		//setting the selected task to completed
-		selectedTask.setCompleted(true);
+		selectedTask.complete();
 		
 		//ensuring the task is also marked as complete in the GuiBasedApp
 		for(Task t : GuiBasedApp.getTasks().getActiveTasks()) {
 			if(t.getTaskID().equals(selectedTask.getTaskID())) {
-				t.setCompleted(true);
+				t.complete();
 			}
 		}
 		

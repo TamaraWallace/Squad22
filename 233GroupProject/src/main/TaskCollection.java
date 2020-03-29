@@ -74,20 +74,16 @@ public class TaskCollection {
             	Task temp = getTaskByID(tempID);
             	if (!usrID.equals(tempUsrId)) {
             		bw.write(s + "\n");
-            		System.out.println("Saving other user's task");
             	} else if(temp.getName().equals("")) {
             		lastIndSaved = tasks.indexOf(temp);
-            		System.out.println("Task removed");
             	} else {
             		bw.write(temp.toSaveString());
             		lastIndSaved = tasks.indexOf(temp);
-            		System.out.println("Saving current user's task");
             	}
             }
             for (int i = lastIndSaved + 1; i < tasks.size(); i++) {
             	if(!tasks.get(i).getName().equals("")) {
             		bw.write(tasks.get(i).toSaveString());
-            		System.out.println("Saving new task");
             	}
             }
             bw.close();

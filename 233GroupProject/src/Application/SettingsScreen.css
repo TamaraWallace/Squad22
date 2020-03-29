@@ -1,0 +1,16 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.text-field {
+    -fx-prompt-text-fill: #000b38;
+}
+
+.button{
+	-fx-background-color: #000b38;
+}
+.button:hover{     
+	-fx-background-color: #76d0aa;
+	-fx-text-fill: #000b38;
+	-fx-effect: dropshadow( three-pass-box, #b3c2ff, 15, 0.0, 0.0, 0.0);
+ 	-fx-font-weight:bold; 
+ }
+

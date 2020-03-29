@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +19,7 @@
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="backBtn" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+            <Button fx:id="backBtn" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
                   <ImageView fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,15 +45,17 @@
                   <Image url="@../../images/Mail%20Icon.png" />
                </image>
             </ImageView>
-            <Button fx:id="updateBtn" layoutX="175.0" layoutY="513.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+            <Button fx:id="updateBtn" layoutX="175.0" layoutY="513.0" mnemonicParsing="false" onAction="#update" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
                   <ImageView fitHeight="147.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/updateBTN.jpg" />
+                        <Image url="@../../images/updateBTN.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="validUserNameLbl" alignment="CENTER" layoutX="149.0" layoutY="334.0" prefHeight="20.0" prefWidth="210.0" textAlignment="CENTER" textFill="RED" />
+            <Label fx:id="validEmailLbl" alignment="CENTER" layoutX="149.0" layoutY="465.0" prefHeight="20.0" prefWidth="218.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </Pane>
    </children>

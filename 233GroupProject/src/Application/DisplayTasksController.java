@@ -39,7 +39,7 @@ public class DisplayTasksController implements Initializable{
 	private Button backBtn;
 	
 	@FXML
-	private Button completeBtn;
+	private Button completeBtn,selectBtn;
 
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();

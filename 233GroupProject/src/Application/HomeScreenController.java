@@ -2,8 +2,9 @@ package Application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.ArrayList;
+import java.util.UUID;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
@@ -28,8 +30,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Task;
-import main.TaskCollection;
-import main.TextBasedApp;
 import main.UserCollection;
 
 public class HomeScreenController implements Initializable {
@@ -61,143 +61,167 @@ public class HomeScreenController implements Initializable {
 	@FXML
 	private Button emailBtn;
 	
-	public HomeScreenController() {
-	}
-	
+	@FXML
+	private ListView<String> lstViewTasks;	
 	
 	// list of tasks
-		private ObservableList<String> lstTasks = FXCollections.observableArrayList();
+	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
+	
+	/*
+	 * Create a static class for each cell in the lisView
+	 * */
+	class Cell extends ListCell<String> {
 		
-		/*
-		 * Create a static class for each cell in the lisView
-		 * */
-		static class Cell extends ListCell<String>{
-			
-			// Initializing all the widgets for displaying the task
-			HBox hb = new HBox();
-			
-			Button close = new Button(); 
-			Label taskLbl = new Label("");
-			Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
-			Pane pane = new Pane();
-			ImageView delete = new ImageView(delIcon);
+		// Initializing all the widgets for displaying the task
+		HBox hb = new HBox();
+		
+		Button close = new Button(); 
+		Label taskLbl = new Label("");
+		Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
+		Pane pane = new Pane();
+		ImageView delete = new ImageView(delIcon);
 
-			private String taskId;
+		private String taskId;
+		
+		
+		
+		public Cell() {
 			
+			super();		
 			
+			// setting the size of trash bin button
+			delete.setFitWidth(30);
+			delete.setFitHeight(35);
+			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
 			
-			public Cell() {
-				
-				super();		
-				
-				// setting the size of trash bin button
-				delete.setFitWidth(30);
-				delete.setFitHeight(35);
-				hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
-				
-				taskId = "";
-				
-				//setting the widgets to the proper color
-				taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
-				taskLbl.setTextFill(Color.web("#24a78d"));
-				close.setStyle("-fx-background-color: #000B38;");
-				close.setGraphic(delete);
+			taskId = "";
+			
+			//setting the widgets to the proper color
+			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
+			taskLbl.setTextFill(Color.web("#24a78d"));
+			close.setStyle("-fx-background-color: #000B38;");
+			close.setGraphic(delete);
 
-				hb.setStyle("-fx-background-color: #000B38;");
-				
-				// adding all the components in the sequence in which we want them to appear
-				hb.getChildren().addAll(taskLbl,pane,close);
-				HBox.setHgrow(pane, Priority.ALWAYS);
-				
-				//removing the task from list view when trash bin pressed
-				close.setOnAction(new EventHandler<ActionEvent>() {		
-					
-					@Override
-					public void handle(ActionEvent event) {
-						
-						getListView().getItems().remove(getItem());
-						//deleteTask(taskId,taskLbl.getText());
-					}
-
-					
-						
-					
-				});
-				
-				
-			}
+			hb.setStyle("-fx-background-color: #000B38;");
 			
-			// Updates the list item in the list view with the Task details
-			// this is done by setting the text in label to the task details
-			@Override
-			public void updateItem(String name, boolean empty) {
-				super.updateItem(name, empty);
-				setText(null);
-				setGraphic(null);
+			// adding all the components in the sequence in which we want them to appear
+			hb.getChildren().addAll(taskLbl,pane,close);
+			HBox.setHgrow(pane, Priority.ALWAYS);
+			
+			//removing the task from list view when trash bin pressed
+			close.setOnAction(new EventHandler<ActionEvent>() {		
 				
-				if (name != null && !empty) {
-					String[] task = name.split(",");
-					taskId = task[0];
-					String text = "";
-					for (int i = 1; i < task.length; i++) {
-						text += task[i];
-					}
-					taskLbl.setText(text);
-					setGraphic(hb);
+				@Override
+				public void handle(ActionEvent event) {
 					
+					getListView().getItems().remove(getItem());
+					System.out.println("TaskID: "+taskId);
+					deleteTask(taskId,taskLbl.getText());
 				}
+
+				
+					
+				
+			});
+			
+			
+		}
+		
+		// Updates the list item in the list view with the Task details
+		// this is done by setting the text in label to the task details
+		@Override
+		public void updateItem(String name, boolean empty) {
+			super.updateItem(name, empty);
+			setText(null);
+			setGraphic(null);
+			
+			if (name != null && !empty) {
+				//System.out.println(name);
+				String[] task = name.split(",");
+				
+				taskId = task[0];
+				String text = "";
+				for (int i = 1; i < task.length; i++) {
+					text += task[i];
+				}
+				taskLbl.setText(text);
+				setGraphic(hb);
+				
 			}
 		}
+
+		
+
+	
+	}
 	
 	@Override 
-	public void initialize(URL arg0, ResourceBundle arg1		) {
+	public void initialize(URL location, ResourceBundle resources) {
+		
 		String usrName = GuiBasedApp.getUser().getUsrName();
 		helloUser.setText("Hello, " + usrName+"!");
 		
-		TaskCollection tasks_object = GuiBasedApp.getTasks();
-		ArrayList<Task> tasks_list = tasks_object.getActiveTasks();
-		int list_size = tasks_list.size();
-		if (list_size==1) {
-			String name = tasks_list.get(0).getName();
-			this.mostRecentTask.setText(name);
+		
+		lstViewTasks.setStyle("-fx-background-color: #000B38;");
+		System.out.println("intialize is runnin now");
+		
+		int count = 0;
+		for (Task task : GuiBasedApp.getActiveTasks()) {
+	
+			System.out.println(task.toString()+"\n");
+		
+			String display;
+			String taskId = task.getTaskID().toString();
 			
-			this.secondRecentTask.setText("Add Tasks!");
-			this.thirdRecentTask.setText("Add Tasks!");
+			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+			
+			if (count < 3) {
+				lstTasks.add(display);
+				count++;
+			}else {
+				break;
+			}
+			
+			
 		}
-		else if(list_size==2) {
-			String name = tasks_list.get(0).getName();
-			this.mostRecentTask.setText(name);
-			
-			String name2 = tasks_list.get(1).getName();
-			this.secondRecentTask.setText(name2);
-			
-			this.thirdRecentTask.setText("Add Tasks!");
-		}
-		else if (list_size>=3) {
-			String name = tasks_list.get(0).getName();
-			this.mostRecentTask.setText(name);
-			
-			String name2 = tasks_list.get(1).getName();
-			this.secondRecentTask.setText(name2);
-			
-			String name3 = tasks_list.get(2).getName();
-			this.thirdRecentTask.setText(name3);
-		}
-		else if (list_size==0) {
-			this.mostRecentTask.setText("Add Tasks!");
-			this.secondRecentTask.setText("Add Tasks!");
-			this.thirdRecentTask.setText("Add Tasks!");
-		}
+		
+		System.out.println(count);
+		
+		lstViewTasks.getItems().addAll(lstTasks);
+		
+		
+		
+		lstViewTasks.setCellFactory(param -> new Cell());
+		
+		
+		lstViewTasks.getSelectionModel().selectedItemProperty().addListener( (v,oldV,newV)-> {
+			//
+			try {
+				selectedCell(v,oldV,newV);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		});
+		
+		
 		
 	}
 	
 	
-	public void mostRecentTask(ActionEvent event) throws IOException {
-		//will implement these buttons once we can sort the tasks by date so that if you select a task
-		// it goes to a scene with the details of the task and a complete button at the bottom 
-		//I know we can't sort things yet, but I added this just for the demo
-		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(0));
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	private void selectedCell(ObservableValue<? extends String> observable,  String oldValue, String newValue) throws IOException {
+		
+		System.out.println("SelectedTask: "+newValue);
+		System.out.println();
+		String TaskID = newValue.split(",")[0];
+		System.out.println("TaskID: "+TaskID);
+		
+		
+		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID( UUID.fromString(TaskID))); 
+		
+		Stage window = (Stage) lstViewTasks.getScene().getWindow();
+		
+		
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
 		
@@ -209,38 +233,8 @@ public class HomeScreenController implements Initializable {
 		window.setScene(viewAllScene);
 		window.show();
 	}
-	
-	public void secondRecentTask(ActionEvent event) throws IOException{
-		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(1));
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
-		
-		Scene viewAllScene = new Scene(pane);
-		
-		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(viewAllScene);
-		window.show();
-	
-	}
-	
-	public void thirdRecentTask(ActionEvent event) throws IOException{
-		TaskMenuController.setSelectedTask(GuiBasedApp.getTasks().getActiveTasks().get(2));
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
-		
-		Scene viewAllScene = new Scene(pane);
-		
-		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(viewAllScene);
-		window.show();
-	
-	}
+
+
 	
 	
 	@FXML
@@ -330,7 +324,7 @@ public class HomeScreenController implements Initializable {
 		
 		Scene SettingsScene = new Scene(pane);
 		
-		//viewAllScene.getStylesheets().add(getClass().getResource("SettingsScreen.css").toExternalForm());
+		SettingsScene.getStylesheets().add(getClass().getResource("SettingsScreen.css").toExternalForm());
 		
 		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(SettingsScene);
@@ -347,6 +341,13 @@ public class HomeScreenController implements Initializable {
 		email.sendEmail(GuiBasedApp.getUser().getUsrEmail(), "Taskilla Task Update", "Tasks");
 	}
 
+	
+	// method for deleting a users tasks
+	//currently only removes task from list view, does not update user's tasks
+	public static void deleteTask(String taskId, String taskName) {
+		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
+		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
+	}
 	
 	
 	

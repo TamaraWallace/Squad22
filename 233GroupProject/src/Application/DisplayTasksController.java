@@ -92,6 +92,7 @@ public class DisplayTasksController implements Initializable{
 				public void handle(ActionEvent event) {
 					
 					getListView().getItems().remove(getItem());
+					System.out.println("TaskID: "+taskId);
 					deleteTask(taskId,taskLbl.getText());
 				}
 
@@ -112,7 +113,9 @@ public class DisplayTasksController implements Initializable{
 			setGraphic(null);
 			
 			if (name != null && !empty) {
+				//System.out.println(name);
 				String[] task = name.split(",");
+				
 				taskId = task[0];
 				String text = "";
 				for (int i = 1; i < task.length; i++) {

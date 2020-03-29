@@ -4,6 +4,7 @@ package Application;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.*;
+import javax.mail.Authenticator;
 
 public class  Email {
 
@@ -17,7 +18,8 @@ public class  Email {
 	private static Authenticator auth;
 	
 	public Email() {
-		auth = new SMTPAuthenticator();
+		Authenticator authenticator = new SMTPAuthenticator();
+		auth = authenticator;
 	}
 	
 	public static final void sendEmail(String receiverMail,String Subject,	String Body){
@@ -42,7 +44,8 @@ public class  Email {
 		
 		try{  
 			//Authenticator auth = new SMTPAuthenticator();
-			Session session = Session.getInstance(props, auth);
+			
+			Session session = Session.getInstance(props);
 			MimeMessage msg = new MimeMessage(session);
 			msg.setText(emailBody);
 			msg.setSubject(emailSubject);

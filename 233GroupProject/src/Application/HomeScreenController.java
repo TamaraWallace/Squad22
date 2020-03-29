@@ -322,8 +322,29 @@ public class HomeScreenController implements Initializable {
 	 * Method: opens new scene where user can change settings
 	 * */
 	@FXML
-	public void settings(ActionEvent event) {
+	public void settings(ActionEvent event) throws IOException {
 		
+		Stage window = (Stage) profileMenu.getScene().getWindow();
+		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("SettingsScreen.fxml"));
+		
+		Scene SettingsScene = new Scene(pane);
+		
+		//viewAllScene.getStylesheets().add(getClass().getResource("SettingsScreen.css").toExternalForm());
+		
+		GuiBasedApp.setPrevScene(window.getScene());
+		window.setScene(SettingsScene);
+		window.show();
+	}
+	
+	@FXML
+	public void sendTaskEmail(ActionEvent event) {
+		
+		System.out.println(GuiBasedApp.getUser().getUsrEmail());
+		
+		Email email = new Email();
+		
+		email.sendEmail(GuiBasedApp.getUser().getUsrEmail(), "Taskilla Task Update", "Tasks");
 	}
 
 	

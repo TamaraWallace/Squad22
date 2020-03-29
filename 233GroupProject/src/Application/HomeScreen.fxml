@@ -73,12 +73,12 @@
          <graphic>
             <ImageView fitHeight="82.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/profileBTN.jpg" />
+                  <Image url="@../../images/profileBTN.jpg" />
                </image>
             </ImageView>
          </graphic>
       </MenuButton>
-      <Button fx:id="emailBtn" layoutX="381.0" layoutY="21.0" mnemonicParsing="false" onAction="#addTask" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="emailBtn" layoutX="381.0" layoutY="21.0" mnemonicParsing="false" onAction="#sendTaskEmail" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>

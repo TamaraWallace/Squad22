@@ -100,4 +100,13 @@ public class User {
 	public UUID getUsrID() {
 		return usrID;
 	}
+
+	public String getUsrEmail() {
+		return usrEmail;
+	}
+
+	public void setUsrEmail(String usrEmail) {
+		this.usrEmail = usrEmail;
+	}
+	
 }

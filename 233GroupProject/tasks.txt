@@ -1,7 +1,5 @@
 a13f0398-e4a6-4958-99c5-a239c248c349,3561691b-1917-4dbe-8e77-aaf719a14a92,implement emails,,false,2020-02-27
 608cfa82-03df-4990-a192-349c4b6e7fa7,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Display All Tasks,Create the display all tasks scene,false,2020-03-09
-052e2152-b24d-4b81-a1ca-6a85fcf254b2,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Handle Stage Close ,show alert Dialogue,false,2020-03-10
-96114574-6ec3-4b43-a09d-8c4c53afa8f2,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Demo2,create presentation and uml diagram,false,2020-03-09
 7e0fe10e-52ed-43cd-a9f6-6be06e58d9c7,c4d5bf88-d005-36f9-a67a-ff171cb0180f,Demo 2,Prepare Presentation,false,2020-03-09
 9a2445fd-47e1-46b0-8d61-aee4c5cec295,0cbc6611-f554-3bd0-809a-388dc95a615b,Present Demo2,Presentation by Karim & Tamara,false,2020-03-09
 87f3bc93-129c-4799-91dd-e9f415a1b195,0cbc6611-f554-3bd0-809a-388dc95a615b,Get an A+,Gotta get that 4.0,false,2020-04-15

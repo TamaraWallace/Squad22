@@ -13,5 +13,5 @@ d383a87f-0617-447c-9129-41128fda2467,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester
 f6d5771d-9329-4d89-b9b0-e9b281702fb2,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester,hello,true,2020-03-28
 b38a1b78-d31b-4f80-bf1f-21a4d4f7b1f9,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester,hello,true,2020-03-28
 da51788f-fefd-4c82-9d15-b18917766673,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester2,hello,true,2020-03-28
-a772def1-232c-410a-9176-886239766938,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester,hello,false,2020-03-28
+a772def1-232c-410a-9176-886239766938,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,tester,hello,true,2020-03-28
 a5ef32ac-2608-4002-8864-40b8b4606f6c,fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,long name task with long name ,some notes,false,2020-03-28

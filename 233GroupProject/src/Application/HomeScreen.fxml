@@ -47,17 +47,17 @@
             </RadioButton>
          </children>
       </VBox>
-      <Button fx:id="viewAllbtn" layoutX="93.0" layoutY="512.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="151.0" prefWidth="131.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAllbtn" layoutX="93.0" layoutY="526.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="142.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="116.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/bevel%20button%20.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="addTaskBtn" layoutX="260.0" layoutY="512.0" mnemonicParsing="false" onAction="#addTask" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="addTaskBtn" layoutX="260.0" layoutY="526.0" mnemonicParsing="false" onAction="#addTask" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="141.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/PlusIcon.png" />
                </image>
@@ -73,7 +73,7 @@
          <graphic>
             <ImageView fitHeight="82.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/Profile_trans.png" />
+                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/profileBTN.jpg" />
                </image>
             </ImageView>
          </graphic>

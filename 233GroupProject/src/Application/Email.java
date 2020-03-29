@@ -18,8 +18,7 @@ public class  Email {
 	private static Authenticator auth;
 	
 	public Email() {
-		Authenticator authenticator = new SMTPAuthenticator();
-		auth = authenticator;
+		auth = new SMTPAuthenticator();
 	}
 	
 	public static final void sendEmail(String receiverMail,String Subject,	String Body){

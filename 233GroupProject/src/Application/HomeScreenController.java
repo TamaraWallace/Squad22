@@ -67,6 +67,51 @@ public class HomeScreenController implements Initializable {
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
+	@Override 
+	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("\nHome Screen Scene");
+		
+		String usrName = GuiBasedApp.getUser().getUsrName();
+		helloUser.setText("Hello, " + usrName+"!");
+		
+		
+		lstViewTasks.setStyle("-fx-background-color: #000B38;");
+		
+		int count = 0;
+		for (Task task : GuiBasedApp.getActiveTasks()) {
+	
+			System.out.println(task.toString()+"\n");
+		
+			String display;
+			String taskId = task.getTaskID().toString();
+			
+			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+			
+			if (count < 3) {
+				lstTasks.add(display);
+				count++;
+			}else {
+				break;
+			}
+		}
+		lstViewTasks.getItems().addAll(lstTasks);
+		
+		lstViewTasks.setCellFactory(param -> new Cell());
+		
+		lstViewTasks.getSelectionModel().selectedItemProperty().addListener( (v,oldV,newV)-> {
+			//
+			try {
+				selectedCell(v,oldV,newV);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		});
+		
+		
+		
+	}
+	
 	/*
 	 * Create a static class for each cell in the lisView
 	 * */
@@ -136,7 +181,6 @@ public class HomeScreenController implements Initializable {
 			setGraphic(null);
 			
 			if (name != null && !empty) {
-				//System.out.println(name);
 				String[] task = name.split(",");
 				
 				taskId = task[0];
@@ -155,66 +199,13 @@ public class HomeScreenController implements Initializable {
 	
 	}
 	
-	@Override 
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		String usrName = GuiBasedApp.getUser().getUsrName();
-		helloUser.setText("Hello, " + usrName+"!");
-		
-		
-		lstViewTasks.setStyle("-fx-background-color: #000B38;");
-		
-		int count = 0;
-		for (Task task : GuiBasedApp.getActiveTasks()) {
 	
-			System.out.println(task.toString()+"\n");
-		
-			String display;
-			String taskId = task.getTaskID().toString();
-			
-			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
-			
-			if (count < 3) {
-				lstTasks.add(display);
-				count++;
-			}else {
-				break;
-			}
-			
-			
-		}
-		
-		System.out.println(count);
-		
-		lstViewTasks.getItems().addAll(lstTasks);
-		
-		
-		
-		lstViewTasks.setCellFactory(param -> new Cell());
-		
-		
-		lstViewTasks.getSelectionModel().selectedItemProperty().addListener( (v,oldV,newV)-> {
-			//
-			try {
-				selectedCell(v,oldV,newV);
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-		});
-		
-		
-		
-	}
 	
 	
 	private void selectedCell(ObservableValue<? extends String> observable,  String oldValue, String newValue) throws IOException {
 		
-		System.out.println("SelectedTask: "+newValue);
-		System.out.println();
+		System.out.println("SelectedTask: " + newValue);
 		String TaskID = newValue.split(",")[0];
-		System.out.println("TaskID: "+TaskID);
-		
 		
 		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID(UUID.fromString(TaskID))); 
 		
@@ -319,11 +310,11 @@ public class HomeScreenController implements Initializable {
 		
 		Stage window = (Stage) profileMenu.getScene().getWindow();
 		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("SettingsScreen.fxml"));
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
 		
 		Scene SettingsScene = new Scene(pane);
 		
-		SettingsScene.getStylesheets().add(getClass().getResource("SettingsScreen.css").toExternalForm());
+		SettingsScene.getStylesheets().add(getClass().getResource("Settings.css").toExternalForm());
 		
 		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(SettingsScene);

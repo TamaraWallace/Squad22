@@ -32,7 +32,8 @@ public class TaskMenuController implements Initializable {
 	// When the class is started it sets the values of the display text to the task information
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
-		//initializing values of task to pre-display in the text
+		System.out.println("\nTask Menu Scene");
+		
 		if(selectedTask != null) {
 			taskName.setText(selectedTask.getName());
 			dueDate.setText(selectedTask.getDueDate().toString());

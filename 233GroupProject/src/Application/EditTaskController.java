@@ -42,14 +42,11 @@ public class EditTaskController implements Initializable {
 	// When the class is started it sets the values of the fields to the task information
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
+		System.out.println("\nEdit Task Scene");
 		
-		//initializing values of task to pre-display in the text fields and date picker
-		if(taskToEdit != null) {
-			name.setText(taskToEdit.getName());
-			date.setValue(taskToEdit.getDueDate());;
-			notes.setText(taskToEdit.getNotes());
-		}
-
+		name.setText(taskToEdit.getName());
+		date.setValue(taskToEdit.getDueDate());;
+		notes.setText(taskToEdit.getNotes());
 	}
 
 	// Method Name: doneButton

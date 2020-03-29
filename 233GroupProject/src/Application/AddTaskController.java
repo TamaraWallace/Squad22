@@ -18,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.Task;
 
-public class AddTaskController  implements Initializable{
+public class AddTaskController implements Initializable{
 	
 		@FXML 
 		private TextField name,notes;
@@ -31,6 +31,10 @@ public class AddTaskController  implements Initializable{
 		@FXML
 		private Button backBtn;
 		
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			System.out.println("\nAdd Task Scene");
+		}
 		
 		@FXML
 		public void addButton(ActionEvent event) throws IOException {
@@ -39,7 +43,7 @@ public class AddTaskController  implements Initializable{
 			String taskNotes = notes.getText();
 			// validating taskName is not empty
 			if (taskName.isEmpty()) {
-				nameLabel.setText("TASK NAME CAN'T BE EMPTY");
+				nameLabel.setText("Must have a name!");
 				taskName = name.getText();
 			} else {
 				nameLabel.setText("");
@@ -47,7 +51,7 @@ public class AddTaskController  implements Initializable{
 			// validating the taskDate is not empty 
 			LocalDate taskDate = date.getValue();
 			if (taskDate == null) {
-				dateLabel.setText("TASK DATE CAN'T BE EMPTY");
+				dateLabel.setText("Must provide a due date!");
 			} else {
 				dateLabel.setText("");
 			}
@@ -78,15 +82,6 @@ public class AddTaskController  implements Initializable{
 				window.setScene(HomeScreenScene);
 				window.show();
 			}
-		}
-
-		// do not remove this as it will throw an error in the class !!
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-
-			// TODO Auto-generated method stub
-			
-	
 		}
 		
 		// back button 

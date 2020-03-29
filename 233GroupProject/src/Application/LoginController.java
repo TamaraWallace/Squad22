@@ -48,7 +48,7 @@ public class LoginController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("Initializing Login Screen");
+		System.out.println("\nLogin Scene");
 	}
 	
 	// ----------------------- EVENT HANDLERS -----------------------
@@ -61,7 +61,7 @@ public class LoginController implements Initializable{
 		attempts++;
 		
 		
-		System.out.println("Attempt: " + attempts);
+		System.out.println("Login Attempt: " + attempts);
 		
 		User u = GuiBasedApp.getUsers().validateUsernameAndPassword(usrName,usrPassword);
 		
@@ -73,7 +73,6 @@ public class LoginController implements Initializable{
 			lgnValidPassLbl.setText("Invalid Password");	
 		} else {
 			attempts = 0;
-			System.out.println(u.toString());
 			GuiBasedApp.loginUser(u);
 			
 			loggedIn = true;
@@ -105,7 +104,6 @@ public class LoginController implements Initializable{
 		if (loggedIn) {
 			System.out.println(u.getUsrName() + " has successfully logged in.");
 			System.out.println(u.toString());
-			GuiBasedApp.getTasks().display();
 			
 			launchHomeScreenScene(event);
 		}
@@ -138,25 +136,23 @@ public class LoginController implements Initializable{
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 		
-		Scene HomeScreenScene = new Scene(pane);
+		Scene homeScreenScene = new Scene(pane);
 		
-		HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		window.hide();
-		window.setScene(HomeScreenScene);
+		homeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
+		window.setScene(homeScreenScene);
 		window.show();
 	}
 	
 	private void launchCreateUserScene(ActionEvent event) throws IOException {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		GuiBasedApp.setPrevScene(window.getScene());
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
 		
 		Scene createUserScene = new Scene(pane);
 		
 		createUserScene.getStylesheets().add(getClass().getResource("CreateUser.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.hide();
 		window.setScene(createUserScene);
 		window.show();
 	}

@@ -44,6 +44,37 @@ public class DisplayTasksController implements Initializable{
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
+	// initialize the list view in the display tasks scene
+	// this is done by iterating through users active tasks and adding each task to list view
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("\nDisplay Tasks Screen");
+		
+		lstViewTasks.setStyle("-fx-background-color: #000B38;");
+		
+		for (Task task : GuiBasedApp.getActiveTasks()) {
+	
+			System.out.println(task.toString()+"\n");
+		
+			String display;
+			String taskId = task.getTaskID().toString();
+			
+			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+			
+			lstTasks.add(display);
+			
+		}
+		lstViewTasks.getItems().addAll(lstTasks);
+		
+		
+		
+		lstViewTasks.setCellFactory(param -> new Cell());
+		
+		lstViewTasks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		
+	}
+	
 	/*
 	 * Create a static class for each cell in the lisView
 	 * */
@@ -128,36 +159,7 @@ public class DisplayTasksController implements Initializable{
 		}
 	}
 	
-	// initialize the list view in the display tasks scene
-	// this is done by iterating through users active tasks and adding each task to list view
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Initializing Display Tasks Screen");
-		
-		lstViewTasks.setStyle("-fx-background-color: #000B38;");
-		
-		for (Task task : GuiBasedApp.getActiveTasks()) {
-	
-			System.out.println(task.toString()+"\n");
-		
-			String display;
-			String taskId = task.getTaskID().toString();
-			
-			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
-			
-			lstTasks.add(display);
-			
-		}
-		lstViewTasks.getItems().addAll(lstTasks);
-		
-		
-		
-		lstViewTasks.setCellFactory(param -> new Cell());
-		
-		lstViewTasks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		
-	}
+
 	
 	// method for deleting a users tasks
 	//currently only removes task from list view, does not update user's tasks

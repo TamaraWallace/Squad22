@@ -1,9 +1,13 @@
 package Application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.User;
 
-public class CreateUserController {
+public class CreateUserController implements Initializable {
 	
 	@FXML
 	private Button backBtn;
@@ -52,6 +56,10 @@ public class CreateUserController {
 
 	private String newUsrConfPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println("\nCreate User Scene");
+	}
 	
 	@FXML
 	public void back(ActionEvent event) {

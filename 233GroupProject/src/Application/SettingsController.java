@@ -31,6 +31,8 @@ public class SettingsController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("\nSettings Scene");
+		
 		userName.setText(GuiBasedApp.getUser().getUsrName());
 		email.setText(GuiBasedApp.getUser().getUsrEmail());
 	}

@@ -47,7 +47,7 @@ public class DisplayTasksController implements Initializable{
 	/*
 	 * Create a static class for each cell in the lisView
 	 * */
-	static class Cell extends ListCell<String>{
+	class Cell extends ListCell<String>{
 		
 		// Initializing all the widgets for displaying the task
 		HBox hb = new HBox();

@@ -163,7 +163,6 @@ public class HomeScreenController implements Initializable {
 		
 		
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
-		System.out.println("intialize is runnin now");
 		
 		int count = 0;
 		for (Task task : GuiBasedApp.getActiveTasks()) {
@@ -333,12 +332,7 @@ public class HomeScreenController implements Initializable {
 	
 	@FXML
 	public void sendTaskEmail(ActionEvent event) {
-		
-		System.out.println(GuiBasedApp.getUser().getUsrEmail());
-		
-		Email email = new Email();
-		
-		email.sendEmail(GuiBasedApp.getUser().getUsrEmail(), "Taskilla Task Update", "Tasks");
+		GuiBasedApp.getUser().sendWelcomeEmail();
 	}
 
 	

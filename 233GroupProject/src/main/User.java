@@ -2,6 +2,8 @@ package main;
 
 import java.util.UUID;
 
+import Application.Email;
+
 // User class creates User object with usrName, usrPassword and usrID attributes
 
 public class User {
@@ -12,15 +14,11 @@ public class User {
 	private String usrEmail; // user's email
 	
 	
-	
-	public User() {	}
-	
-	// Constructor Method: sets User's name, password and ID
+	// Constructor Method: Creates a new User with new UUID
 	// Parameters: 
 	//		usrName: string, name of user
 	//		usrPassword: string, user's password for login
 	//		usrID: unique ID for each user, used to identify user's tasks
-	// Returns: Void
 	public User(String newUsrName, String newUsrPassword, String newUsrEmail) {
 		this.usrName = newUsrName;
 		this.usrPassword = newUsrPassword;
@@ -29,59 +27,55 @@ public class User {
 		} else this.usrEmail = newUsrEmail;
 		this.usrID = UUID.nameUUIDFromBytes(newUsrName.getBytes());
 	}
-	
-	public User(User u) {
-		usrName = u.usrName;
-		usrPassword = u.usrPassword;
-		usrEmail = u.usrEmail;
-		usrID = u.usrID;
+
+	// Constructor Method: Loads a user from a String from a text file
+	// Parameters:
+	//		saveString: String whose format is "UUID,name,password,email"
+	public User(String saveString) {
+		String[] vals = saveString.split(",");
+		this.usrID = UUID.fromString(vals[0]);
+		this.usrName = vals[1];
+		this.usrPassword = vals[2];
+		if (vals[3].compareTo("null") != 0) {
+			this.usrEmail = vals[3];
+		} else this.usrEmail = null;
 	}
 
-	//Returns User object id and user name as string
+	// Creates a string representation of a User
 	// Parameters: None
-	// Returns: String of usrID and yusrName
+	// Returns: String of User's attributes
 	@Override
 	public String toString() {
 		return "\tUsername: " + usrName +
 				"\n\tPassword: " + usrPassword + 
 				"\n\tEmail: " + usrEmail +
-				"\n\tUserID " + usrID;
+				"\n\tUserID: " + usrID;
 	}
 	
-	//
-	public String toSaveString(User u) {
-		return u.usrID.toString()+ ","
-				+ u.usrName + ","
-				+ u.usrPassword + ","
-				+ u.usrEmail + "\n";
+	// Creates a save string representation of a User whose format is "UUID,name,password,email"
+	// Parameters: None
+	// Returns: String that represents a User
+	public String toSaveString() {
+		return usrID.toString()+ ","
+				+ usrName + ","
+				+ usrPassword + ","
+				+ usrEmail + "\n";
 	}
 	
-	public static User fromString(String s) {
-		User temp = new User();
-		String[] vals = s.split(",");
-		temp.usrID = UUID.fromString(vals[0]);
-		temp.usrName = vals[1];
-		temp.usrPassword = vals[2];
-		if (vals[3].compareTo("null") != 0) {
-			temp.usrEmail = vals[3];
-		} else temp.usrEmail = null;
-		return temp;
-	}
-	
-	// Checks whether User's name matches
+	// Checks whether a given String matches this User's name (case insensitive)
 	// Parameters: 
-	//		usrName: string, name of user to be checked
-	// Returns: Boolean, whether userName matches	
-	public boolean checkName(String usrName){
-		return usrName.equalsIgnoreCase(this.usrName);
+	//		toCheck: String to check against this User's name
+	// Returns: Boolean, true if toCheck matches this User's name, false otherwise	
+	public boolean checkName(String toCheck){
+		return toCheck.equalsIgnoreCase(this.usrName);
 	}
 	
-	// Checks whether User's password matches
+	// Checks whether a given String matches this User's password (case sensitive)
 	// Parameters: 
-	//		usrPassword: string, user's password for login to be checked
-	// Returns: Boolean, whether usrPassword matches
-	public boolean checkPassword(String usrPassword){
-		return usrPassword.equals(this.usrPassword);
+	//		toCheck: String to check against this User's name
+	// Returns: Boolean, true if toCheck matches this User's name, false otherwise
+	public boolean checkPassword(String toCheck){
+		return toCheck.equals(this.usrPassword);
 	}
 	
 	// Getter method for usrName
@@ -100,6 +94,7 @@ public class User {
 	public void setUsrPassword(String usrPassword) {
 		this.usrPassword = usrPassword;
 	}
+	
 	// Getter method for usrID
 	public UUID getUsrID() {
 		return usrID;
@@ -111,6 +106,11 @@ public class User {
 
 	public void setUsrEmail(String usrEmail) {
 		this.usrEmail = usrEmail;
+	}
+	
+	public void sendWelcomeEmail() {
+		Email e = new Email();
+		e.sendEmail(usrEmail, "Test", "Welcome to Taskilla!");
 	}
 	
 }

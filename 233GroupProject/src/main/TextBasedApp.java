@@ -140,147 +140,52 @@ public class TextBasedApp {
 	private static UUID login() {
 		Console cons = System.console();
 		
-		User usrLogin;
+		User usrLogin = null;
 		
-		boolean validUsrName = false;
 		boolean returnStart = false;
-		
-		String prompt;
+
 		String password;
-		boolean validPass = false;
+		boolean validUsrName = false;
 		
 		System.out.print("Please enter your User Name: ");
 		String usrName = keyboard.next();
+		validUsrName = (users.doesUsernameExist(usrName));
+
 		
-		usrLogin = users.findUser(usrName);
-		
-		// check usrName does not exist
-		while(!validUsrName) {			
-			if (usrLogin == null) {
-				System.out.print("The username entered does not exist. Please enter a diffrent user name: ");
-				usrName = keyboard.next();
-				usrLogin = users.findUser(usrName);
-			}else {
-				validUsrName = true;
-			}
+		// Ensure that user name exists
+		while(!validUsrName) {
+			System.out.print("The username entered does not exist. Please enter a diffrent user name: ");
+			usrName = keyboard.nextLine();
+			validUsrName = users.doesUsernameExist(usrName);
 		}
 		
 		
 		//checkPassword from User class
-		String usrPassword = usrLogin.getUsrPassword();
 		int attempts = 0;
 		
-		if (cons == null) {
-			 System.out.print("Please enter your password: ");
-			 password = keyboard.next();
-			 attempts++;
-			
-			while (!validPass && !returnStart) {
-				//System.out.println("Attempts at start of loop: "+attempts);
-				//System.out.println("usrPassword.equals(password): "+usrPassword.equals(password));
-				
-				if (usrPassword.equals(password)){
-					validPass = true;
-					 
-					 
-				}else {
-					
-					if (attempts == 3 ) {
-						System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
-					}else if(attempts > 3) {
-						System.out.println("You have attempted too many times! Program will retrun to start menu. ");
-						attempts = 0;
-						returnStart = true;
-					}else{
-					
-						System.out.println("Number of attempts: "+attempts);
-						}
-					
-					if (!returnStart){
-						System.out.print("The password you entered is incorrect! Please try again: ");
-						password = keyboard.next();
-						attempts++;
-					}
-					
-				}
-				
-			}
-		} else {
-			prompt = "Please enter your password: ";
-			password = readPassword(prompt);
-			attempts++;
-			while (!validPass && !returnStart) {
-				
-							
-				if (usrPassword.equals(password)){
-					validPass = true;
-					System.out.println("Number of attempts: "+attempts);
-					
-				}else {
-				
-				
-					if (attempts == 3 ) {
-						System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
-					}else if(attempts > 3) {
-						System.out.println("You have attempted too many times! Program will retrun to start menu. ");
-						attempts = 0;
-						returnStart = true;
-					}else{
-					
-						System.out.println("Number of attempts: "+attempts);
-						}
-					
-					if (!returnStart) {
-						prompt = "The password you entered is incorrect! Please try again: ";
-						password = readPassword(prompt);
-						attempts++;
-					}
-					
-				}
-				
+		System.out.print("Please enter your password: ");
+		password = keyboard.next();
+		attempts++;
+		usrLogin = users.validateUsernameAndPassword(usrName, password);
+		
+		while ((usrLogin == null) && !returnStart) {
+			if (attempts == 3) {
+				System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
+			} else if(attempts > 3) {
+				System.out.println("You have attempted too many times! Program will return to start menu.");
+				attempts = 0;
+				returnStart = true;
+			} else {				
+				System.out.println("Number of attempts: "+attempts);
+			}	
+			if (!returnStart) {
+				System.out.print("The password you entered is incorrect! Please try again: ");
+				password = keyboard.next();
+				attempts++;
+				usrLogin = users.validateUsernameAndPassword(usrName, password);
 			}
 		}
-		if (validPass) {
-			return usrLogin.getUsrID();
-		}else {
-			return null;
-		}
-		
-	}
-	//Method Purpose: takes existing credentials, verifies, and transitions to mainMenu
-	//Parameters:
-	//Return Value: UUID userID
-	public static UUID login(String usrName, String password) {
-		
-		User usrLogin;
-		boolean validUsrName = false;		
-		boolean validPass = false;
-			
-		usrLogin = users.findUser(usrName);
-		
-		// check usrName does not exist
-		while(!validUsrName) {			
-			if (usrLogin == null) {
-				return null;
-			}else {
-				validUsrName = true;
-			}
-		}
-		
-		
-		//checkPassword from User class
-		String usrPassword = usrLogin.getUsrPassword();
-		
-		if (usrPassword.equals(password)){
-			validPass = true;
-		}
-		
-		if (validPass) {
-			return usrLogin.getUsrID();
-		}else {
-			return null;
-		}
-		
+		return usrLogin.getUsrID();
 	}
 	
 	//Method Purpose: to use the User and UserCollection classes to add another user's info to file
@@ -301,7 +206,7 @@ public class TextBasedApp {
 		
 		// check usrName does not exist
 		while(!validUsrName) {
-			if (users.findUser(name) == null) {
+			if (users.doesUsernameExist(name)) {
 				validUsrName = true;
 			}else {
 				System.out.print("The username entered already exists. Please enter a diffrent user name: ");
@@ -364,22 +269,8 @@ public class TextBasedApp {
 	//Return Value: user's info
 	public static UUID createNewUser(String name, String email, String password1, String password2) {
 
-		boolean validUsrName = false;
-
 		String password = null;
 		boolean passCreated = false;
-
-
-		// check usrName does not exist
-		while(!validUsrName) {
-			if (users.findUser(name) == null) {
-				validUsrName = true;
-			}else {
-				return null;
-			}
-		}
-
-
 
 
 		while (! passCreated) {

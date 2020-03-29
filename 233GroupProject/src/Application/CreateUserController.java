@@ -69,7 +69,7 @@ public class CreateUserController {
 		String password1 = newUsrPwd.getText();
 		String password2 = newUsrConfPwd.getText();
 		
-		boolean nameIsUnique = (GuiBasedApp.getUsers().findUser(name) == null);
+		boolean nameIsUnique = !(GuiBasedApp.getUsers().doesUsernameExist(name));
 		
 		// more robust user name checking.	
 		if (name.isEmpty()){

@@ -56,7 +56,6 @@ public class GuiBasedApp extends Application{
 			} );
 			
 			GuiBasedApp.users = UserCollection.loadUsers("users.txt");
-			TextBasedApp.setUsers(users);
 			
 			window = primaryStage;
 			
@@ -104,14 +103,12 @@ public class GuiBasedApp extends Application{
 	}
 	public static void setUsers(UserCollection users) {
 		GuiBasedApp.users = users;
-		TextBasedApp.setUsers(users);
 	}
 	public static TaskCollection getTasks() {
 		return tasks;
 	}
 	public static void setTasks(TaskCollection tasks) {
 		GuiBasedApp.tasks = tasks;
-		TextBasedApp.setTasks(tasks);
 	}
 	public static Scene getScene() {
 		return window.getScene();

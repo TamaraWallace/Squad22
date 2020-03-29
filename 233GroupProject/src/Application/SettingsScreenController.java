@@ -58,7 +58,7 @@ public class SettingsScreenController implements Initializable {
 		String newUsrEmail = email.getText();
 		
 		
-		if( GuiBasedApp.getUsers().findUser(newUsrName) == null && newUsrName.length() != 0) {
+		if( !(GuiBasedApp.getUsers().doesUsernameExist(newUsrName)) && newUsrName.length() != 0) {
 			validUsrName = true;
 			
 		}else {

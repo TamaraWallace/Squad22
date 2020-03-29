@@ -42,7 +42,7 @@ public class UserCollection {
 		            lines.close();
 		            br.close();
 		            for(String userSaveString : userList) {
-	            		User next = User.fromString(userSaveString);
+	            		User next = new User(userSaveString);
 	            		allUsers.users.add(next);
 		            }
 		        } catch (IOException io) {}
@@ -54,8 +54,6 @@ public class UserCollection {
 	// Parameters: fname (the name of the file to save users to)
 	// Return: void
 	// Functionality: save all the users the file, including new users and updates
-	// NOTE: needed to make not static
-	// NOTE 2: since we're loading up all the users anyways, I just decided to resave them all
 	public void saveUsers(String fname) {
 		File f = new File(fname);
 		if(!(f.exists())) {
@@ -90,7 +88,7 @@ public class UserCollection {
 	        	}
 	        } */
 	        for(User u: this.users) {
-	        	bw.write(u.toSaveString(u));
+	        	bw.write(u.toSaveString());
 	        }
 	        bw.close();
 		} catch (IOException io) {
@@ -113,11 +111,7 @@ public class UserCollection {
 //	Return: ArrayList <user>
 //	Functionality: getter method for the arraylist users
 	public ArrayList<User> getUsers() {
-		ArrayList<User> temp = new ArrayList<User>();
-		for (User u: users) {
-			temp.add(new User(u));	
-		}
-		return temp;
+		return users;
 	}
 	
 //	Method name: isEmpty
@@ -133,21 +127,14 @@ public class UserCollection {
 //	Return: User 
 //	Functionality: checks if a user's username already exists in the users ArrayList, if it does then return that user. Otherwise return null
 //	
-	public User findUser(String name) {
-		name = name.toLowerCase();
-		if (!users.isEmpty()) {
-			for (User user: users) {
-				String username = user.getUsrName().toLowerCase();
-				if (username.contentEquals(name)){
-					User userCopy = new User(user);
-					return userCopy;
-				}
-			}
-			return null;
-		}
+	public boolean doesUsernameExist(String name) {
+		if (users.isEmpty()) return false;
 		else {
-			return null;
+			for (User user: users) {
+				if (user.checkName(name)) return true;
+			}
 		}
+		return false;
 	}
 	
 	

@@ -24,7 +24,7 @@ public class  Email {
 		
 	}
 	
-	public  final void sendEmail(String receiverMail,String Subject,String Body){
+	public void sendEmail(String receiverMail,String Subject,String Body){
 
 		if (validateEmaill(receiverMail)) {
 			// Receiver Email Address

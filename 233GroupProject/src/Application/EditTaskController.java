@@ -82,6 +82,7 @@ public class EditTaskController implements Initializable {
 			taskToEdit.setName(taskName);
 			taskToEdit.setNotes(taskNotes);
 			taskToEdit.setDueDate(taskDate);
+			GuiBasedApp.getTasks().sortTasks();
 			
 			//send user to home screen
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

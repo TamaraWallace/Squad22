@@ -66,27 +66,24 @@ public class TaskCollection {
             lines.close();
             br.close();
             FileWriter bw = new FileWriter(fname);
-            UUID usrID = tasks.get(0).getUserID();
-            int lastIndSaved = 0;
             for (String s: taskList) {
-            	UUID tempUsrId = UUID.fromString(s.split(",")[1]);
             	UUID tempID = UUID.fromString(s.split(",")[0]);
             	Task temp = getTaskByID(tempID);
-            	if (!usrID.equals(tempUsrId)) {
+            	if (temp == null) {
             		bw.write(s + "\n");
             		System.out.println("Other user");
             	} else if(temp.getName().equals("")) {
-            		lastIndSaved = tasks.indexOf(temp);
             		System.out.println("Deleting");
+            		tasks.remove(temp);
             	} else {
             		bw.write(temp.toSaveString());
-            		lastIndSaved = tasks.indexOf(temp);
             		System.out.println("Current user");
+            		tasks.remove(temp);
             	}
             }
-            for (int i = lastIndSaved + 1; i < tasks.size(); i++) {
-            	if(!tasks.get(i).getName().equals("")) {
-            		bw.write(tasks.get(i).toSaveString());
+            for (Task t : tasks) {
+            	if(!t.getName().equals("")) {
+            		bw.write(t.toSaveString());
             		System.out.println("New");
             	}
             }

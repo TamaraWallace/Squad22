@@ -4,3 +4,4 @@ c320dc92-c374-306f-bc07-1bb485150871,Stephane,git2Good!,stephanedorotich@gmail.c
 a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Karim,#Password1,karimkassouri2015@gmail.com
 0cbc6611-f554-3bd0-809a-388dc95a615b,Test,test,test@test.ca
 fea6e80c-44e5-309c-aa26-c85dcd5b5bc3,preet123,test123,preet@someemail.com
+be092a41-4817-3f76-9949-e046f4adf169,Test User,Password!23,

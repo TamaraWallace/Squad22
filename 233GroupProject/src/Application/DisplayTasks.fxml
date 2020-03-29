@@ -28,7 +28,7 @@
          <graphic>
             <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/completeBTN.jpg" />
+                  <Image url="@../../images/completeBTN.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -36,7 +36,7 @@
          <graphic>
             <ImageView fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/selectBTN.jpg" />
+                  <Image url="@../../images/selectBTN.jpg" />
                </image>
             </ImageView>
          </graphic>

@@ -55,7 +55,7 @@
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Desktop/CPSC%20233/Group%20Project/doneBTN.jpg" />
+                        <Image url="@../../images/doneBTN.jpg" />
                      </image>
                   </ImageView>
                </graphic>

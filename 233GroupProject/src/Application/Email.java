@@ -18,10 +18,10 @@ public class  Email {
 	private static Authenticator auth;
 	
 	public Email() {
-		auth = new SMTPAuthenticator();
+		
 	}
 	
-	public static final void sendEmail(String receiverMail,String Subject,	String Body){
+	public  final void sendEmail(String receiverMail,String Subject,	String Body){
 
 		// Receiver Email Address
 		receiverEmail=receiverMail; 
@@ -43,7 +43,7 @@ public class  Email {
 		
 		try{  
 			//Authenticator auth = new SMTPAuthenticator();
-			
+			auth = new SMTPAuthenticator();
 			Session session = Session.getInstance(props);
 			MimeMessage msg = new MimeMessage(session);
 			msg.setText(emailBody);

@@ -53,8 +53,6 @@ public class CreateUserController {
 	private String newUsrConfPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 	
 	
-	// method for returning to previous scene
-	// takes user back to login scene
 	@FXML
 	public void back(ActionEvent event) {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -119,8 +117,6 @@ public class CreateUserController {
 			Scene HomeScreenScene = new Scene(pane);
 				
 			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-				
-			GuiBasedApp.setPrevScene(window.getScene());
 			window.hide();
 			window.setScene(HomeScreenScene);
 			window.show();

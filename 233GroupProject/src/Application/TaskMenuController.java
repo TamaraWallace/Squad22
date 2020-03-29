@@ -86,8 +86,6 @@ public class TaskMenuController implements Initializable {
 		Scene homeScene = new Scene(pane);
 		
 		homeScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(homeScene);
 		window.show();
 	}
@@ -105,7 +103,6 @@ public class TaskMenuController implements Initializable {
 		Scene backScene = GuiBasedApp.getPrevScene();
 		
 		//sending the user to the previous scene
-		GuiBasedApp.setPrevScene(window.getScene());
 		window.setScene(backScene);
 		window.show();
 	}

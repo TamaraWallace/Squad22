@@ -30,7 +30,6 @@ public class LoginController implements Initializable{
 	
 	@FXML
 	private TextField lgnName;
-	private String lgnNameStyle = null; 
 	
 	@FXML
 	private PasswordField lgnPassword;
@@ -49,11 +48,11 @@ public class LoginController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		lgnNameStyle = lgnName.getStyle();
-		
+		System.out.println("Initializing Login Screen");
 	}
-		
+	
+	// ----------------------- EVENT HANDLERS -----------------------
+	
 	@FXML
 	public void login(ActionEvent event) throws IOException {
 		String usrName = lgnName.getText();
@@ -69,7 +68,8 @@ public class LoginController implements Initializable{
 		if (u == null) {
 			System.out.println("Invalid login credentials");
 			String style = lgnPassword.getStyle();
-			lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));			
+			lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
+			lgnPassword.setText("");
 			lgnValidPassLbl.setText("Invalid Password");	
 		} else {
 			attempts = 0;
@@ -107,27 +107,46 @@ public class LoginController implements Initializable{
 			System.out.println(u.toString());
 			GuiBasedApp.getTasks().display();
 			
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-			
-			Scene HomeScreenScene = new Scene(pane);
-			
-			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-			
-			GuiBasedApp.setPrevScene(window.getScene());
-			window.hide();
-			window.setScene(HomeScreenScene);
-			window.show();
+			launchHomeScreenScene(event);
 		}
 	}
 	
 	@FXML
-	public void newUser(ActionEvent event) throws IOException{
-			
+	public void newUser(ActionEvent event) throws IOException {
+		launchCreateUserScene(event);
+	}
 	
+	@FXML
+	public void lgnNameKeyPressed( KeyEvent event) {
+		if (event.getCode().equals(KeyCode.ENTER)) {
+			lgnPassword.requestFocus();
+		}
+	}
+	
+	@FXML
+	public void lgnPasswordKeyPressed( KeyEvent event) {
+		if (event.getCode().equals(KeyCode.ENTER)) {
+			lgnButton.fire();		
+		}
+	}
+	
+	
+	// ----------------------- SCENE LAUNCHERS -----------------------
+	
+	private void launchHomeScreenScene(ActionEvent event) throws IOException {
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
+		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 		
+		Scene HomeScreenScene = new Scene(pane);
+		
+		HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
+		window.hide();
+		window.setScene(HomeScreenScene);
+		window.show();
+	}
+	
+	private void launchCreateUserScene(ActionEvent event) throws IOException {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		
 		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
@@ -137,37 +156,8 @@ public class LoginController implements Initializable{
 		createUserScene.getStylesheets().add(getClass().getResource("CreateUser.css").toExternalForm());
 		
 		GuiBasedApp.setPrevScene(window.getScene());
+		window.hide();
 		window.setScene(createUserScene);
 		window.show();
-
-		
-		
-	}
-	
-	@FXML
-	public void lgnNameKeyPressed( KeyEvent event) {
-		if (event.getCode().equals(KeyCode.ENTER)) {
-			lgnPassword.requestFocus();
-			
-		}else {
-			
-		}
-	}
-	@FXML
-	public void lgnPasswordKeyPressed( KeyEvent event) {
-		if (event.getCode().equals(KeyCode.ENTER)) {
-			lgnButton.fire();
-			
-		}
-	}
-	@FXML
-	public void anchorPane( KeyEvent event) {
-		// nothing yet
-	}
-	
-	@FXML
-	public void mouseEv(MouseEvent event) {
-		
-		
 	}
 }

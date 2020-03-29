@@ -14,10 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.Email;
 import main.User;
 import javafx.fxml.Initializable;
 
-public class SettingsScreenController implements Initializable {
+public class SettingsController implements Initializable {
 
 	@FXML 
 	private TextField userName,email; //associated with text object for task name & notes in FXML
@@ -32,8 +33,6 @@ public class SettingsScreenController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		userName.setText(GuiBasedApp.getUser().getUsrName());
 		email.setText(GuiBasedApp.getUser().getUsrEmail());
-		
-		
 	}
 	
 	// method for returning to previous scene
@@ -82,8 +81,6 @@ public class SettingsScreenController implements Initializable {
 			Scene HomeScreenScene = new Scene(pane);
 			
 			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-			
-			GuiBasedApp.setPrevScene(window.getScene());
 			window.hide();
 			window.setScene(HomeScreenScene);
 			window.show();

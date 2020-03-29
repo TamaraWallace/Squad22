@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#anchorPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.LoginController">
    <children>
       <TextField fx:id="lgnName" layoutX="176.0" layoutY="306.0" onKeyPressed="#lgnNameKeyPressed" promptText="Username" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
       <ImageView fitHeight="235.0" fitWidth="303.0" layoutX="99.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
@@ -23,7 +23,7 @@
       	<effect>
             <Glow />
          </effect></Button> 
-      <Button fx:id="lgnButton" layoutX="217.0" layoutY="559.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#mouseEv" onMouseExited="#mouseEv" prefHeight="37.0" prefWidth="67.0" style="-fx-border-color: #76d0aa;" text="LOGIN" textFill="#76d0aa">
+      <Button fx:id="lgnButton" layoutX="217.0" layoutY="559.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="67.0" style="-fx-border-color: #76d0aa;" text="LOGIN" textFill="#76d0aa">
          <effect>
             <Glow />
          </effect></Button>

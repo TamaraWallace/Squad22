@@ -2,8 +2,6 @@ package main;
 
 import java.util.UUID;
 
-import Application.Email;
-
 // User class creates User object with usrName, usrPassword and usrID attributes
 
 public class User {

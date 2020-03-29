@@ -216,7 +216,7 @@ public class HomeScreenController implements Initializable {
 		System.out.println("TaskID: "+TaskID);
 		
 		
-		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID( UUID.fromString(TaskID))); 
+		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID(UUID.fromString(TaskID))); 
 		
 		Stage window = (Stage) lstViewTasks.getScene().getWindow();
 		

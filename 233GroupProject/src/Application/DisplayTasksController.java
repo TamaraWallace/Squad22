@@ -132,9 +132,9 @@ public class DisplayTasksController implements Initializable{
 	// this is done by iterating through users active tasks and adding each task to list view
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		System.out.println("Initializing Display Tasks Screen");
+		
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
-		System.out.println("intialize is runnin now");
 		
 		for (Task task : GuiBasedApp.getActiveTasks()) {
 	

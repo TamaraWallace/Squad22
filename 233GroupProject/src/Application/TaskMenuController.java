@@ -76,9 +76,7 @@ public class TaskMenuController implements Initializable {
 	// Functionality: when the delete button is pressed, the selected task is marked for deletion
 	//				  and the user is returned to the home screen
 	public void deleteButton(ActionEvent event) throws IOException {
-		//Delete is not implemented yet
-		
-		System.out.println("This feature is not available yet.");
+		selectedTask.delete();
 		
 		//returning the user to the home screen
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -92,6 +92,15 @@ public class Task {
 		return this.completed;
 	}
 	
+//	Method name: delete
+//	Parameters: none 
+//	Return: void
+//	Functionality: sets the task name to null and completed status to true so it is not saved or shown in active tasks
+	public void delete() {
+		setName("");
+		complete();
+	}
+	
 	// setters and getters 
 
 	public UUID getTaskID() {

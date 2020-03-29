@@ -159,10 +159,8 @@ public class DisplayTasksController implements Initializable{
 	// method for deleting a users tasks
 	//currently only removes task from list view, does not update user's tasks
 	public static void deleteTask(String taskId, String taskName) {
-		
-		
 		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
-		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).complete();
+		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
 	}
 	
 	// method for returning to previous scene

@@ -44,6 +44,7 @@ public class TaskCollection {
 				}
 			} catch (IOException io) {}
 		}
+		usersTasks.sortTasks();
 		return usersTasks;
 	}
 	
@@ -65,21 +66,30 @@ public class TaskCollection {
             lines.close();
             br.close();
             FileWriter bw = new FileWriter(fname);
-            
+            UUID usrID = tasks.get(0).getUserID();
+            int lastIndSaved = 0;
             for (String s: taskList) {
+            	UUID tempUsrId = UUID.fromString(s.split(",")[1]);
             	UUID tempID = UUID.fromString(s.split(",")[0]);
             	Task temp = getTaskByID(tempID);
-            	if (temp == null) {
+            	if (!usrID.equals(tempUsrId)) {
             		bw.write(s + "\n");
+            		System.out.println("Saving other user's task");
+            	} else if(temp.getName().equals("")) {
+            		lastIndSaved = tasks.indexOf(temp);
+            		System.out.println("Task removed");
             	} else {
             		bw.write(temp.toSaveString());
-            		tasks.remove(temp);
+            		lastIndSaved = tasks.indexOf(temp);
+            		System.out.println("Saving current user's task");
             	}
             }
-            for (Task t: tasks) {
-            	bw.write(t.toSaveString());
+            for (int i = lastIndSaved + 1; i < tasks.size(); i++) {
+            	if(!tasks.get(i).getName().equals("")) {
+            		bw.write(tasks.get(i).toSaveString());
+            		System.out.println("Saving new task");
+            	}
             }
-            
             bw.close();
 		} catch (IOException io) {}
 	}
@@ -129,10 +139,33 @@ public class TaskCollection {
 	}
 	
 	//Method Purpose: indicate whether or not the given TaskCollection is empty
-	//Parameters:
+	//Parameters: none
 	//Return: boolean
 	public boolean isEmpty() {
 		return tasks.isEmpty();
+	}
+	
+	// Method Name: sortTasks
+	// Parameters: none
+	// Return: nothing
+	// Functionality: sort tasks according to date using a bubble sort algorithm
+	// Bubble Sort Algorithm Source: https://www.geeksforgeeks.org/bubble-sort/
+	public void sortTasks() {
+		boolean swapped;
+		int n = tasks.size();
+		 for (int i = 0; i < n - 1; i++)  { 
+	            swapped = false; 
+	            for (int j = 0; j < n - i - 1; j++)  { 
+	                if (tasks.get(j).getDueDate().isAfter(tasks.get(j+1).getDueDate()))  { 
+	                	Task temp = tasks.get(j);
+	                	tasks.set(j, tasks.get(j+1));
+	                    tasks.set(j+1, temp); 
+	                    swapped = true; 
+	                } 
+	            } 
+	            if (swapped == false) 
+	                break; 
+	        }
 	}
 	
 }

@@ -95,7 +95,7 @@ Settings Screen:
   - When the *Back* Button is pressed, the Home Screen is launched. 
 
 
-=======================================================================================
+===================================================================================
 File Input/Output:
 
 users.txt

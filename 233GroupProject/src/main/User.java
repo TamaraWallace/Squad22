@@ -24,7 +24,9 @@ public class User {
 	public User(String newUsrName, String newUsrPassword, String newUsrEmail) {
 		this.usrName = newUsrName;
 		this.usrPassword = newUsrPassword;
-		this.usrEmail = newUsrEmail;
+		if (newUsrEmail.compareTo("null") == 0) {
+			this.usrEmail = null;
+		} else this.usrEmail = newUsrEmail;
 		this.usrID = UUID.nameUUIDFromBytes(newUsrName.getBytes());
 	}
 	
@@ -60,7 +62,9 @@ public class User {
 		temp.usrID = UUID.fromString(vals[0]);
 		temp.usrName = vals[1];
 		temp.usrPassword = vals[2];
-		temp.usrEmail = vals[3];
+		if (vals[3].compareTo("null") != 0) {
+			temp.usrEmail = vals[3];
+		} else temp.usrEmail = null;
 		return temp;
 	}
 	

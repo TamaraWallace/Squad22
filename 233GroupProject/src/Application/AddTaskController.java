@@ -33,11 +33,11 @@ public class AddTaskController implements Initializable{
 		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
-			System.out.println("\nAdd Task Scene");
+			System.out.println("Add Task Scene");
 		}
 		
 		@FXML
-		public void addButton(ActionEvent event) throws IOException {
+		public void addButton(ActionEvent event) {
 			// get name & notes as strings
 			String taskName = name.getText();
 			String taskNotes = notes.getText();
@@ -64,30 +64,14 @@ public class AddTaskController implements Initializable{
 
 				System.out.println("New task created:\n" + task.toString());
 				
-				// clearing out textfield boxes for name & notes 
-				name.clear();
-				notes.clear();
-				// clear out the date picker as it doesn't do this automatically 
-				date.setValue(null);
-				
-				// GUI set up code to show on the screen 
-				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				
-				AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-					
-				Scene HomeScreenScene = new Scene(pane);
-					
-				HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-				window.hide();
-				window.setScene(HomeScreenScene);
-				window.show();
+				// launch the Home Screen Scene
+				GuiBasedApp.launchHomeScreenScene();
 			}
 		}
 		
 		// back button 
 		@FXML
 		public void back(ActionEvent event) {
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			window.setScene(GuiBasedApp.getPrevScene());
+			GuiBasedApp.launchHomeScreenScene();
 		}
 }

@@ -42,7 +42,7 @@
       <MenuButton fx:id="profileMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="90.0" style="-fx-background-color: #000B38;">
         <items>
           <MenuItem fx:id="settingsItem" mnemonicParsing="false" onAction="#settings" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Settings" />
-          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logOut" style="-fx-text-fill: #24a78d; -fx-background-color: #000B38;" text="Log Out" />
+          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logout" style="-fx-text-fill: #24a78d; -fx-background-color: #000B38;" text="Log Out" />
           <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Close" />
         </items>
          <graphic>

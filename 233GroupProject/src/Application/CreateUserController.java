@@ -62,9 +62,8 @@ public class CreateUserController implements Initializable {
 	}
 	
 	@FXML
-	public void back(ActionEvent event) {
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(GuiBasedApp.getPrevScene());
+	public void back(ActionEvent event) throws IOException {
+		GuiBasedApp.launchLoginScene();
 	}
 	
 	@FXML
@@ -118,16 +117,7 @@ public class CreateUserController implements Initializable {
 			System.out.println(name + " has created a new account");
 			System.out.println(GuiBasedApp.getUser().toString());
 			
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-				
-			Scene HomeScreenScene = new Scene(pane);
-				
-			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-			window.hide();
-			window.setScene(HomeScreenScene);
-			window.show();
+			GuiBasedApp.launchHomeScreenScene();
 		}
 	}
 	 

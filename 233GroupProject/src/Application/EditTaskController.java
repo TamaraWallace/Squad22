@@ -82,17 +82,7 @@ public class EditTaskController implements Initializable {
 			GuiBasedApp.getTasks().sortTasks();
 			
 			//send user to home screen
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-				
-			Scene HomeScreenScene = new Scene(pane);
-				
-			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		
-			window.hide();
-			window.setScene(HomeScreenScene);
-			window.show();		
+			GuiBasedApp.launchHomeScreenScene();	
 		}
 	}
 	
@@ -102,8 +92,7 @@ public class EditTaskController implements Initializable {
 	// Functionality: when the back button is pressed, the user is returned to 
 	//				  the previous screen 
 	public void back(ActionEvent event) {
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(GuiBasedApp.getPrevScene());
+		GuiBasedApp.launchTaskMenuScene();
 	}
 	
 	// Method Name: setTaskToEdit

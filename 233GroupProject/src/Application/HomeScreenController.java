@@ -99,13 +99,7 @@ public class HomeScreenController implements Initializable {
 		lstViewTasks.setCellFactory(param -> new Cell());
 		
 		lstViewTasks.getSelectionModel().selectedItemProperty().addListener( (v,oldV,newV)-> {
-			//
-			try {
-				selectedCell(v,oldV,newV);
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
+			selectedCell(v,oldV,newV);
 		});
 		
 		
@@ -202,93 +196,37 @@ public class HomeScreenController implements Initializable {
 	
 	
 	
-	private void selectedCell(ObservableValue<? extends String> observable,  String oldValue, String newValue) throws IOException {
+	private void selectedCell(ObservableValue<? extends String> observable,  String oldValue, String newValue) {
 		
 		System.out.println("SelectedTask: " + newValue);
 		String TaskID = newValue.split(",")[0];
 		
 		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID(UUID.fromString(TaskID))); 
 		
-		Stage window = (Stage) lstViewTasks.getScene().getWindow();
-		
-		
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
-		
-		Scene viewAllScene = new Scene(pane);
-		
-		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(viewAllScene);
-		window.show();
+		GuiBasedApp.launchTaskMenuScene();
 	}
 
 
 	
 	
 	@FXML
-	public void viewAll(ActionEvent event) throws IOException {
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("DisplayTasks.fxml"));
-		
-		Scene viewAllScene = new Scene(pane);
-		
-		viewAllScene.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(viewAllScene);
-		window.show();
-		}
+	public void viewAll(ActionEvent event) {
+		GuiBasedApp.launchDisplayTasksScene();
+	}
 
 
 	@FXML
-	public void addTask(ActionEvent event) throws IOException {
-		//https://www.youtube.com/watch?v=LDVztNtJWOo 
-		
-		//https://stackoverflow.com/questions/34863425/javafx-scene-builder-how-switch-scene 
-		//Here's how you get those references:
-		//Scene scene = btnSignIn.getScene();
-		//Window window = scene.getWindow()
-		//Stage stage = (Stage) window;
-		
-		//change the entire Scene:
-		//FXMLLoader loader = ... // create and load() view
-		//Stage stage = (Stage) btnSignIn.getScene().getWindow();
-		//Scene scene = new Scene(loader.getRoot());
-		//stage.setScene(scene);
-		
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		Pane pane = (Pane) FXMLLoader.load(getClass().getResource("AddTask.fxml"));
-		
-		Scene addTaskScene = new Scene(pane);
-		
-		addTaskScene.getStylesheets().add(getClass().getResource("AddTask.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(addTaskScene);
-		window.show();
-		
+	public void addTask(ActionEvent event) {
+		GuiBasedApp.launchAddTaskScene();
 	}
 	
 	/*
 	 * Method: Logs user out of app and returns to login screen
 	 * */
 	@FXML
-	public void logOut(ActionEvent event) throws IOException {
+	public void logout(ActionEvent event) {
 		GuiBasedApp.save();
-		Stage window = (Stage) profileMenu.getScene().getWindow();
-		
-		GuiBasedApp.setUsers(UserCollection.loadUsers("users.txt"));		
-		
-		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Login.fxml"));
-		
-		Scene loginScene = new Scene(root);
-		
-		loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
-		window.setScene(loginScene);
+		GuiBasedApp.launchLoginScene();
 	}
 	
 	/*
@@ -306,19 +244,8 @@ public class HomeScreenController implements Initializable {
 	 * Method: opens new scene where user can change settings
 	 * */
 	@FXML
-	public void settings(ActionEvent event) throws IOException {
-		
-		Stage window = (Stage) profileMenu.getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
-		
-		Scene SettingsScene = new Scene(pane);
-		
-		SettingsScene.getStylesheets().add(getClass().getResource("Settings.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(SettingsScene);
-		window.show();
+	public void settings(ActionEvent event) {
+		GuiBasedApp.launchSettingsScene();
 	}
 	
 	@FXML
@@ -333,8 +260,5 @@ public class HomeScreenController implements Initializable {
 		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
 		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
 	}
-	
-	
-	
 }
 

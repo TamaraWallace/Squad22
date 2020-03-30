@@ -1,5 +1,6 @@
 package Application;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -18,16 +19,8 @@ public class GuiBasedApp extends Application{
 	private static TaskCollection tasks;
 	
 	private static Stage window;
-	private static Scene prevScene;
+	private static SceneController controller = new SceneController();
 	
-	private static String lgnUserName;
-	
-	public static String getLgnUserName() {
-		return lgnUserName;
-	}
-	public static void setLgnUserName(String lgnUserName) {
-		GuiBasedApp.lgnUserName = lgnUserName;
-	}
 	
 	public static User getUser() {
 		return user;
@@ -38,10 +31,7 @@ public class GuiBasedApp extends Application{
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
 		try {
-			
-				
 				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				@Override
@@ -49,46 +39,21 @@ public class GuiBasedApp extends Application{
 					save();
 					System.out.println("Session ended, see you soon!");
 					System.exit(0);
-				
-					
-					
 				}
 			} );
 			
 			GuiBasedApp.users = UserCollection.loadUsers("users.txt");
 			
 			window = primaryStage;
-			
-			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Login.fxml"));
-			
-			
-			Scene loginScene = new Scene(root);
-			
-			
-		
-			
-			loginScene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
-			
-			
 			Image takilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
-			
-			window.setScene(loginScene);
 			window.setTitle("Welcome to Taskilla ");
 			window.getIcons().add(takilla_icon);
 			
-			
-			window.show();
-			
-			
-			
-				
-		
+			launchLoginScene();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
 	
 	public static void save() {
 		if (tasks != null) {
@@ -113,12 +78,6 @@ public class GuiBasedApp extends Application{
 	public static Scene getScene() {
 		return window.getScene();
 	}
-	public static Scene getPrevScene() {
-		return prevScene;
-	}
-	public static void setPrevScene(Scene prevScene) {
-		GuiBasedApp.prevScene = prevScene;
-	}
 	public static void loginUser(User loginUser) {
 		user = loginUser;
 		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
@@ -134,5 +93,72 @@ public class GuiBasedApp extends Application{
 	}
 	public static ArrayList<Task> getActiveTasks() {
 		return tasks.getActiveTasks();
+	}
+	
+	
+	// -------------------- SCENE LAUNCHERS --------------------
+	
+	public static void launchAddTaskScene() {
+		try {
+			controller.launchAddTaskScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchCreateUserScene() {
+		try {
+			controller.launchCreateUserScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchDisplayTasksScene() {
+		try {
+			controller.launchDisplayTasksScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchEditTaskScene() {
+		try {
+			controller.launchEditTaskScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchHomeScreenScene() {
+		try {
+			controller.launchHomeScreenScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchLoginScene() {
+		try {
+			controller.launchLoginScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchSettingsScene() {
+		try {
+			controller.launchSettingsScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void launchTaskMenuScene() {
+		try {
+			controller.launchTaskMenuScene(window);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

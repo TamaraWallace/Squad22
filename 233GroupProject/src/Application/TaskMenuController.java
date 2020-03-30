@@ -59,16 +59,7 @@ public class TaskMenuController implements Initializable {
 		}
 		
 		//changing the scene to the home screen
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-		
-		Scene homeScene = new Scene(pane);
-		
-		homeScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		
-		window.setScene(homeScene);
-		window.show();
+		GuiBasedApp.launchHomeScreenScene();
 	}
 	
 	// Method Name: deleteButton
@@ -80,15 +71,7 @@ public class TaskMenuController implements Initializable {
 		selectedTask.delete();
 		
 		//returning the user to the home screen
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-		
-		Scene homeScene = new Scene(pane);
-		
-		homeScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		window.setScene(homeScene);
-		window.show();
+		GuiBasedApp.launchHomeScreenScene();
 	}
 	
 	// Method Name: backButton
@@ -97,15 +80,7 @@ public class TaskMenuController implements Initializable {
 	// Functionality: when the back button is pressed, the user is returned to 
 	//				  the previous screen
 	public void backButton(ActionEvent event) throws IOException {
- 
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		//retrieving the previous scene from GuiBasedApp
-		Scene backScene = GuiBasedApp.getPrevScene();
-		
-		//sending the user to the previous scene
-		window.setScene(backScene);
-		window.show();
+		GuiBasedApp.launchHomeScreenScene();
 	}
 	
 	// Method Name: editButton
@@ -118,17 +93,7 @@ public class TaskMenuController implements Initializable {
 		EditTaskController.setTaskToEdit(selectedTask);
 		
 		//sending the user to the edit task screen
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("EditTask.fxml"));
-		
-		Scene editScene = new Scene(pane);
-		
-		editScene.getStylesheets().add(getClass().getResource("AddTask.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(editScene);
-		window.show();
+		GuiBasedApp.launchEditTaskScene();
 	}
 	
 	// Method Name: setSelectedTask
@@ -138,5 +103,4 @@ public class TaskMenuController implements Initializable {
 	public static void setSelectedTask(Task t) {
 		selectedTask = t;
 	}
-
 }

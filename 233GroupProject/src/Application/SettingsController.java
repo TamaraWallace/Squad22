@@ -40,11 +40,7 @@ public class SettingsController implements Initializable {
 	// method for returning to previous scene
 	@FXML
 	public void back(ActionEvent event) {
-				
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		window.setScene(GuiBasedApp.getPrevScene());
-		
+		GuiBasedApp.launchHomeScreenScene();
 	}
 	
 	// method for returning to previous scene
@@ -76,22 +72,7 @@ public class SettingsController implements Initializable {
 			user.setUsrName(newUsrName);
 			user.setUsrEmail(newUsrEmail);
 			
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-			
-			Scene HomeScreenScene = new Scene(pane);
-			
-			HomeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-			window.hide();
-			window.setScene(HomeScreenScene);
-			window.show();
+			GuiBasedApp.launchHomeScreenScene();
 		}
-		
-		
-		
 	}
-	
-	
-	
 }

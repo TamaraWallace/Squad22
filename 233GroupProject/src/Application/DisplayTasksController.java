@@ -168,14 +168,10 @@ public class DisplayTasksController implements Initializable{
 		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
 	}
 	
-	// method for returning to previous scene
+	// Brings user back to the Home Screen Scene
 	@FXML
 	public void back(ActionEvent event) {
-				
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		window.setScene(GuiBasedApp.getPrevScene());
-		
+		GuiBasedApp.launchHomeScreenScene();
 	}
 	
 	// method for completing a user's task
@@ -216,17 +212,7 @@ public class DisplayTasksController implements Initializable{
 		
 		System.out.println(selectedTask.toString());
 		
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("TaskMenu.fxml"));
-		
-		Scene viewAllScene = new Scene(pane);
-		
-		viewAllScene.getStylesheets().add(getClass().getResource("TaskMenu.css").toExternalForm());
-		
-		GuiBasedApp.setPrevScene(window.getScene());
-		window.setScene(viewAllScene);
-		window.show();
+		GuiBasedApp.launchTaskMenuScene();
 	}
 	
 	

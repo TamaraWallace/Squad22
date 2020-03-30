@@ -105,13 +105,13 @@ public class LoginController implements Initializable{
 			System.out.println(u.getUsrName() + " has successfully logged in.");
 			System.out.println(u.toString());
 			
-			launchHomeScreenScene(event);
+			GuiBasedApp.launchHomeScreenScene();
 		}
 	}
 	
 	@FXML
 	public void newUser(ActionEvent event) throws IOException {
-		launchCreateUserScene(event);
+		GuiBasedApp.launchCreateUserScene();
 	}
 	
 	@FXML
@@ -126,34 +126,5 @@ public class LoginController implements Initializable{
 		if (event.getCode().equals(KeyCode.ENTER)) {
 			lgnButton.fire();		
 		}
-	}
-	
-	
-	// ----------------------- SCENE LAUNCHERS -----------------------
-	
-	private void launchHomeScreenScene(ActionEvent event) throws IOException {
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-		
-		Scene homeScreenScene = new Scene(pane);
-		
-		homeScreenScene.getStylesheets().add(getClass().getResource("HomeScreen.css").toExternalForm());
-		window.setScene(homeScreenScene);
-		window.show();
-	}
-	
-	private void launchCreateUserScene(ActionEvent event) throws IOException {
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-		GuiBasedApp.setPrevScene(window.getScene());
-		
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
-		
-		Scene createUserScene = new Scene(pane);
-		
-		createUserScene.getStylesheets().add(getClass().getResource("CreateUser.css").toExternalForm());
-		window.setScene(createUserScene);
-		window.show();
 	}
 }

@@ -5,12 +5,13 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class SceneController {
 
 	public void launchAddTaskScene(Stage window) throws IOException {
-		AnchorPane pane = (AnchorPane) FXMLLoader.load(getClass().getResource("AddTask.fxml"));
+		Pane pane = (Pane) FXMLLoader.load(getClass().getResource("AddTask.fxml"));
 		
 		Scene addTaskScene = new Scene(pane);
 		

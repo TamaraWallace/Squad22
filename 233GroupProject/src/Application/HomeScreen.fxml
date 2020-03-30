@@ -22,7 +22,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="viewAllbtn" layoutX="93.0" layoutY="526.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAllbtn" layoutX="118.0" layoutY="540.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="125.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="116.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +30,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="addTaskBtn" layoutX="260.0" layoutY="526.0" mnemonicParsing="false" onAction="#addTask" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="addTaskBtn" layoutX="259.0" layoutY="540.0" mnemonicParsing="false" onAction="#addTask" prefHeight="112.0" prefWidth="105.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -1,6 +1,7 @@
 package Application;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -14,13 +15,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -102,6 +107,20 @@ public class HomeScreenController implements Initializable {
 			selectedCell(v,oldV,newV);
 		});
 		
+		
+		if(count == 0) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			DialogPane dialogPane = alert.getDialogPane();			
+			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
+			
+			alert.setTitle("No Tasks");
+			alert.setHeaderText(" You have no tasks");
+			alert.setContentText("Please add a task");
+			
+			alert.showAndWait();
+			
+			
+		}
 		
 		
 	}

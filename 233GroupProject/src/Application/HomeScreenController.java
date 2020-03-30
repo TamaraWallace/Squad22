@@ -61,7 +61,7 @@ public class HomeScreenController implements Initializable {
 	private Button addTaskBtn;
 	
 	@FXML 
-	private Label helloUser, currentTasksTitle;
+	private Label helloUser, currentTasksTitle,noTasksLbl;
 	
 	@FXML
 	private Button emailBtn;
@@ -109,7 +109,9 @@ public class HomeScreenController implements Initializable {
 		
 		
 		if(count == 0) {
-			Alert alert = new Alert(AlertType.INFORMATION);
+			noTasksLbl.setText("You have no Tasks");
+			
+			/*Alert alert = new Alert(AlertType.INFORMATION);
 			DialogPane dialogPane = alert.getDialogPane();			
 			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
 			
@@ -117,9 +119,11 @@ public class HomeScreenController implements Initializable {
 			alert.setHeaderText(" You have no tasks");
 			alert.setContentText("Please add a task");
 			
-			alert.showAndWait();
+			alert.showAndWait();*/
 			
 			
+		}else {
+			noTasksLbl.setVisible(false);
 		}
 		
 		

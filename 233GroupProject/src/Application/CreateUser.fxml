@@ -16,11 +16,11 @@
             <Font size="39.0" />
          </font>
       </Label>
-      <TextField fx:id="newUsrName" layoutX="180.0" layoutY="257.0" promptText="Username" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
+      <TextField fx:id="newUsrName" layoutX="183.0" layoutY="258.0" promptText="Username" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
       <TextField fx:id="usrEmail" layoutX="183.0" layoutY="321.0" promptText="Email (optional)" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
       <PasswordField fx:id="newUsrPwd" layoutX="183.0" layoutY="375.0" promptText="Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
       <PasswordField fx:id="newUsrConfPwd" layoutX="183.0" layoutY="427.0" promptText="Confirm Password" style="-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" />
-      <Label layoutX="110.0" layoutY="264.0" prefWidth="60.0" text="Username: " textFill="#76d0aa">
+      <Label layoutX="99.0" layoutY="264.0" prefHeight="20.0" prefWidth="71.0" text="Username: " textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="114.0" layoutY="381.0" prefWidth="60.0" text="Password: " textFill="#76d0aa">
+      <Label layoutX="103.0" layoutY="381.0" prefHeight="20.0" prefWidth="71.0" text="Password: " textFill="#76d0aa">
          <font>
             <Font size="14.0" />
          </font>

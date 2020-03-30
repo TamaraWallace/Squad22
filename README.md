@@ -42,14 +42,14 @@ Create User Screen:
   - When the *Create New Account* Button is pressed, the values of all the TextFields are validated. The *Username* must be unique (i.e. there can't already exist a User with the same name) and the *Password* and *Confirm Password* must match and can't be empty. No other validation is implemented at present. If all fields are valid, a new User is created with the given values and the Home Screen is launched.
   
 Home Screen:
-  - Has three RadioButtons for three of the User's current tasks (the tasks are sorted to display upcoming tasks based on Due Date). If the User has fewer than three tasks, the buttons' Text reads "Add Tasks!"
+  - Has three Menu Buttons for three of the User's current tasks (the tasks are sorted to display upcoming tasks based on Due Date). If the User has 0 current tasks, a text label informs the User to add tasks.
   - Has a *View All* Button to display all tasks
   - Has an *Add New* Button to add a new task
   - Has a *Profile* Button to allow a User to access Settings, Log Out, or Close the program (exit).
   - Has an *Email* Button to allow a User to send task reminders to their email.
   - When the *View All* Button is pressed, the Display Tasks Screen is launched.
   - When the *Add New* Button is pressed, the Add Task screen is launched.
-  - When one of the three radio buttons is pressed, assuming it is populated with a task, the Task Menu Screen is launched with the given task.
+  - When one of the three menu buttons is pressed, assuming it is populated with a task, the Task Menu Screen is launched with the given task.
   - When the *Profile* Button is pressed, if a User chooses to access Settings, the Settings screen is launched. Otherwise, if Log Out is selected, the User is brought back to the Login screen. If Close if selected, the program closes. 
   - When the *Email* Button is pressed, the User's current and completed tasks are sent to their personal email as a reminder. 
   
@@ -91,11 +91,11 @@ Settings Screen:
   - Has TextFields for *Username* and *Email*
   - Has a *Back* Button to return to the Home Screen. 
   - Has an *Update* Button to update the User's profile. 
-  - When the *Update* Button is pressed, the User's profile data is updated. The *Email* field is optional, however, the *Username* field must be filled in order to organize and manage the User's information. 
+  - When the *Update* Button is pressed, the User's profile data is updated. 
   - When the *Back* Button is pressed, the Home Screen is launched. 
 
 
-===================================================================================
+=======================================================================================
 File Input/Output:
 
 users.txt
@@ -107,5 +107,3 @@ tasks.txt
 _________
   - Each line stores a Taskilla User's task. 
   - Tasks are organized and managed based on the Task Name, an auto-generated taskID, the User's userID, the description of the task, the completion status (boolean), and the due date.
-
-

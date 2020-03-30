@@ -12,9 +12,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SettingsController">
    <children>
-      <Pane layoutX="-6.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
+      <Pane layoutX="-1.0" layoutY="-8.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
          <children>
-            <ImageView fitHeight="175.0" fitWidth="260.0" layoutX="120.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
@@ -28,14 +28,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text fill="#24a78d" layoutX="145.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
+            <Text fill="#24a78d" layoutX="142.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
                <font>
                   <Font size="48.0" />
                </font>
             </Text>
-            <TextField fx:id="userName" layoutX="150.0" layoutY="295.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
+            <TextField fx:id="userName" layoutX="151.0" layoutY="319.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
             <TextField fx:id="email" layoutX="150.0" layoutY="420.0" prefHeight="30.0" prefWidth="218.0" promptText="Email" />
-            <ImageView fitHeight="76.0" fitWidth="100.0" layoutX="64.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="76.0" fitWidth="100.0" layoutX="63.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/User%20Icon.png" />
                </image>

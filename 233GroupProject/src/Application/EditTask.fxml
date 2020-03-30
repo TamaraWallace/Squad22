@@ -14,12 +14,12 @@
    <children>
       <Pane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
          <children>
-            <ImageView fitHeight="178.0" fitWidth="277.0" layoutX="116.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="139.0" layoutY="193.0" text="EDIT TASK" textFill="#24a78d">
+            <Label layoutX="138.0" layoutY="212.0" text="EDIT TASK" textFill="#24a78d">
                <font>
                   <Font size="48.0" />
                </font>

@@ -137,6 +137,7 @@ public class GuiBasedApp extends Application{
 	}
 	
 	public static void launchLoginScene() {
+		tasks = null;
 		try {
 			controller.launchLoginScene(window);
 		} catch (IOException e) {

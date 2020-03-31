@@ -175,7 +175,6 @@ public class DisplayTasksController implements Initializable{
 	public void completeTask(ActionEvent event) {
 		ObservableList<String> completeTasks = FXCollections.observableArrayList();
 		completeTasks = lstViewTasks.getSelectionModel().getSelectedItems();
-		lstViewTasks.getItems().removeAll(completeTasks);
 		
 		for (int i = 0; i < completeTasks.size(); i++) {
 			String lstViewTask = completeTasks.get(i);
@@ -183,14 +182,18 @@ public class DisplayTasksController implements Initializable{
 		
 			System.out.println("TaskID: "+taskId);
 			
-			for (Task task : GuiBasedApp.getActiveTasks()) {
-				if (task.getTaskID().toString() == taskId) {
-					task.complete();
-				}
-			}
+			GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).complete();
+			
+			//for (Task task : GuiBasedApp.getActiveTasks()) {
+			//	if (task.getTaskID().toString() == taskId) {
+			//		task.complete();
+			//	}
+			//}
 			
 			
 		}
+
+		lstViewTasks.getItems().removeAll(completeTasks);
 	}
 	
 	// method for selecting a task

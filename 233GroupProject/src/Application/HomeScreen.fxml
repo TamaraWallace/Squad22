@@ -42,7 +42,8 @@
       <MenuButton fx:id="profileMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="90.0" style="-fx-background-color: #000B38;">
         <items>
           <MenuItem fx:id="settingsItem" mnemonicParsing="false" onAction="#settings" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Settings" />
-          <MenuItem fx:id="LogOutItem" mnemonicParsing="false" onAction="#logout" style="-fx-text-fill: #24a78d; -fx-background-color: #000B38;" text="Log Out" />
+          <MenuItem fx:id="sendTasksEmailItem" mnemonicParsing="false" onAction="#sendTasksEmail" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Send Tasks Email" />
+          <MenuItem fx:id="logoutItem" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Log Out" />
           <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Close" />
         </items>
          <graphic>
@@ -53,15 +54,6 @@
             </ImageView>
          </graphic>
       </MenuButton>
-      <Button fx:id="emailBtn" layoutX="381.0" layoutY="21.0" mnemonicParsing="false" onAction="#sendTaskEmail" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #000B38;">
-         <graphic>
-            <ImageView fitHeight="60.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/Mail%20Icon.jpg" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <ListView fx:id="lstViewTasks" layoutX="63.0" layoutY="251.0" prefHeight="277.0" prefWidth="380.0" style="-fx-background-color: #000B38;" />
       <Label fx:id="noTasksLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="335.0" prefHeight="55.0" prefWidth="300.0" textAlignment="CENTER" textFill="#24a78d" wrapText="true">
          <font>

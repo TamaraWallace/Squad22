@@ -5,6 +5,6 @@ dd8c3b6d-fa06-4d20-9b47-5f3c8134ab27,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Test,T
 219076a9-2b9b-40dd-bef8-c8b5aa2cb122,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Random,not important tasks,false,2020-03-31
 e49ba96c-74f4-4fcb-8f80-e4f5a3d38efc,a39f7b07-6f8a-3be5-bab7-7af044b11ff2,Not important,,false,2020-12-04
 6f8183e9-1217-4830-9695-c49deb5760c4,c4d5bf88-d005-36f9-a67a-ff171cb0180f,Demo 3,finish delete and sort,false,2020-03-29
-1c55c346-b271-482f-be79-559035e1cfb8,c320dc92-c374-306f-bc07-1bb485150871,Drink more coffee,,true,2020-03-29
-bf1a74f0-8ee3-4095-acab-437eb2654c7b,c320dc92-c374-306f-bc07-1bb485150871,Implement parent class,,false,2020-03-30
-16ca276e-e744-42aa-97da-9382cb43852a,c320dc92-c374-306f-bc07-1bb485150871,Send e-mail to student,update them all about remote tutoring,false,2020-03-30
+bf1a74f0-8ee3-4095-acab-437eb2654c7b,c320dc92-c374-306f-bc07-1bb485150871,Implement Scene Controller Class,use for app navigation,true,2020-03-28
+16ca276e-e744-42aa-97da-9382cb43852a,c320dc92-c374-306f-bc07-1bb485150871,Get an A+ in CPSC233,hopefully!,false,2020-04-15
+e043e437-5889-4615-88f3-3ccbdf54bf40,c320dc92-c374-306f-bc07-1bb485150871,Drink More Coffee,,false,2020-03-30

@@ -47,16 +47,13 @@ public class HomeScreenController implements Initializable {
 	private MenuButton profileMenu;
 	
 	@FXML
-	private MenuItem settingsItem,LogOutItem ,closeItem;
+	private MenuItem settingsItem,sendTasksEmailItem,logoutItem,closeItem;
 	
 	@FXML
 	private Button addTaskBtn;
 	
 	@FXML 
 	private Label helloUser, currentTasksTitle,noTasksLbl;
-	
-	@FXML
-	private Button emailBtn;
 	
 	@FXML
 	private ListView<String> lstViewTasks;	
@@ -233,6 +230,11 @@ public class HomeScreenController implements Initializable {
 	@FXML
 	public void addTask(ActionEvent event) {
 		GuiBasedApp.launchAddTaskScene();
+	}
+	
+	@FXML
+	public void sendTasksEmail(ActionEvent event) {
+		event.consume();
 	}
 	
 	/*

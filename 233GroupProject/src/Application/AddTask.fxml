@@ -21,35 +21,35 @@
             <Blend />
          </effect>
          <graphic>
-            <ImageView fitHeight="136.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="addBtnImg" fitHeight="136.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/addBTN.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Logo.jpeg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="111.0" fitWidth="106.0" layoutX="39.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="calenderIcon" fitHeight="111.0" fitWidth="106.0" layoutX="39.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/CalenderIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="75.0" layoutX="66.0" layoutY="294.0">
+      <ImageView fx:id="nameNotesIcon" fitHeight="63.0" fitWidth="75.0" layoutX="66.0" layoutY="294.0">
          <image>
             <Image url="@../../images/NameNotesIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="47.0" layoutX="75.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="penIcon" fitHeight="73.0" fitWidth="47.0" layoutX="75.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Pen%20Icon.png" />
          </image>
       </ImageView>
       <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.95" prefHeight="39.0" prefWidth="75.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
          <graphic>
-            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backBtnImg" fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>

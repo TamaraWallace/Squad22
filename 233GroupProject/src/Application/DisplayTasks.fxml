@@ -18,15 +18,16 @@
       <ListView fx:id="lstViewTasks" layoutX="16.0" layoutY="171.0" prefHeight="277.0" prefWidth="473.0" style="-fx-background-color: #000B38;" />
       <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="65.0" prefWidth="69.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="69.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="BackBtnImg" fitHeight="69.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
       <Button fx:id="completeBtn" layoutX="253.0" layoutY="513.0" mnemonicParsing="false" onAction="#completeTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="completeBtnImg" fitHeight="148.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/completeBTN.jpg" />
                </image>
@@ -34,7 +35,7 @@
          </graphic></Button>
       <Button fx:id="selectBtn" layoutX="88.0" layoutY="510.0" mnemonicParsing="false" onAction="#selectTask" prefHeight="97.0" prefWidth="118.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="selectBtnImg" fitHeight="158.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/selectBTN.jpg" />
                </image>

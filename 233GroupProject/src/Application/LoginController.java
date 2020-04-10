@@ -15,6 +15,8 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -40,9 +42,18 @@ public class LoginController implements Initializable{
 	@FXML
 	private Label lgnValidUsrLbl;
 	
+	@FXML
+	private ImageView taskilla_logoImg;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("\nLogin Scene");
+		
+		// Initialize the images for scene
+		taskilla_logoImg.setImage(new Image("taskilla_logo.jpg"));
+		
+		
+		
 	}
 	
 	// ----------------------- EVENT HANDLERS -----------------------

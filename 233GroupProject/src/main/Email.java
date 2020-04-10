@@ -21,7 +21,7 @@ public class  Email {
 	private static Authenticator auth;
 	
 	public Email() {
-		
+		auth = new SMTPAuthenticator();
 	}
 	
 	public void sendEmail(String receiverMail,String Subject,String Body){
@@ -48,7 +48,7 @@ public class  Email {
 			try{  
 				//Authenticator auth = new SMTPAuthenticator();
 				auth = new SMTPAuthenticator();
-				Session session = Session.getInstance(props);
+				Session session = Session.getInstance(props, auth);
 				MimeMessage msg = new MimeMessage(session);
 				msg.setText(emailBody);
 				msg.setSubject(emailSubject);

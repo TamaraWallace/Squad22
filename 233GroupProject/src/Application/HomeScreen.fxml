@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.HomeScreenController">
    <children>
-      <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="taskillaLogo" fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/taskilla_logo.jpg" />
          </image>
@@ -24,7 +24,7 @@
       </Label>
       <Button fx:id="viewAllbtn" layoutX="118.0" layoutY="540.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="125.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="116.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewAllBtnImg" fitHeight="116.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/bevel%20button%20.jpg" />
                </image>
@@ -32,7 +32,7 @@
          </graphic></Button>
       <Button fx:id="addTaskBtn" layoutX="259.0" layoutY="540.0" mnemonicParsing="false" onAction="#addTask" prefHeight="112.0" prefWidth="105.0" style="-fx-background-color: #000B38;">
          <graphic>
-            <ImageView fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="addTaskBtnImg" fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/PlusIcon.png" />
                </image>
@@ -47,7 +47,7 @@
           <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #000B38; -fx-text-fill: #24a78d;" text="Close" />
         </items>
          <graphic>
-            <ImageView fitHeight="82.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="profileMenuImg" fitHeight="82.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/profileBTN.jpg" />
                </image>

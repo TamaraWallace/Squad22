@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.Task;
 
 public class EditTaskController implements Initializable {
@@ -28,6 +30,9 @@ public class EditTaskController implements Initializable {
 	@FXML
 	private Button backBtn; //associated with the back button object in FXML
 	
+	@FXML
+	private ImageView taskilla_logo,backBtnImg,nameNotesIcon,penIcon,calenderIcon,doneBtnImg;
+	
 	private static Task taskToEdit; //the task to be edited
 	
 	// Initialize Method, implemented from the Initializable Class
@@ -39,6 +44,16 @@ public class EditTaskController implements Initializable {
 		name.setText(taskToEdit.getName());
 		date.setValue(taskToEdit.getDueDate());;
 		notes.setText(taskToEdit.getNotes());
+		
+		
+		// Initialize the images for scene
+		backBtnImg.setImage(new Image("Back.png"));
+		taskilla_logo.setImage(new Image("taskilla_logo.jpg"));
+		nameNotesIcon.setImage(new Image("NameNotesIcon.png"));
+		penIcon.setImage(new Image("Pen Icon.png"));
+		calenderIcon.setImage(new Image("CalenderIcon.png"));
+		doneBtnImg.setImage(new Image("doneBTN.jpg"));
+		
 	}
 
 	// Method Name: doneButton

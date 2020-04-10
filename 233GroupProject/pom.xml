@@ -27,6 +27,32 @@
           <release>13</release>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.1</version>
+        <configuration>
+            <mainClass>HelloFX</mainClass>
+        </configuration>
+    </plugin>
     </plugins>
+
   </build>
+  <dependencies>
+	  <dependency>
+	    <groupId>org.openjfx</groupId>
+	   	<artifactId>javafx-controls</artifactId>
+	    <version>11</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>javax.mail-api</artifactId>
+	    <version>1.6.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.sun.mail</groupId>
+	  <artifactId>javax.mail</artifactId>
+	  <version>1.6.2</version>
+	</dependency>
+</dependencies>
 </project>

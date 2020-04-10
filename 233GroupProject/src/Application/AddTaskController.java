@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.Task;
 
 public class AddTaskController implements Initializable{
@@ -25,9 +27,25 @@ public class AddTaskController implements Initializable{
 		@FXML
 		private Button backBtn;
 		
+		@FXML
+		private ImageView logo,backBtnImg,nameNotesIcon,penIcon,calenderIcon,addBtnImg;
+		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			System.out.println("Add Task Scene");
+			
+			// Initialize the images for scene
+			backBtnImg.setImage(new Image("Back.png"));
+			logo.setImage(new Image("logo.jpeg"));
+			nameNotesIcon.setImage(new Image("NameNotesIcon.png"));
+			penIcon.setImage(new Image("Pen Icon.png"));
+			calenderIcon.setImage(new Image("CalenderIcon.png"));
+			addBtnImg.setImage(new Image("addBTN.jpg"));
+			
+			
+			
+			
+			
 		}
 		
 		@FXML

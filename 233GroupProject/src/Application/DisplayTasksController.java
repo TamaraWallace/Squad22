@@ -35,6 +35,9 @@ public class DisplayTasksController implements Initializable{
 	
 	@FXML
 	private Button completeBtn,selectBtn;
+	
+	@FXML
+	private ImageView BackBtnImg, completeBtnImg, selectBtnImg;
 
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
@@ -44,6 +47,15 @@ public class DisplayTasksController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("\nDisplay Tasks Screen");
+		
+		
+		// Initialize the images for scene
+		BackBtnImg.setImage(new Image("Back.png"));
+		completeBtnImg.setImage(new Image("completeBTN.jpg"));
+		selectBtnImg.setImage(new Image("selectBTN.png"));
+		
+		
+		
 		
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		

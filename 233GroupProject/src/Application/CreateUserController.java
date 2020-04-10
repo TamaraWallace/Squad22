@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.User;
 
 public class CreateUserController implements Initializable {
@@ -44,6 +46,9 @@ public class CreateUserController implements Initializable {
 	
 	@FXML
 	private Label newValidUsrLbl;
+	
+	@FXML
+	private ImageView backBtnImg,  cerateUserBtnImg,  taskillaLogo;
 
 	private String newUsrNameStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 
@@ -54,6 +59,11 @@ public class CreateUserController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("\nCreate User Scene");
+		
+		// Initialize the images for scene
+		backBtnImg.setImage(new Image("Back.png"));
+		cerateUserBtnImg.setImage(new Image("PlusIcon.png"));
+		taskillaLogo.setImage(new Image("taskilla_logo.jpg"));
 	}
 	
 	@FXML

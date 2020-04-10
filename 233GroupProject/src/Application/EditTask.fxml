@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;">
          <children>
-            <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="taskilla_logo" fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
@@ -29,31 +29,31 @@
             <DatePicker fx:id="date" layoutX="169.0" layoutY="464.0" prefHeight="40.0" prefWidth="193.0" promptText="Due Date" />
             <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" opacity="0.99" prefHeight="50.0" prefWidth="73.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
-                  <ImageView fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backBtnImg" fitHeight="47.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/Back.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="101.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nameNotesIcon" fitHeight="57.0" fitWidth="66.0" layoutX="101.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/NameNotesIcon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="57.0" fitWidth="42.0" layoutX="110.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="penIcon" fitHeight="57.0" fitWidth="42.0" layoutX="110.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Pen%20Icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="81.0" layoutX="94.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="calenderIcon" fitHeight="60.0" fitWidth="81.0" layoutX="94.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/CalenderIcon.png" />
                </image>
             </ImageView>
             <Button layoutX="170.0" layoutY="523.0" mnemonicParsing="false" onAction="#doneButton" prefHeight="146.0" prefWidth="155.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="doneBtnImg"  fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/doneBTN.jpg" />
                      </image>

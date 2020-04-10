@@ -40,7 +40,7 @@
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="132.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="completeBtnImg" fitHeight="132.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/completeBTN.jpg" />
                </image>
@@ -53,7 +53,7 @@
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="122.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="editBtnImg" fitHeight="122.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/pen_button.jpg" />
                </image>
@@ -66,7 +66,7 @@
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="deleteBtnImg" fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/delete_button.jpg" />
                </image>
@@ -77,7 +77,7 @@
       <TextArea fx:id="notesArea" layoutX="146.0" layoutY="251.0" prefHeight="61.0" prefWidth="225.0" text="place" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: &quot;#000b38&quot;;" styleClass="backButton">
          <graphic>
-            <ImageView fitHeight="61.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backBtnImg" fitHeight="61.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>

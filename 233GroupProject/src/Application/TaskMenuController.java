@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.text.*;
 import main.Task;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +23,9 @@ public class TaskMenuController implements Initializable {
 	@FXML
 	private TextArea notesArea; //associated with text area object for task notes in FXML
 	
+	@FXML
+	private ImageView backBtnImg,  deleteBtnImg,  editBtnImg, completeBtnImg;
+	
 	private static Task selectedTask; //the task to be displayed
 	
 	// Initialize Method, implemented from the Initializable Class
@@ -28,6 +33,14 @@ public class TaskMenuController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		System.out.println("\nTask Menu Scene");
+		
+		
+		//Initialize all the images on scene
+		backBtnImg.setImage(new Image("Back.png"));
+		deleteBtnImg.setImage(new Image("delete_button.jpg"));
+		editBtnImg.setImage(new Image("pen_button.jpg"));
+		completeBtnImg.setImage(new Image("completeBTN.jpg"));
+		
 		
 		if(selectedTask != null) {
 			taskName.setText(selectedTask.getName());

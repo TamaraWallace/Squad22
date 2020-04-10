@@ -14,14 +14,14 @@
    <children>
       <Pane layoutX="-1.0" layoutY="-8.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
          <children>
-            <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="taskilla_logoImg" fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/taskilla_logo.jpg" />
                </image>
             </ImageView>
             <Button fx:id="backBtn" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
-                  <ImageView fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="BackImg" fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/Back.png" />
                      </image>
@@ -35,19 +35,19 @@
             </Text>
             <TextField fx:id="userName" layoutX="151.0" layoutY="319.0" prefHeight="30.0" prefWidth="210.0" promptText="Username" />
             <TextField fx:id="email" layoutX="150.0" layoutY="420.0" prefHeight="30.0" prefWidth="218.0" promptText="Email" />
-            <ImageView fitHeight="76.0" fitWidth="100.0" layoutX="63.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userIconImg" fitHeight="76.0" fitWidth="100.0" layoutX="63.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/User%20Icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="133.0" layoutX="52.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="MailIconImage" fitHeight="60.0" fitWidth="133.0" layoutX="52.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Mail%20Icon.png" />
                </image>
             </ImageView>
             <Button fx:id="updateBtn" layoutX="175.0" layoutY="513.0" mnemonicParsing="false" onAction="#update" prefHeight="84.0" prefWidth="95.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38 #000B38#000B38 #000B38#000B38;">
                <graphic>
-                  <ImageView fitHeight="147.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="updateBtnImg" fitHeight="147.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/updateBTN.jpg" />
                      </image>

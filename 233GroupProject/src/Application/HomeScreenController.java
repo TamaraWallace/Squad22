@@ -58,12 +58,23 @@ public class HomeScreenController implements Initializable {
 	@FXML
 	private ListView<String> lstViewTasks;	
 	
+	@FXML
+	private ImageView profileMenuImg,taskillaLogo,viewAllBtnImg,addTaskBtnImg;
+	
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("\nHome Screen Scene");
+		
+		
+		// Initialize all the images on scene
+		profileMenuImg.setImage(new Image("profileBTN.jpg"));
+		taskillaLogo.setImage(new Image("taskilla_logo.jpg"));
+		viewAllBtnImg.setImage(new Image("bevel button .jpg"));
+		addTaskBtnImg.setImage(new Image("PlusIcon.png"));
+		
 		
 		String usrName = GuiBasedApp.getUser().getUsrName();
 		helloUser.setText("Hello, " + usrName+"!");
@@ -234,6 +245,7 @@ public class HomeScreenController implements Initializable {
 	
 	@FXML
 	public void sendTasksEmail(ActionEvent event) {
+		GuiBasedApp.getUser().sendWelcomeEmail();
 		event.consume();
 	}
 	

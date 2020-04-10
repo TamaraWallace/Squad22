@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.Email;
 import main.User;
 import javafx.fxml.Initializable;
@@ -24,12 +26,25 @@ public class SettingsController implements Initializable {
 	@FXML
 	private Label validUserNameLbl, validEmailLbl;
 	
+	@FXML
+	private ImageView taskilla_logoImg, BackImg, userIconImg, MailIconImage, updateBtnImg;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("\nSettings Scene");
 		
 		userName.setText(GuiBasedApp.getUser().getUsrName());
 		email.setText(GuiBasedApp.getUser().getUsrEmail());
+		
+		
+		// Initialize all the images on scene
+		taskilla_logoImg.setImage(new Image("taskilla_logo.jpg"));
+		BackImg.setImage(new Image("Back.png"));
+		userIconImg.setImage(new Image("User Icon.png"));
+		MailIconImage.setImage(new Image("Mail Icon.png"));
+		updateBtnImg.setImage(new Image("updateBTN.jpg"));
+		
+		
 	}
 	
 	// method for returning to previous scene

@@ -42,7 +42,7 @@
       </Label>
       <Button fx:id="backBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="37.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000b38;">
          <graphic>
-            <ImageView fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backBtnImg" fitHeight="64.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/Back.png" />
                </image>
@@ -50,7 +50,7 @@
          </graphic></Button>
       <Button fx:id="createUsrBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="207.0" layoutY="533.0" mnemonicParsing="false" onAction="#createUsr" prefWidth="96.0" style="-fx-background-color: #000b38;">
          <graphic>
-            <ImageView fitHeight="106.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cerateUserBtnImg" fitHeight="106.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/PlusIcon.png" />
                </image>
@@ -61,7 +61,7 @@
       <Label fx:id="newValidPassLbl" alignment="CENTER" layoutX="197.0" layoutY="408.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
       <Label fx:id="newValidEmailLbl" alignment="CENTER" layoutX="197.0" layoutY="354.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
       <Label fx:id="newValidUsrLbl" alignment="CENTER" layoutX="197.0" layoutY="290.0" prefHeight="20.0" prefWidth="180.0" textAlignment="CENTER" textFill="RED" />
-      <ImageView fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="taskillaLogo" fitHeight="222.0" fitWidth="315.0" layoutX="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/taskilla_logo.jpg" />
          </image>

@@ -69,11 +69,18 @@ public class  Email {
 	
 	}
 	
+	// Method to validate if given string is a valid email address
+	// resturns boolean value whether email is valid (True) or invalid (False)
 	public static boolean validateEmaill(String email){
-        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
-        Matcher m = p.matcher(email);
+		
+		// create a pattern given a regular expression for an email address
+        Pattern emailPattern = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
         
-        if(m.find() && m.group().equals(email)){
+        //creates a matcher that will try to match the given email with the pattern we created for email
+        Matcher matcher = emailPattern.matcher(email);
+        
+        // checks ifthe given email matches the regular expression for a valid email adress
+        if(matcher.find() && matcher.group().equals(email)){
             return true;
         }else{
             return false;            

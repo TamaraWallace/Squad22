@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 import main.Task;
 
 public class HomeScreenController implements Initializable {
-	
+	// variables 
 	@FXML
 	private RadioButton mostRecentTask;
 	

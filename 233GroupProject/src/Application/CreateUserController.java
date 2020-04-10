@@ -15,6 +15,7 @@ import main.User;
 
 public class CreateUserController implements Initializable {
 	
+	//creating variables such as buttons and text fields 
 	@FXML
 	private Button backBtn;
 	
@@ -44,7 +45,7 @@ public class CreateUserController implements Initializable {
 	
 	@FXML
 	private Label newValidUsrLbl;
-
+	// styling 
 	private String newUsrNameStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 
 	private String newUsrPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;

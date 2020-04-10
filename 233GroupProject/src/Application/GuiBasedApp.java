@@ -11,13 +11,14 @@ import javafx.stage.WindowEvent;
 import main.*;
 
 public class GuiBasedApp extends Application{
-	
+	// variables 
 	private static User user;
 	private static UserCollection users;
 	private static TaskCollection tasks;
 	
 	private static Stage window;
 	private static SceneController controller = new SceneController();
+	
 	
 	
 	public static User getUser() {

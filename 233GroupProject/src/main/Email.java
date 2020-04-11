@@ -105,6 +105,9 @@ public class  Email {
 	public static void setEmailBody(String emailBody) {
 		Email.emailBody = emailBody;
 	}
+	
+	
+	// Gets a Password Authentication based on the email and password to allow the connection to gmail account
 	public class SMTPAuthenticator extends javax.mail.Authenticator
 	{
 		public PasswordAuthentication getPasswordAuthentication()

@@ -93,7 +93,25 @@ public class GuiBasedApp extends Application{
 	public static ArrayList<Task> getActiveTasks() {
 		return tasks.getActiveTasks();
 	}
-	
+	//returns the percentage of complete tasks as a decimal
+	public static double getPercentageComplete() {
+		double fraction;
+		ArrayList<Task> activeTasks = getActiveTasks();
+		ArrayList<Task> allTasks = tasks.getAllTasks();
+		
+		if (allTasks.size()==0) {
+			return 0;
+		}
+		else {
+			double numComplete = allTasks.size()-activeTasks.size();
+			fraction = numComplete/allTasks.size();
+			return fraction;
+		}
+	}
+	public static int getTotalTasks() {
+		ArrayList<Task> allTasks = tasks.getAllTasks();
+		return allTasks.size();
+	}
 	
 	// -------------------- SCENE LAUNCHERS --------------------
 	

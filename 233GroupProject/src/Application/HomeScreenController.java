@@ -20,6 +20,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -53,10 +54,13 @@ public class HomeScreenController implements Initializable {
 	private Button addTaskBtn;
 	
 	@FXML 
-	private Label helloUser, currentTasksTitle,noTasksLbl;
+	private Label helloUser, currentTasksTitle,noTasksLbl, numTotal, percentageComplete;
 	
 	@FXML
 	private ListView<String> lstViewTasks;	
+	
+	@FXML
+	private ProgressBar pb = new ProgressBar();
 	
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
@@ -68,6 +72,12 @@ public class HomeScreenController implements Initializable {
 		String usrName = GuiBasedApp.getUser().getUsrName();
 		helloUser.setText("Hello, " + usrName+"!");
 		
+		int total = GuiBasedApp.getTotalTasks();
+		numTotal.setText(""+total);
+		percentageComplete.setText((int)(GuiBasedApp.getPercentageComplete()*100)+"%");
+		
+		pb.setStyle("-fx-accent: #6ac4ab;"); 
+		pb.setProgress(GuiBasedApp.getPercentageComplete());
 		
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		
@@ -98,7 +108,7 @@ public class HomeScreenController implements Initializable {
 		
 		
 		if(count == 0) {
-			noTasksLbl.setText("You have no Tasks");
+			noTasksLbl.setText("You have 0 current tasks.");
 			
 			/*Alert alert = new Alert(AlertType.INFORMATION);
 			DialogPane dialogPane = alert.getDialogPane();			

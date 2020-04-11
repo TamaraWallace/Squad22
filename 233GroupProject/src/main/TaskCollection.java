@@ -164,5 +164,16 @@ public class TaskCollection {
 	                break; 
 	        }
 	}
+	// Method Name: getAllTasks
+	// Parameters: none
+	// Return: ArrayList of Task objects
+	// Functionality: return an ArrayList of User's total tasks saved
+	public ArrayList<Task> getAllTasks(){
+		ArrayList<Task> allTasks = new ArrayList<Task>();
+		for (Task t:tasks) {
+			allTasks.add(new Task(t));
+		}
+		return allTasks;
+	}
 	
 }

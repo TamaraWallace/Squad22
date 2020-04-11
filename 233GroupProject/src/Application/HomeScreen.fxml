@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,7 +23,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="viewAllbtn" layoutX="118.0" layoutY="540.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="125.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="viewAllbtn" layoutX="103.0" layoutY="502.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="116.0" prefWidth="125.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="116.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +31,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="addTaskBtn" layoutX="259.0" layoutY="540.0" mnemonicParsing="false" onAction="#addTask" prefHeight="112.0" prefWidth="105.0" style="-fx-background-color: #000B38;">
+      <Button fx:id="addTaskBtn" layoutX="271.0" layoutY="502.0" mnemonicParsing="false" onAction="#addTask" prefHeight="112.0" prefWidth="105.0" style="-fx-background-color: #000B38;">
          <graphic>
             <ImageView fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,11 +55,32 @@
             </ImageView>
          </graphic>
       </MenuButton>
-      <ListView fx:id="lstViewTasks" layoutX="63.0" layoutY="251.0" prefHeight="277.0" prefWidth="380.0" style="-fx-background-color: #000B38;" />
+      <ListView fx:id="lstViewTasks" layoutX="63.0" layoutY="251.0" prefHeight="235.0" prefWidth="382.0" style="-fx-background-color: #000B38;" />
       <Label fx:id="noTasksLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="335.0" prefHeight="55.0" prefWidth="300.0" textAlignment="CENTER" textFill="#24a78d" wrapText="true">
          <font>
-            <Font size="28.0" />
+            <Font size="24.0" />
          </font>
       </Label>
+      <Label fx:id="numTotal" layoutX="51.0" layoutY="620.0" text="#" textFill="#24a78d">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="percentageComplete" layoutX="426.0" layoutY="620.0" text="\%" textFill="#24a78d">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="659.0" text="Task(s)" textFill="#24a78d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="404.0" layoutY="659.0" text="Complete" textFill="#24a78d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="pb" layoutX="119.0" layoutY="649.0" prefHeight="20.0" prefWidth="263.0" progress="0.11" />
    </children>
 </AnchorPane>

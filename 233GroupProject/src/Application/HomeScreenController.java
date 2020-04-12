@@ -245,7 +245,7 @@ public class HomeScreenController implements Initializable {
 	
 	@FXML
 	public void sendTasksEmail(ActionEvent event) {
-		GuiBasedApp.getUser().sendWelcomeEmail();
+		GuiBasedApp.getUser().sendTasksEmail();
 		event.consume();
 	}
 	

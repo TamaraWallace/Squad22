@@ -2,6 +2,8 @@ package main;
 
 import java.util.UUID;
 
+import Application.GuiBasedApp;
+
 // User class creates User object with usrName, usrPassword and usrID attributes
 
 public class User {
@@ -104,11 +106,27 @@ public class User {
 
 	public void setUsrEmail(String usrEmail) {
 		this.usrEmail = usrEmail;
+		
+		
 	}
 	
 	public void sendWelcomeEmail() {
 		Email e = new Email();
-		e.sendEmail(usrEmail, "Test", "Welcome to Taskilla!");
+		e.sendEmail(usrEmail, "Taskilaa", "Welcome to Taskilla!");
+	}
+	
+	public void sendTasksEmail() {
+		Email e = new Email();
+		String subject = "Tasks needed to complete";
+		String message = "";
+		for (Task task : GuiBasedApp.getActiveTasks()) {
+			
+			message += task.toStringEmail()+"\n\n";
+		
+			
+		System.out.println("Message: "+message);		
+		e.sendEmail(usrEmail, subject, message);
+		}
 	}
 	
 }

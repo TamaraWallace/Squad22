@@ -83,6 +83,17 @@ public class Task {
 				"\n\tDue Date: " + this.dueDate;
 	}
 	
+//	    Method name: toString 
+//	Parameters: none 
+//	Return: String 
+//	Functionality: returns a string with the attributes of the object, this will be used to send task in email message
+	public String toStringEmail() {
+		return "\tName: " + this.name +
+				"\n\t\tDescription: " + this.notes + 
+				"\n\t\tCompleted: " + this.completed +
+				"\n\t\tDue Date: " + this.dueDate;
+	}
+	
 	
 //	Method name: isComplete
 //	Parameters: none 

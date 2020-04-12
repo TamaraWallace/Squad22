@@ -56,7 +56,7 @@ public class  Email {
 				msg.addRecipient(Message.RecipientType.TO,
 						new InternetAddress(receiverEmail));
 				Transport.send(msg);
-				System.out.println("Message send Successfully:)"); }
+				System.out.println("Message sent Successfully:)"); }
 
 			catch (Exception mex){
 				mex.printStackTrace();}

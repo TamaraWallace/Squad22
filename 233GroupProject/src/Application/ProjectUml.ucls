@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <package id="1" language="java" name="main" project="233GroupProjectMaven" file="/233GroupProjectMaven/src/main" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <package id="1" language="java" name="main" project="233GroupProject" file="/233GroupProject/src/main" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="989" width="766" x="899" y="-104"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <package id="2" language="java" name="Application" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application" binary="false" corner="BOTTOM_RIGHT">    
+  <package id="2" language="java" name="Application" project="233GroupProject" file="/233GroupProject/src/Application" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="982" width="1036" x="-142" y="-96"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="3" language="java" name="Application.TaskMenuController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/TaskMenuController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="Application.TaskMenuController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/TaskMenuController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="246" width="213" x="107" y="230"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -20,8 +20,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Application.LoginController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="Application.LoginController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-26" y="331"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,8 +29,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Application.AddTaskController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/AddTaskController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="Application.AddTaskController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/AddTaskController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="242" width="237" x="564" y="-86"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -38,8 +38,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Application.HomeScreenController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/HomeScreenController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="Application.HomeScreenController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/HomeScreenController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="292" y="692"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -47,8 +47,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Application.CreateUserController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/CreateUserController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="Application.CreateUserController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/CreateUserController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="546" y="694"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -56,8 +56,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Application.GuiBasedApp" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/GuiBasedApp.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="Application.GuiBasedApp" project="233GroupProject" 
+    file="/233GroupProject/src/Application/GuiBasedApp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="417" y="221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -65,8 +65,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Application.DisplayTasksController" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/DisplayTasksController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="Application.DisplayTasksController" project="233GroupProject" 
+    file="/233GroupProject/src/Application/DisplayTasksController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="193" y="54"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -74,8 +74,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Application.DisplayTasksController.Cell" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/Application/DisplayTasksController.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="Application.DisplayTasksController.Cell" project="233GroupProject" 
+    file="/233GroupProject/src/Application/DisplayTasksController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-34" y="39"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -83,8 +83,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="main.UserCollection" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/UserCollection.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="main.UserCollection" project="233GroupProject" 
+    file="/233GroupProject/src/main/UserCollection.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1064" y="181"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -92,8 +92,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="main.Task" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/Task.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="main.Task" project="233GroupProject" file="/233GroupProject/src/main/Task.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="420" width="219" x="1428" y="452"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -101,8 +101,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="main.User" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/User.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="main.User" project="233GroupProject" file="/233GroupProject/src/main/User.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1018" y="509"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -110,8 +110,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="main.HidePass" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/HidePass.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="main.HidePass" project="233GroupProject" 
+    file="/233GroupProject/src/main/HidePass.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1588" y="25"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -119,8 +119,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="main.TaskCollection" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/TaskCollection.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="main.TaskCollection" project="233GroupProject" 
+    file="/233GroupProject/src/main/TaskCollection.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1229" y="709"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -128,8 +128,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="main.TextBasedApp" project="233GroupProjectMaven" 
-    file="/233GroupProjectMaven/src/main/TextBasedApp.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="main.TextBasedApp" project="233GroupProject" 
+    file="/233GroupProject/src/main/TextBasedApp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1373" y="197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -137,142 +137,142 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="17">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="18" name="tasks">        
+  <dependency id="17">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="19">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="20" name="tasks">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
+      <multiplicity id="21" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="21" name="users">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="23">    
-    <end type="SOURCE" refId="7"/>    
+  <dependency id="22">    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <association id="24">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="25" name="users">        
+  <association id="23">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="24" name="selectedTask">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="27">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="28">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="29" name="tasks">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="2147483647">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="31">    
-    <end type="SOURCE" refId="6"/>    
+  <dependency id="26">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="32">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
+  <association id="27">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="28" name="users">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="33">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
+  <association id="31">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="32" name="tasks">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="34">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="35" name="tasks">        
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="35" name="user">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="36" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="37">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="38">    
+  <nesting id="37">    
     <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="39">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="40" name="users">        
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <association id="38">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="39" name="users">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="41" minimum="0" maximum="2147483647">        
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="42" name="users">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="42">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="43" name="selectedTask">        
+  <dependency id="44">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="46">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="47" name="tasks">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="44" minimum="0" maximum="1">        
+      <multiplicity id="48" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="45">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="46">    
+  <dependency id="49">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="14"/>  
   </dependency>  
-  <nesting id="47">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </nesting>  
-  <association id="48">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="49" name="user">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="50" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <dependency id="50">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

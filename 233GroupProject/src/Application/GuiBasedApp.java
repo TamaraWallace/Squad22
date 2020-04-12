@@ -154,7 +154,13 @@ public class GuiBasedApp extends Application{
 	}
 	public static int getTotalTasks() {
 		ArrayList<Task> allTasks = tasks.getAllTasks();
-		return allTasks.size();
+		int counter = 0;
+		for (Task t: allTasks) {
+			if(!(t.getName().compareTo("")==0)) {
+				counter+=1;
+			}
+		}
+		return counter;
 	}
 	
 	// -------------------- SCENE LAUNCHERS --------------------

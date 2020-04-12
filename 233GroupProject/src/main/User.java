@@ -124,9 +124,10 @@ public class User {
 			message += task.toStringEmail()+"\n\n";
 		
 			
+		
+		}
 		System.out.println("Message: "+message);		
 		e.sendEmail(usrEmail, subject, message);
-		}
 	}
 	
 }

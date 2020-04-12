@@ -62,105 +62,9 @@ public class DisplayTasksController implements Initializable{
 		lstViewTasks.getItems().addAll(lstTasks);
 		
 		
-		
-		lstViewTasks.setCellFactory(param -> new Cell());
+		lstViewTasks.setCellFactory(param -> new TaskCell());
 		
 		lstViewTasks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		
-	}
-	
-	/*
-	 * Create a static class for each cell in the lisView
-	 * */
-	class Cell extends ListCell<String>{
-		
-		// Initializing all the widgets for displaying the task
-		HBox hb = new HBox();
-		
-		Button close = new Button(); 
-		Label taskLbl = new Label("");
-		Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
-		Pane pane = new Pane();
-		ImageView delete = new ImageView(delIcon);
-
-		private String taskId;
-		
-		
-		
-		public Cell() {
-			
-			super();		
-			
-			// setting the size of trash bin button
-			delete.setFitWidth(30);
-			delete.setFitHeight(35);
-			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
-			
-			taskId = "";
-			
-			//setting the widgets to the proper color
-			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
-			taskLbl.setTextFill(Color.web("#24a78d"));
-			close.setStyle("-fx-background-color: #000B38;");
-			close.setGraphic(delete);
-
-			hb.setStyle("-fx-background-color: #000B38;");
-			
-			// adding all the components in the sequence in which we want them to appear
-			hb.getChildren().addAll(taskLbl,pane,close);
-			HBox.setHgrow(pane, Priority.ALWAYS);
-			
-			//removing the task from list view when trash bin pressed
-			close.setOnAction(new EventHandler<ActionEvent>() {		
-				
-				@Override
-				public void handle(ActionEvent event) {
-					
-					getListView().getItems().remove(getItem());
-					System.out.println("TaskID: "+taskId);
-					deleteTask(taskId,taskLbl.getText());
-				}
-
-				
-					
-				
-			});
-			
-			
-		}
-		
-		// Updates the list item in the list view with the Task details
-		// this is done by setting the text in label to the task details
-		@Override
-		public void updateItem(String name, boolean empty) {
-			super.updateItem(name, empty);
-			setText(null);
-			setGraphic(null);
-			
-			if (name != null && !empty) {
-				//System.out.println(name);
-				String[] task = name.split(",");
-				
-				taskId = task[0];
-				String text = "";
-				for (int i = 1; i < task.length; i++) {
-					text += task[i];
-				}
-				taskLbl.setText(text);
-				setGraphic(hb);
-				
-			}
-		}
-	}
-	
-
-	
-	// method for deleting a users tasks
-	//currently only removes task from list view, does not update user's tasks
-	public static void deleteTask(String taskId, String taskName) {
-		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
-		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
 	}
 	
 	// Brings user back to the Home Screen Scene
@@ -178,21 +82,13 @@ public class DisplayTasksController implements Initializable{
 		
 		for (int i = 0; i < completeTasks.size(); i++) {
 			String lstViewTask = completeTasks.get(i);
-			String taskId = lstViewTask.split(",")[0];
+			String taskID = lstViewTask.split(",")[0];
 		
-			System.out.println("TaskID: "+taskId);
+			System.out.println("TaskID: "+taskID);
 			
-			GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).complete();
-			
-			//for (Task task : GuiBasedApp.getActiveTasks()) {
-			//	if (task.getTaskID().toString() == taskId) {
-			//		task.complete();
-			//	}
-			//}
-			
+			GuiBasedApp.completeTaskByID(taskID);
 			
 		}
-
 		lstViewTasks.getItems().removeAll(completeTasks);
 	}
 	
@@ -201,16 +97,14 @@ public class DisplayTasksController implements Initializable{
 	// takes user to task scene for selected task
 	@FXML
 	public void selectTask(ActionEvent event) throws IOException {
-		
 		String selectTask = lstViewTasks.getSelectionModel().getSelectedItem();
-		String taskId = selectTask.split(",")[0];
-		
-		Task selectedTask = GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId));
-		TaskMenuController.setSelectedTask(selectedTask);
-		
-		System.out.println(selectedTask.toString());
-		
-		GuiBasedApp.launchTaskMenuScene();
+		if (selectTask != null) {
+			String taskID = selectTask.split(",")[0];
+			
+			GuiBasedApp.setSelectedTaskByID(taskID);
+			
+			GuiBasedApp.launchTaskMenuScene();
+		}
 	}
 	
 	

@@ -166,9 +166,9 @@ public class TextBasedApp {
 		System.out.print("Please enter your password: ");
 		password = keyboard.next();
 		attempts++;
-		usrLogin = users.validateUsernameAndPassword(usrName, password);
+		boolean valid = users.validateUsernameAndPassword(usrName, password);
 		
-		while ((usrLogin == null) && !returnStart) {
+		while ((!valid) && !returnStart) {
 			if (attempts == 3) {
 				System.out.println("You have attempted 3 times to enter a password. You have one last attempt!! ");
 			} else if(attempts > 3) {
@@ -182,7 +182,7 @@ public class TextBasedApp {
 				System.out.print("The password you entered is incorrect! Please try again: ");
 				password = keyboard.next();
 				attempts++;
-				usrLogin = users.validateUsernameAndPassword(usrName, password);
+				usrLogin = users.getUserByName(usrName);
 			}
 		}
 		return usrLogin.getUsrID();

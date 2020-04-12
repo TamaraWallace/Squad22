@@ -1,7 +1,10 @@
 package Application;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,19 +14,14 @@ import javafx.stage.WindowEvent;
 import main.*;
 
 public class GuiBasedApp extends Application{
-	// variables 
+
 	private static User user;
 	private static UserCollection users;
 	private static TaskCollection tasks;
+	private static Task selectedTask;
 	
 	private static Stage window;
 	private static SceneController controller = new SceneController();
-	
-	
-	
-	public static User getUser() {
-		return user;
-	}
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -44,9 +42,9 @@ public class GuiBasedApp extends Application{
 			GuiBasedApp.users = UserCollection.loadUsers("users.txt");
 			
 			window = primaryStage;
-			Image takilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
+			Image taskilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
 			window.setTitle("Welcome to Taskilla ");
-			window.getIcons().add(takilla_icon);
+			window.getIcons().add(taskilla_icon);
 			
 			launchLoginScene();
 		} catch(Exception e) {
@@ -62,23 +60,69 @@ public class GuiBasedApp extends Application{
 		users.saveUsers("users.txt");
 	}
 	
-	public static UserCollection getUsers() {
-		return users;
+	public static User getUser() {
+		return user;
 	}
-	public static void setUsers(UserCollection users) {
-		GuiBasedApp.users = users;
+	
+	public static boolean validateUsernameAndPassword(String name, String pword) {
+		return users.validateUsernameAndPassword(name, pword);
 	}
-	public static TaskCollection getTasks() {
-		return tasks;
+	
+	public static boolean doesUsernameExist(String name) {
+		return users.doesUsernameExist(name);
 	}
+	
+	// Returns a copy of the selected Task (to prevent privacy leak)
+	public static Task getSelectedTask() {
+		return new Task(selectedTask);
+	}
+	
+	public static void setSelectedTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		GuiBasedApp.selectedTask = tasks.getTaskByID(id);
+	}
+	
+	public static void editSelectedTask(String newName, String newNotes, LocalDate newDate) {
+		if (selectedTask != null) {
+			selectedTask.setName(newName);
+			selectedTask.setNotes(newNotes);
+			selectedTask.setDueDate(newDate);
+			selectedTask = null;
+		}
+	}
+	
+	public static void completeSelectedTask() {
+		if (selectedTask != null) {
+			selectedTask.complete();
+			selectedTask = null;
+		}
+	}
+	
+	public static void deleteSelectedTask() {
+		if (selectedTask != null) {
+			selectedTask.delete();
+			selectedTask = null;
+		}
+	}
+	
+	public static void completeTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		tasks.getTaskByID(id).complete();
+	}
+	
+	public static void deleteTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		tasks.getTaskByID(id).delete();
+	}
+	
 	public static void setTasks(TaskCollection tasks) {
 		GuiBasedApp.tasks = tasks;
 	}
 	public static Scene getScene() {
 		return window.getScene();
 	}
-	public static void loginUser(User loginUser) {
-		user = loginUser;
+	public static void loginUser(String username) {
+		user = users.getUserByName(username);
 		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
 	}
 	public static void newUser(User newUser) {
@@ -88,9 +132,9 @@ public class GuiBasedApp extends Application{
 	}
 	public static void addTask(Task t) {
 		GuiBasedApp.tasks.addTask(t);
-		tasks.display();
 	}
 	public static ArrayList<Task> getActiveTasks() {
+		tasks.sortTasks();
 		return tasks.getActiveTasks();
 	}
 	//returns the percentage of complete tasks as a decimal

@@ -54,7 +54,6 @@ public class AddTaskController implements Initializable{
 				Task task = new Task(GuiBasedApp.getUser().getUsrID(), taskName, taskNotes, false, taskDate);
 	
 				GuiBasedApp.addTask(task);
-				GuiBasedApp.getTasks().sortTasks();
 
 				System.out.println("New task created:\n" + task.toString());
 				

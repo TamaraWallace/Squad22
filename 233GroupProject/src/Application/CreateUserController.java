@@ -70,7 +70,7 @@ public class CreateUserController implements Initializable {
 		String password1 = newUsrPwd.getText();
 		String password2 = newUsrConfPwd.getText();
 		
-		boolean nameIsUnique = !(GuiBasedApp.getUsers().doesUsernameExist(name));
+		boolean nameIsUnique = !(GuiBasedApp.doesUsernameExist(name));
 		
 		// more robust user name checking.	
 		if (name.isEmpty()){

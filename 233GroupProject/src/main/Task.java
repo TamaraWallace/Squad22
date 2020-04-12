@@ -13,9 +13,6 @@ public class Task {
 	private boolean completed; // if the task has been marked complete by the user or not 
 	private LocalDate dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
 	
-
-	
-	
 	public Task() { }
 	
 //	Method name: Task 
@@ -140,7 +137,7 @@ public class Task {
 		this.notes = notes;
 	}
 
-	public void complete(){
+	public void complete() {
 		this.completed = true;
 	}
 

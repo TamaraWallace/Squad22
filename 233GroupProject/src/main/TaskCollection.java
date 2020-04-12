@@ -53,6 +53,7 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: save all the users tasks to the file, including new tasks and updates
 	public void saveTasks(String fname) {
+		System.out.println("Saving tasks.");
 		File f = new File(fname);
 		if(!(f.exists())) {
 			try{
@@ -71,20 +72,16 @@ public class TaskCollection {
             	Task temp = getTaskByID(tempID);
             	if (temp == null) {
             		bw.write(s + "\n");
-            		System.out.println("Other user");
             	} else if(temp.getName().equals("")) {
-            		System.out.println("Deleting");
             		tasks.remove(temp);
             	} else {
             		bw.write(temp.toSaveString());
-            		System.out.println("Current user");
             		tasks.remove(temp);
             	}
             }
             for (Task t : tasks) {
             	if(!t.getName().equals("")) {
             		bw.write(t.toSaveString());
-            		System.out.println("New");
             	}
             }
             bw.close();

@@ -138,11 +138,11 @@ public class UserCollection {
 	}
 	
 	
-	public User validateUsernameAndPassword(String name, String pword) {
+	public boolean validateUsernameAndPassword(String name, String pword) {
 		for (User u: users) {
-			if (u.checkName(name) && u.checkPassword(pword)) return u;
+			if (u.checkName(name) && u.checkPassword(pword)) return true;
 		}
-		return null;
+		return false;
 	}
 	
 //	Method name: Display
@@ -160,8 +160,14 @@ public class UserCollection {
 			if (userID == user.getUsrID()) {
 				return user;
 			}
-			else {
-				return null;
+		}
+		return null;
+	}
+	
+	public User getUserByName(String name) {
+		for (User user: users) {
+			if(name.compareToIgnoreCase(user.getUsrName()) == 0) {
+				return user;
 			}
 		}
 		return null;

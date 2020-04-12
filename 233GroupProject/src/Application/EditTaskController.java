@@ -27,14 +27,15 @@ public class EditTaskController implements Initializable {
 	
 	@FXML
 	private Button backBtn; //associated with the back button object in FXML
-	
-	private static Task taskToEdit; //the task to be edited
+
 	
 	// Initialize Method, implemented from the Initializable Class
 	// When the class is started it sets the values of the fields to the task information
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
-		System.out.println("\nEdit Task Scene");
+		System.out.println("Edit Task Scene");
+		
+		Task taskToEdit = GuiBasedApp.getSelectedTask();
 		
 		name.setText(taskToEdit.getName());
 		date.setValue(taskToEdit.getDueDate());;
@@ -67,11 +68,8 @@ public class EditTaskController implements Initializable {
 		}
 		// if everything is good, edit the task:
 		if (taskDate != null && !taskName.isEmpty()) {
-			System.out.println("the name is " + taskName + "the date is" + taskDate + "the notes are" + taskNotes);
-			taskToEdit.setName(taskName);
-			taskToEdit.setNotes(taskNotes);
-			taskToEdit.setDueDate(taskDate);
-			GuiBasedApp.getTasks().sortTasks();
+			
+			GuiBasedApp.editSelectedTask(taskName, taskNotes, taskDate);
 			
 			//send user to home screen
 			GuiBasedApp.launchHomeScreenScene();	
@@ -85,13 +83,5 @@ public class EditTaskController implements Initializable {
 	//				  the previous screen 
 	public void back(ActionEvent event) {
 		GuiBasedApp.launchTaskMenuScene();
-	}
-	
-	// Method Name: setTaskToEdit
-	// Parameters: a task t
-	// Return: void
-	// Functionality: sets the task being edited to the task t provided
-	public static void setTaskToEdit(Task t) {
-		taskToEdit = t;
 	}
 }

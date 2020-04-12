@@ -45,7 +45,7 @@ public class HomeScreenController implements Initializable {
 	private MenuButton profileMenu;
 	
 	@FXML
-	private MenuItem settingsItem,sendTasksEmailItem,logoutItem,closeItem;
+	private MenuItem settingsItem,logoutItem,closeItem;
 	
 	@FXML
 	private Button addTaskBtn;
@@ -97,7 +97,7 @@ public class HomeScreenController implements Initializable {
 		}
 		lstViewTasks.getItems().addAll(lstTasks);
 		
-		lstViewTasks.setCellFactory(param -> new Cell());
+		lstViewTasks.setCellFactory(param -> new TaskCell());
 		
 		lstViewTasks.getSelectionModel().selectedItemProperty().addListener( (v,oldV,newV)-> {
 			selectedCell(v,oldV,newV);
@@ -105,122 +105,20 @@ public class HomeScreenController implements Initializable {
 		
 		
 		if(count == 0) {
-			noTasksLbl.setText("You have 0 current tasks.");
-			
-			/*Alert alert = new Alert(AlertType.INFORMATION);
-			DialogPane dialogPane = alert.getDialogPane();			
-			dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
-			
-			alert.setTitle("No Tasks");
-			alert.setHeaderText(" You have no tasks");
-			alert.setContentText("Please add a task");
-			
-			alert.showAndWait();*/
-			
-			
+			noTasksLbl.setText("You have no tasks.");
 		}else {
 			noTasksLbl.setVisible(false);
 		}
 		
 		
-	}
-	
-	/*
-	 * Create a static class for each cell in the lisView
-	 * */
-	class Cell extends ListCell<String> {
-		
-		// Initializing all the widgets for displaying the task
-		HBox hb = new HBox();
-		
-		Button close = new Button(); 
-		Label taskLbl = new Label("");
-		Image delIcon  = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
-		Pane pane = new Pane();
-		ImageView delete = new ImageView(delIcon);
-
-		private String taskId;
-		
-		
-		
-		public Cell() {
-			
-			super();		
-			
-			// setting the size of trash bin button
-			delete.setFitWidth(30);
-			delete.setFitHeight(35);
-			hb.getStylesheets().add(getClass().getResource("DisplayTasks.css").toExternalForm());
-			
-			taskId = "";
-			
-			//setting the widgets to the proper color
-			taskLbl.setStyle("-fx-background-color: #000B38; -fx-font-weight:bold; ");
-			taskLbl.setTextFill(Color.web("#24a78d"));
-			close.setStyle("-fx-background-color: #000B38;");
-			close.setGraphic(delete);
-
-			hb.setStyle("-fx-background-color: #000B38;");
-			
-			// adding all the components in the sequence in which we want them to appear
-			hb.getChildren().addAll(taskLbl,pane,close);
-			HBox.setHgrow(pane, Priority.ALWAYS);
-			
-			//removing the task from list view when trash bin pressed
-			close.setOnAction(new EventHandler<ActionEvent>() {		
-				
-				@Override
-				public void handle(ActionEvent event) {
-					
-					getListView().getItems().remove(getItem());
-					System.out.println("TaskID: "+taskId);
-					deleteTask(taskId,taskLbl.getText());
-				}
-
-				
-					
-				
-			});
-			
-			
-		}
-		
-		// Updates the list item in the list view with the Task details
-		// this is done by setting the text in label to the task details
-		@Override
-		public void updateItem(String name, boolean empty) {
-			super.updateItem(name, empty);
-			setText(null);
-			setGraphic(null);
-			
-			if (name != null && !empty) {
-				String[] task = name.split(",");
-				
-				taskId = task[0];
-				String text = "";
-				for (int i = 1; i < task.length; i++) {
-					text += task[i];
-				}
-				taskLbl.setText(text);
-				setGraphic(hb);
-				
-			}
-		}
-
-		
-
-	
-	}
-	
-	
-	
+	}	
 	
 	private void selectedCell(ObservableValue<? extends String> observable,  String oldValue, String newValue) {
 		
 		System.out.println("SelectedTask: " + newValue);
-		String TaskID = newValue.split(",")[0];
+		String taskID = newValue.split(",")[0];
 		
-		TaskMenuController.setSelectedTask((Task) GuiBasedApp.getTasks().getTaskByID(UUID.fromString(TaskID))); 
+		GuiBasedApp.setSelectedTaskByID(taskID);
 		
 		GuiBasedApp.launchTaskMenuScene();
 	}
@@ -237,11 +135,6 @@ public class HomeScreenController implements Initializable {
 	@FXML
 	public void addTask(ActionEvent event) {
 		GuiBasedApp.launchAddTaskScene();
-	}
-	
-	@FXML
-	public void sendTasksEmail(ActionEvent event) {
-		event.consume();
 	}
 	
 	/*
@@ -261,7 +154,6 @@ public class HomeScreenController implements Initializable {
 		GuiBasedApp.save();	
 		Stage window = (Stage) profileMenu.getScene().getWindow();
 		window.close();
-		
 	}
 	
 	/*
@@ -270,19 +162,6 @@ public class HomeScreenController implements Initializable {
 	@FXML
 	public void settings(ActionEvent event) {
 		GuiBasedApp.launchSettingsScene();
-	}
-	
-	@FXML
-	public void sendTaskEmail(ActionEvent event) {
-		GuiBasedApp.getUser().sendWelcomeEmail();
-	}
-
-	
-	// method for deleting a users tasks
-	//currently only removes task from list view, does not update user's tasks
-	public static void deleteTask(String taskId, String taskName) {
-		System.out.println("Deleting task ID: "+taskId+" Details: "+taskName);
-		GuiBasedApp.getTasks().getTaskByID(UUID.fromString(taskId)).delete();
 	}
 }
 

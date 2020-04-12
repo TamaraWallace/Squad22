@@ -57,9 +57,9 @@ public class LoginController implements Initializable{
 		
 		System.out.println("Login Attempt: " + attempts);
 		
-		User u = GuiBasedApp.getUsers().validateUsernameAndPassword(usrName,usrPassword);
+		boolean valid = GuiBasedApp.validateUsernameAndPassword(usrName,usrPassword);
 		
-		if (u == null) {
+		if (!valid) {
 			System.out.println("Invalid login credentials");
 			String style = lgnPassword.getStyle();
 			lgnPassword.setStyle(style + ("-fx-border-color: #ff0000; -fx-border-width: 5px; "));
@@ -67,7 +67,7 @@ public class LoginController implements Initializable{
 			lgnValidPassLbl.setText("Invalid Password");	
 		} else {
 			attempts = 0;
-			GuiBasedApp.loginUser(u);
+			GuiBasedApp.loginUser(usrName);
 			
 			loggedIn = true;
 		}
@@ -96,9 +96,6 @@ public class LoginController implements Initializable{
 		}
 		
 		if (loggedIn) {
-			System.out.println(u.getUsrName() + " has successfully logged in.");
-			System.out.println(u.toString());
-			
 			GuiBasedApp.launchHomeScreenScene();
 		}
 	}

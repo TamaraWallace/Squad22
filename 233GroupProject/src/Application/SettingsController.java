@@ -50,7 +50,7 @@ public class SettingsController implements Initializable {
 		String newUsrEmail = email.getText();
 		
 		
-		if( !(GuiBasedApp.getUsers().doesUsernameExist(newUsrName)) && newUsrName.length() != 0) {
+		if( !(GuiBasedApp.doesUsernameExist(newUsrName)) && newUsrName.length() != 0) {
 			validUsrName = true;
 			
 		}else {

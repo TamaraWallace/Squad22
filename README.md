@@ -45,14 +45,15 @@ Home Screen:
   - Has three Menu Buttons for three of the User's current tasks (the tasks are sorted to display upcoming tasks based on Due Date). If the User has 0 current tasks, a text label informs the User to add tasks.
   - Has a *View All* Button to display all tasks
   - Has an *Add New* Button to add a new task
-  - Has a *Profile* Button to allow a User to access Settings, Log Out, or Close the program (exit).
-  - Has an *Email* Button to allow a User to send task reminders to their email.
+  - Has a *Profile* Button to allow a User to access Settings, Log Out, Send Email, or Close the program (exit).
+  - Has an *Email* Button to allow a User to send task reminders to their email (partially operational as per Final Demo - required Maven conversion).
   - When the *View All* Button is pressed, the Display Tasks Screen is launched.
   - When the *Add New* Button is pressed, the Add Task screen is launched.
   - When one of the three menu buttons is pressed, assuming it is populated with a task, the Task Menu Screen is launched with the given task.
   - When the *Profile* Button is pressed, if a User chooses to access Settings, the Settings screen is launched. Otherwise, if Log Out is selected, the User is brought back to the Login screen. If Close if selected, the program closes. 
-  - When the *Email* Button is pressed, the User's current and completed tasks are sent to their personal email as a reminder. 
-  
+  - Has a *Progress Bar* that provides the User with statistics regarding task completion. 
+  - The *Progress Bar* has two descriptive Text Labels to support the visual (on the left/right side).
+
 Display Tasks Screen:
   - Has a ListView populated with all of the User's active tasks.
   - Has a *Back* Button to return the User to the Home Screen
@@ -107,3 +108,4 @@ tasks.txt
 _________
   - Each line stores a Taskilla User's task. 
   - Tasks are organized and managed based on the Task Name, an auto-generated taskID, the User's userID, the description of the task, the completion status (boolean), and the due date.
+

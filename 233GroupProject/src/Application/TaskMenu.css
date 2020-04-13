@@ -5,8 +5,8 @@
 }
 
 .taskName {
-	-fx-text-fill: "#24a78d";
-	-fx-font-size: 24;
+	-fx-text-fill: "#ffffff";
+	-fx-font-size: 18;
 	-fx-padding: 8;
 }
 
@@ -18,8 +18,8 @@
 
 .taskNotes {
 	-fx-text-fill: "#24a78d";
-	-fx-font-size: 14;
-	-fx-padding: 4.5;
+	-fx-font-size: 18;
+	-fx-padding: 6;
 }
 
 .deleteButton {

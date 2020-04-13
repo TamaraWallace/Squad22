@@ -80,6 +80,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="pb" layoutX="119.0" layoutY="649.0" prefHeight="20.0" prefWidth="263.0" progress="0.11" />
+      <ProgressBar fx:id="progressBar" layoutX="119.0" layoutY="649.0" prefHeight="20.0" prefWidth="263.0" progress="0.11" />
    </children>
 </AnchorPane>

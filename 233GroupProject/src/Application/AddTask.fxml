@@ -16,7 +16,7 @@
       <TextField fx:id="name" layoutX="152.0" layoutY="306.0" prefHeight="39.0" prefWidth="210.0" promptText="Name" />
       <TextField fx:id="notes" layoutX="152.0" layoutY="383.0" prefHeight="39.0" prefWidth="210.0" promptText="Notes" />
       <DatePicker fx:id="date" layoutX="152.0" layoutY="449.0" prefHeight="39.0" prefWidth="210.0" promptText="Due Date" />
-      <Button fx:id="addBTN" layoutX="176.0" layoutY="519.0" minWidth="40.0" mnemonicParsing="false" onAction="#addButton" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" textOverrun="WORD_ELLIPSIS">
+      <Button fx:id="addBtn" layoutX="176.0" layoutY="519.0" minWidth="40.0" mnemonicParsing="false" onAction="#addButton" prefHeight="151.0" prefWidth="148.0" style="-fx-background-color: #000B38#000B38 #000B38#000B38;" textOverrun="WORD_ELLIPSIS">
          <effect>
             <Blend />
          </effect>

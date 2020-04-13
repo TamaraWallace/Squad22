@@ -31,10 +31,7 @@ public class DisplayTasksController implements Initializable{
 	private ListView<String> lstViewTasks;
 	
 	@FXML
-	private Button backBtn;
-	
-	@FXML
-	private Button completeBtn,selectBtn;
+	private Button backBtn,completeBtn,selectBtn;
 
 	// list of tasks
 	private ObservableList<String> lstTasks = FXCollections.observableArrayList();
@@ -43,38 +40,44 @@ public class DisplayTasksController implements Initializable{
 	// this is done by iterating through users active tasks and adding each task to list view
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("\nDisplay Tasks Screen");
+		System.out.println("Display Tasks Screen");
 		
+		initializeListView();
+	}
+	
+	//Method Purpose: 	Populates the ListView with all the User's currently active tasks.
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void
+	private void initializeListView() {
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		
 		for (Task task : GuiBasedApp.getActiveTasks()) {
-	
-			System.out.println(task.toString()+"\n");
-		
 			String display;
 			String taskId = task.getTaskID().toString();
-			
 			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
-			
 			lstTasks.add(display);
-			
 		}
 		lstViewTasks.getItems().addAll(lstTasks);
-		
-		
 		lstViewTasks.setCellFactory(param -> new TaskCell());
-		
 		lstViewTasks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 	
-	// Brings user back to the Home Screen Scene
+	
+	// ----------------------- EVENT HANDLERS -----------------------
+	
+	
+	//Method Purpose: 	Handler for backBtn. Launches the Home Screen Scene
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void	
 	@FXML
 	public void back(ActionEvent event) {
 		GuiBasedApp.launchHomeScreenScene();
 	}
 	
-	// method for completing a user's task
-	// runs when complete button is pressed and completes all selected tasks
+	//Method Purpose: 	Handler for completeBtn. Marks all selected Tasks in the ListView as complete
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void
+	//Functionality:	Completes all tasks that are selected in the ListView, removes them from the ListView.
 	@FXML
 	public void completeTask(ActionEvent event) {
 		ObservableList<String> completeTasks = FXCollections.observableArrayList();
@@ -87,14 +90,15 @@ public class DisplayTasksController implements Initializable{
 			System.out.println("TaskID: "+taskID);
 			
 			GuiBasedApp.completeTaskByID(taskID);
-			
 		}
 		lstViewTasks.getItems().removeAll(completeTasks);
 	}
 	
-	// method for selecting a task
-	// runs when select button pressed
-	// takes user to task scene for selected task
+	//Method Purpose: 	Handler for selectBtn. Launches the Task Menu Scene with given Task
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void
+	//Functionality:	If a Task is selected in the ListView, updates GuiBasedApp's Selected Task to the
+	//					one selected in the ListView and then launches the Task Menu Scene.
 	@FXML
 	public void selectTask(ActionEvent event) throws IOException {
 		String selectTask = lstViewTasks.getSelectionModel().getSelectedItem();

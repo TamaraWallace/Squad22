@@ -38,7 +38,7 @@ public class TaskCollection {
 				br.close();
 				for(String taskSaveString : taskList) {
 					if (UUID.fromString(taskSaveString.split(",")[1]).compareTo(userID) == 0) {
-						Task next = Task.fromString(taskSaveString);
+						Task next = new Task(taskSaveString);
 						usersTasks.addTask(next);
 					}
 				}

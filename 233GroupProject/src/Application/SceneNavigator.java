@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class SceneController {
+public class SceneNavigator {
 
 	public void launchAddTaskScene(Stage window) throws IOException {
 		Pane pane = (Pane) FXMLLoader.load(getClass().getResource("AddTask.fxml"));

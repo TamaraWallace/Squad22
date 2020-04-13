@@ -10,60 +10,52 @@ public class Task {
 	private UUID userID; // to identify the user
 	private String name; // name of the task
 	private String notes; // the description of the task
-	private boolean completed; // if the task has been marked complete by the user or not 
+	private boolean completed = false; // if the task has been marked complete by the user or not 
 	private LocalDate dueDate; // the due date of the task, there is a pretty & easy way to format this from the website in line1
 	
-	public Task() { }
-	
-//	Method name: Task 
-//	Parameters: key, userID, name, notes, completed, dueDate
-//	Return: void
-//	Functionality: class constructor
-//	
-	public Task(UUID userID, String name, String notes, boolean completed, LocalDate dueDate) {
+	//	Method name: Task 
+	//	Parameters: key, userID, name, notes, completed, dueDate
+	//	Return: void
+	//	Functionality: class constructor
+	public Task(UUID userID, String name, String notes, LocalDate dueDate) {
 		this.taskID = UUID.randomUUID();
 		this.userID = userID;
 		this.name = name;
 		this.notes = notes;
-		this.completed = completed;
 		this.dueDate = dueDate;
 	}
 
-//	Method name: Task 
-//	Parameters: Task t
-//	Return: void
-//	Functionality: copy constructor
-
-	public Task(Task t) {
-		this.setTaskID(t.taskID);
-		this.setUserID(t.userID);
-		this.setName(t.name);
-		this.setNotes(t.notes);
-		this.completed=(t.completed);
-		this.setDueDate(t.dueDate);
+	public Task(String saveString) {
+		String[] vals = saveString.split(",");
+		this.taskID = UUID.fromString(vals[0]);
+		this.userID = UUID.fromString(vals[1]);
+		this.name = vals[2];
+		this.notes = vals[3];
+		this.completed = Boolean.valueOf(vals[4]);
+		this.dueDate = LocalDate.parse(vals[5]);
 	}
 	
-	public String toSaveString() {
+	//	Method name: Task 
+	//	Parameters: Task t
+	//	Return: void
+	//	Functionality: copy constructor without TaskID or UserID
+	public Task(Task t) {
+		this.taskID = null;
+		this.userID = null;
+		this.name = t.name;
+		this.notes = t.notes;
+		this.completed = t.completed;
+		this.dueDate = t.dueDate;
+	}
+	
+	protected String toSaveString() {
 		return taskID.toString() + ","
 				+ userID.toString() + ","
 				+ name + ","
 				+ notes + ","
 				+ completed + ","
 				+ dueDate.toString() + "\n";
-	}
-	
-	public static Task fromString(String s) {
-		Task temp = new Task();
-		String[] vals = s.split(",");
-		temp.taskID = UUID.fromString(vals[0]);
-		temp.userID = UUID.fromString(vals[1]);
-		temp.name = vals[2];
-		temp.notes = vals[3];
-		temp.completed = Boolean.valueOf(vals[4]);
-		temp.dueDate = LocalDate.parse(vals[5]);
-		return temp;
-	}
-	
+	}	
 	
 // 	    Method name: toString 
 //		Parameters: none 
@@ -104,10 +96,6 @@ public class Task {
 		return this.taskID;
 	}
 	
-	public UUID getUserID() {
-		return this.userID;
-	}
-	
 	public String getName() {
 		return new String(name);
 	}
@@ -120,15 +108,6 @@ public class Task {
 		return LocalDate.from(dueDate);
 	}
 
-	
-	public void setTaskID(UUID taskID) {
-		this.taskID = taskID;
-	}
-	
-	public void setUserID(UUID userID) {
-		this.userID = userID;
-	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}

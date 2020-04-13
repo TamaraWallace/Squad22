@@ -51,11 +51,9 @@ class TaskCell extends ListCell<String>{
 		HBox.setHgrow(pane, Priority.ALWAYS);
 		
 		//removing the task from list view when trash bin pressed
-		close.setOnAction(new EventHandler<ActionEvent>() {		
-			
+		close.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				
 				getListView().getItems().remove(getItem());
 				GuiBasedApp.deleteTaskByID(taskID);
 			}		

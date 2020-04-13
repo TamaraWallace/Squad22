@@ -23,19 +23,8 @@ public class TextBasedApp {
 	//Parameters:
 	//Return Value:
 	public static void main(String[] args) {
-		//test(); // put whatever you need in test(). use for debugging
 		startMenu();
-	}
-//	
-	//Method Purpose:	Use for inspecting and navigating the program, allows you to subvert normal navigation
-	//Parameters:
-	//Return Value:
-	public static void test() {
-		users.display();
-		quit();
-	}
-	
-	
+	}	
 	
 	// ----------------------- APP NAVIGATION -----------------------
 	
@@ -354,7 +343,7 @@ public class TextBasedApp {
 			answer = keyboard.nextLine();
 		}
 		
-		Task new_task = new Task(userID, task_name, task_notes, false, taskDate);
+		Task new_task = new Task(userID, task_name, task_notes, taskDate);
 		
 		tasks.addTask(new_task);
 		

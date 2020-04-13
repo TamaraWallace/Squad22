@@ -1,6 +1,8 @@
 package main;
 
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // User class creates User object with usrName, usrPassword and usrID attributes
 
@@ -20,7 +22,7 @@ public class User {
 	public User(String newUsrName, String newUsrPassword, String newUsrEmail) {
 		this.usrName = newUsrName;
 		this.usrPassword = newUsrPassword;
-		if (newUsrEmail.compareTo("null") == 0) {
+		if (newUsrEmail.compareTo("") == 0) {
 			this.usrEmail = null;
 		} else this.usrEmail = newUsrEmail;
 		this.usrID = UUID.nameUUIDFromBytes(newUsrName.getBytes());
@@ -37,6 +39,14 @@ public class User {
 		if (vals[3].compareTo("null") != 0) {
 			this.usrEmail = vals[3];
 		} else this.usrEmail = null;
+	}
+	
+	// Constructor Method: Creates a copy of a user without a UUID or password
+	public User(User user) {
+		this.usrName = user.usrName;
+		this.usrEmail = user.usrEmail;
+		this.usrPassword = "";
+		this.usrID = null;
 	}
 
 	// Creates a string representation of a User
@@ -65,7 +75,7 @@ public class User {
 	//		toCheck: String to check against this User's name
 	// Returns: Boolean, true if toCheck matches this User's name, false otherwise	
 	public boolean checkName(String toCheck){
-		return toCheck.equalsIgnoreCase(this.usrName);
+		return usrName.equalsIgnoreCase(toCheck);
 	}
 	
 	// Checks whether a given String matches this User's password (case sensitive)
@@ -73,7 +83,7 @@ public class User {
 	//		toCheck: String to check against this User's name
 	// Returns: Boolean, true if toCheck matches this User's name, false otherwise
 	public boolean checkPassword(String toCheck){
-		return toCheck.equals(this.usrPassword);
+		return usrPassword.equals(toCheck);
 	}
 	
 	// Getter method for usrName
@@ -106,9 +116,14 @@ public class User {
 		this.usrEmail = usrEmail;
 	}
 	
-	public void sendWelcomeEmail() {
-		Email e = new Email();
-		e.sendEmail(usrEmail, "Test", "Welcome to Taskilla!");
+	public static boolean validateEmaill(String email){
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(email);
+        
+        if(m.find() && m.group().equals(email)){
+            return true;
+        }else{
+            return false;            
+        }
 	}
-	
 }

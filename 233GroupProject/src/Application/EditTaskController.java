@@ -18,19 +18,19 @@ public class EditTaskController implements Initializable {
 
 
 	@FXML 
-	private TextField name,notes; //associated with text object for task name & notes in FXML
+	private TextField name,notes;
 	@FXML
-	private DatePicker date; //associated with date picker object for task due date in FXML
+	private DatePicker date;
 	
 	@FXML 
 	private Label dateLabel,nameLabel;
 	
 	@FXML
-	private Button backBtn; //associated with the back button object in FXML
-
+	private Button backBtn, doneBtn;
 	
-	// Initialize Method, implemented from the Initializable Class
-	// When the class is started it sets the values of the fields to the task information
+	private static final String warningStyle = "-fx-background-color: #ffffff; -fx-border-color: #ff0000; -fx-border-width: 5px;";
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		System.out.println("Edit Task Scene");
@@ -41,46 +41,48 @@ public class EditTaskController implements Initializable {
 		date.setValue(taskToEdit.getDueDate());;
 		notes.setText(taskToEdit.getNotes());
 	}
+	
+	
+	// ----------------------- EVENT HANDLERS -----------------------
+	
 
-	// Method Name: doneButton
-	// Parameters: event, an Action event thrown by the button associated with this method
-	// Return: void
-	// Functionality: when the done button is pressed, the information entered is checked
-	//				  and if it is valid input, the values of the selected task are changed
+	// Method Purpose:	Handler for doneBtn. Attempts to update the selected Task with the given field values. If
+	//					successful, brings user back to Home Screen Scene.
+	// Parameters:		ActionEvent event
+	// Return Value:	Void
+	// Functionality:	Verifies that the User has input a Name, Notes (optional), and a Due Date in the fields
+	//					provided. Notifies the User if either Name or Due Date are missing. If both Name and Due
+	//					Date are present, creates a new Task with the given field values.
 	public void doneButton(ActionEvent event) throws IOException {
-		
-		// get name & notes as strings
+		// get name, notes & due date from the fields.
 		String taskName = name.getText();
 		String taskNotes = notes.getText();
-		// validating taskName is not empty
-		if (taskName.isEmpty()) {
-			nameLabel.setText("TASK NAME CAN'T BE EMPTY");
-			taskName = name.getText();
-		} else {
-			nameLabel.setText("");
-		}			
-		// validating the taskDate is not empty 
 		LocalDate taskDate = date.getValue();
-		if (taskDate == null) {
-			dateLabel.setText("TASK DATE CAN'T BE EMPTY");
-		} else {
-			dateLabel.setText("");
+		
+		if (taskName.isEmpty()) {
+			// validate taskName is not empty
+			nameLabel.setText("Task must have a name!");
+			name.setStyle(warningStyle);
 		}
-		// if everything is good, edit the task:
+		
+		if (taskDate == null) {
+			// validate the taskDate is not empty 
+			dateLabel.setText("Task must have a due date!");
+			date.setStyle(warningStyle);
+		}
+		
 		if (taskDate != null && !taskName.isEmpty()) {
-			
+			// if everything is good, edit the task
 			GuiBasedApp.editSelectedTask(taskName, taskNotes, taskDate);
 			
-			//send user to home screen
+			// launch home screen scene
 			GuiBasedApp.launchHomeScreenScene();	
 		}
 	}
 	
-	// Method Name: backButton
-	// Parameters: event, an Action event thrown by the button associated with this method
-	// Return: void
-	// Functionality: when the back button is pressed, the user is returned to 
-	//				  the previous screen 
+	//Method Purpose: 	Handler for backBtn. Launches the Task Menu Scene
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void
 	public void back(ActionEvent event) {
 		GuiBasedApp.launchTaskMenuScene();
 	}

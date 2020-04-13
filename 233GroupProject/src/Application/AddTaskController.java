@@ -23,48 +23,68 @@ public class AddTaskController implements Initializable{
 		private Label dateLabel,nameLabel;
 		
 		@FXML
-		private Button backBtn;
+		private Button backBtn, addBtn;
+
+		// FXML styling 
+		private static final String defaultStyle = "-fx-background-color: #ffffff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
+
+		private static final String warningStyle = "-fx-background-color: #ffffff; -fx-border-color: #ff0000; -fx-border-width: 5px;";
 		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			System.out.println("Add Task Scene");
 		}
 		
+		
+		// ----------------------- EVENT HANDLERS -----------------------
+		
+		
+		//Method Purpose: Handler for the backBtn. Launches the Home Screen Scene
+		//Parameters: ActionEvent event
+		//Return Value: Void
+		@FXML
+		public void back(ActionEvent event) {
+			GuiBasedApp.launchHomeScreenScene();
+		}
+		
+		//Method Purpose: 	Handler for the addBtn. Attempts to create a new Task given the field values. If 
+		//					successful, launches the Home Screen Scene.
+		//Parameters: 		ActionEvent event
+		//Return Value: 	Void
+		//Functionality:	Verifies that the User has input a Name, Notes (optional), and a Due Date in the fields
+		//					provided. Notifies the User if either Name or Due Date are missing. If both Name and Due
+		//					Date are present, creates a new Task with the given field values.
 		@FXML
 		public void addButton(ActionEvent event) {
-			// get name & notes as strings
+			// get name, notes, and due date from fields
 			String taskName = name.getText();
 			String taskNotes = notes.getText();
-			// validating taskName is not empty
+			LocalDate taskDate = date.getValue();
+			
 			if (taskName.isEmpty()) {
+				// validate that taskName is not empty
 				nameLabel.setText("Must have a name!");
-				taskName = name.getText();
+				name.setStyle(warningStyle);
 			} else {
 				nameLabel.setText("");
-			}			
-			// validating the taskDate is not empty 
-			LocalDate taskDate = date.getValue();
+				name.setStyle(defaultStyle);
+			}
+			
 			if (taskDate == null) {
+				// validate that taskDate is not empty 
 				dateLabel.setText("Must provide a due date!");
+				date.setStyle(warningStyle);
 			} else {
 				dateLabel.setText("");
+				date.setStyle(defaultStyle);
 			}
-			// if everything is good, make a task:
+			
 			if (taskDate != null && !taskName.isEmpty()) {
-				Task task = new Task(GuiBasedApp.getUser().getUsrID(), taskName, taskNotes, false, taskDate);
-	
-				GuiBasedApp.addTask(task);
-
-				System.out.println("New task created:\n" + task.toString());
+				// if everything is good, make a task
+				GuiBasedApp.addTask(taskName, taskNotes, taskDate);
 				
 				// launch the Home Screen Scene
 				GuiBasedApp.launchHomeScreenScene();
 			}
-		}
-		
-		// back button 
-		@FXML
-		public void back(ActionEvent event) {
-			GuiBasedApp.launchHomeScreenScene();
 		}
 }

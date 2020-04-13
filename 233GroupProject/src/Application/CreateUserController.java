@@ -15,107 +15,92 @@ import main.User;
 
 public class CreateUserController implements Initializable {
 	
-	//creating variables such as buttons and text fields 
+	// FXML objects
 	@FXML
-	private Button backBtn;
+	private Button backBtn, createUsrBtn;
 	
 	@FXML
-	private Button createUsrBtn;
+	private PasswordField newUsrPwd, newUsrConfPwd;
 	
 	@FXML
-	private PasswordField newUsrPwd;
+	private TextField usrEmail, newUsrName;
 	
 	@FXML
-	private PasswordField newUsrConfPwd;
+	private Label newValidEmailLbl, newValidPassLbl, newValidConfPassLbl, newValidUsrLbl;
 	
-	@FXML
-	private TextField usrEmail;
-	
-	@FXML
-	private TextField newUsrName;
-	
-	@FXML
-	private Label newValidEmailLbl;
-	
-	@FXML
-	private Label newValidPassLbl;
-	
-	@FXML
-	private Label newValidConfPassLbl;
-	
-	@FXML
-	private Label newValidUsrLbl;
-	// styling 
-	private String newUsrNameStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
+	// FXML styling 
+	private static final String defaultStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
 
-	private String newUsrPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
-
-	private String newUsrConfPwdStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #76d0aa; -fx-border-width: 4;" ;
+	private static final String warningStyle = "-fx-background-color: #b3c2ff; -fx-border-color: #ff0000; -fx-border-width: 5px;";
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("\nCreate User Scene");
 	}
 	
+	// ----------------------- EVENT HANDLERS -----------------------
+	
+	//Method Purpose: 	Handler for backBtn. Launches the Login Scene
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void	
 	@FXML
 	public void back(ActionEvent event) throws IOException {
 		GuiBasedApp.launchLoginScene();
 	}
 	
+	//Method Purpose: 	Handler for createUsrBtn. Attempts to create a new User given the field values, if
+	//					successful, logs in new User and launches the Home Screen Scene.
+	//Parameters: 		ActionEvent event
+	//Return Value: 	Void
+	//Functionality:	Verifies that the user has input a unique Username and provided matching passwords.
+	//					Notifies the user if either of these requirements are not met. If they are, calls
+	//					GuiBasedApp.newUser(name, pword, email)	with the values from the newUsrName, newUsrPwd,
+	//					and usrEmail text fields as the parameters.
 	@FXML
 	public void createUsr(ActionEvent event) throws IOException {
-		
 		String name = newUsrName.getText();
 		String email = usrEmail.getText();
 		String password1 = newUsrPwd.getText();
 		String password2 = newUsrConfPwd.getText();
 		
+		// checks if the provided name is unique
 		boolean nameIsUnique = !(GuiBasedApp.doesUsernameExist(name));
 		
-		// more robust user name checking.	
+		// checking new Username
 		if (name.isEmpty()){
-			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
-			newValidUsrLbl.setText("Username can't be empty");
+			newUsrName.setStyle(warningStyle);
+			newValidUsrLbl.setText("Username can't be empty!");
 		} else if (!nameIsUnique) {
-			
-			newUsrName.setStyle(newUsrNameStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
+			newUsrName.setStyle(warningStyle);
 			newValidUsrLbl.setText("Username already exists!");
 		} else {
-			newUsrName.setStyle(newUsrNameStyle);
+			newUsrName.setStyle(defaultStyle);
 		}
 		
-		// more robust password checking
+		// Checking that first password is not empty
 		if(password1.isEmpty()) {
-			System.out.println("running p1 empty ");
+			newUsrPwd.setStyle(warningStyle);
+			newValidPassLbl.setText("Can't be empty!");
+		} else newUsrPwd.setStyle(defaultStyle);
 		
-			newUsrPwd.setStyle(newUsrPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
-		}
+		// Checking that second password is not empty
 		if(password2.isEmpty()) {
-			System.out.println("running p2 empty ");
-	
-			newUsrConfPwd.setStyle(newUsrConfPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
-		}
+			newUsrConfPwd.setStyle(warningStyle);
+			newValidConfPassLbl.setText("Can't be empty!");
+		} else newUsrConfPwd.setStyle(defaultStyle);
 		
+		// Checking that passwords match
 		if(!password1.equals(password2)) {
-			System.out.println("running pass missmatch ");
-
-			newUsrConfPwd.setStyle(newUsrConfPwdStyle + "-fx-border-color: #ff0000; -fx-border-width: 5px; ");
-		
+			newUsrConfPwd.setStyle(warningStyle);
 			newValidConfPassLbl.setText("Passwords must match");
 		}
 		
 		// creates new user if the password is valid and user name is unique
 		if (!password1.isEmpty() && password1.equals(password2) && nameIsUnique){
-			newUsrConfPwd.setStyle(newUsrConfPwdStyle);
-			newUsrPwd.setStyle(newUsrPwdStyle);
-			GuiBasedApp.newUser(new User(name, password1, email));
+			GuiBasedApp.newUser(name, password1, email);
 			
 			System.out.println(name + " has created a new account");
 			System.out.println(GuiBasedApp.getUser().toString());
-			
-			GuiBasedApp.launchHomeScreenScene();
 		}
 	}
-	 
-	
 }

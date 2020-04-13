@@ -11,27 +11,19 @@
 <AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000b38;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.TaskMenuController">
    <children>
       <!-- Page Title -->
-      <Text fill="#24a78d" layoutX="160.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TASK MENU" wrappingWidth="197.38671875">
+      <Text fill="#24a78d" layoutX="120.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TASK MENU">
          <font>
-            <Font size="36.0" />
+            <Font size="48.0" />
          </font>
       </Text>
       <!-- Task Name -->
-      <Text fx:id="taskName" fill="#24a78d" layoutX="128.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskName" text="Name" wrappingWidth="244.505859375">
-         <font>
-            <Font size="20.0" />
-         </font></Text>
-      <!-- Due Date -->
-      <Text fx:id="dueDate" fill="#24a78d" layoutX="203.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskDue" text="Due Date">
-         <font>
-            <Font size="20.0" />
-         </font>
+      <Text fx:id="taskName" fill="#24a78d" layoutX="100.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskName" text="Name">
+	  </Text>
+      <!--  Task Notes  -->
+      <Text fx:id="notes" fill="24a78d" layoutX = "100.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskNotes" text="Notes">
       </Text>
-      <!-- Notes Header -->
-      <Text fill="#24a78d" layoutX="104.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskNotes" text="Notes:">
-         <font>
-            <Font size="14.0" />
-         </font>
+      <!-- Due Date -->
+      <Text fx:id="dueDate" fill="#24a78d" layoutX="100.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="taskDue" text="Due Date">
       </Text>
       
       <!-- Complete Button -->
@@ -73,8 +65,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <!-- Notes Area -->
-      <TextArea fx:id="notesArea" layoutX="146.0" layoutY="251.0" prefHeight="61.0" prefWidth="225.0" text="place" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: &quot;#000b38&quot;;" styleClass="backButton">
          <graphic>
             <ImageView fitHeight="61.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">

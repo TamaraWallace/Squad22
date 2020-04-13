@@ -19,7 +19,7 @@ public class TaskMenuController implements Initializable {
 	private Text dueDate; //associated with text object for task due date in FXML
 	
 	@FXML
-	private TextArea notesArea; //associated with text area object for task notes in FXML
+	private Text notes; //associated with text area object for task notes in FXML
 	
 	// Initialize Method, implemented from the Initializable Class
 	// When the class is started it sets the values of the display text to the task information
@@ -30,9 +30,9 @@ public class TaskMenuController implements Initializable {
 		Task selectedTask = GuiBasedApp.getSelectedTask();
 		
 		if(selectedTask != null) {
-			taskName.setText(selectedTask.getName());
-			dueDate.setText(selectedTask.getDueDate().toString());
-			notesArea.setText(selectedTask.getNotes());
+			taskName.setText("Name:\t" + selectedTask.getName());
+			dueDate.setText("Due By:\t" + selectedTask.getDueDate().toString());
+			notes.setText("Notes:\t" + selectedTask.getNotes());
 		}
 
 	}

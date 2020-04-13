@@ -21,7 +21,7 @@ public class GuiBasedApp extends Application{
 	private static Task selectedTask;
 	
 	private static Stage window;
-	private static SceneController controller = new SceneController();
+	private static SceneNavigator navigator = new SceneNavigator();
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -30,10 +30,10 @@ public class GuiBasedApp extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		try {
 				primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-				
 				@Override
 				public void handle(WindowEvent event) {
-					save();
+					saveUsers();
+					if (tasks != null) saveTasks();
 					System.out.println("Session ended, see you soon!");
 					System.exit(0);
 				}
@@ -52,16 +52,16 @@ public class GuiBasedApp extends Application{
 		}
 	}
 	
-	public static void save() {
-		if (tasks != null) {
-			tasks.saveTasks("tasks.txt");
-		}
-		
+	private static void saveTasks() {
+		tasks.saveTasks("tasks.txt");
+	}
+	
+	private static void saveUsers() {
 		users.saveUsers("users.txt");
 	}
 	
 	public static User getUser() {
-		return user;
+		return new User(user);
 	}
 	
 	public static boolean validateUsernameAndPassword(String name, String pword) {
@@ -79,7 +79,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void setSelectedTaskByID(String taskID) {
 		UUID id = UUID.fromString(taskID);
-		GuiBasedApp.selectedTask = tasks.getTaskByID(id);
+		selectedTask = tasks.getTaskByID(id);
 	}
 	
 	public static void editSelectedTask(String newName, String newNotes, LocalDate newDate) {
@@ -89,6 +89,11 @@ public class GuiBasedApp extends Application{
 			selectedTask.setDueDate(newDate);
 			selectedTask = null;
 		}
+	}
+	
+	public static void updateUser(String newName, String newEmail) {
+		user.setUsrName(newName);
+		user.setUsrEmail(newEmail);
 	}
 	
 	public static void completeSelectedTask() {
@@ -118,20 +123,30 @@ public class GuiBasedApp extends Application{
 	public static void setTasks(TaskCollection tasks) {
 		GuiBasedApp.tasks = tasks;
 	}
-	public static Scene getScene() {
-		return window.getScene();
-	}
 	public static void loginUser(String username) {
 		user = users.getUserByName(username);
 		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
+		launchHomeScreenScene();
 	}
-	public static void newUser(User newUser) {
+	
+	public static void logout() {
+		saveTasks();
+		user = null;
+		selectedTask = null;
+		tasks = null;
+		launchLoginScene();
+	}
+	
+	public static void newUser(String name, String pword, String email) {
+		User newUser = new User(name, pword, email);
 		users.addUser(newUser);
-		user = newUser;
-		tasks = new TaskCollection();
+		loginUser(name);
 	}
-	public static void addTask(Task t) {
-		GuiBasedApp.tasks.addTask(t);
+	public static void addTask(String taskName, String taskNotes, LocalDate taskDate) {
+		Task newTask = new Task(user.getUsrID(), taskName, taskNotes, taskDate);
+		GuiBasedApp.tasks.addTask(newTask);
+
+		System.out.println("New task created:\n" + newTask.toString());
 	}
 	public static ArrayList<Task> getActiveTasks() {
 		tasks.sortTasks();
@@ -139,20 +154,18 @@ public class GuiBasedApp extends Application{
 	}
 	//returns the percentage of complete tasks as a decimal
 	public static double getPercentageComplete() {
-		double fraction;
-		ArrayList<Task> activeTasks = getActiveTasks();
-		ArrayList<Task> allTasks = tasks.getAllTasks();
+		double numActive = getActiveTasks().size();
+		double totalTasks = getTotalNumOfTasks();
 		
-		if (allTasks.size()==0) {
+		if (totalTasks==0) {
 			return 0;
 		}
 		else {
-			double numComplete = allTasks.size()-activeTasks.size();
-			fraction = numComplete/allTasks.size();
-			return fraction;
+			double numComplete = totalTasks - numActive;
+			return numComplete/totalTasks;
 		}
 	}
-	public static int getTotalTasks() {
+	public static int getTotalNumOfTasks() {
 		ArrayList<Task> allTasks = tasks.getAllTasks();
 		int counter = 0;
 		for (Task t: allTasks) {
@@ -167,7 +180,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchAddTaskScene() {
 		try {
-			controller.launchAddTaskScene(window);
+			navigator.launchAddTaskScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -175,7 +188,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchCreateUserScene() {
 		try {
-			controller.launchCreateUserScene(window);
+			navigator.launchCreateUserScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +196,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchDisplayTasksScene() {
 		try {
-			controller.launchDisplayTasksScene(window);
+			navigator.launchDisplayTasksScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -191,7 +204,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchEditTaskScene() {
 		try {
-			controller.launchEditTaskScene(window);
+			navigator.launchEditTaskScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -199,7 +212,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchHomeScreenScene() {
 		try {
-			controller.launchHomeScreenScene(window);
+			navigator.launchHomeScreenScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -208,7 +221,7 @@ public class GuiBasedApp extends Application{
 	public static void launchLoginScene() {
 		tasks = null;
 		try {
-			controller.launchLoginScene(window);
+			navigator.launchLoginScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -216,7 +229,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchSettingsScene() {
 		try {
-			controller.launchSettingsScene(window);
+			navigator.launchSettingsScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -224,7 +237,7 @@ public class GuiBasedApp extends Application{
 	
 	public static void launchTaskMenuScene() {
 		try {
-			controller.launchTaskMenuScene(window);
+			navigator.launchTaskMenuScene(window);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

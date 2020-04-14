@@ -126,7 +126,7 @@ public class TaskCollection {
 		ArrayList<Task> activeTasks = new ArrayList<Task>();
 		for(Task t: TaskCollection.tasks) {
 			if(!(t.isComplete())){
-				activeTasks.add(new Task(t));
+				activeTasks.add(t);
 			}
 		}
 		return activeTasks;
@@ -165,12 +165,16 @@ public class TaskCollection {
 	// Parameters: none
 	// Return: ArrayList of Task objects
 	// Functionality: return an ArrayList of User's total tasks saved
-	public ArrayList<Task> getAllTasks(){
-		ArrayList<Task> allTasks = new ArrayList<Task>();
-		for (Task t:tasks) {
-			allTasks.add(new Task(t));
+	public int getNumberOfTasks(){
+		int counter = 0;
+		for (Task t: tasks) {
+			if(!(t.getName().compareTo("")==0)) {
+			// this "if" statement skips over any Task that may have been deleted, as these are stored in memory until
+			// the program exits or the user Logs out.
+			counter+=1;
+			}
 		}
-		return allTasks;
+		return counter;
 	}
 	
 }

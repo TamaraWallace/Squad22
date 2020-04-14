@@ -56,7 +56,7 @@ public class HomeScreenController implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Home Screen Scene");
-		String usrName = GuiBasedApp.getUser().getUsrName();
+		String usrName = GuiBasedApp.getUsername();
 		helloUser.setText("Hello, " + usrName+"!");
 		
 		initializeListView();
@@ -71,11 +71,7 @@ public class HomeScreenController implements Initializable {
 	private void initializeListView() {
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		int count = 0;
-		for (Task task : GuiBasedApp.getActiveTasks()) {
-			String display;
-			String taskId = task.getTaskID().toString();
-			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
-		
+		for (String display: GuiBasedApp.getActiveTasks()) {
 			if (count < 3) {
 				lstTasks.add(display);
 				count++;

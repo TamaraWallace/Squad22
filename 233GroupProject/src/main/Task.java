@@ -35,17 +35,6 @@ public class Task {
 		this.dueDate = LocalDate.parse(vals[5]);
 	}
 	
-	//	Method name: Task 
-	//	Parameters: Task t
-	//	Return: void
-	//	Functionality: copy constructor without TaskID or UserID
-	public Task(Task t) {
-		this.taskID = t.taskID;
-		this.name = t.name;
-		this.notes = t.notes;
-		this.dueDate = t.dueDate;
-	}
-	
 	protected String toSaveString() {
 		return taskID.toString() + ","
 				+ userID.toString() + ","

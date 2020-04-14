@@ -51,10 +51,7 @@ public class DisplayTasksController implements Initializable{
 	private void initializeListView() {
 		lstViewTasks.setStyle("-fx-background-color: #000B38;");
 		
-		for (Task task : GuiBasedApp.getActiveTasks()) {
-			String display;
-			String taskId = task.getTaskID().toString();
-			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+		for (String display : GuiBasedApp.getActiveTasks()) {
 			lstTasks.add(display);
 		}
 		lstViewTasks.getItems().addAll(lstTasks);

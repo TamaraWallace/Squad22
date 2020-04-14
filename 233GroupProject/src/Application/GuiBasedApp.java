@@ -190,20 +190,32 @@ public class GuiBasedApp extends Application{
 	// ----------------------- HELPERS -----------------------
 
 	
-	//Method Purpose: 	Returns a copy of the logged in user. Copy ONLY contains a Name and Email
+	//Method Purpose: 	Returns the logged in user's Username
 	//Parameters:
-	//Return Value: 	User
+	//Return Value: 	String
 	//Notes:			Used to Initialize the HomeScreen and Settings Scenes.
-	public static User getUser() {
-		return new User(user);
+	public static String getUsername() {
+		return user.getUsrName();
 	}
 	
-	//Method Purpose: 	Returns a copy of the selected Task. Copy ONLY contains taskID, taskName, taskNotes & taskDate.
+	//Method Purpose: 	Returns the logged in user's Email
+	//Parameters:
+	//Return Value: 	String
+	//Notes:			Used to Initialize the Settings Scene.
+	public static String getUserEmail() {
+		return user.getUsrEmail();
+	}
+	
+	//Method Purpose: 	Returns an array of the selectedTasks name, notes and dueDate.
 	//Parameters: 		
 	//Return Value: 	Task
 	//Notes:			Used to Initialize the TaskMenu and EditTask Scenes.
-	public static Task getSelectedTask() {
-		return new Task(selectedTask);
+	public static String[] getSelectedTasksInfo() {
+		String[] vals = new String[3];
+		vals[0] = selectedTask.getName();
+		vals[1] = selectedTask.getNotes();
+		vals[2] = selectedTask.getDueDate().toString();
+		return vals;
 	}	
 
 	//Method Purpose: 	Determines if the given name & password match the credentials of a User in users
@@ -213,22 +225,30 @@ public class GuiBasedApp extends Application{
 		return users.validateUsernameAndPassword(name, pword);
 	}
 
-	//Method Purpose:	Determines if a User in users exists with the given name
+	//Method Purpose:	Determines if a the given name is a valid User
 	//Parameters: 		String name
 	//Return Value: 	boolean
 	public static boolean doesUsernameExist(String name) {
 		return users.doesUsernameExist(name);
 	}
 	
-	//Method Purpose: 	Returns a sorted ArrayList<> of copied versions of a user's incomplete Tasks.
-	//					Array is sorted by Date, with the earliest date first. Copies ONLY contain taskIDs,
-	//					taskNames, taskNotes, and dueDates
+	//Method Purpose: 	Returns a sorted list of Strings that correspond to the data members of this user's
+	//					currently active tasks.
 	//Parameters: 		
 	//Return Value: 	ArrayList<Task>
 	//Notes:			Used to initialize ListViews
-	public static ArrayList<Task> getActiveTasks() {
+	public static ArrayList<String> getActiveTasks() {
 		tasks.sortTasks();
-		return tasks.getActiveTasks();
+		ArrayList<Task> activeTasks = tasks.getActiveTasks();
+		ArrayList<String> activeTaskStrings = new ArrayList<String>();
+		
+		for (Task task: activeTasks) {
+			String display;
+			String taskId = task.getTaskID().toString();
+			display = taskId +","+"Task: "+ task.getName()+ "\nNotes: " +task.getNotes() + "\nDue: "+ task.getDueDate().toString();
+			activeTaskStrings.add(display);
+		}
+		return activeTaskStrings;
 	}
 	
 	//Method Purpose: 	Returns a decimal representation of the percentage of the User's Tasks that are complete.
@@ -251,16 +271,7 @@ public class GuiBasedApp extends Application{
 	//Parameters: 		
 	//Return Value: 	int
 	public static int getTotalNumOfTasks() {
-		ArrayList<Task> allTasks = tasks.getAllTasks();
-		int counter = 0;
-		for (Task t: allTasks) {
-			// this "if" statement skips over any Task that may have been deleted, as these are stored in memory until
-			// the program exits or the user Logs out.
-			if(!(t.getName().compareTo("")==0)) {
-				counter+=1;
-			}
-		}
-		return counter;
+		return tasks.getNumberOfTasks();
 	}
 	
 	

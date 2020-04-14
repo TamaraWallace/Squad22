@@ -27,14 +27,11 @@ public class TaskMenuController implements Initializable {
 	public void initialize(URL location, ResourceBundle resource) {
 		System.out.println("Task Menu Scene");
 		
-		Task selectedTask = GuiBasedApp.getSelectedTask();
+		String[] selectedTasksInfo = GuiBasedApp.getSelectedTasksInfo();
 		
-		if(selectedTask != null) {
-			taskName.setText("Name:\t" + selectedTask.getName());
-			dueDate.setText("Due By:\t" + selectedTask.getDueDate().toString());
-			notes.setText("Notes:\t" + selectedTask.getNotes());
-		}
-
+		taskName.setText("Name:\t" + selectedTasksInfo[0]);
+		notes.setText("Notes:\t" + selectedTasksInfo[1]);
+		dueDate.setText("Due By:\t" + selectedTasksInfo[2]);
 	}
 	
 	

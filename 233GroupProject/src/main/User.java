@@ -40,14 +40,6 @@ public class User {
 			this.usrEmail = vals[3];
 		} else this.usrEmail = null;
 	}
-	
-	// Constructor Method: Creates a copy of a user without a UUID or password
-	public User(User user) {
-		this.usrName = user.usrName;
-		this.usrEmail = user.usrEmail;
-		this.usrPassword = "";
-		this.usrID = null;
-	}
 
 	// Creates a string representation of a User
 	// Parameters: None
@@ -63,7 +55,7 @@ public class User {
 	// Creates a save string representation of a User whose format is "UUID,name,password,email"
 	// Parameters: None
 	// Returns: String that represents a User
-	public String toSaveString() {
+	protected String toSaveString() {
 		return usrID.toString()+ ","
 				+ usrName + ","
 				+ usrPassword + ","

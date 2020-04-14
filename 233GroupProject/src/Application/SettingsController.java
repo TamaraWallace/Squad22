@@ -33,8 +33,8 @@ public class SettingsController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("Settings Scene");
 		
-		userName.setText(GuiBasedApp.getUser().getUsrName());
-		email.setText(GuiBasedApp.getUser().getUsrEmail());
+		userName.setText(GuiBasedApp.getUsername());
+		email.setText(GuiBasedApp.getUserEmail());
 	}
 	
 	
@@ -57,10 +57,8 @@ public class SettingsController implements Initializable {
 	@FXML
 	public void update(ActionEvent event) throws IOException {
 		
-		User temp = GuiBasedApp.getUser();
-		
-		String currentName = temp.getUsrName();
-		String currentEmail = temp.getUsrEmail();
+		String currentName = GuiBasedApp.getUsername();
+		String currentEmail = GuiBasedApp.getUserEmail();
 		
 		String newUsrName = userName.getText();
 		String newUsrEmail = email.getText();
@@ -79,8 +77,8 @@ public class SettingsController implements Initializable {
 		// Email is valid if:	same as current email OR
 		//						is a properly formatted email address OR
 		//						the length is 0
-		boolean validEmail =  User.validateEmaill(newUsrEmail) || (newUsrEmail.compareToIgnoreCase(currentEmail) == 0) || (newUsrEmail.length() == 0);
-		
+		//boolean validEmail =  User.validateEmaill(newUsrEmail) || (newUsrEmail.compareToIgnoreCase(currentEmail) == 0) || (newUsrEmail.length() == 0);
+		boolean validEmail = true;
 		if (validEmail) {
 			email.setStyle(defaultStyle);
 		} else {

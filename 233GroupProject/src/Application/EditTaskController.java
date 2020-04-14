@@ -35,11 +35,11 @@ public class EditTaskController implements Initializable {
 	public void initialize(URL location, ResourceBundle resource) {
 		System.out.println("Edit Task Scene");
 		
-		Task taskToEdit = GuiBasedApp.getSelectedTask();
+		String[] selectedTasksInfo = GuiBasedApp.getSelectedTasksInfo();
 		
-		name.setText(taskToEdit.getName());
-		date.setValue(taskToEdit.getDueDate());;
-		notes.setText(taskToEdit.getNotes());
+		name.setText(selectedTasksInfo[0]);
+		notes.setText(selectedTasksInfo[1]);
+		date.setValue(LocalDate.parse(selectedTasksInfo[2]));
 	}
 	
 	

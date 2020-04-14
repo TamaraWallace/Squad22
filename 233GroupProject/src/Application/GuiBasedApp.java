@@ -15,17 +15,27 @@ import main.*;
 
 public class GuiBasedApp extends Application{
 
-	private static User user;
-	private static UserCollection users;
-	private static TaskCollection tasks;
-	private static Task selectedTask;
+	private static User user; // the logged in User
+	private static UserCollection users; // collection of all Users
+	private static TaskCollection tasks; // collection of the logged in User's Tasks
+	private static Task selectedTask; // the logged in User's currently selected Task
 	
-	private static Stage window;
-	private static SceneNavigator navigator = new SceneNavigator();
+	private static Stage window; // the primaryStage of the app, passed as a parameter for Scene Navigation
+	private static SceneNavigator navigator = new SceneNavigator(); // an Object to launch Scenes.
+	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	//Method Purpose: 	Initializes program by setting the window as the primaryStage and launching the Login Scene.
+	//Parameters: 		Stage primaryStage
+	//Return Value: 	Void
+	//Functionality:	Defines functionality for CloseRequests to save the Users and Tasks and exit the program.
+	//					Initializes the users instance variable by loading all Users from the "users.txt" file
+	//					Initializes the window instance variable as the primaryStage
+	//					Updates the title of the primaryStage to "Welcome to Taskilla"
+	//					Adds our logo as an Icon to the primaryStage
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
@@ -38,9 +48,8 @@ public class GuiBasedApp extends Application{
 					System.exit(0);
 				}
 			} );
-			
-			GuiBasedApp.users = UserCollection.loadUsers("users.txt");
-			
+			users = UserCollection.loadUsers("users.txt");
+	
 			window = primaryStage;
 			Image taskilla_icon = new Image(getClass().getResourceAsStream("/taskilla_icon.png"));
 			window.setTitle("Welcome to Taskilla ");
@@ -52,83 +61,52 @@ public class GuiBasedApp extends Application{
 		}
 	}
 	
+	
+	// ----------------------- SAVE FUNCTIONS -----------------------
+	
+	
+	//Method Purpose: 	Save all tasks to the "tasks.txt" file
+	//Parameters: 		
+	//Return Value: 	Void
 	private static void saveTasks() {
 		tasks.saveTasks("tasks.txt");
 	}
 	
+	//Method Purpose: 	Save all users to the "users.txt" file
+	//Parameters: 		
+	//Return Value: 	Void
 	private static void saveUsers() {
 		users.saveUsers("users.txt");
 	}
 	
-	public static User getUser() {
-		return new User(user);
-	}
 	
-	public static boolean validateUsernameAndPassword(String name, String pword) {
-		return users.validateUsernameAndPassword(name, pword);
-	}
+	// ----------------------- VARIABLE MUTATORS -----------------------
+	//  (these methods change the references of the instance variables)
 	
-	public static boolean doesUsernameExist(String name) {
-		return users.doesUsernameExist(name);
-	}
 	
-	// Returns a copy of the selected Task (to prevent privacy leak)
-	public static Task getSelectedTask() {
-		return new Task(selectedTask);
-	}
-	
-	public static void setSelectedTaskByID(String taskID) {
-		UUID id = UUID.fromString(taskID);
-		selectedTask = tasks.getTaskByID(id);
-	}
-	
-	public static void editSelectedTask(String newName, String newNotes, LocalDate newDate) {
-		if (selectedTask != null) {
-			selectedTask.setName(newName);
-			selectedTask.setNotes(newNotes);
-			selectedTask.setDueDate(newDate);
-			selectedTask = null;
-		}
-	}
-	
-	public static void updateUser(String newName, String newEmail) {
-		user.setUsrName(newName);
-		user.setUsrEmail(newEmail);
-	}
-	
-	public static void completeSelectedTask() {
-		if (selectedTask != null) {
-			selectedTask.complete();
-			selectedTask = null;
-		}
-	}
-	
-	public static void deleteSelectedTask() {
-		if (selectedTask != null) {
-			selectedTask.delete();
-			selectedTask = null;
-		}
-	}
-	
-	public static void completeTaskByID(String taskID) {
-		UUID id = UUID.fromString(taskID);
-		tasks.getTaskByID(id).complete();
-	}
-	
-	public static void deleteTaskByID(String taskID) {
-		UUID id = UUID.fromString(taskID);
-		tasks.getTaskByID(id).delete();
-	}
-	
-	public static void setTasks(TaskCollection tasks) {
-		GuiBasedApp.tasks = tasks;
-	}
+	//Method Purpose: 	Logs in User with given username, loads their tasks, and launches the Home Screen Scene
+	//Parameters: 		String username
+	//Return Value: 	Void
 	public static void loginUser(String username) {
 		user = users.getUserByName(username);
 		tasks = TaskCollection.loadUsrTasks("tasks.txt", user.getUsrID());
 		launchHomeScreenScene();
 	}
 	
+	//Method Purpose: 	Creates a new User with given name, pword, and email. Adds that User to users. Then logs that User in
+	//Parameters: 		String name, String pword, String email
+	//Return Value: 	Void
+	public static void newUser(String name, String pword, String email) {
+		User newUser = new User(name, pword, email);
+		users.addUser(newUser);
+		user = newUser;
+		tasks = new TaskCollection();
+		launchHomeScreenScene();
+	}
+	
+	//Method Purpose:	Saves logged in User's tasks. Sets user, selectedTask, and tasks to null. Launches Login Scene
+	//Parameters:		
+	//Return Value:		Void
 	public static void logout() {
 		saveTasks();
 		user = null;
@@ -137,22 +115,125 @@ public class GuiBasedApp extends Application{
 		launchLoginScene();
 	}
 	
-	public static void newUser(String name, String pword, String email) {
-		User newUser = new User(name, pword, email);
-		users.addUser(newUser);
-		loginUser(name);
+	//Method Purpose: 	Given a string representation of a UUID, sets the selectedTask to Task with the given UUID
+	//Parameters: 		String taskID
+	//Return Value: 	Void
+	public static void setSelectedTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		selectedTask = tasks.getTaskByID(id);
 	}
-	public static void addTask(String taskName, String taskNotes, LocalDate taskDate) {
-		Task newTask = new Task(user.getUsrID(), taskName, taskNotes, taskDate);
-		GuiBasedApp.tasks.addTask(newTask);
+	
+	
+	// ----------------------- APP FUNCTIONALITY -----------------------
+	
+	
+	//Method Purpose: 	Creates a new Task with given name, notes, and dueDate. Adds that Task to tasks.
+	//Parameters: 		String name, String notes, LocalDate dueDate
+	//Return Value: 	Void
+	public static void addTask(String name, String notes, LocalDate dueDate) {
+		Task newTask = new Task(user.getUsrID(), name, notes, dueDate);
+		tasks.addTask(newTask);
+	}
+	
+	//Method Purpose: 	Edits the logged in User with the given new values.
+	//Parameters: 		String newName, String newEmail
+	//Return Value: 	Void
+	//Functionality:	newName and newEmail may or may not be different from the current values of the logged in User.
+	//					newEmail may also be an empty string as emails are optional.
+	public static void editUser(String newName, String newEmail) {
+		user.setUsrName(newName);
+		user.setUsrEmail(newEmail);
+	}
+	
+	//Method Purpose: 	Edits the selectedTask with the given new values
+	//Parameters: 		String newName, String newNotes, LocalDate newDate
+	//Return Value: 	Void
+	//Functionality:	newName, newNotes, and newDate may or may not be different from the current values of the
+	//					selectedTask.
+	public static void editSelectedTask(String newName, String newNotes, LocalDate newDate) {
+		selectedTask.setName(newName);
+		selectedTask.setNotes(newNotes);
+		selectedTask.setDueDate(newDate);
+	}
+	
+	//Method Purpose: 	Completes the selectedTask
+	//Parameters: 		
+	//Return Value: 	Void
+	public static void completeSelectedTask() {
+		selectedTask.complete();
+	}
+	
+	//Method Purpose:	Deletes the selectedTask
+	//Parameters:
+	//Return Value:		Void
+	public static void deleteSelectedTask() {
+		selectedTask.delete();
+	}
+	
+	//Method Purpose: 	Given a string representation of a UUID, completes the corresponding Task
+	//Parameters: 		String taskID
+	//Return Value: 	Void
+	public static void completeTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		tasks.getTaskByID(id).complete();
+	}
+	
+	//Method Purpose: 	Given a string representation of a UUID, deletes the corresponding Task
+	//Parameters: 		String taskID
+	//Return Value: 	Void	
+	public static void deleteTaskByID(String taskID) {
+		UUID id = UUID.fromString(taskID);
+		tasks.getTaskByID(id).delete();
+	}
+	
+	
+	// ----------------------- HELPERS -----------------------
 
-		System.out.println("New task created:\n" + newTask.toString());
+	
+	//Method Purpose: 	Returns a copy of the logged in user. Copy ONLY contains a Name and Email
+	//Parameters:
+	//Return Value: 	User
+	//Notes:			Used to Initialize the HomeScreen and Settings Scenes.
+	public static User getUser() {
+		return new User(user);
 	}
+	
+	//Method Purpose: 	Returns a copy of the selected Task. Copy ONLY contains taskID, taskName, taskNotes & taskDate.
+	//Parameters: 		
+	//Return Value: 	Task
+	//Notes:			Used to Initialize the TaskMenu and EditTask Scenes.
+	public static Task getSelectedTask() {
+		return new Task(selectedTask);
+	}	
+
+	//Method Purpose: 	Determines if the given name & password match the credentials of a User in users
+	//Parameters: 		String name, String pword
+	//Return Value: 	boolean
+	public static boolean validateUsernameAndPassword(String name, String pword) {
+		return users.validateUsernameAndPassword(name, pword);
+	}
+
+	//Method Purpose:	Determines if a User in users exists with the given name
+	//Parameters: 		String name
+	//Return Value: 	boolean
+	public static boolean doesUsernameExist(String name) {
+		return users.doesUsernameExist(name);
+	}
+	
+	//Method Purpose: 	Returns a sorted ArrayList<> of copied versions of a user's incomplete Tasks.
+	//					Array is sorted by Date, with the earliest date first. Copies ONLY contain taskIDs,
+	//					taskNames, taskNotes, and dueDates
+	//Parameters: 		
+	//Return Value: 	ArrayList<Task>
+	//Notes:			Used to initialize ListViews
 	public static ArrayList<Task> getActiveTasks() {
 		tasks.sortTasks();
 		return tasks.getActiveTasks();
 	}
-	//returns the percentage of complete tasks as a decimal
+	
+	//Method Purpose: 	Returns a decimal representation of the percentage of the User's Tasks that are complete.
+	//Parameters: 		
+	//Return Value: 	double
 	public static double getPercentageComplete() {
 		double numActive = getActiveTasks().size();
 		double totalTasks = getTotalNumOfTasks();
@@ -165,10 +246,16 @@ public class GuiBasedApp extends Application{
 			return numComplete/totalTasks;
 		}
 	}
+	
+	//Method Purpose: 	Returns the total number of tasks that a user has.
+	//Parameters: 		
+	//Return Value: 	int
 	public static int getTotalNumOfTasks() {
 		ArrayList<Task> allTasks = tasks.getAllTasks();
 		int counter = 0;
 		for (Task t: allTasks) {
+			// this "if" statement skips over any Task that may have been deleted, as these are stored in memory until
+			// the program exits or the user Logs out.
 			if(!(t.getName().compareTo("")==0)) {
 				counter+=1;
 			}
@@ -176,7 +263,9 @@ public class GuiBasedApp extends Application{
 		return counter;
 	}
 	
+	
 	// -------------------- SCENE LAUNCHERS --------------------
+	
 	
 	public static void launchAddTaskScene() {
 		try {
@@ -219,7 +308,6 @@ public class GuiBasedApp extends Application{
 	}
 	
 	public static void launchLoginScene() {
-		tasks = null;
 		try {
 			navigator.launchLoginScene(window);
 		} catch (IOException e) {

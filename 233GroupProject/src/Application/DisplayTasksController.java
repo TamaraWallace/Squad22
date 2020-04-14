@@ -40,7 +40,7 @@ public class DisplayTasksController implements Initializable{
 	// this is done by iterating through users active tasks and adding each task to list view
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Display Tasks Screen");
+		System.out.println("Display Tasks Scene");
 		
 		initializeListView();
 	}

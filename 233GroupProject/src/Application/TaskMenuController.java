@@ -37,6 +37,10 @@ public class TaskMenuController implements Initializable {
 
 	}
 	
+	
+	// ----------------------- EVENT HANDLERS -----------------------
+
+	
 	// Method Name: completeButton
 	// Parameters: event, an Action event thrown by the button associated with this method
 	// Return: void

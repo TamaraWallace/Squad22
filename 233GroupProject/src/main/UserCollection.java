@@ -55,6 +55,7 @@ public class UserCollection {
 	// Return: void
 	// Functionality: save all the users the file, including new users and updates
 	public void saveUsers(String fname) {
+		System.out.println("Saving users!");
 		File f = new File(fname);
 		if(!(f.exists())) {
 			try{

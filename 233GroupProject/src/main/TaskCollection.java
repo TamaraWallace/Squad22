@@ -53,7 +53,7 @@ public class TaskCollection {
 	// Return: void
 	// Functionality: save all the users tasks to the file, including new tasks and updates
 	public void saveTasks(String fname) {
-		System.out.println("Saving tasks.");
+		System.out.println("Saving tasks!");
 		File f = new File(fname);
 		if(!(f.exists())) {
 			try{
@@ -126,7 +126,7 @@ public class TaskCollection {
 		ArrayList<Task> activeTasks = new ArrayList<Task>();
 		for(Task t: TaskCollection.tasks) {
 			if(!(t.isComplete())){
-				activeTasks.add(t);
+				activeTasks.add(new Task(t));
 			}
 		}
 		return activeTasks;

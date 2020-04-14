@@ -89,7 +89,7 @@ public class SettingsController implements Initializable {
 		}
 		
 		if (validEmail && validUsername) {
-			GuiBasedApp.updateUser(newUsrName,newUsrEmail);
+			GuiBasedApp.editUser(newUsrName,newUsrEmail);
 			
 			GuiBasedApp.launchHomeScreenScene();
 		}

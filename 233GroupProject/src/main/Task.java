@@ -40,11 +40,9 @@ public class Task {
 	//	Return: void
 	//	Functionality: copy constructor without TaskID or UserID
 	public Task(Task t) {
-		this.taskID = null;
-		this.userID = null;
+		this.taskID = t.taskID;
 		this.name = t.name;
 		this.notes = t.notes;
-		this.completed = t.completed;
 		this.dueDate = t.dueDate;
 	}
 	

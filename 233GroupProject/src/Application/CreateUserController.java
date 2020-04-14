@@ -35,7 +35,7 @@ public class CreateUserController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("\nCreate User Scene");
+		System.out.println("Create User Scene");
 	}
 	
 	// ----------------------- EVENT HANDLERS -----------------------
@@ -100,7 +100,6 @@ public class CreateUserController implements Initializable {
 			GuiBasedApp.newUser(name, password1, email);
 			
 			System.out.println(name + " has created a new account");
-			System.out.println(GuiBasedApp.getUser().toString());
 		}
 	}
 }

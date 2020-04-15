@@ -2,8 +2,6 @@ package Application;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.*;
-import main.Task;
-import javafx.scene.control.TextArea;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;

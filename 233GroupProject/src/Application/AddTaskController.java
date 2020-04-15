@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import main.Task;
+
 
 public class AddTaskController implements Initializable{
 	
